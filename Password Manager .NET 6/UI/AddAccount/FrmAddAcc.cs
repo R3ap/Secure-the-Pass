@@ -1,4 +1,4 @@
-﻿using Password_Manager.Properties;
+﻿using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
 
 namespace Password_Manager_.NET_6

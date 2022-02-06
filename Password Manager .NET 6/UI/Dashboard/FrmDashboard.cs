@@ -1,4 +1,4 @@
-﻿using Password_Manager.Properties;
+﻿using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
 using System.Data;
 
@@ -159,7 +159,7 @@ namespace Password_Manager_.NET_6
             try
             {
                 _notifyIcon.Visible = true;
-                _notifyIcon.Icon = new Icon("C:\\Users\\David von Garrel\\Desktop\\Icons\\icons8_password_window.ico");
+                _notifyIcon.Icon = new Icon("C:\\Code\\Password-Manager-.NET-6\\Password Manager .NET 6\\icons8_password_window.ico");
                 if (Settings.Default.IsCopy)
                 {
                     if (Settings.Default.IsEmail)

@@ -49,11 +49,12 @@ namespace Password_Manager_.NET_6
 
                 lblTitle.Text = "Dashboard";
                 this.pnlFormload.Controls.Clear();
-                FrmDashboard frmDashboard = new(_user, _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                FrmDashboard frmDashboard = new(_user, _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, Name = "frmDashboard" };
+                frmDashboard.Show();
+                frmDashboard = (FrmDashboard)Application.OpenForms["frmDashboard"];
                 frmDashboard.FormBorderStyle = FormBorderStyle.None;
                 this.pnlFormload.Controls.Add(frmDashboard);
                 frmDashboard.SetnewListAcc += SetnewListAcc;
-                frmDashboard.Show();
             }
             catch (Exception ex)
             {

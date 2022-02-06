@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Password_Manager.Properties
+namespace Password_Manager_.NET_6.Properties
 {
 
 

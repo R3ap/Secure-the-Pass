@@ -1,3 +1,5 @@
+using Password_Manager_.NET_6.UI.LogIn;
+
 namespace Password_Manager_.NET_6
 {
     internal static class Program
@@ -12,7 +14,7 @@ namespace Password_Manager_.NET_6
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                new FrmLogIn().ShowDialog();
+                new FrmLogInOverview().ShowDialog();
             }
             catch (Exception ex)
             {

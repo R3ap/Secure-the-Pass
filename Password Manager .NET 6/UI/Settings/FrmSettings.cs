@@ -1,6 +1,7 @@
-﻿using Password_Manager.Properties;
+﻿using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.UI.Settings;
+using Password_Manager_.NET_6.UI.LogIn;
 
 namespace Password_Manager_.NET_6
 {
@@ -76,7 +77,7 @@ namespace Password_Manager_.NET_6
             LogOut?.Invoke();
             Settings.Default.Email = null;
             Settings.Default.Save();
-            FrmLogIn frmLogIn = new FrmLogIn();
+            FrmLogInOverview frmLogIn = new FrmLogInOverview();
             frmLogIn.ShowDialog();
         }
 
