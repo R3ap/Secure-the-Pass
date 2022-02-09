@@ -4,7 +4,7 @@ using System.Data;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmDashboard : Form
+    public partial class FrmAccounts : Form
     {
         private User _user;
         private List<Account> _accounts;
@@ -12,7 +12,7 @@ namespace Password_Manager_.NET_6
         private int _rowIndex;
         private NotifyIcon _notifyIcon = new NotifyIcon();
         private readonly DatabaseAccess _db = new DatabaseAccess();
-        public FrmDashboard(User user, List<Account> accounts)
+        public FrmAccounts(User user, List<Account> accounts)
         {
             InitializeComponent();
             _user = user;
@@ -159,7 +159,7 @@ namespace Password_Manager_.NET_6
             try
             {
                 _notifyIcon.Visible = true;
-                _notifyIcon.Icon = new Icon("C:\\Code\\Password-Manager-.NET-6\\Password Manager .NET 6\\icons8_password_window.ico");
+                _notifyIcon.Icon = new Icon(@"C:\Users\vongarrel_david\Code\Password-Manager-.NET-6\Password Manager .NET 6\icons8_password_window.ico");
                 if (Settings.Default.IsCopy)
                 {
                     if (Settings.Default.IsEmail)

@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.chkStayLogged = new System.Windows.Forms.CheckBox();
+            this.ChkRememberMe = new System.Windows.Forms.CheckBox();
             this.lbllForgotPassword = new System.Windows.Forms.LinkLabel();
             this.PassProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).BeginInit();
@@ -136,18 +136,18 @@
             this.lblTitle.TabIndex = 36;
             this.lblTitle.Text = "LogIn";
             // 
-            // chkStayLogged
+            // ChkRememberMe
             // 
-            this.chkStayLogged.AutoSize = true;
-            this.chkStayLogged.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chkStayLogged.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.chkStayLogged.Location = new System.Drawing.Point(235, 152);
-            this.chkStayLogged.Margin = new System.Windows.Forms.Padding(4);
-            this.chkStayLogged.Name = "chkStayLogged";
-            this.chkStayLogged.Size = new System.Drawing.Size(139, 25);
-            this.chkStayLogged.TabIndex = 35;
-            this.chkStayLogged.Text = "Stay logged in";
-            this.chkStayLogged.UseVisualStyleBackColor = true;
+            this.ChkRememberMe.AutoSize = true;
+            this.ChkRememberMe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ChkRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.ChkRememberMe.Location = new System.Drawing.Point(235, 152);
+            this.ChkRememberMe.Margin = new System.Windows.Forms.Padding(4);
+            this.ChkRememberMe.Name = "ChkRememberMe";
+            this.ChkRememberMe.Size = new System.Drawing.Size(140, 25);
+            this.ChkRememberMe.TabIndex = 35;
+            this.ChkRememberMe.Text = "Remember Me";
+            this.ChkRememberMe.UseVisualStyleBackColor = true;
             // 
             // lbllForgotPassword
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.chkStayLogged);
+            this.Controls.Add(this.ChkRememberMe);
             this.Controls.Add(this.lbllForgotPassword);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -188,7 +188,7 @@
             this.Name = "FrmLogIn";
             this.Load += new System.EventHandler(this.CtrlLogIn_Load);
             this.Controls.SetChildIndex(this.lbllForgotPassword, 0);
-            this.Controls.SetChildIndex(this.chkStayLogged, 0);
+            this.Controls.SetChildIndex(this.ChkRememberMe, 0);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -209,7 +209,7 @@
         private Label label2;
         private Label label1;
         private Label lblTitle;
-        private CheckBox chkStayLogged;
+        private CheckBox ChkRememberMe;
         private LinkLabel lbllForgotPassword;
         private ErrorProvider PassProvider;
     }

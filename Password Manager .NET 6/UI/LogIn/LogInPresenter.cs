@@ -14,12 +14,21 @@ namespace Password_Manager_.NET_6.UI.LogIn
         public LogInPresenter()
         {
             _view.OnAcceptClick = LogIn;
+            _view.LoginByRememberMe =  LoginByRememberMe;
         }
 
-
-        private void Register()
+        private void LoginByRememberMe()
         {
-
+            if (!string.IsNullOrEmpty(settings.Settings.Default.Email))
+            {
+                List<User> users = _database.SelectUsers();
+                Application.OpenForms[nameof(FrmLogInOverview)].Hide();
+                if (GetTaskResult(users.First(x => x.Email == settings.Settings.Default.Email)))
+                {
+                    FrmMenü frmMenü = new(_user, _accounts);
+                    frmMenü.ShowDialog();
+                }
+            }
         }
 
         public void Show()
@@ -56,16 +65,15 @@ namespace Password_Manager_.NET_6.UI.LogIn
             return true;
         }
 
-        public bool LogIn()
+        public bool LogIn(string email, string password, bool rememberMe)
         {
             List<User> users = _database.SelectUsers();
-            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(txtEmail.Text)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(txtEmail.Text)).Password, txtPassword.Text))
+            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(email)).Password, password))
             {
-                Application.OpenForms["FrmLogInRegister"].Hide();
-                bool IsTaskSuccess = GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(txtEmail.Text)));
-                if (IsTaskSuccess)
+                Application.OpenForms[nameof(FrmLogInOverview)].Hide();
+                if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(email))))
                 {
-                    if (chkStayLogged.Checked)
+                    if (rememberMe)
                     {
                         settings.Settings.Default.Email = SecurePasswordHasher.GetEncryptString(_user.Email);
                     }
@@ -78,14 +86,19 @@ namespace Password_Manager_.NET_6.UI.LogIn
                     frmMenü.ShowDialog();
                     return true;
                 }
+                else
+                {
+                    return false;
+                    throw new Exception("Task failed");
+                }
             }
             else
             {
-                PassProvider.SetError(txtEmail, "Wrong Data");
-                PassProvider.SetError(btnEyePassword, "Wrong Data");
+                //PassProvider.SetError(txtEmail, "Wrong Data");
+                //PassProvider.SetError(btnEyePassword, "Wrong Data");
+                // TODO: Implement new Method PassInvailed
                 return false;
             }
         }
-
     }
 }

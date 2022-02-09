@@ -1,7 +1,7 @@
 ﻿
 namespace Password_Manager_.NET_6
 {
-    partial class FrmDashboard
+    partial class FrmAccounts
     {
         /// <summary>
         /// Required designer variable.

@@ -51,15 +51,15 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (PnlContent.Controls.Contains((FrmLogIn)Application.OpenForms["FrmLogIn"]))
+            if (PnlContent.Controls.Contains((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]))
             {
-                _login.LogIn();
+                ((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]).AcceptClick();
             }
             else
             {
                 PnlContent.Controls.Clear();
                 _login.Show();
-                PnlContent.Controls.Add((FrmLogIn)Application.OpenForms["FrmLogIn"]);
+                PnlContent.Controls.Add((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]);
             }
         }
 
@@ -67,7 +67,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
         {
             PnlContent.Controls.Clear();
             _login.Show();
-            PnlContent.Controls.Add((FrmLogIn)Application.OpenForms["FrmLogIn"]);
+            PnlContent.Controls.Add((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]);
             AddButtonAction(new ButtonAction() { Action = Register, Text = "&Register", Name = "BtnRegister" });
         }
 

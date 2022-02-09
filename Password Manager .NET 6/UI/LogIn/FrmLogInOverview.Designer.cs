@@ -37,12 +37,12 @@
             // _btAccept
             // 
             this._btAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btAccept.AutoSize = true;
             this._btAccept.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this._btAccept.Location = new System.Drawing.Point(25, 3);
             this._btAccept.Size = new System.Drawing.Size(84, 30);
             this._btAccept.Text = "&Login";
+            this._btAccept.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // _btAbort
             // 
