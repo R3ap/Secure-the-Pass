@@ -1,9 +1,10 @@
 ﻿using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Properties;
+using Password_Manager_.NET_6.UI.BaseDialog;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmMenü : Form
+    public partial class FrmMenü : FrmBaseDialog
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -26,7 +27,7 @@ namespace Password_Manager_.NET_6
         private void FrmMenü_Load(object sender, EventArgs e)
         {
             ShowDashbord();
-            txtUser.Text = _user.Username;
+            lblUsername.Text = _user.Username;
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace Password_Manager_.NET_6
                 pnlNav.Left = btnAccounts.Left;
                 pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
-                lblTitle.Text = "Dashboard";
+                lblTitle.Text = "Accounts";
                 this.pnlFormload.Controls.Clear();
                 FrmAccounts frmDashboard = new(_user, _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, Name = "frmDashboard" };
                 frmDashboard.Show();
@@ -83,7 +84,7 @@ namespace Password_Manager_.NET_6
                 pnlNav.Left = btnNewAcc.Left;
                 pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
-                lblTitle.Text = "Account";
+                lblTitle.Text = "Add Account";
                 this.pnlFormload.Controls.Clear();
                 FrmAddAcc frmAddAcc = new(_user, _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 frmAddAcc.FormBorderStyle = FormBorderStyle.None;

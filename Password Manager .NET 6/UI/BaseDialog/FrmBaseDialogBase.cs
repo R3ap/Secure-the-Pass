@@ -23,6 +23,8 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         BtAccept.Visible = true;
                         BtAccept.Text = "&OK";
                         BtAbort.Visible = true;
+                        pnlAction.Visible = true;
+                        pnlButton.Visible = true;
                         BtAbort.Text = "&Abort";
                         AcceptButton = BtAccept;
                         CancelButton = BtAbort;
@@ -32,11 +34,15 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         BtAbort.Visible = true;
                         BtAbort.Text = "&Close";
                         AcceptButton = null;
+                        pnlAction.Visible = true;
+                        pnlButton.Visible = true;
                         CancelButton = BtAbort;
                         break;
                     case enumDialogType.None:
                         BtAccept.Visible = false;
                         BtAbort.Visible = false;
+                        pnlAction.Visible = false;
+                        pnlButton.Visible = false;
                         AcceptButton = null;
                         break;
                 }
