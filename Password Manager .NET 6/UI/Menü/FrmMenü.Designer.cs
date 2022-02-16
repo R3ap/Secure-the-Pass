@@ -48,11 +48,6 @@ namespace Password_Manager_.NET_6
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlContent
-            // 
-            this.pnlContent.Location = new System.Drawing.Point(2, 36);
-            this.pnlContent.Size = new System.Drawing.Size(987, 647);
-            // 
             // _btAbort
             // 
             this._btAbort.Text = "&Close";
@@ -104,7 +99,7 @@ namespace Password_Manager_.NET_6
             this.btnNewAcc.Size = new System.Drawing.Size(217, 48);
             this.btnNewAcc.TabIndex = 3;
             this.btnNewAcc.TabStop = false;
-            this.btnNewAcc.Text = "      Add Account";
+            this.btnNewAcc.Text = "     Add Account";
             this.btnNewAcc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewAcc.UseVisualStyleBackColor = true;
             this.btnNewAcc.Click += new System.EventHandler(this.btnNewAcc_Click);
@@ -142,7 +137,7 @@ namespace Password_Manager_.NET_6
             this.btnAccounts.Size = new System.Drawing.Size(217, 48);
             this.btnAccounts.TabIndex = 2;
             this.btnAccounts.TabStop = false;
-            this.btnAccounts.Text = "      Accounts";
+            this.btnAccounts.Text = "     Accounts";
             this.btnAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAccounts.UseVisualStyleBackColor = true;
             this.btnAccounts.Click += new System.EventHandler(this.BtnAccounts_Click);
@@ -212,7 +207,6 @@ namespace Password_Manager_.NET_6
             this.Controls.Add(this.panel);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsSizable = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = true;
             this.MinimizeBox = true;
@@ -222,7 +216,6 @@ namespace Password_Manager_.NET_6
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Titel";
             this.Load += new System.EventHandler(this.FrmMenü_Load);
-            this.Controls.SetChildIndex(this.pnlContent, 0);
             this.Controls.SetChildIndex(this.panel, 0);
             this.Controls.SetChildIndex(this.pnlFormload, 0);
             this.panel.ResumeLayout(false);

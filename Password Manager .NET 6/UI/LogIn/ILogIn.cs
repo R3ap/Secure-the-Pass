@@ -4,7 +4,11 @@ namespace Password_Manager_.NET_6.UI.LogIn
 {
     public interface ILogIn : IBaseDialogBase
     {
-        new Func<string, string, bool, bool> OnAcceptClick { get; set; }
+        bool RememberMe { get; set; }
+
+        string Email { get; set ; }
+
+        string Password { get; set; }
         Action LoginByRememberMe { get; set; }
     }
 }

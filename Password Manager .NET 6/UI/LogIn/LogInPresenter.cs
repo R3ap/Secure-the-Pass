@@ -65,14 +65,14 @@ namespace Password_Manager_.NET_6.UI.LogIn
             return true;
         }
 
-        public bool LogIn(string email, string password, bool rememberMe)
+        public bool LogIn()
         {
             List<User> users = _database.SelectUsers();
-            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(email)).Password, password))
+            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(_view.Email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(_view.Email)).Password, _view.Password))
             {
-                if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(email))))
+                if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(_view.Email))))
                 {
-                    if (rememberMe)
+                    if (_view.RememberMe)
                     {
                         settings.Settings.Default.Email = SecurePasswordHasher.GetEncryptString(_user.Email);
                     }

@@ -34,11 +34,20 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         pnlAction.Visible = true;
                         CancelButton = BtAbort;
                         break;
+                    case enumDialogType.Ok:
+                        BtAccept.Visible = true;
+                        BtAbort.Visible = false;
+                        BtAbort.Text = "&OK";
+                        AcceptButton = BtAccept;
+                        pnlAction.Visible = true;
+                        CancelButton = null;
+                        break;
                     case enumDialogType.None:
                         BtAccept.Visible = false;
                         BtAbort.Visible = false;
                         pnlAction.Visible = false;
                         AcceptButton = null;
+                        CancelButton = null;
                         break;
                 }
             }
@@ -132,6 +141,8 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             pnlAction.Controls.Add(BtAccept);
             BtAbort.Click += BtAbort_Click;
             BtAccept.Click += BtAccept_Click;
+            BtAbort.AutoSize = true;
+            BtAccept.AutoSize = true;
             DialogType = enumDialogType;
             StartPosition = FormStartPosition.CenterParent;
 
@@ -200,16 +211,16 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                 Text = buttonAction.Text,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowOnly,
-                MinimumSize = buttonAction.MinimumSize
+                MinimumSize = buttonAction.MinimumSize == Size.Empty< ? BtAccept.Size : buttonAction.MinimumSize,
             };
             button.Click += buttonAction.OnClickHandler;
             button.ForeColor = Color.FromArgb(158, 161, 176);
             button.Font = new Font("Segoe UI", 11, FontStyle.Bold);
             button.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            button.Height = BtAccept.Height;
             Point point = _buttons.Any() ? GetButton(_buttons.Last().Key).Location : BtAccept.Location;
-            point.X -= 4;
+            point.X -= (BtAccept.Size.Width);
             button.Location = point;
-            pnlAction.Width += button.Width;
             pnlAction.Controls.Add(button);
             _buttons.Add(buttonAction.Name ?? buttonAction.GetHashCode().ToString(), button);
         }

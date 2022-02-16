@@ -51,7 +51,7 @@
             this._btAbort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAbort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this._btAbort.Location = new System.Drawing.Point(376, 6);
-            this._btAbort.Size = new System.Drawing.Size(84, 26);
+            this._btAbort.Size = new System.Drawing.Size(84, 27);
             // 
             // PnlTitelBar
             // 
@@ -149,15 +149,16 @@
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // FrmBaseDialogSizable
+            // FrmBaseDialogTitelBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 256);
             this.Controls.Add(this.PnlTitelBar);
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmBaseDialogSizable";
+            this.Name = "FrmBaseDialogTitelBar";
             this.Text = "FrmBaseDialogSizable";
             this.Resize += new System.EventHandler(this.FrmBaseDialogSizable_Resize);
             this.Controls.SetChildIndex(this.PnlTitelBar, 0);

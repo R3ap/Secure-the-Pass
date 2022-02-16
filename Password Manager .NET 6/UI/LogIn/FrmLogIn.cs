@@ -5,8 +5,13 @@ namespace Password_Manager_.NET_6.UI.LogIn
 {
     public partial class FrmLogIn : FrmBaseDialog, ILogIn
     {
-        public new Func<string, string, bool, bool> OnAcceptClick { get; set; }
         public Action LoginByRememberMe { get;  set; }
+
+        public bool RememberMe { get => ChkRememberMe.Checked; set => ChkRememberMe.Checked = value; }
+
+        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
+
+        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
 
         public FrmLogIn()
         {
@@ -17,21 +22,10 @@ namespace Password_Manager_.NET_6.UI.LogIn
         {
             if (e.KeyCode == Keys.Enter)
             {
-                AcceptClick();
+                OnAcceptClick?.Invoke();
             }
         }
 
-        public void AcceptClick()
-        {
-            if (OnAcceptClick?.Invoke(txtEmail.Text, txtPassword.Text, ChkRememberMe.Checked) ?? true)
-            {
-                DialogResult = enumDialogResult.OK;
-            }
-            else
-            {
-                DialogResult = enumDialogResult.Cancel;
-            }
-        }
 
         private void btnEyePassword_MouseDown(object sender, MouseEventArgs e)
         {

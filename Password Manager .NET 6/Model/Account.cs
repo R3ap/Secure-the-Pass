@@ -13,7 +13,7 @@ namespace Password_Manager_.NET_6.Model
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        [ForeignKey("Email")]
+        [ForeignKey(nameof(Email))]
         [Browsable(false)]
         public string Useremail { get; set; }
     }

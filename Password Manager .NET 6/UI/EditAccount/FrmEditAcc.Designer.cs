@@ -42,11 +42,6 @@ namespace Password_Manager_.NET_6
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // pnlContent
-            // 
-            this.pnlContent.Location = new System.Drawing.Point(2, 36);
-            this.pnlContent.Size = new System.Drawing.Size(661, 452);
-            // 
             // _btAccept
             // 
             this._btAccept.Location = new System.Drawing.Point(497, 3);
@@ -225,8 +220,6 @@ namespace Password_Manager_.NET_6
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEditAcc";
             this.Load += new System.EventHandler(this.FrmEditAcc_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmEditAcc_MouseDown);
-            this.Controls.SetChildIndex(this.pnlContent, 0);
             this.Controls.SetChildIndex(this.btnGenaratPW, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.txtWebsite, 0);

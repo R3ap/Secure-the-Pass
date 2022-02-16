@@ -23,27 +23,24 @@ namespace Password_Manager_.NET_6
 
         private void FrmDashbord_Load(object? sender = null, EventArgs? e = null)
         {
-            AccGrid.RowHeadersVisible = false;
-            AccGrid.AutoGenerateColumns = true;
             if (!Settings.Default.ShowPass)
             {
-                foreach (var acc in _accounts)
-                {
-                    acc.Password = new string('•', acc.Password.Length);
-                }
+                _accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
             }
-            else if (_accounts.Any(x => x.Password.Contains('•')))
+            else
             {
                 SetAccounts();
             }
+            AccGrid.RowHeadersVisible = false;
+            AccGrid.AutoGenerateColumns = true;
             AccGrid.DataSource = _accounts;
             AccGrid.AllowUserToResizeColumns = false;
             AccGrid.AllowUserToResizeRows = false;
+            AccGrid.EnableHeadersVisualStyles = false;
             AccGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             AccGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             AccGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             AccGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            AccGrid.EnableHeadersVisualStyles = false;
         }
 
         private void SetAccounts()
@@ -58,6 +55,7 @@ namespace Password_Manager_.NET_6
                 acc.Username = SecurePasswordHasher.GetDecryptString(acc.Username);
                 acc.Useremail = SecurePasswordHasher.GetDecryptString(acc.Useremail);
             }
+
             _accounts = accounts;
         }
 
@@ -78,8 +76,8 @@ namespace Password_Manager_.NET_6
                 acc.Username = SecurePasswordHasher.GetDecryptString(acc.Username);
                 acc.Useremail = SecurePasswordHasher.GetDecryptString(acc.Useremail);
             }
-            _accounts = accounts;
-            AccGrid.DataSource = _accounts;
+
+            AccGrid.DataSource = _accounts = accounts;
         }
 
         private void UpdateAcc(Account account)
@@ -96,16 +94,16 @@ namespace Password_Manager_.NET_6
                 switch (Settings.Default.Filter)
                 {
                     case "Username":
-                        AccGrid.DataSource = _accounts.Where(x => x.Username.Contains(txtSearch.Text)).ToList();
+                        AccGrid.DataSource = _accounts.Where(x => x.Username.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                         break;
                     case "Email":
-                        AccGrid.DataSource = _accounts.Where(x => x.Email.Contains(txtSearch.Text)).ToList();
+                        AccGrid.DataSource = _accounts.Where(x => x.Email.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                         break;
                     case "Password":
-                        AccGrid.DataSource = _accounts.Where(x => x.Password.Contains(txtSearch.Text)).ToList();
+                        AccGrid.DataSource = _accounts.Where(x => x.Password.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                         break;
                     case "Website":
-                        AccGrid.DataSource = _accounts.Where(x => x.Website.Contains(txtSearch.Text)).ToList();
+                        AccGrid.DataSource = _accounts.Where(x => x.Website.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                         break;
                     default:
                         _notifyIcon.Visible = true;
@@ -166,16 +164,18 @@ namespace Password_Manager_.NET_6
                     if (Settings.Default.IsEmail)
                     {
                         Clipboard.SetText(_accounts[e.RowIndex].Email);
+                        AccGrid[nameof(Account.Email), e.RowIndex].Selected = true;
                     }
                     else if (Settings.Default.IsPassword)
                     {
                         Clipboard.SetText(_accounts[e.RowIndex].Password);
+                        AccGrid[nameof(Account.Password), e.RowIndex].Selected = true;
                     }
                     else if (Settings.Default.IsUsername)
                     {
                         Clipboard.SetText(_accounts[e.RowIndex].Username);
+                        AccGrid[nameof(Account.Username), e.RowIndex].Selected = true;
                     }
-
                     _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
                 }
             }

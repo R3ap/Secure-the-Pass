@@ -22,16 +22,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         private void BtnRegister_Click(object sender, EventArgs e)
         {
-            if (PnlContent.Controls.Contains(_register))
-            {
-                _register.Register();
-            }
-            else
-            {
-                PnlContent.Controls.Clear();
-                PnlContent.Controls.Add(_register);
-                _register.Show();
-            }
+
         }
 
 
@@ -39,7 +30,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
         {
             if (PnlContent.Controls.Contains((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]))
             {
-                ((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]).AcceptClick();
+                ((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]).OnAcceptClick();
             }
             else
             {
@@ -62,7 +53,16 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         private void Register()
         {
-
+            if (PnlContent.Controls.Contains(_register))
+            {
+                _register.Register();
+            }
+            else
+            {
+                PnlContent.Controls.Clear();
+                PnlContent.Controls.Add(_register);
+                _register.Show();
+            }
         }
     }
 }

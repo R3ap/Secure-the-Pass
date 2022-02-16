@@ -12,13 +12,15 @@ namespace Password_Manager_.NET_6
             InitializeComponent();
             _user = user;
             _accounts = accounts;
-            
+
         }
+
         private void FrmMenü_Load(object sender, EventArgs e)
         {
             ShowAccounts();
-            lblUsername.Text = _user.Username;
             Size = new Size(959, 607);
+            lblUsername.Text = _user.Username;
+            btnAccounts.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
         }
 
         private void BtnAccounts_Click(object sender, EventArgs e)
@@ -42,12 +44,12 @@ namespace Password_Manager_.NET_6
                 pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
                 Titel = "Accounts";
-                this.pnlFormload.Controls.Clear();
+                pnlFormload.Controls.Clear();
                 FrmAccounts frmAccounts = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 frmAccounts.Show();
                 //frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
                 frmAccounts.FormBorderStyle = FormBorderStyle.None;
-                this.pnlFormload.Controls.Add(frmAccounts);
+                pnlFormload.Controls.Add(frmAccounts);
             }
             catch (Exception ex)
             {

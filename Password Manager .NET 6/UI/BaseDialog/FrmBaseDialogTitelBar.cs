@@ -14,7 +14,6 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         private int borderSize = 2;
         private Size formSize;
         private const string DEFAULT_TITEL = "titel";
-        public Panel pnlContent = new();
         private FormBorderStyle _formBorderStyle;
         public FrmBaseDialogTitelBar()
         {
@@ -23,8 +22,6 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             Padding = new Padding(borderSize);
             BackColor = Color.FromArgb(46, 51, 73);
             SetPropertiesOfTitel();
-            pnlContent.Dock = DockStyle.Fill;
-            Controls.Add(pnlContent);
         }
 
         [Description("The Text of the Titel.")]
@@ -62,6 +59,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             get => _formBorderStyle;
             set
             {
+                _formBorderStyle = base.FormBorderStyle = value;
                 switch (_formBorderStyle)
                 {
                     case FormBorderStyle.None:
@@ -245,6 +243,12 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 
         private void TitelBar_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Clicks == 2 && e.Button == MouseButtons.Left && IsSizable)
+            {
+                Maximize();
+                return;
+            }
+
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
@@ -253,6 +257,11 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         }
 
         private void BtnMax_Click(object sender, EventArgs e)
+        {
+            Maximize();
+        }
+
+        private void Maximize()
         {
             if (WindowState == FormWindowState.Normal)
             {

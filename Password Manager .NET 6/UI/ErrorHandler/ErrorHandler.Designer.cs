@@ -36,18 +36,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorBox = new System.Windows.Forms.PictureBox();
             this.txtErrorMessage = new System.Windows.Forms.TextBox();
-            this.pnlContent.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pnlContent
-            // 
-            this.pnlContent.Controls.Add(this.panel2);
-            this.pnlContent.Controls.Add(this.txtErrorMessage);
-            this.pnlContent.Controls.Add(this.panel3);
-            this.pnlContent.Size = new System.Drawing.Size(820, 215);
             // 
             // btnCopy
             // 
@@ -170,8 +162,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fehler";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ErrorHandler_MouseDown);
-            this.pnlContent.ResumeLayout(false);
-            this.pnlContent.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

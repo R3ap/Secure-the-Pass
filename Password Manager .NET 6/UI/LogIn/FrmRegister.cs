@@ -37,7 +37,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
                         bool error = _database.InsertUser(user);
                         if (error)
                         {
-                            Application.OpenForms["FrmLogInRegister"].Hide();
+                            //Application.OpenForms["FrmLogInRegister"].Hide();
                             FrmMenü frmMenü = new(ref _user, ref _accounts);
                             frmMenü.ShowDialog();
                         }
