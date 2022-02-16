@@ -1,8 +1,9 @@
+using Password_Manager_.NET_6.UI.BaseDialog;
 using System.Text;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class ErrorHandler : Form
+    public partial class ErrorHandler : FrmBaseDialogTitelBar
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;

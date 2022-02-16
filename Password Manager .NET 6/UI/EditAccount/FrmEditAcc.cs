@@ -1,9 +1,10 @@
 ﻿using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
+using Password_Manager_.NET_6.UI.BaseDialog;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmEditAcc : Form
+    public partial class FrmEditAcc : FrmBaseDialogTitelBar
     {
         private Account _account;
         private DatabaseAccess _database = new DatabaseAccess();
@@ -24,6 +25,11 @@ namespace Password_Manager_.NET_6
 
         private void FrmEditAcc_Load(object sender, EventArgs e)
         {
+            MaximizeBox = false;
+            MinimizeBox = false;
+            ShowIcon = false;
+            Titel = "Edit Account";
+            Size = new Size(661, 452);
             txtWebsite.Text = _account.Website;
             txtPassword.Text = _account.Password;
             txtUsername.Text = _account.Username;

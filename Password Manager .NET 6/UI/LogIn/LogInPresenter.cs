@@ -1,6 +1,5 @@
 ﻿using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Tasks;
-using Password_Manager_.NET_6.UI.BaseDialog;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogIn
@@ -14,7 +13,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
         public LogInPresenter()
         {
             _view.OnAcceptClick = LogIn;
-            _view.LoginByRememberMe =  LoginByRememberMe;
+            _view.LoginByRememberMe = LoginByRememberMe;
         }
 
         private void LoginByRememberMe()
@@ -23,9 +22,10 @@ namespace Password_Manager_.NET_6.UI.LogIn
             {
                 List<User> users = _database.SelectUsers();
                 Application.OpenForms[nameof(FrmLogInOverview)].Hide();
+                Application.OpenForms[nameof(FrmLogInOverview)].Close();
                 if (GetTaskResult(users.First(x => x.Email == settings.Settings.Default.Email)))
                 {
-                    FrmMenü frmMenü = new(_user, _accounts);
+                    FrmMenü frmMenü = new(ref _user, ref _accounts);
                     frmMenü.ShowDialog();
                 }
             }
@@ -70,7 +70,6 @@ namespace Password_Manager_.NET_6.UI.LogIn
             List<User> users = _database.SelectUsers();
             if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(email)).Password, password))
             {
-                Application.OpenForms[nameof(FrmLogInOverview)].Hide();
                 if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(email))))
                 {
                     if (rememberMe)
@@ -82,7 +81,9 @@ namespace Password_Manager_.NET_6.UI.LogIn
                         settings.Settings.Default.Email = null;
                     }
                     settings.Settings.Default.Save();
-                    FrmMenü frmMenü = new(_user, _accounts);
+                    Application.OpenForms[nameof(FrmLogInOverview)].Hide();
+                    Application.OpenForms[nameof(FrmLogInOverview)].Close();
+                    FrmMenü frmMenü = new(ref _user, ref _accounts);
                     frmMenü.ShowDialog();
                     return true;
                 }

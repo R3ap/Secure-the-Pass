@@ -28,51 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnContinue = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.errorBox = new System.Windows.Forms.PictureBox();
             this.txtErrorMessage = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlContent.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnClose
+            // pnlContent
             // 
-            this.btnClose.AccessibleDescription = "";
-            this.btnClose.AccessibleName = "";
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(556, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(25, 25);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.pnlContent.Controls.Add(this.panel2);
+            this.pnlContent.Controls.Add(this.txtErrorMessage);
+            this.pnlContent.Controls.Add(this.panel3);
+            this.pnlContent.Size = new System.Drawing.Size(820, 215);
             // 
             // btnCopy
             // 
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopy.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnCopy.Location = new System.Drawing.Point(344, 9);
+            this.btnCopy.Location = new System.Drawing.Point(529, 5);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(112, 40);
+            this.btnCopy.Size = new System.Drawing.Size(131, 46);
             this.btnCopy.TabIndex = 29;
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -84,60 +71,32 @@
             this.btnDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDetails.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnDetails.Location = new System.Drawing.Point(27, 9);
+            this.btnDetails.Location = new System.Drawing.Point(31, 5);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(112, 40);
+            this.btnDetails.Size = new System.Drawing.Size(131, 46);
             this.btnDetails.TabIndex = 30;
             this.btnDetails.Text = "More Details";
             this.btnDetails.UseVisualStyleBackColor = true;
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(99, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 25);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Something went wrong...";
             // 
             // btnContinue
             // 
             this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnContinue.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnContinue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnContinue.Location = new System.Drawing.Point(462, 9);
+            this.btnContinue.Location = new System.Drawing.Point(667, 5);
+            this.btnContinue.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(112, 40);
+            this.btnContinue.Size = new System.Drawing.Size(131, 46);
             this.btnContinue.TabIndex = 33;
             this.btnContinue.Text = "Continue";
             this.btnContinue.UseVisualStyleBackColor = true;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(27, 27);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(521, 108);
-            this.panel1.TabIndex = 35;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(24, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(49, 46);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -145,74 +104,90 @@
             this.panel2.Controls.Add(this.btnDetails);
             this.panel2.Controls.Add(this.btnContinue);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 138);
+            this.panel2.Location = new System.Drawing.Point(0, 150);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(593, 61);
+            this.panel2.Size = new System.Drawing.Size(820, 65);
             this.panel2.TabIndex = 36;
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.txtErrorMessage);
-            this.panel3.Location = new System.Drawing.Point(27, 135);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.errorBox);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(547, 0);
+            this.panel3.Size = new System.Drawing.Size(820, 149);
             this.panel3.TabIndex = 37;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.label1.Location = new System.Drawing.Point(185, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(264, 30);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Something went wrong...";
+            // 
+            // errorBox
+            // 
+            this.errorBox.Image = global::Password_Manager_.NET_6.Properties.Resources.failed;
+            this.errorBox.Location = new System.Drawing.Point(62, 57);
+            this.errorBox.Name = "errorBox";
+            this.errorBox.Size = new System.Drawing.Size(72, 62);
+            this.errorBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.errorBox.TabIndex = 0;
+            this.errorBox.TabStop = false;
             // 
             // txtErrorMessage
             // 
             this.txtErrorMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.txtErrorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtErrorMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtErrorMessage.Location = new System.Drawing.Point(0, 0);
+            this.txtErrorMessage.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtErrorMessage.Location = new System.Drawing.Point(0, 149);
             this.txtErrorMessage.Multiline = true;
             this.txtErrorMessage.Name = "txtErrorMessage";
-            this.txtErrorMessage.ReadOnly = true;
-            this.txtErrorMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtErrorMessage.Size = new System.Drawing.Size(547, 0);
-            this.txtErrorMessage.TabIndex = 0;
+            this.txtErrorMessage.Size = new System.Drawing.Size(820, 66);
+            this.txtErrorMessage.TabIndex = 38;
             // 
             // ErrorHandler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(593, 199);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(824, 219);
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.Name = "ErrorHandler";
-            this.ShowIcon = false;
+            this.ShowIcon = true;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fehler";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ErrorHandler_MouseDown);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlContent.ResumeLayout(false);
+            this.pnlContent.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnDetails;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnContinue;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtErrorMessage;
+        private TextBox txtErrorMessage;
+        private Label label1;
+        private PictureBox errorBox;
     }
 }

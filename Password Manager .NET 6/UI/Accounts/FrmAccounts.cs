@@ -1,29 +1,41 @@
 ﻿using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
 using System.Data;
+using Password_Manager_.NET_6.UI.BaseDialog;
+using System.Reflection;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmAccounts : Form
+    public partial class FrmAccounts : FrmBaseDialog
     {
         private User _user;
         private List<Account> _accounts;
         public event Action<List<Account>> SetnewListAcc;
         private int _rowIndex;
-        private NotifyIcon _notifyIcon = new NotifyIcon();
-        private readonly DatabaseAccess _db = new DatabaseAccess();
-        public FrmAccounts(User user, List<Account> accounts)
+        private NotifyIcon _notifyIcon = new();
+        private readonly DatabaseAccess _db = new();
+        public FrmAccounts(ref User user, ref List<Account> accounts)
         {
             InitializeComponent();
             _user = user;
             _accounts = accounts;
         }
 
-        private void FrmDashbord_Load(object sender = null, EventArgs e = null)
+        private void FrmDashbord_Load(object? sender = null, EventArgs? e = null)
         {
             AccGrid.RowHeadersVisible = false;
             AccGrid.AutoGenerateColumns = true;
-            AccGrid.DataSource = null;
+            if (!Settings.Default.ShowPass)
+            {
+                foreach (var acc in _accounts)
+                {
+                    acc.Password = new string('•', acc.Password.Length);
+                }
+            }
+            else if (_accounts.Any(x => x.Password.Contains('•')))
+            {
+                SetAccounts();
+            }
             AccGrid.DataSource = _accounts;
             AccGrid.AllowUserToResizeColumns = false;
             AccGrid.AllowUserToResizeRows = false;
@@ -32,20 +44,9 @@ namespace Password_Manager_.NET_6
             AccGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             AccGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             AccGrid.EnableHeadersVisualStyles = false;
-            if (!Settings.Default.ShowPass)
-            {
-                foreach (var acc in _accounts)
-                {
-                    acc.Password = new string('•', acc.Password.Length);
-                }
-            }
-            else
-            {
-                AccGrid.DataSource = GetAccounts();
-            }
         }
 
-        private List<Account> GetAccounts()
+        private void SetAccounts()
         {
             List<Account> accounts = _db.SelectAccounts(_user);
 
@@ -58,7 +59,6 @@ namespace Password_Manager_.NET_6
                 acc.Useremail = SecurePasswordHasher.GetDecryptString(acc.Useremail);
             }
             _accounts = accounts;
-            return _accounts;
         }
 
         private void AccGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -109,7 +109,7 @@ namespace Password_Manager_.NET_6
                         break;
                     default:
                         _notifyIcon.Visible = true;
-                        _notifyIcon.Icon = new Icon("C:\\Users\\David von Garrel\\Desktop\\Icons\\icons8_password_window.ico");
+                        _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
                         _notifyIcon.ShowBalloonTip(1000, "Filter Invaild", $"There is no Filter Like this: {Settings.Default.Filter}", ToolTipIcon.Error);
                         break;
                 }
@@ -141,8 +141,9 @@ namespace Password_Manager_.NET_6
 
             if (e.RowIndex >= 0)
             {
+                SetAccounts();
                 _rowIndex = e.RowIndex;
-                FrmEditAcc frmEditAcc = new FrmEditAcc(GetAccounts()[e.RowIndex]);
+                FrmEditAcc frmEditAcc = new(_accounts[e.RowIndex]);
                 frmEditAcc.UpdateAcc += UpdateAcc;
                 frmEditAcc.DeleteAcc += OnDeleteAcc;
                 frmEditAcc.ShowDialog();
@@ -159,7 +160,7 @@ namespace Password_Manager_.NET_6
             try
             {
                 _notifyIcon.Visible = true;
-                _notifyIcon.Icon = new Icon(@"C:\Users\vongarrel_david\Code\Password-Manager-.NET-6\Password Manager .NET 6\icons8_password_window.ico");
+                _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
                 if (Settings.Default.IsCopy)
                 {
                     if (Settings.Default.IsEmail)

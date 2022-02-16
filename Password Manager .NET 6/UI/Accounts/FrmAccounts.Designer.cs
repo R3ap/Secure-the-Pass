@@ -34,24 +34,10 @@ namespace Password_Manager_.NET_6
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.AccGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(831, 32);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "All Acounts";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtSearch
             // 
@@ -60,7 +46,7 @@ namespace Password_Manager_.NET_6
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtSearch.Location = new System.Drawing.Point(561, 44);
+            this.txtSearch.Location = new System.Drawing.Point(561, 70);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(251, 22);
@@ -103,7 +89,7 @@ namespace Password_Manager_.NET_6
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AccGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.AccGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.AccGrid.Location = new System.Drawing.Point(14, 72);
+            this.AccGrid.Location = new System.Drawing.Point(14, 98);
             this.AccGrid.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AccGrid.MultiSelect = false;
             this.AccGrid.Name = "AccGrid";
@@ -122,7 +108,8 @@ namespace Password_Manager_.NET_6
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.AccGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.AccGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AccGrid.Size = new System.Drawing.Size(798, 444);
+            this.AccGrid.ShowCellToolTips = false;
+            this.AccGrid.Size = new System.Drawing.Size(798, 439);
             this.AccGrid.TabIndex = 2;
             this.AccGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccGrid_CellDoubleClick);
             this.AccGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseClick);
@@ -133,15 +120,16 @@ namespace Password_Manager_.NET_6
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(831, 528);
+            this.ClientSize = new System.Drawing.Size(831, 549);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.AccGrid);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmAccounts";
             this.Text = "FrmDashboard";
             this.Load += new System.EventHandler(this.FrmDashbord_Load);
+            this.Controls.SetChildIndex(this.AccGrid, 0);
+            this.Controls.SetChildIndex(this.txtSearch, 0);
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,8 +137,6 @@ namespace Password_Manager_.NET_6
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView AccGrid;
     }

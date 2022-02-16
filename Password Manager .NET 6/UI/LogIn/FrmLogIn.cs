@@ -23,7 +23,14 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         public void AcceptClick()
         {
-            OnAcceptClick?.Invoke(txtEmail.Text, txtPassword.Text, ChkRememberMe.Checked);
+            if (OnAcceptClick?.Invoke(txtEmail.Text, txtPassword.Text, ChkRememberMe.Checked) ?? true)
+            {
+                DialogResult = enumDialogResult.OK;
+            }
+            else
+            {
+                DialogResult = enumDialogResult.Cancel;
+            }
         }
 
         private void btnEyePassword_MouseDown(object sender, MouseEventArgs e)

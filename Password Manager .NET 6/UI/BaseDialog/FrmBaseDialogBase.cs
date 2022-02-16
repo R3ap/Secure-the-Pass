@@ -4,7 +4,6 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 {
     public abstract partial class FrmBaseDialogBase : Form, IBaseDialogBase
     {
-        private const string DEFAULT_TITEL = "baseDialog";
         private enumDialogType _dialogType;
         private readonly Dictionary<string, Button> _buttons = new();
 
@@ -18,13 +17,11 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                 _dialogType = value;
                 switch (_dialogType)
                 {
-
                     case enumDialogType.OkAndAbort:
                         BtAccept.Visible = true;
                         BtAccept.Text = "&OK";
                         BtAbort.Visible = true;
                         pnlAction.Visible = true;
-                        pnlButton.Visible = true;
                         BtAbort.Text = "&Abort";
                         AcceptButton = BtAccept;
                         CancelButton = BtAbort;
@@ -35,14 +32,12 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         BtAbort.Text = "&Close";
                         AcceptButton = null;
                         pnlAction.Visible = true;
-                        pnlButton.Visible = true;
                         CancelButton = BtAbort;
                         break;
                     case enumDialogType.None:
                         BtAccept.Visible = false;
                         BtAbort.Visible = false;
                         pnlAction.Visible = false;
-                        pnlButton.Visible = false;
                         AcceptButton = null;
                         break;
                 }
@@ -85,18 +80,10 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 
         public new void Show()
         {
-            if (Titel == DEFAULT_TITEL)
-            {
-                MessageBox.Show("The Title has not been set yet!");
-            }
             base.Show();
         }
         public new void ShowDialog()
         {
-            if (Titel == DEFAULT_TITEL)
-            {
-                MessageBox.Show("The Title has not been set yet!");
-            }
             base.ShowDialog();
         }
 
@@ -111,7 +98,6 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Func<bool> OnCloseClick { get; set; }
 
-        public string Titel { get => Text; set => Text = value; }
 
         [Description("The Text of the Accept button.")]
         [Category("Appearace")]
@@ -136,15 +122,14 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         public Func<Task<bool>> OnAcceptClickAsync { get; set; }
         public Func<Task<bool>> OnCloseClickAsync { get; set; }
 
-
         protected FrmBaseDialogBase() : this(enumDialogType.OkAndAbort) { }
 
         protected FrmBaseDialogBase(enumDialogType enumDialogType)
         {
             InitializeComponent();
 
-            pnlButton.Controls.Add(BtAbort);
-            pnlButton.Controls.Add(BtAccept);
+            pnlAction.Controls.Add(BtAbort);
+            pnlAction.Controls.Add(BtAccept);
             BtAbort.Click += BtAbort_Click;
             BtAccept.Click += BtAccept_Click;
             DialogType = enumDialogType;
@@ -152,9 +137,9 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 
             if (!DesignMode)
             {
-                pnlButton.BorderStyle = BorderStyle.None;
+                pnlAction.BorderStyle = BorderStyle.None;
 
-                pnlButton.Visible = pnlButton.Controls.Count != 0;
+                pnlAction.Visible = pnlAction.Controls.Count != 0;
             }
 
             CancelButton = BtAbort;
@@ -208,7 +193,6 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             }
         }
 
-
         public void AddButtonAction(ButtonAction buttonAction)
         {
             Button button = new()
@@ -225,8 +209,8 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             Point point = _buttons.Any() ? GetButton(_buttons.Last().Key).Location : BtAccept.Location;
             point.X -= 4;
             button.Location = point;
-            pnlButton.Width += button.Width;
-            pnlButton.Controls.Add(button);
+            pnlAction.Width += button.Width;
+            pnlAction.Controls.Add(button);
             _buttons.Add(buttonAction.Name ?? buttonAction.GetHashCode().ToString(), button);
         }
 
@@ -235,16 +219,16 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             return _buttons.ContainsKey(name) ? null : _buttons[name];
         }
 
-        private void pnlButton_ControlAdded(object sender, ControlEventArgs e)
+        private void pnlAction_ControlAdded(object sender, ControlEventArgs e)
         {
-            pnlButton.Visible = true;
+            pnlAction.Visible = true;
         }
 
-        private void pnlButton_ControlRemoved(object sender, ControlEventArgs e)
+        private void pnlAction_ControlRemoved(object sender, ControlEventArgs e)
         {
-            if (pnlButton.Controls.Count == 0)
+            if (pnlAction.Controls.Count == 0)
             {
-                pnlButton.Visible = false;
+                pnlAction.Visible = false;
             }
         }
     }

@@ -37,45 +37,48 @@ namespace Password_Manager_.NET_6
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnAccounts = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pnlFormload = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnMin = new System.Windows.Forms.Button();
-            this.btnMax = new System.Windows.Forms.Button();
-            this.PnlTitelBar = new System.Windows.Forms.Panel();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.PnlTitelBar.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Location = new System.Drawing.Point(2, 36);
+            this.pnlContent.Size = new System.Drawing.Size(987, 647);
+            // 
+            // _btAbort
+            // 
+            this._btAbort.Text = "&Close";
             // 
             // panel
             // 
-            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel.Controls.Add(this.panel1);
             this.panel.Controls.Add(this.panel2);
-            this.panel.Location = new System.Drawing.Point(0, 32);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel.Location = new System.Drawing.Point(2, 36);
             this.panel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(217, 575);
+            this.panel.Size = new System.Drawing.Size(217, 647);
             this.panel.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.btnNewAcc);
             this.panel1.Controls.Add(this.btnSettings);
             this.panel1.Controls.Add(this.btnAccounts);
-            this.panel1.Location = new System.Drawing.Point(0, 166);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 194);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 410);
+            this.panel1.Size = new System.Drawing.Size(217, 453);
             this.panel1.TabIndex = 0;
             // 
             // pnlNav
@@ -114,7 +117,7 @@ namespace Password_Manager_.NET_6
             this.btnSettings.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.btnSettings.Image = global::Password_Manager_.NET_6.Properties.Resources.settings;
-            this.btnSettings.Location = new System.Drawing.Point(0, 365);
+            this.btnSettings.Location = new System.Drawing.Point(0, 408);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(217, 45);
@@ -142,27 +145,38 @@ namespace Password_Manager_.NET_6
             this.btnAccounts.Text = "      Accounts";
             this.btnAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAccounts.UseVisualStyleBackColor = true;
-            this.btnAccounts.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnAccounts.Click += new System.EventHandler(this.BtnAccounts_Click);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.lblUsername);
-            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(217, 166);
+            this.panel2.Size = new System.Drawing.Size(217, 194);
             this.panel2.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Password_Manager_.NET_6.Properties.Resources.Untitled_111;
+            this.pictureBox2.Location = new System.Drawing.Point(39, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(147, 137);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
             // 
             // lblUsername
             // 
             this.lblUsername.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.lblUsername.Location = new System.Drawing.Point(0, 120);
+            this.lblUsername.Location = new System.Drawing.Point(0, 159);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(217, 46);
+            this.lblUsername.Size = new System.Drawing.Size(217, 35);
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "Username";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -178,132 +192,44 @@ namespace Password_Manager_.NET_6
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // btnClose
-            // 
-            this.btnClose.AccessibleDescription = "";
-            this.btnClose.AccessibleName = "";
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(919, -2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(40, 37);
-            this.btnClose.TabIndex = 14;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // pnlFormload
             // 
-            this.pnlFormload.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlFormload.Location = new System.Drawing.Point(217, 85);
+            this.pnlFormload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFormload.Location = new System.Drawing.Point(219, 36);
             this.pnlFormload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlFormload.Name = "pnlFormload";
-            this.pnlFormload.Size = new System.Drawing.Size(738, 510);
+            this.pnlFormload.Size = new System.Drawing.Size(770, 647);
             this.pnlFormload.TabIndex = 0;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.lblTitle.Location = new System.Drawing.Point(13, 4);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(58, 25);
-            this.lblTitle.TabIndex = 16;
-            this.lblTitle.Text = "Titel";
-            // 
-            // btnMin
-            // 
-            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.FlatAppearance.BorderSize = 0;
-            this.btnMin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMin.ForeColor = System.Drawing.Color.White;
-            this.btnMin.Location = new System.Drawing.Point(845, -1);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(40, 35);
-            this.btnMin.TabIndex = 18;
-            this.btnMin.Text = "─";
-            this.btnMin.UseVisualStyleBackColor = false;
-            this.btnMin.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnMax
-            // 
-            this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMax.BackColor = System.Drawing.Color.Transparent;
-            this.btnMax.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnMax.FlatAppearance.BorderSize = 0;
-            this.btnMax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMax.ForeColor = System.Drawing.Color.White;
-            this.btnMax.Image = global::Password_Manager_.NET_6.Properties.Resources.icons8_maximize_button_16px2;
-            this.btnMax.Location = new System.Drawing.Point(881, -1);
-            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnMax.Name = "btnMax";
-            this.btnMax.Size = new System.Drawing.Size(40, 35);
-            this.btnMax.TabIndex = 17;
-            this.btnMax.UseVisualStyleBackColor = false;
-            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
-            // 
-            // PnlTitelBar
-            // 
-            this.PnlTitelBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.PnlTitelBar.Controls.Add(this.btnMin);
-            this.PnlTitelBar.Controls.Add(this.btnMax);
-            this.PnlTitelBar.Controls.Add(this.lblTitle);
-            this.PnlTitelBar.Controls.Add(this.btnClose);
-            this.PnlTitelBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlTitelBar.Location = new System.Drawing.Point(0, 0);
-            this.PnlTitelBar.Name = "PnlTitelBar";
-            this.PnlTitelBar.Size = new System.Drawing.Size(959, 34);
-            this.PnlTitelBar.TabIndex = 19;
-            this.PnlTitelBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlTitelBar_MouseDown);
             // 
             // FrmMenü
             // 
+            this.AbortText = "&Close";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(959, 607);
-            this.Controls.Add(this.PnlTitelBar);
+            this.ClientSize = new System.Drawing.Size(991, 685);
             this.Controls.Add(this.pnlFormload);
             this.Controls.Add(this.panel);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsSizable = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.MinimumSize = new System.Drawing.Size(959, 607);
             this.Name = "FrmMenü";
+            this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmDashboard";
-            this.Titel = "FrmDashboard";
+            this.Text = "Titel";
             this.Load += new System.EventHandler(this.FrmMenü_Load);
-            this.SizeChanged += new System.EventHandler(this.FrmMenü_SizeChanged);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMenü_MouseDown);
-            this.Resize += new System.EventHandler(this.FrmMenü_Resize);
+            this.Controls.SetChildIndex(this.pnlContent, 0);
             this.Controls.SetChildIndex(this.panel, 0);
             this.Controls.SetChildIndex(this.pnlFormload, 0);
-            this.Controls.SetChildIndex(this.PnlTitelBar, 0);
             this.panel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.PnlTitelBar.ResumeLayout(false);
-            this.PnlTitelBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -315,15 +241,11 @@ namespace Password_Manager_.NET_6
         private System.Windows.Forms.Button btnAccounts;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnNewAcc;
         private System.Windows.Forms.Panel pnlFormload;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel pnlNav;
-        private System.Windows.Forms.Button btnMax;
-        private System.Windows.Forms.Button btnMin;
-        private Panel PnlTitelBar;
         private Panel panel1;
         private Label lblUsername;
+        private PictureBox pictureBox2;
     }
 }

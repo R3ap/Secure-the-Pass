@@ -1,10 +1,11 @@
 ﻿using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Tasks;
+using Password_Manager_.NET_6.UI.BaseDialog;
 using System.Data;
 
 namespace Password_Manager_.NET_6.UI.LogIn
 {
-    public partial class FrmRegister : Form
+    public partial class FrmRegister : FrmBaseDialog
     {
         private User _user;
         private List<Account> _accounts;
@@ -37,7 +38,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
                         if (error)
                         {
                             Application.OpenForms["FrmLogInRegister"].Hide();
-                            FrmMenü frmMenü = new(_user, _accounts);
+                            FrmMenü frmMenü = new(ref _user, ref _accounts);
                             frmMenü.ShowDialog();
                         }
                     }
@@ -60,7 +61,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
             InizializeTask inizializeTask = new InizializeTask();
             _user = inizializeTask.InitializeUser(user).Result;
             _accounts = inizializeTask.InitializeAccounts().Result;
-            DialogResult dialogResult = DialogResult.None;
+            DialogResult dialogResult = System.Windows.Forms.DialogResult.None;
             if (_user == null)
             {
                 dialogResult = MessageBox.Show("This Task Initialize User", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -71,7 +72,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
                 dialogResult = MessageBox.Show("This Task Initialize Accounts", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (dialogResult == DialogResult.OK)
+            if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 return false;
             }

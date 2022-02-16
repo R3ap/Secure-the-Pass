@@ -11,9 +11,8 @@ namespace Password_Manager_.NET_6
         private User _user;
         private List<Account> _accounts;
         public event Action IsRemoved;
-        public event Action<List<Account>> AccountClean;
         public event Action LogOut;
-        public FrmSettings(User user, List<Account> accounts)
+        public FrmSettings(ref User user, ref List<Account> accounts)
         {
             InitializeComponent();
             _user = user;
@@ -56,7 +55,6 @@ namespace Password_Manager_.NET_6
         private void btnCleanAcc_Click(object sender, EventArgs e)
         {
             _database.CleanAccount(_accounts);
-            AccountClean?.Invoke(_accounts = new List<Account>());
         }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
@@ -77,7 +75,7 @@ namespace Password_Manager_.NET_6
             LogOut?.Invoke();
             Settings.Default.Email = null;
             Settings.Default.Save();
-            FrmLogInOverview frmLogIn = new FrmLogInOverview();
+            FrmLogInOverview frmLogIn = new();
             frmLogIn.ShowDialog();
         }
 

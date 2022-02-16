@@ -29,28 +29,17 @@
         private void InitializeComponent()
         {
             this.pnlAction = new System.Windows.Forms.Panel();
-            this.pnlButton = new System.Windows.Forms.Panel();
-            this.pnlAction.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAction
             // 
-            this.pnlAction.Controls.Add(this.pnlButton);
             this.pnlAction.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlAction.Location = new System.Drawing.Point(0, 121);
             this.pnlAction.Name = "pnlAction";
             this.pnlAction.Size = new System.Drawing.Size(344, 35);
             this.pnlAction.TabIndex = 18;
-            // 
-            // pnlButton
-            // 
-            this.pnlButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButton.Location = new System.Drawing.Point(136, 0);
-            this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(208, 35);
-            this.pnlButton.TabIndex = 16;
-            this.pnlButton.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnlButton_ControlAdded);
-            this.pnlButton.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlButton_ControlRemoved);
+            this.pnlAction.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnlAction_ControlAdded);
+            this.pnlAction.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlAction_ControlRemoved);
             // 
             // FrmBaseDialogBase
             // 
@@ -63,13 +52,11 @@
             this.Name = "FrmBaseDialogBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "baseDialog";
-            this.pnlAction.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Panel pnlAction;
-        private Panel pnlButton;
     }
 }

@@ -20,12 +20,12 @@ namespace Password_Manager_.NET_6
                     using (var db = new PMContext())
                     using (var transaction = db.Database.BeginTransaction())
                     {
-                        db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
+                        db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
 
                         db.Account.RemoveRange(accounts);
                         db.SaveChanges();
 
-                        db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
+                        db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
                         transaction.Commit();
                     }
                 }
@@ -43,12 +43,12 @@ namespace Password_Manager_.NET_6
                 using (var db = new PMContext())
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    db.Users.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
 
                     db.Remove(user);
                     db.SaveChanges();
 
-                    db.Users.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Users] OFF");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] OFF");
                     transaction.Commit();
 
                     CleanAccount(accounts);
@@ -69,12 +69,12 @@ namespace Password_Manager_.NET_6
                 using (var db = new PMContext())
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
 
                     db.Remove(account);
                     db.SaveChanges();
 
-                    db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
                     transaction.Commit();
                 }
             }
@@ -93,12 +93,12 @@ namespace Password_Manager_.NET_6
                     using (var db = new PMContext())
                     using (var transaction = db.Database.BeginTransaction())
                     {
-                        db.Users.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
+                        db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
 
                         db.Users.Add(user);
                         db.SaveChanges();
 
-                        db.Users.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Users] OFF");
+                        db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] OFF");
                         transaction.Commit();
                     }
                 }
@@ -119,14 +119,14 @@ namespace Password_Manager_.NET_6
                 using (var transaction = db.Database.BeginTransaction())
                 {
 
-                    db.Users.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
 
                     User newuser = db.Users.First(x => x.Email == email);
                     newuser.Password = SecurePasswordHasher.GetEncryptString(password);
 
                     db.SaveChanges();
 
-                    db.Users.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Users] OFF");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] OFF");
 
                     transaction.Commit();
                 }
@@ -180,7 +180,7 @@ namespace Password_Manager_.NET_6
                 using (var db = new PMContext())
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
 
                     account = db.Account.First(x => x.ID == ID);
                     account.Email = email;
@@ -189,7 +189,7 @@ namespace Password_Manager_.NET_6
                     account.Password = password;
                     db.SaveChanges();
 
-                    db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
 
                     transaction.Commit();
                 }
@@ -208,12 +208,13 @@ namespace Password_Manager_.NET_6
                 using (var db = new PMContext())
                 using (var transaction = db.Database.BeginTransaction())
                 {
-                    db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON");
 
-                    db.Add(account);
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] ON;");
+
+                    db.Account.Add(account);
                     db.SaveChanges();
 
-                    db.Account.FromSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF");
+                    db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Account] OFF;");
 
                     transaction.Commit();
                 }
