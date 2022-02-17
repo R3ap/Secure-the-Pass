@@ -37,10 +37,13 @@ namespace Password_Manager_.NET_6
             AccGrid.AllowUserToResizeColumns = false;
             AccGrid.AllowUserToResizeRows = false;
             AccGrid.EnableHeadersVisualStyles = false;
-            AccGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            AccGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            AccGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            AccGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            foreach (DataGridViewColumn item in AccGrid.Columns)
+            {
+                item.AutoSizeMode = item.Index == AccGrid.Columns.Count - 1 
+                                                ? DataGridViewAutoSizeColumnMode.Fill 
+                                                : DataGridViewAutoSizeColumnMode.AllCells;
+
+            }
         }
 
         private void SetAccounts()
@@ -66,18 +69,7 @@ namespace Password_Manager_.NET_6
 
         private void OnDeleteAcc()
         {
-            List<Account> accounts = _db.SelectAccounts(_user);
-
-            foreach (var acc in accounts)
-            {
-                acc.Email = SecurePasswordHasher.GetDecryptString(acc.Email);
-                acc.Password = SecurePasswordHasher.GetDecryptString(acc.Password);
-                acc.Website = SecurePasswordHasher.GetDecryptString(acc.Website);
-                acc.Username = SecurePasswordHasher.GetDecryptString(acc.Username);
-                acc.Useremail = SecurePasswordHasher.GetDecryptString(acc.Useremail);
-            }
-
-            AccGrid.DataSource = _accounts = accounts;
+            SetAccounts();
         }
 
         private void UpdateAcc(Account account)
@@ -145,6 +137,7 @@ namespace Password_Manager_.NET_6
                 frmEditAcc.UpdateAcc += UpdateAcc;
                 frmEditAcc.DeleteAcc += OnDeleteAcc;
                 frmEditAcc.ShowDialog();
+                FrmDashbord_Load();
             }
         }
 

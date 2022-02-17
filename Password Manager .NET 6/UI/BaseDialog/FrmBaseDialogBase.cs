@@ -211,7 +211,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                 Text = buttonAction.Text,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowOnly,
-                MinimumSize = buttonAction.MinimumSize == Size.Empty< ? BtAccept.Size : buttonAction.MinimumSize,
+                MinimumSize = buttonAction.MinimumSize == Size.Empty ? BtAccept.Size : buttonAction.MinimumSize,
             };
             button.Click += buttonAction.OnClickHandler;
             button.ForeColor = Color.FromArgb(158, 161, 176);
