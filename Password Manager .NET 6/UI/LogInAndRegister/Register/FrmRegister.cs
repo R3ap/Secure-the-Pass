@@ -1,92 +1,54 @@
-﻿using Password_Manager_.NET_6.Model;
-using Password_Manager_.NET_6.Tasks;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using System.Data;
+﻿using Password_Manager_.NET_6.UI.BaseDialog;
+using Password_Manager_.NET_6.UI.LogInAndRegister.Register;
 
 namespace Password_Manager_.NET_6.UI.LogIn
 {
-    public partial class FrmRegister : FrmBaseDialog
+    public partial class FrmRegister : FrmBaseDialog, IRegister
     {
-        private User _user;
-        private List<Account> _accounts;
-        private readonly DatabaseAccess _database = new();
+        public Func<bool> Register { get; set; }
+
+        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
+        public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
+        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
+        public string PasswordConfirm { get => txtConfirm.Text; set => txtConfirm.Text = value; }
+
         public FrmRegister()
         {
             InitializeComponent();
         }
 
-        public void Register()
+        public void ClearError()
         {
             PassProvider.Clear();
-            if (!_database.CheckUser(txtEmail.Text))
-            {
-                PassProvider.SetError(txtEmail, "The Email Exist");
-            }
-            else if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrEmpty(txtConfirm.Text))
-            {
-                if (txtPassword.Text != txtConfirm.Text)
-                {
-                    PassProvider.SetError(txtConfirm, "The Password is not Equal");
-                }
-                else
-                {
-                    User user = new() { ID = _database.SelectUsers().OrderByDescending(x => x.ID).First().ID + 1, Email = SecurePasswordHasher.GetEncryptString(txtEmail.Text), Username = SecurePasswordHasher.GetEncryptString(txtUsername.Text), Password = SecurePasswordHasher.GetEncryptString(txtPassword.Text) };
-                    bool IsTaskSuccess = GetTaskResult(user);
-                    if (IsTaskSuccess)
-                    {
-                        bool error = _database.InsertUser(user);
-                        if (error)
-                        {
-                            //Application.OpenForms["FrmLogInRegister"].Hide();
-                            FrmMenü frmMenü = new(ref _user, ref _accounts);
-                            frmMenü.ShowDialog();
-                        }
-                    }
-                }
-            }
-            else
-            {
-                string errortext = "This can't be Empty";
-                PassProvider.SetError(txtEmail, errortext);
-                PassProvider.SetError(btnEyePassword, errortext);
-                PassProvider.SetError(txtUsername, errortext);
-                PassProvider.SetError(btnEyeConfirm, errortext);
-                PassProvider.SetError(txtUsername, errortext);
-            }
         }
 
-        private bool GetTaskResult(User user)
+        public void SetErrorPassword(string errorMessage)
         {
-            InizializeTask inizializeTask = new InizializeTask();
-            _user = inizializeTask.InitializeUser(user).Result;
-            _accounts = inizializeTask.InitializeAccounts().Result;
-            DialogResult dialogResult = System.Windows.Forms.DialogResult.None;
-            if (_user == null)
-            {
-                dialogResult = MessageBox.Show("This Task Initialize User", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            PassProvider.SetError(btnEyePassword, errorMessage);
+        }
 
-            if (_accounts == null)
-            {
-                dialogResult = MessageBox.Show("This Task Initialize Accounts", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        public void SetErrorEmail(string errorMessage)
+        {
+            PassProvider.SetError(txtEmail, errorMessage);
+        }
 
-            if (dialogResult == System.Windows.Forms.DialogResult.OK)
-            {
-                return false;
-            }
+        public void SetErrorUsername(string errorMessage)
+        {
+            PassProvider.SetError(txtUsername, errorMessage);
+        }
 
-            return true;
+        public void SetErrorPasswordConfirm(string errorMessage)
+        {
+            PassProvider.SetError(btnEyeConfirm, errorMessage);
         }
 
         private void txtConfirm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Register();
+                Register?.Invoke();
             }
         }
-
 
         private void btnEyePassword_MouseDown(object sender, MouseEventArgs e)
         {
@@ -108,13 +70,11 @@ namespace Password_Manager_.NET_6.UI.LogIn
             txtConfirm.PasswordChar = '•';
         }
 
-        private void CtrlRegister_Load(object sender, EventArgs e)
+        private void FrmRegister_Load(object sender, EventArgs e)
         {
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            Dock = DockStyle.Fill;
+            TopLevel = false;
+            TopMost = true;
         }
     }
 }

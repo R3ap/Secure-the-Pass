@@ -1,6 +1,7 @@
 ﻿using Password_Manager_.NET_6.Model;
 using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
+using Password_Manager_.NET_6.UI.ErrorHandler;
 
 namespace Password_Manager_.NET_6
 {
@@ -270,8 +271,9 @@ namespace Password_Manager_.NET_6
 
         private void Error(Exception ex)
         {
-            ErrorHandler errorHandler = new ErrorHandler();
-            errorHandler.ShowDialog(ex);
+            ErrorHandlerPresenter errorHandler = new();
+            errorHandler.ShowDialog();
+            errorHandler.SetErrorMessage(ex);
         }
 
     }

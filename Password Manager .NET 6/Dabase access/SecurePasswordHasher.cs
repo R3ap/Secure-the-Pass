@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Password_Manager_.NET_6.UI.ErrorHandler;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -25,8 +26,9 @@ namespace Password_Manager_.NET_6
             }
             catch (Exception ex)
             {
-                ErrorHandler errorHandler = new ErrorHandler();
-                errorHandler.ShowDialog(ex);
+                ErrorHandlerPresenter errorHandler = new();
+                errorHandler.ShowDialog();
+                errorHandler.SetErrorMessage(ex);
                 return "";
             }
         }
@@ -49,8 +51,9 @@ namespace Password_Manager_.NET_6
             }
             catch (Exception ex)
             {
-                ErrorHandler errorHandler = new ErrorHandler();
-                errorHandler.ShowDialog(ex);
+                ErrorHandlerPresenter errorHandler = new();
+                errorHandler.ShowDialog();
+                errorHandler.SetErrorMessage(ex);
                 return "";
             }
         }

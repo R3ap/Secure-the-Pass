@@ -1,6 +1,8 @@
 ﻿using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Properties;
+using Password_Manager_.NET_6.UI.AddAccount;
 using Password_Manager_.NET_6.UI.BaseDialog;
+using Password_Manager_.NET_6.UI.ErrorHandler;
 
 namespace Password_Manager_.NET_6
 {
@@ -32,8 +34,9 @@ namespace Password_Manager_.NET_6
 
         private static void Error(Exception ex)
         {
-            ErrorHandler error = new();
-            error.ShowDialog(ex);
+            ErrorHandlerPresenter error = new();
+            error.ShowDialog();
+            error.SetErrorMessage(ex);
         }
 
         private void ShowAccounts()
@@ -46,12 +49,12 @@ namespace Password_Manager_.NET_6
                 pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
                 Titel = "Accounts";
-                pnlFormload.Controls.Clear();
+                PnlContent.Controls.Clear();
                 FrmAccounts frmAccounts = new(_user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 frmAccounts.Show();
                 //frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
                 frmAccounts.FormBorderStyle = FormBorderStyle.None;
-                pnlFormload.Controls.Add(frmAccounts);
+                PnlContent.Controls.Add(frmAccounts);
             }
             catch (Exception ex)
             {
@@ -69,11 +72,12 @@ namespace Password_Manager_.NET_6
                 pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
                 Titel = "Add Account";
-                this.pnlFormload.Controls.Clear();
-                FrmAddAcc frmAddAcc = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                PnlContent.Controls.Clear();
+                AddAccPresenter AddAcc = new(ref _user, ref _accounts);
+                AddAcc.Show();
+                FrmAddAcc frmAddAcc = (FrmAddAcc)Application.OpenForms[nameof(FrmAddAcc)];
                 frmAddAcc.FormBorderStyle = FormBorderStyle.None;
-                this.pnlFormload.Controls.Add(frmAddAcc);
-                frmAddAcc.Show();
+                PnlContent.Controls.Add(frmAddAcc);
 
             }
             catch (Exception ex)
@@ -91,10 +95,10 @@ namespace Password_Manager_.NET_6
                 pnlNav.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 
                 Titel = "Settings";
-                this.pnlFormload.Controls.Clear();
+                this.PnlContent.Controls.Clear();
                 FrmSettings frmSettings = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 frmSettings.FormBorderStyle = FormBorderStyle.None;
-                this.pnlFormload.Controls.Add(frmSettings);
+                this.PnlContent.Controls.Add(frmSettings);
                 frmSettings.IsRemoved += UserRemoved;
                 frmSettings.LogOut += OnLogOut;
                 frmSettings.Show();

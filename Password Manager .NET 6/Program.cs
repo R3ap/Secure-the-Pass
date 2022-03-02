@@ -1,3 +1,4 @@
+using Password_Manager_.NET_6.UI.ErrorHandler;
 using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
 
 namespace Password_Manager_.NET_6
@@ -18,8 +19,9 @@ namespace Password_Manager_.NET_6
             }
             catch (Exception ex)
             {
-                ErrorHandler error = new ErrorHandler();
-                error.ShowDialog(ex);
+                ErrorHandlerPresenter error = new();
+                error.ShowDialog();
+                error.SetErrorMessage(ex);
             }
         }
     }

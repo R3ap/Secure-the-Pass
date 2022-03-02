@@ -1,62 +1,58 @@
 ﻿using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.LogInAndRegister.Login;
+using Password_Manager_.NET_6.UI.LogInAndRegister.Register;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Overview
 {
-    public class OverviewPresenter
+    public class OverviewPresenter : BaseTitelBarPresenter<IOverview>
     {
-        private FrmRegister _register = new() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        private RegisterPresenter _register = new();
         private LogInPresenter _login = new();
-        private IOverview _view = new FrmOverview();
-        public OverviewPresenter()
+        public OverviewPresenter() : base(new FrmOverview())
         {
-            _view.OnAcceptClick = Login;
-            _view.SetMainControl = SetMainControl;
-            _view.AddButtonAction(new ButtonAction() { Action = Register, Text = "&Register", Name = "BtnRegister" });
+            View.OnAcceptClick = Login;
+            View.SetMainControl = SetMainControl;
+            View.AddButtonAction(new ButtonAction() { Action = Register, Text = "&Register", Name = "BtnRegister" });
         }
 
         private void SetMainControl()
         {
-            _view.Titel = "Login";
-            _view.SetFormSize(true);
+            View.Titel = "Login";
+            View.SetFormSize(true);
             _login.Show();
-            _view.AddControl((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]);
+            View.AddControl((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]);
         }
 
         private bool Login()
         {
-            _view.Titel = "Login";
-            _view.SetFormSize(true);
-            if (_view.ContainsControl((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]))
+            View.Titel = "Login";
+            View.SetFormSize(true);
+            if (View.ContainsControl((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]))
             {
                 return _login.LogIn();
             }
             else
             {
                 _login.Show();
-                _view.AddControl((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]);
+                View.AddControl((FrmLogIn)Application.OpenForms[nameof(FrmLogIn)]);
                 return false;
             }
         }
 
-        public void ShowDialog()
+        private bool Register()
         {
-            _view.ShowDialog();
-        }
-
-        private void Register()
-        {
-            _view.Titel = "Register";
-            _view.SetFormSize(false);
-            if (_view.ContainsControl(_register))
+            View.Titel = "Register";
+            View.SetFormSize(false);
+            if (View.ContainsControl((FrmRegister)Application.OpenForms[nameof(FrmRegister)]))
             {
-                _register.Register();
+                return _register.Register();
             }
             else
             {
-                _view.AddControl(_register);
                 _register.Show();
+                View.AddControl((FrmRegister)Application.OpenForms[nameof(FrmRegister)]);
+                return false;
             }
         }
     }

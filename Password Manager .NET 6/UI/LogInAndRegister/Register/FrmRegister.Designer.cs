@@ -83,6 +83,9 @@
             this.btnEyeConfirm.Size = new System.Drawing.Size(27, 24);
             this.btnEyeConfirm.TabIndex = 49;
             this.btnEyeConfirm.UseVisualStyleBackColor = false;
+            this.btnEyeConfirm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
+            this.btnEyeConfirm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEyeConfirm_MouseDown);
+            this.btnEyeConfirm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnEyeConfirm_MouseUp);
             // 
             // txtConfirm
             // 
@@ -95,8 +98,10 @@
             this.txtConfirm.Location = new System.Drawing.Point(204, 169);
             this.txtConfirm.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.PasswordChar = '•';
             this.txtConfirm.Size = new System.Drawing.Size(380, 24);
             this.txtConfirm.TabIndex = 48;
+            this.txtConfirm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
             // 
             // txtEmail
             // 
@@ -111,6 +116,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(403, 24);
             this.txtEmail.TabIndex = 47;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
             // 
             // label2
             // 
@@ -149,6 +155,9 @@
             this.btnEyePassword.Size = new System.Drawing.Size(27, 24);
             this.btnEyePassword.TabIndex = 54;
             this.btnEyePassword.UseVisualStyleBackColor = false;
+            this.btnEyePassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
+            this.btnEyePassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEyePassword_MouseDown);
+            this.btnEyePassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnEyePassword_MouseUp);
             // 
             // txtPassword
             // 
@@ -161,8 +170,10 @@
             this.txtPassword.Location = new System.Drawing.Point(204, 130);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(380, 24);
             this.txtPassword.TabIndex = 53;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
             // 
             // txtUsername
             // 
@@ -177,6 +188,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(403, 24);
             this.txtUsername.TabIndex = 52;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
             // 
             // label3
             // 
@@ -216,7 +228,8 @@
             this.ClientSize = new System.Drawing.Size(632, 241);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Name = "FrmRegister";
-            this.Load += new System.EventHandler(this.CtrlRegister_Load);
+            this.Load += new System.EventHandler(this.FrmRegister_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);
             this.PnlActions.ResumeLayout(false);
             this.PnlActions.PerformLayout();
             this.PnlActionsBase.ResumeLayout(false);

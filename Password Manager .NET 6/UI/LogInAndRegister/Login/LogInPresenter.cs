@@ -1,20 +1,20 @@
 ﻿using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Tasks;
+using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
 {
-    public class LogInPresenter
+    public class LogInPresenter : BaseDialogPresenter<ILogIn>
     {
-        private ILogIn _view = new FrmLogIn() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         private User _user;
         private List<Account> _accounts;
         private readonly DatabaseAccess _database = new();
-        public LogInPresenter()
+        public LogInPresenter() : base(new FrmLogIn()) 
         {
-            _view.OnAcceptClick = LogIn;
-            _view.LoginByRememberMe = LoginByRememberMe;
+            View.OnAcceptClick = LogIn;
+            View.LoginByRememberMe = LoginByRememberMe;
         }
 
         private void LoginByRememberMe()
@@ -30,16 +30,6 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
                     frmMenü.ShowDialog();
                 }
             }
-        }
-
-        public void Show()
-        {
-            _view.Show();
-        }
-
-        public void ShowDialog()
-        {
-            _view.ShowDialog();
         }
 
         private bool GetTaskResult(User user)
@@ -69,11 +59,11 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
         public bool LogIn()
         {
             List<User> users = _database.SelectUsers();
-            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(_view.Email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(_view.Email)).Password, _view.Password))
+            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(View.Email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(View.Email)).Password, View.Password))
             {
-                if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(_view.Email))))
+                if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(View.Email))))
                 {
-                    if (_view.RememberMe)
+                    if (View.RememberMe)
                     {
                         settings.Settings.Default.Email = SecurePasswordHasher.GetEncryptString(_user.Email);
                     }

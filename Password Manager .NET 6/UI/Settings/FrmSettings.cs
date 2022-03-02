@@ -4,6 +4,8 @@ using Password_Manager_.NET_6.UI.Settings;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.Extensions;
+using Password_Manager_.NET_6.UI.ErrorHandler;
+using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
 
 namespace Password_Manager_.NET_6
 {
@@ -14,6 +16,11 @@ namespace Password_Manager_.NET_6
         private List<Account> _accounts;
         public event Action IsRemoved;
         public event Action LogOut;
+        private string _showPassDescription = enumSettings.ShowPass.GetDescription();
+        private string _copyDescription = enumSettings.CopyToClipboard.GetDescription();
+        private string _emailDescription = enumSettings.CopyToClipboard_Email.GetDescription();
+        private string _passwordDescription = enumSettings.CopyToClipboard_Password.GetDescription();
+        private string _usernameDescription = enumSettings.CopyToClipboard_Username.GetDescription();
         public FrmSettings(ref User user, ref List<Account> accounts)
         {
             InitializeComponent();
@@ -24,12 +31,12 @@ namespace Password_Manager_.NET_6
         private void FrmSettings_Load(object sender, EventArgs e)
         {
             cboFilter.SelectedIndex = cboFilter.Items.IndexOf(Settings.Default.Filter);
-            SettingsView.Nodes[enumSettings.ShowPass.GetDescription()].Checked = Settings.Default.ShowPass;
-            var copy = SettingsView.Nodes[enumSettings.CopyToClipboard.GetDescription()];
+            SettingsView.Nodes[_showPassDescription].Checked = Settings.Default.ShowPass;
+            var copy = SettingsView.Nodes[_copyDescription];
             copy.Checked = Settings.Default.IsCopy;
-            copy.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked = Settings.Default.IsEmail;
-            copy.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked = Settings.Default.IsPassword;
-            copy.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked = Settings.Default.IsUsername;
+            copy.Nodes[_emailDescription].Checked = Settings.Default.IsEmail;
+            copy.Nodes[_passwordDescription].Checked = Settings.Default.IsPassword;
+            copy.Nodes[_usernameDescription].Checked = Settings.Default.IsUsername;
             txtPWlengt.Text = Settings.Default.PasswordLenght.ToString();
             SettingsView.ExpandAll();
         }
@@ -39,12 +46,12 @@ namespace Password_Manager_.NET_6
             if (int.TryParse(txtPWlengt.Text, out int pwlenght))
             {
                 SettingProvider.Clear();
-                var copy = SettingsView.Nodes[enumSettings.CopyToClipboard.GetDescription()];
+                var copy = SettingsView.Nodes[_copyDescription];
                 Settings.Default.IsCopy = copy.Checked;
-                Settings.Default.IsEmail = copy.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked;
-                Settings.Default.IsPassword = copy.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked;
-                Settings.Default.IsUsername = copy.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked;
-                Settings.Default.ShowPass = SettingsView.Nodes[enumSettings.ShowPass.GetDescription()].Checked;
+                Settings.Default.IsEmail = copy.Nodes[_emailDescription].Checked;
+                Settings.Default.IsPassword = copy.Nodes[_passwordDescription].Checked;
+                Settings.Default.IsUsername = copy.Nodes[_usernameDescription].Checked;
+                Settings.Default.ShowPass = SettingsView.Nodes[_showPassDescription].Checked;
                 Settings.Default.PasswordLenght = pwlenght;
                 Settings.Default.Filter = cboFilter.SelectedItem.ToString();
                 Settings.Default.Save();
@@ -77,15 +84,15 @@ namespace Password_Manager_.NET_6
             LogOut?.Invoke();
             Settings.Default.Email = null;
             Settings.Default.Save();
-            FrmOverview frmLogIn = new();
-            frmLogIn.ShowDialog();
+            OverviewPresenter LogIn = new();
+            LogIn.ShowDialog();
         }
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
             try
             {
-                TreeNode treeNode = SettingsView.Nodes[enumSettings.CopyToClipboard.GetDescription()];
+                TreeNode treeNode = SettingsView.Nodes[_copyDescription];
 
                 if (treeNode.Nodes[e.Node.Text] == null)
                 {
@@ -94,38 +101,38 @@ namespace Password_Manager_.NET_6
 
 
                 if (!treeNode.Checked
-                    && (e.Node.Text == treeNode.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Text
-                    || e.Node.Text == treeNode.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Text
-                    || e.Node.Text == treeNode.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Text))
+                    && (e.Node.Text == treeNode.Nodes[_emailDescription].Text
+                    || e.Node.Text == treeNode.Nodes[_passwordDescription].Text
+                    || e.Node.Text == treeNode.Nodes[_usernameDescription].Text))
                 {
                     e.Cancel = true;
                     return;
                 }
 
 
-                switch (e.Node.Index)
-                {
-                    case (int)enumSettings.CopyToClipboard_Email:
-                        if (treeNode.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked || treeNode.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked)
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                    case (int)enumSettings.CopyToClipboard_Password:
-                        if (treeNode.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked || treeNode.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked)
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                    case (int)enumSettings.CopyToClipboard_Username:
-                        if (treeNode.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked || treeNode.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked)
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                }
+                //switch (e.Node.Index)
+                //{
+                //    case treeNode.Nodes[_emailDescription].Index:
+                //        if (treeNode.Nodes[_passwordDescription].Checked || treeNode.Nodes[_usernameDescription].Checked)
+                //        {
+                //            e.Cancel = true;
+                //        }
+                //        break;
+                //    case _passwordDescription:
+                //        if (treeNode.Nodes[_emailDescription].Checked || treeNode.Nodes[_usernameDescription].Checked)
+                //        {
+                //            e.Cancel = true;
+                //        }
+                //        break;
+                //    case _usernameDescription:
+                //        if (treeNode.Nodes[_emailDescription].Checked || treeNode.Nodes[_passwordDescription].Checked)
+                //        {
+                //            e.Cancel = true;
+                //        }
+                //        break;
+                //    default:
+                //        throw new NotImplementedException();
+                //}
             }
             catch (Exception ex)
             {
@@ -135,8 +142,9 @@ namespace Password_Manager_.NET_6
 
         private void Error(Exception ex)
         {
-            ErrorHandler errorHandler = new ErrorHandler();
-            errorHandler.ShowDialog(ex);
+            ErrorHandlerPresenter errorHandler = new();
+            errorHandler.ShowDialog();
+            errorHandler.SetErrorMessage(ex);
         }
 
         private void txtPWlengt_KeyPress(object sender, KeyPressEventArgs e)

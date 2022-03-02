@@ -50,6 +50,7 @@
             // PnlActionsBase
             // 
             this.PnlActionsBase.AutoSize = true;
+            this.PnlActionsBase.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.PnlActionsBase.Location = new System.Drawing.Point(337, 3);
             this.PnlActionsBase.Name = "PnlActionsBase";
             this.PnlActionsBase.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -68,11 +69,11 @@
             this.PnlActionsExtension.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.PnlActionsExtension_ControlAdded);
             this.PnlActionsExtension.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.PnlActionsExtension_ControlRemoved);
             // 
-            // panel1
+            // PnlContent
             // 
             this.PnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlContent.Location = new System.Drawing.Point(0, 0);
-            this.PnlContent.Name = "panel1";
+            this.PnlContent.Name = "PnlContent";
             this.PnlContent.Size = new System.Drawing.Size(344, 115);
             this.PnlContent.TabIndex = 2;
             // 

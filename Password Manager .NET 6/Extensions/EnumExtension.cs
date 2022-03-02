@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Password_Manager_.NET_6.Extensions
 {
     public static class EnumExtension
     {
-        public static string? GetDescription(this Enum value, string seperator = ", ")
+        public static string GetDescription(this Enum value, string seperator = ", ")
         {
             Type type = value.GetType();
             string name = Enum.GetName(type, value);

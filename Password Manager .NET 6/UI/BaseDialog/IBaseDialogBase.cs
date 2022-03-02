@@ -26,10 +26,11 @@
 
     public class ButtonAction
     {
-        public Action Action { get; set; }
-        public Func<Task> ActionAsync { get; set; }
+        public Func<bool> Action { get; set; }
+        public Func<Task<bool>> ActionAsync { get; set; }
         public string Text { get; set; }
         public string Name { get; set; }
+        public enumDialogResult DialogResult { get; private set; }
         public Size MinimumSize { get; set; }
         internal async void OnClickHandler(object sender, EventArgs e)
         {
@@ -40,9 +41,17 @@
 
             if (ActionAsync != null)
             {
-                await ActionAsync();
+                if (await ActionAsync.Invoke())
+                {
+                    DialogResult = enumDialogResult.OK;
+                }
+                return;
             }
-            Action?.Invoke();
+
+            if (Action?.Invoke() ?? true)
+            {
+                DialogResult = enumDialogResult.OK;
+            }
         }
     }
 }

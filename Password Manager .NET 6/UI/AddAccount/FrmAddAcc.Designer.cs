@@ -29,8 +29,6 @@ namespace Password_Manager_.NET_6
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnGenaratPW = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,56 +37,56 @@ namespace Password_Manager_.NET_6
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.PnlActions.SuspendLayout();
+            this.PnlActionsBase.SuspendLayout();
+            this.PnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // _btAccept
             // 
-            this._btAccept.Location = new System.Drawing.Point(535, 3);
-            this._btAccept.Size = new System.Drawing.Size(77, 29);
+            this._btAccept.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this._btAccept.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this._btAccept.Size = new System.Drawing.Size(165, 45);
+            this._btAccept.Text = "&Save Account";
             // 
             // _btAbort
             // 
-            this._btAbort.Location = new System.Drawing.Point(628, 3);
+            this._btAbort.Location = new System.Drawing.Point(174, 3);
             this._btAbort.Size = new System.Drawing.Size(83, 29);
+            this._btAbort.Text = "&OK";
             // 
-            // btnSave
+            // PnlActions
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnSave.Location = new System.Drawing.Point(103, 372);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(234, 74);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save Account";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.PnlActions.Location = new System.Drawing.Point(0, 431);
+            this.PnlActions.Size = new System.Drawing.Size(714, 57);
             // 
-            // btnGenaratPW
+            // PnlActionsBase
             // 
-            this.btnGenaratPW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenaratPW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenaratPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGenaratPW.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnGenaratPW.Location = new System.Drawing.Point(366, 372);
-            this.btnGenaratPW.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnGenaratPW.Name = "btnGenaratPW";
-            this.btnGenaratPW.Size = new System.Drawing.Size(230, 74);
-            this.btnGenaratPW.TabIndex = 5;
-            this.btnGenaratPW.Text = "Generate Password";
-            this.btnGenaratPW.UseVisualStyleBackColor = true;
-            this.btnGenaratPW.Click += new System.EventHandler(this.btnGenaratPW_Click);
+            this.PnlActionsBase.Location = new System.Drawing.Point(536, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(175, 51);
+            // 
+            // PnlActionsExtension
+            // 
+            this.PnlActionsExtension.Location = new System.Drawing.Point(480, 3);
+            // 
+            // PnlContent
+            // 
+            this.PnlContent.Controls.Add(this.label1);
+            this.PnlContent.Controls.Add(this.txtUsername);
+            this.PnlContent.Controls.Add(this.label6);
+            this.PnlContent.Controls.Add(this.txtPassword);
+            this.PnlContent.Controls.Add(this.label3);
+            this.PnlContent.Controls.Add(this.txtEmail);
+            this.PnlContent.Controls.Add(this.lblTitle);
+            this.PnlContent.Controls.Add(this.txtWebsite);
+            this.PnlContent.Size = new System.Drawing.Size(714, 431);
             // 
             // lblTitle
             // 
-            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.lblTitle.Location = new System.Drawing.Point(57, 119);
+            this.lblTitle.Location = new System.Drawing.Point(51, 171);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(124, 32);
@@ -97,13 +95,13 @@ namespace Password_Manager_.NET_6
             // 
             // txtWebsite
             // 
-            this.txtWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWebsite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.txtWebsite.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtWebsite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtWebsite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtWebsite.Location = new System.Drawing.Point(316, 127);
+            this.txtWebsite.Location = new System.Drawing.Point(310, 179);
             this.txtWebsite.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(377, 22);
@@ -111,11 +109,10 @@ namespace Password_Manager_.NET_6
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label3.Location = new System.Drawing.Point(57, 173);
+            this.label3.Location = new System.Drawing.Point(51, 225);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 32);
@@ -124,13 +121,13 @@ namespace Password_Manager_.NET_6
             // 
             // txtEmail
             // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtEmail.Location = new System.Drawing.Point(316, 181);
+            this.txtEmail.Location = new System.Drawing.Point(310, 233);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(377, 22);
@@ -138,11 +135,10 @@ namespace Password_Manager_.NET_6
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label6.Location = new System.Drawing.Point(57, 285);
+            this.label6.Location = new System.Drawing.Point(51, 337);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 32);
@@ -151,13 +147,13 @@ namespace Password_Manager_.NET_6
             // 
             // txtPassword
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtPassword.Location = new System.Drawing.Point(316, 293);
+            this.txtPassword.Location = new System.Drawing.Point(310, 345);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(377, 22);
@@ -165,11 +161,10 @@ namespace Password_Manager_.NET_6
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label1.Location = new System.Drawing.Point(57, 228);
+            this.label1.Location = new System.Drawing.Point(51, 280);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 32);
@@ -178,13 +173,13 @@ namespace Password_Manager_.NET_6
             // 
             // txtUsername
             // 
-            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtUsername.Location = new System.Drawing.Point(316, 236);
+            this.txtUsername.Location = new System.Drawing.Point(310, 288);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(377, 22);
@@ -192,42 +187,29 @@ namespace Password_Manager_.NET_6
             // 
             // FrmAddAcc
             // 
+            this.AbortText = "&OK";
+            this.AcceptText = "&Save Account";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(714, 544);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtWebsite);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnGenaratPW);
+            this.ClientSize = new System.Drawing.Size(714, 488);
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.Ok;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmAddAcc";
             this.Text = "FrmAddAcc";
-            this.SizeChanged += new System.EventHandler(this.FrmAddAcc_SizeChanged);
-            this.Controls.SetChildIndex(this.btnGenaratPW, 0);
-            this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.txtWebsite, 0);
-            this.Controls.SetChildIndex(this.lblTitle, 0);
-            this.Controls.SetChildIndex(this.txtEmail, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.txtPassword, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.txtUsername, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
+            this.Load += new System.EventHandler(this.FrmAddAcc_Load);
+            this.PnlActions.ResumeLayout(false);
+            this.PnlActions.PerformLayout();
+            this.PnlActionsBase.ResumeLayout(false);
+            this.PnlActionsBase.PerformLayout();
+            this.PnlContent.ResumeLayout(false);
+            this.PnlContent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnGenaratPW;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Label label3;

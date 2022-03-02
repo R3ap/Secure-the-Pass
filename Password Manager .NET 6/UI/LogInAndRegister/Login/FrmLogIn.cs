@@ -1,6 +1,7 @@
 ﻿using settings = Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogInAndRegister.Login;
+using Password_Manager_.NET_6.UI.ErrorHandler;
 
 namespace Password_Manager_.NET_6.UI.LogIn
 {
@@ -47,6 +48,10 @@ namespace Password_Manager_.NET_6.UI.LogIn
         {
             try
             {
+                Dock = DockStyle.Fill;
+                TopLevel = false;
+                TopMost = true;
+
                 if (!string.IsNullOrEmpty(settings.Settings.Default.Email))
                 {
                     LoginByRememberMe?.Invoke();
@@ -60,8 +65,9 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         private static void Error(Exception ex)
         {
-            ErrorHandler error = new();
-            error.ShowDialog(ex);
+            ErrorHandlerPresenter errorHandler = new();
+            errorHandler.ShowDialog();
+            errorHandler.SetErrorMessage(ex);
         }
     }
 }

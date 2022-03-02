@@ -22,7 +22,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             Padding = new Padding(borderSize);
             BackColor = Color.FromArgb(46, 51, 73);
             SetPropertiesOfTitel();
-            if (!MaximizeBox)
+            if (!IsSizable)
             {
                 FormBorderStyle = FormBorderStyle.None;
             }
@@ -116,20 +116,18 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 
         public new void Show()
         {
-            if (Titel == DEFAULT_TITEL)
+            if (lblTitel.Visible && Titel.ToLower() == DEFAULT_TITEL)
             {
                 MessageBox.Show("The Titel is not set yet!", "Set Titel!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
             base.Show();
         }
 
         public new void ShowDialog()
         {
-            if (Titel == DEFAULT_TITEL)
+            if (lblTitel.Visible && Titel.ToLower() == DEFAULT_TITEL)
             {
                 MessageBox.Show("The Titel is not set yet!", "Set Titel!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
             base.ShowDialog();
         }

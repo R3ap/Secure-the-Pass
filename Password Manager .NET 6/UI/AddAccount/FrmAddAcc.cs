@@ -1,50 +1,35 @@
 ﻿using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.UI.BaseDialog;
+using Password_Manager_.NET_6.UI.AddAccount;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmAddAcc : FrmBaseDialog
+    public partial class FrmAddAcc : FrmBaseDialog, IAddAcc
     {
-        private readonly DatabaseAccess _database = new();
-        private User _user;
-        private List<Account> _accounts;
-        private Generator _generator = new();
-        public FrmAddAcc(ref User user, ref List<Account> accounts)
+        public string Website { get => txtWebsite.Text; set => txtWebsite.Text = value; }
+        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
+        public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
+        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
+        public FrmAddAcc()
         {
             InitializeComponent();
-            _user = user;
-            _accounts = accounts;
+            
         }
 
-        private void btnGenaratPW_Click(object sender, EventArgs e)
+        public void ClearControls()
         {
-            txtPassword.Text = _generator.GetPW(Settings.Default.PasswordLenght);
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            int indexOfAcc = _database.GetIndexOfAccouts();
-            _database.InsertAccount(new Account() { ID = indexOfAcc + 1, Email = SecurePasswordHasher.GetEncryptString(txtEmail.Text), Website = SecurePasswordHasher.GetEncryptString(txtWebsite.Text), Username = SecurePasswordHasher.GetEncryptString(txtUsername.Text), Password = SecurePasswordHasher.GetEncryptString(txtPassword.Text), Useremail = SecurePasswordHasher.GetEncryptString(_user.Email) });
-            Account account = new()
-            {
-                ID = indexOfAcc + 1,
-                Email = txtEmail.Text,
-                Website = txtWebsite.Text,
-                Username = txtUsername.Text,
-                Password = txtPassword.Text,
-                Useremail = _user.Email
-            };
-            _accounts.Add(account);
             txtEmail.Clear();
             txtPassword.Clear();
             txtUsername.Clear();
             txtWebsite.Clear();
         }
 
-        private void FrmAddAcc_SizeChanged(object sender, EventArgs e)
+        private void FrmAddAcc_Load(object sender, EventArgs e)
         {
-
+            Dock = DockStyle.Fill;
+            TopLevel = false;
+            TopMost = true;
         }
     }
 }

@@ -222,8 +222,10 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                 AutoSizeMode = AutoSizeMode.GrowOnly,
                 MinimumSize = buttonAction.MinimumSize,
             };
+            DialogResult = buttonAction.DialogResult;
             button.Click += buttonAction.OnClickHandler;
-            button.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            button.Font = BtAccept.Font;
+            button.Height = BtAccept.Height;
             button.BackColor = BtAccept.BackColor;
             button.ForeColor = BtAccept.ForeColor;
             PnlActionsExtension.Controls.Add(button);
