@@ -41,5 +41,10 @@ namespace Password_Manager_.NET_6
             txtUsername.Clear();
             txtWebsite.Clear();
         }
+
+        private void FrmAddAcc_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

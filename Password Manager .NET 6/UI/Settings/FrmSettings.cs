@@ -2,10 +2,12 @@
 using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.UI.Settings;
 using Password_Manager_.NET_6.UI.LogIn;
+using Password_Manager_.NET_6.UI.BaseDialog;
+using Password_Manager_.NET_6.Extensions;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmSettings : Form
+    public partial class FrmSettings : FrmBaseDialog
     {
         private readonly DatabaseAccess _database = new DatabaseAccess();
         private User _user;
@@ -22,12 +24,12 @@ namespace Password_Manager_.NET_6
         private void FrmSettings_Load(object sender, EventArgs e)
         {
             cboFilter.SelectedIndex = cboFilter.Items.IndexOf(Settings.Default.Filter);
-            SettingsView.Nodes[(int)enumSettings.ShowPass].Checked = Settings.Default.ShowPass;
-            var copy = SettingsView.Nodes[(int)enumSettings.CopyToClipboard];
+            SettingsView.Nodes[enumSettings.ShowPass.GetDescription()].Checked = Settings.Default.ShowPass;
+            var copy = SettingsView.Nodes[enumSettings.CopyToClipboard.GetDescription()];
             copy.Checked = Settings.Default.IsCopy;
-            copy.Nodes[(int)enumSettings.CopyToClipboard_Email].Checked = Settings.Default.IsEmail;
-            copy.Nodes[(int)enumSettings.CopyToClipboard_Password].Checked = Settings.Default.IsPassword;
-            copy.Nodes[(int)enumSettings.CopyToClipboard_Username].Checked = Settings.Default.IsUsername;
+            copy.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked = Settings.Default.IsEmail;
+            copy.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked = Settings.Default.IsPassword;
+            copy.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked = Settings.Default.IsUsername;
             txtPWlengt.Text = Settings.Default.PasswordLenght.ToString();
             SettingsView.ExpandAll();
         }
@@ -37,12 +39,12 @@ namespace Password_Manager_.NET_6
             if (int.TryParse(txtPWlengt.Text, out int pwlenght))
             {
                 SettingProvider.Clear();
-                var copy = SettingsView.Nodes[(int)enumSettings.CopyToClipboard];
+                var copy = SettingsView.Nodes[enumSettings.CopyToClipboard.GetDescription()];
                 Settings.Default.IsCopy = copy.Checked;
-                Settings.Default.IsEmail = copy.Nodes[(int)enumSettings.CopyToClipboard_Email].Checked;
-                Settings.Default.IsPassword = copy.Nodes[(int)enumSettings.CopyToClipboard_Password].Checked;
-                Settings.Default.IsUsername = copy.Nodes[(int)enumSettings.CopyToClipboard_Username].Checked;
-                Settings.Default.ShowPass = SettingsView.Nodes[(int)enumSettings.ShowPass].Checked;
+                Settings.Default.IsEmail = copy.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked;
+                Settings.Default.IsPassword = copy.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked;
+                Settings.Default.IsUsername = copy.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked;
+                Settings.Default.ShowPass = SettingsView.Nodes[enumSettings.ShowPass.GetDescription()].Checked;
                 Settings.Default.PasswordLenght = pwlenght;
                 Settings.Default.Filter = cboFilter.SelectedItem.ToString();
                 Settings.Default.Save();
@@ -60,10 +62,10 @@ namespace Password_Manager_.NET_6
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Do you really want to delete this user?", "Are your sure about that?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes && _database.RemoveUser(_user, _accounts))
+            if (dialogResult == System.Windows.Forms.DialogResult.Yes && _database.RemoveUser(_user, _accounts))
             {
                 dialogResult = MessageBox.Show("Delete was successfull", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (dialogResult == DialogResult.OK)
+                if (dialogResult == System.Windows.Forms.DialogResult.OK)
                 {
                     IsRemoved?.Invoke();
                 }
@@ -75,7 +77,7 @@ namespace Password_Manager_.NET_6
             LogOut?.Invoke();
             Settings.Default.Email = null;
             Settings.Default.Save();
-            FrmLogInOverview frmLogIn = new();
+            FrmOverview frmLogIn = new();
             frmLogIn.ShowDialog();
         }
 
@@ -83,7 +85,7 @@ namespace Password_Manager_.NET_6
         {
             try
             {
-                TreeNode treeNode = SettingsView.Nodes[(int)enumSettings.CopyToClipboard];
+                TreeNode treeNode = SettingsView.Nodes[enumSettings.CopyToClipboard.GetDescription()];
 
                 if (treeNode.Nodes[e.Node.Text] == null)
                 {
@@ -92,9 +94,9 @@ namespace Password_Manager_.NET_6
 
 
                 if (!treeNode.Checked
-                    && (e.Node.Text == treeNode.Nodes[(int)enumSettings.CopyToClipboard_Password].Text
-                    || e.Node.Text == treeNode.Nodes[(int)enumSettings.CopyToClipboard_Email].Text
-                    || e.Node.Text == treeNode.Nodes[(int)enumSettings.CopyToClipboard_Username].Text))
+                    && (e.Node.Text == treeNode.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Text
+                    || e.Node.Text == treeNode.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Text
+                    || e.Node.Text == treeNode.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Text))
                 {
                     e.Cancel = true;
                     return;
@@ -104,19 +106,19 @@ namespace Password_Manager_.NET_6
                 switch (e.Node.Index)
                 {
                     case (int)enumSettings.CopyToClipboard_Email:
-                        if (treeNode.Nodes[(int)enumSettings.CopyToClipboard_Password].Checked || treeNode.Nodes[(int)enumSettings.CopyToClipboard_Username].Checked)
+                        if (treeNode.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked || treeNode.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked)
                         {
                             e.Cancel = true;
                         }
                         break;
                     case (int)enumSettings.CopyToClipboard_Password:
-                        if (treeNode.Nodes[(int)enumSettings.CopyToClipboard_Email].Checked || treeNode.Nodes[(int)enumSettings.CopyToClipboard_Username].Checked)
+                        if (treeNode.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked || treeNode.Nodes[enumSettings.CopyToClipboard_Username.GetDescription()].Checked)
                         {
                             e.Cancel = true;
                         }
                         break;
                     case (int)enumSettings.CopyToClipboard_Username:
-                        if (treeNode.Nodes[(int)enumSettings.CopyToClipboard_Email].Checked || treeNode.Nodes[(int)enumSettings.CopyToClipboard_Password].Checked)
+                        if (treeNode.Nodes[enumSettings.CopyToClipboard_Email.GetDescription()].Checked || treeNode.Nodes[enumSettings.CopyToClipboard_Password.GetDescription()].Checked)
                         {
                             e.Cancel = true;
                         }

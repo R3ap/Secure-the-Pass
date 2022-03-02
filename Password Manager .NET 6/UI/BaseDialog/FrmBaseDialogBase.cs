@@ -21,7 +21,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         BtAccept.Visible = true;
                         BtAccept.Text = "&OK";
                         BtAbort.Visible = true;
-                        pnlAction.Visible = true;
+                        PnlActions.Visible = true;
                         BtAbort.Text = "&Abort";
                         AcceptButton = BtAccept;
                         CancelButton = BtAbort;
@@ -31,7 +31,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         BtAbort.Visible = true;
                         BtAbort.Text = "&Close";
                         AcceptButton = null;
-                        pnlAction.Visible = true;
+                        PnlActions.Visible = true;
                         CancelButton = BtAbort;
                         break;
                     case enumDialogType.Ok:
@@ -39,13 +39,13 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                         BtAbort.Visible = false;
                         BtAbort.Text = "&OK";
                         AcceptButton = BtAccept;
-                        pnlAction.Visible = true;
+                        PnlActions.Visible = true;
                         CancelButton = null;
                         break;
                     case enumDialogType.None:
                         BtAccept.Visible = false;
                         BtAbort.Visible = false;
-                        pnlAction.Visible = false;
+                        PnlActions.Visible = false;
                         AcceptButton = null;
                         CancelButton = null;
                         break;
@@ -137,8 +137,8 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         {
             InitializeComponent();
 
-            pnlAction.Controls.Add(BtAbort);
-            pnlAction.Controls.Add(BtAccept);
+            PnlActionsBase.Controls.Add(BtAbort);
+            PnlActionsBase.Controls.Add(BtAccept);
             BtAbort.Click += BtAbort_Click;
             BtAccept.Click += BtAccept_Click;
             BtAbort.AutoSize = true;
@@ -148,15 +148,24 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 
             if (!DesignMode)
             {
-                pnlAction.BorderStyle = BorderStyle.None;
+                PnlActions.BorderStyle = BorderStyle.None;
 
-                pnlAction.Visible = pnlAction.Controls.Count != 0;
+                PnlActions.Visible = PnlActions.Controls.Count != 0;
             }
 
             CancelButton = BtAbort;
         }
 
+        public bool ContainsControl(Control control)
+        {
+            return PnlContent.Controls.Contains(control);
+        }
 
+        public void AddControl(Control control)
+        {
+            PnlContent.Controls.Clear();
+            PnlContent.Controls.Add(control);
+        }
         private async void BtAccept_Click(object? sender, EventArgs e)
         {
             if (OnAcceptClickAsync != null)
@@ -211,17 +220,13 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
                 Text = buttonAction.Text,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowOnly,
-                MinimumSize = buttonAction.MinimumSize == Size.Empty ? BtAccept.Size : buttonAction.MinimumSize,
+                MinimumSize = buttonAction.MinimumSize,
             };
             button.Click += buttonAction.OnClickHandler;
-            button.ForeColor = Color.FromArgb(158, 161, 176);
             button.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-            button.Anchor = AnchorStyles.Right | AnchorStyles.Top;
-            button.Height = BtAccept.Height;
-            Point point = _buttons.Any() ? GetButton(_buttons.Last().Key).Location : BtAccept.Location;
-            point.X -= (BtAccept.Size.Width);
-            button.Location = point;
-            pnlAction.Controls.Add(button);
+            button.BackColor = BtAccept.BackColor;
+            button.ForeColor = BtAccept.ForeColor;
+            PnlActionsExtension.Controls.Add(button);
             _buttons.Add(buttonAction.Name ?? buttonAction.GetHashCode().ToString(), button);
         }
 
@@ -230,17 +235,22 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             return _buttons.ContainsKey(name) ? null : _buttons[name];
         }
 
-        private void pnlAction_ControlAdded(object sender, ControlEventArgs e)
+        private void PnlActionsExtension_ControlAdded(object sender, ControlEventArgs e)
         {
-            pnlAction.Visible = true;
+            PnlActionsExtension.Visible = true;
         }
 
-        private void pnlAction_ControlRemoved(object sender, ControlEventArgs e)
+        private void PnlActionsExtension_ControlRemoved(object sender, ControlEventArgs e)
         {
-            if (pnlAction.Controls.Count == 0)
+            if (PnlActionsExtension.Controls.Count == 0)
             {
-                pnlAction.Visible = false;
+                PnlActionsExtension.Visible = false;
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

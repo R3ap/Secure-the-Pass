@@ -51,14 +51,12 @@ namespace Password_Manager_.NET_6
             this.txtSearch.Location = new System.Drawing.Point(561, 70);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Filter";
             this.txtSearch.Size = new System.Drawing.Size(251, 22);
             this.txtSearch.TabIndex = 19;
             this.txtSearch.TabStop = false;
-            this.txtSearch.Text = "Filter";
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSearch.Click += new System.EventHandler(this.TxtSearch_Click);
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            this.txtSearch.Leave += new System.EventHandler(this.TxtSearch_Leave);
             // 
             // AccGrid
             // 
@@ -85,7 +83,7 @@ namespace Password_Manager_.NET_6
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -117,10 +115,9 @@ namespace Password_Manager_.NET_6
             this.AccGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.AccGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AccGrid.ShowCellToolTips = false;
-            this.AccGrid.Size = new System.Drawing.Size(798, 424);
+            this.AccGrid.Size = new System.Drawing.Size(796, 422);
             this.AccGrid.StandardTab = true;
             this.AccGrid.TabIndex = 2;
-            this.AccGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccGrid_CellDoubleClick);
             this.AccGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseClick);
             this.AccGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseDoubleClick);
             // 
@@ -130,8 +127,9 @@ namespace Password_Manager_.NET_6
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PnlBorderAccGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.PnlBorderAccGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PnlBorderAccGrid.Controls.Add(this.AccGrid);
-            this.PnlBorderAccGrid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.PnlBorderAccGrid.ForeColor = System.Drawing.Color.Transparent;
             this.PnlBorderAccGrid.Location = new System.Drawing.Point(12, 98);
             this.PnlBorderAccGrid.Name = "PnlBorderAccGrid";
             this.PnlBorderAccGrid.Padding = new System.Windows.Forms.Padding(1);

@@ -5,6 +5,9 @@
         enumDialogType DialogType { get; set; }
         enumDialogResult DialogResult { get; }
 
+        void AddControl(Control control);
+        bool ContainsControl(Control form);
+
         void Show();
         void ShowDialog();
 

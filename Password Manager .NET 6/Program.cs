@@ -1,4 +1,4 @@
-using Password_Manager_.NET_6.UI.LogIn;
+using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
 
 namespace Password_Manager_.NET_6
 {
@@ -14,7 +14,7 @@ namespace Password_Manager_.NET_6
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                new FrmLogInOverview().ShowDialog();
+                new OverviewPresenter().ShowDialog();
             }
             catch (Exception ex)
             {

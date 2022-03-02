@@ -8,142 +8,138 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Password_Manager_.NET_6.Properties
-{
-
-
+namespace Password_Manager_.NET_6.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsCopy
-        {
-            get
-            {
-                return ((bool)(this["IsCopy"]));
+        [global::System.Configuration.DefaultSettingValueAttribute("959, 607")]
+        public global::System.Drawing.Size DefaultSize {
+            get {
+                return ((global::System.Drawing.Size)(this["DefaultSize"]));
             }
-            set
-            {
-                this["IsCopy"] = value;
+            set {
+                this["DefaultSize"] = value;
             }
         }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsPassword
-        {
-            get
-            {
-                return ((bool)(this["IsPassword"]));
-            }
-            set
-            {
-                this["IsPassword"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsEmail
-        {
-            get
-            {
-                return ((bool)(this["IsEmail"]));
-            }
-            set
-            {
-                this["IsEmail"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsUsername
-        {
-            get
-            {
-                return ((bool)(this["IsUsername"]));
-            }
-            set
-            {
-                this["IsUsername"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40")]
-        public int PasswordLenght
-        {
-            get
-            {
-                return ((int)(this["PasswordLenght"]));
-            }
-            set
-            {
-                this["PasswordLenght"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Username")]
-        public string Filter
-        {
-            get
-            {
-                return ((string)(this["Filter"]));
-            }
-            set
-            {
-                this["Filter"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowPass
-        {
-            get
-            {
-                return ((bool)(this["ShowPass"]));
-            }
-            set
-            {
-                this["ShowPass"] = value;
-            }
-        }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Email
-        {
-            get
-            {
+        public string Email {
+            get {
                 return ((string)(this["Email"]));
             }
-            set
-            {
+            set {
                 this["Email"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCopy {
+            get {
+                return ((bool)(this["IsCopy"]));
+            }
+            set {
+                this["IsCopy"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Filter {
+            get {
+                return ((string)(this["Filter"]));
+            }
+            set {
+                this["Filter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsEmail {
+            get {
+                return ((bool)(this["IsEmail"]));
+            }
+            set {
+                this["IsEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsPassword {
+            get {
+                return ((bool)(this["IsPassword"]));
+            }
+            set {
+                this["IsPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsUsername {
+            get {
+                return ((bool)(this["IsUsername"]));
+            }
+            set {
+                this["IsUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsMaximize {
+            get {
+                return ((bool)(this["IsMaximize"]));
+            }
+            set {
+                this["IsMaximize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int PasswordLenght {
+            get {
+                return ((int)(this["PasswordLenght"]));
+            }
+            set {
+                this["PasswordLenght"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowPass {
+            get {
+                return ((bool)(this["ShowPass"]));
+            }
+            set {
+                this["ShowPass"] = value;
             }
         }
     }

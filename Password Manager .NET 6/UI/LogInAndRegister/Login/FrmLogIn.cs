@@ -1,5 +1,6 @@
 ﻿using settings = Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.UI.BaseDialog;
+using Password_Manager_.NET_6.UI.LogInAndRegister.Login;
 
 namespace Password_Manager_.NET_6.UI.LogIn
 {
@@ -26,6 +27,11 @@ namespace Password_Manager_.NET_6.UI.LogIn
             }
         }
 
+        private void LlblForgotPw_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmForgotPW frmForgotPW = new();
+            frmForgotPW.ShowDialog();
+        }
 
         private void btnEyePassword_MouseDown(object sender, MouseEventArgs e)
         {

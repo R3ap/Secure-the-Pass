@@ -1,4 +1,5 @@
 ﻿using Password_Manager_.NET_6.Model;
+using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.UI.BaseDialog;
 
 namespace Password_Manager_.NET_6
@@ -12,13 +13,14 @@ namespace Password_Manager_.NET_6
             InitializeComponent();
             _user = user;
             _accounts = accounts;
-
         }
 
         private void FrmMenü_Load(object sender, EventArgs e)
         {
             ShowAccounts();
-            Size = new Size(959, 607);
+            Size = Settings.Default.DefaultSize;
+            WindowState = Settings.Default.IsMaximize ? FormWindowState.Maximized : FormWindowState.Normal;
+            CenterToParent();
             lblUsername.Text = _user.Username;
             btnAccounts.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
         }
@@ -45,7 +47,7 @@ namespace Password_Manager_.NET_6
 
                 Titel = "Accounts";
                 pnlFormload.Controls.Clear();
-                FrmAccounts frmAccounts = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                FrmAccounts frmAccounts = new(_user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 frmAccounts.Show();
                 //frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
                 frmAccounts.FormBorderStyle = FormBorderStyle.None;
@@ -66,7 +68,6 @@ namespace Password_Manager_.NET_6
                 pnlNav.Left = btnNewAcc.Left;
                 pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
-                
                 Titel = "Add Account";
                 this.pnlFormload.Controls.Clear();
                 FrmAddAcc frmAddAcc = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
@@ -113,6 +114,16 @@ namespace Password_Manager_.NET_6
         public void UserRemoved()
         {
             Close();
+        }
+
+        private void FrmMenü_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.Default.IsMaximize = WindowState == FormWindowState.Maximized;
+            if (!Settings.Default.IsMaximize)
+            {
+                Settings.Default.DefaultSize = Size;
+            }
+            Settings.Default.Save();
         }
     }
 }

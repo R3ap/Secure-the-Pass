@@ -41,6 +41,8 @@ namespace Password_Manager_.NET_6
             this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlFormload = new System.Windows.Forms.Panel();
+            this.PnlActions.SuspendLayout();
+            this.PnlActionsBase.SuspendLayout();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -48,9 +50,27 @@ namespace Password_Manager_.NET_6
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
+            // _btAccept
+            // 
+            this._btAccept.Location = new System.Drawing.Point(73, 3);
+            // 
             // _btAbort
             // 
-            this._btAbort.Text = "&Close";
+            this._btAbort.Size = new System.Drawing.Size(64, 27);
+            // 
+            // PnlActions
+            // 
+            this.PnlActions.Location = new System.Drawing.Point(2, 813);
+            this.PnlActions.Size = new System.Drawing.Size(1051, 26);
+            // 
+            // PnlActionsBase
+            // 
+            this.PnlActionsBase.Location = new System.Drawing.Point(1044, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(4, 0);
+            // 
+            // PnlActionsExtension
+            // 
+            this.PnlActionsExtension.Location = new System.Drawing.Point(988, 3);
             // 
             // panel
             // 
@@ -61,7 +81,7 @@ namespace Password_Manager_.NET_6
             this.panel.Location = new System.Drawing.Point(2, 36);
             this.panel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(217, 647);
+            this.panel.Size = new System.Drawing.Size(217, 803);
             this.panel.TabIndex = 0;
             // 
             // panel1
@@ -73,7 +93,7 @@ namespace Password_Manager_.NET_6
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 194);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 453);
+            this.panel1.Size = new System.Drawing.Size(217, 609);
             this.panel1.TabIndex = 0;
             // 
             // pnlNav
@@ -112,7 +132,7 @@ namespace Password_Manager_.NET_6
             this.btnSettings.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.btnSettings.Image = global::Password_Manager_.NET_6.Properties.Resources.settings;
-            this.btnSettings.Location = new System.Drawing.Point(0, 408);
+            this.btnSettings.Location = new System.Drawing.Point(0, 564);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(217, 45);
@@ -193,19 +213,17 @@ namespace Password_Manager_.NET_6
             this.pnlFormload.Location = new System.Drawing.Point(219, 36);
             this.pnlFormload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlFormload.Name = "pnlFormload";
-            this.pnlFormload.Size = new System.Drawing.Size(770, 647);
+            this.pnlFormload.Size = new System.Drawing.Size(834, 803);
             this.pnlFormload.TabIndex = 0;
             // 
             // FrmMenü
             // 
-            this.AbortText = "&Close";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(991, 685);
+            this.ClientSize = new System.Drawing.Size(1055, 841);
             this.Controls.Add(this.pnlFormload);
             this.Controls.Add(this.panel);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = true;
@@ -215,15 +233,22 @@ namespace Password_Manager_.NET_6
             this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Titel";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMenü_FormClosed);
             this.Load += new System.EventHandler(this.FrmMenü_Load);
+            this.Controls.SetChildIndex(this.PnlActions, 0);
             this.Controls.SetChildIndex(this.panel, 0);
             this.Controls.SetChildIndex(this.pnlFormload, 0);
+            this.PnlActions.ResumeLayout(false);
+            this.PnlActions.PerformLayout();
+            this.PnlActionsBase.ResumeLayout(false);
+            this.PnlActionsBase.PerformLayout();
             this.panel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

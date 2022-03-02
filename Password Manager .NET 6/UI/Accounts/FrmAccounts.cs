@@ -14,14 +14,19 @@ namespace Password_Manager_.NET_6
         private int _rowIndex;
         private NotifyIcon _notifyIcon = new();
         private readonly DatabaseAccess _db = new();
-        public FrmAccounts(ref User user, ref List<Account> accounts)
+        public FrmAccounts(User user, ref List<Account> accounts)
         {
             InitializeComponent();
             _user = user;
             _accounts = accounts;
         }
 
-        private void FrmDashbord_Load(object? sender = null, EventArgs? e = null)
+        private void FrmDashbord_Load(object? sender, EventArgs? e)
+        {
+            SetGridProperty();
+        }
+
+        private void SetGridProperty()
         {
             if (!Settings.Default.ShowPass)
             {
@@ -39,8 +44,8 @@ namespace Password_Manager_.NET_6
             AccGrid.EnableHeadersVisualStyles = false;
             foreach (DataGridViewColumn item in AccGrid.Columns)
             {
-                item.AutoSizeMode = item.Index == AccGrid.Columns.Count - 1 
-                                                ? DataGridViewAutoSizeColumnMode.Fill 
+                item.AutoSizeMode = item.Index == AccGrid.Columns.Count - 1
+                                                ? DataGridViewAutoSizeColumnMode.Fill
                                                 : DataGridViewAutoSizeColumnMode.AllCells;
 
             }
@@ -62,21 +67,9 @@ namespace Password_Manager_.NET_6
             _accounts = accounts;
         }
 
-        private void AccGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void OnDeleteAcc()
+        private void UpdateAcc()
         {
             SetAccounts();
-        }
-
-        private void UpdateAcc(Account account)
-        {
-            _accounts[_rowIndex] = account;
-            SetnewListAcc?.Invoke(_accounts);
-            FrmDashbord_Load();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -106,22 +99,6 @@ namespace Password_Manager_.NET_6
             }
         }
 
-        private void TxtSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == "Filter")
-            {
-                txtSearch.Clear();
-            }
-        }
-
-        private void TxtSearch_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSearch.Text.Trim()))
-            {
-                txtSearch.Text = "Filter";
-            }
-        }
-
         private void AccGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -135,9 +112,8 @@ namespace Password_Manager_.NET_6
                 _rowIndex = e.RowIndex;
                 FrmEditAcc frmEditAcc = new(_accounts[e.RowIndex]);
                 frmEditAcc.UpdateAcc += UpdateAcc;
-                frmEditAcc.DeleteAcc += OnDeleteAcc;
                 frmEditAcc.ShowDialog();
-                FrmDashbord_Load();
+                SetGridProperty();
             }
         }
 
@@ -157,18 +133,17 @@ namespace Password_Manager_.NET_6
                     if (Settings.Default.IsEmail)
                     {
                         Clipboard.SetText(_accounts[e.RowIndex].Email);
-                        AccGrid[nameof(Account.Email), e.RowIndex].Selected = true;
                     }
                     else if (Settings.Default.IsPassword)
                     {
                         Clipboard.SetText(_accounts[e.RowIndex].Password);
-                        AccGrid[nameof(Account.Password), e.RowIndex].Selected = true;
                     }
                     else if (Settings.Default.IsUsername)
                     {
                         Clipboard.SetText(_accounts[e.RowIndex].Username);
-                        AccGrid[nameof(Account.Username), e.RowIndex].Selected = true;
                     }
+
+                    AccGrid.Rows[e.RowIndex].Selected = true;
                     _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
                 }
             }

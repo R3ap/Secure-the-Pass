@@ -35,6 +35,7 @@
             this.BtnMin = new System.Windows.Forms.Button();
             this.btnMax = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
+            this.PnlActions.SuspendLayout();
             this.PnlTitelBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbIcon)).BeginInit();
             this.SuspendLayout();
@@ -43,14 +44,14 @@
             // 
             this._btAccept.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this._btAccept.Location = new System.Drawing.Point(288, 5);
+            this._btAccept.Location = new System.Drawing.Point(-35, 36);
             this._btAccept.Size = new System.Drawing.Size(82, 27);
             // 
             // _btAbort
             // 
             this._btAbort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAbort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this._btAbort.Location = new System.Drawing.Point(376, 6);
+            this._btAbort.Location = new System.Drawing.Point(-37, 3);
             this._btAbort.Size = new System.Drawing.Size(84, 27);
             // 
             // PnlTitelBar
@@ -161,7 +162,8 @@
             this.Name = "FrmBaseDialogTitelBar";
             this.Text = "FrmBaseDialogSizable";
             this.Resize += new System.EventHandler(this.FrmBaseDialogSizable_Resize);
-            this.Controls.SetChildIndex(this.PnlTitelBar, 0);
+            this.PnlActions.ResumeLayout(false);
+            this.PnlActions.PerformLayout();
             this.PnlTitelBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PbIcon)).EndInit();
             this.ResumeLayout(false);

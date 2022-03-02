@@ -46,13 +46,12 @@ namespace Password_Manager_.NET_6.UI.LogIn
             }
             else
             {
-                Dictionary<Control, string> dic = new Dictionary<Control, string>();
                 string errortext = "This can't be Empty";
-                dic.Add(txtEmail, errortext);
-                dic.Add(txtUsername, errortext);
-                dic.Add(btnEyePassword, errortext);
-                dic.Add(btnEyeConfirm, errortext);
-                PassProvider.DataSource = dic;
+                PassProvider.SetError(txtEmail, errortext);
+                PassProvider.SetError(btnEyePassword, errortext);
+                PassProvider.SetError(txtUsername, errortext);
+                PassProvider.SetError(btnEyeConfirm, errortext);
+                PassProvider.SetError(txtUsername, errortext);
             }
         }
 

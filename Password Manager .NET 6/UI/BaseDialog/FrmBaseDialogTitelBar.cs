@@ -22,13 +22,17 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
             Padding = new Padding(borderSize);
             BackColor = Color.FromArgb(46, 51, 73);
             SetPropertiesOfTitel();
+            if (!MaximizeBox)
+            {
+                FormBorderStyle = FormBorderStyle.None;
+            }
         }
 
         [Description("The Text of the Titel.")]
         [Category("Appearace")]
         [DefaultValue("Titel")]
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public string Titel { get => lblTitel.Text; set => lblTitel.Text = Text = value; }
+        public string Titel { get => lblTitel.Text; set => lblTitel.Text = Text = $"Password Manager | {value}"; }
 
         [Description("Set MaximizeBox to Visible")]
         [Category("Appearace")]

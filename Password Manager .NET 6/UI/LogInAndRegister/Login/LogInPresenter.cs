@@ -1,8 +1,9 @@
 ﻿using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Tasks;
+using Password_Manager_.NET_6.UI.LogIn;
 using settings = Password_Manager_.NET_6.Properties;
 
-namespace Password_Manager_.NET_6.UI.LogIn
+namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
 {
     public class LogInPresenter
     {
@@ -21,8 +22,8 @@ namespace Password_Manager_.NET_6.UI.LogIn
             if (!string.IsNullOrEmpty(settings.Settings.Default.Email))
             {
                 List<User> users = _database.SelectUsers();
-                Application.OpenForms[nameof(FrmLogInOverview)].Hide();
-                Application.OpenForms[nameof(FrmLogInOverview)].Close();
+                Application.OpenForms[nameof(FrmOverview)].Hide();
+                Application.OpenForms[nameof(FrmOverview)].Close();
                 if (GetTaskResult(users.First(x => x.Email == settings.Settings.Default.Email)))
                 {
                     FrmMenü frmMenü = new(ref _user, ref _accounts);
@@ -81,8 +82,8 @@ namespace Password_Manager_.NET_6.UI.LogIn
                         settings.Settings.Default.Email = null;
                     }
                     settings.Settings.Default.Save();
-                    Application.OpenForms[nameof(FrmLogInOverview)].Hide();
-                    Application.OpenForms[nameof(FrmLogInOverview)].Close();
+                    Application.OpenForms[nameof(FrmOverview)].Hide();
+                    Application.OpenForms[nameof(FrmOverview)].Close();
                     FrmMenü frmMenü = new(ref _user, ref _accounts);
                     frmMenü.ShowDialog();
                     return true;

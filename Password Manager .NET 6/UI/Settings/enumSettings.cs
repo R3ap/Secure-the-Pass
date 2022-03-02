@@ -4,15 +4,15 @@ namespace Password_Manager_.NET_6.UI.Settings
 {
     public enum enumSettings
     {
-        [Description("Shows the Password in the Grid")]
+        [Description("ShowPass")]
         ShowPass = 0,
-        [Description("Allows to Copy the Email, Password or Username")]
+        [Description("CopyToClipboard")]
         CopyToClipboard = 1,
-        [Description("Copys the Email")]
+        [Description("CopyToClipboard_Email")]
         CopyToClipboard_Email = 0,
-        [Description("Copys the Password")]
+        [Description("CopyToClipboard_Password")]
         CopyToClipboard_Password = 1,
-        [Description("Copys the Username")]
+        [Description("CopyToClipboard_Username")]
         CopyToClipboard_Username = 2,
     }
 }

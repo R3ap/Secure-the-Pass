@@ -1,6 +1,6 @@
 ﻿namespace Password_Manager_.NET_6.UI.LogIn
 {
-    partial class FrmLogInOverview
+    partial class FrmOverview
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PassProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.PnlContent = new System.Windows.Forms.Panel();
+            this.PnlActions.SuspendLayout();
+            this.PnlActionsBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -38,58 +39,67 @@
             // 
             this._btAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._btAccept.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this._btAccept.Location = new System.Drawing.Point(480, 3);
+            this._btAccept.Location = new System.Drawing.Point(3, 3);
             this._btAccept.Size = new System.Drawing.Size(84, 30);
             this._btAccept.Text = "&Login";
-            this._btAccept.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // _btAbort
             // 
             this._btAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._btAbort.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this._btAbort.Location = new System.Drawing.Point(474, 0);
             this._btAbort.Size = new System.Drawing.Size(90, 30);
             this._btAbort.Text = "&OK";
+            // 
+            // PnlActions
+            // 
+            this.PnlActions.Location = new System.Drawing.Point(2, 253);
+            this.PnlActions.Size = new System.Drawing.Size(566, 42);
+            // 
+            // PnlActionsBase
+            // 
+            this.PnlActionsBase.Location = new System.Drawing.Point(469, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(94, 36);
+            // 
+            // PnlActionsExtension
+            // 
+            this.PnlActionsExtension.Location = new System.Drawing.Point(413, 3);
+            // 
+            // PnlContent
+            // 
+            this.PnlContent.Size = new System.Drawing.Size(566, 217);
             // 
             // PassProvider
             // 
             this.PassProvider.ContainerControl = this;
             // 
-            // PnlContent
-            // 
-            this.PnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlContent.Location = new System.Drawing.Point(2, 36);
-            this.PnlContent.Name = "PnlContent";
-            this.PnlContent.Size = new System.Drawing.Size(505, 222);
-            this.PnlContent.TabIndex = 21;
-            // 
-            // FrmLogInOverview
+            // FrmOverview
             // 
             this.AbortText = "&OK";
             this.AcceptText = "&Login";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(509, 295);
-            this.Controls.Add(this.PnlContent);
+            this.ClientSize = new System.Drawing.Size(570, 297);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.Ok;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = true;
-            this.MaximumSize = new System.Drawing.Size(509, 295);
             this.MinimizeBox = true;
-            this.Name = "FrmLogInOverview";
+            this.Name = "FrmOverview";
             this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogIn";
             this.Load += new System.EventHandler(this.FrmLogIn_Load);
-            this.Controls.SetChildIndex(this.PnlContent, 0);
+            this.PnlActions.ResumeLayout(false);
+            this.PnlActions.PerformLayout();
+            this.PnlActionsBase.ResumeLayout(false);
+            this.PnlActionsBase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.ErrorProvider PassProvider;
-        private Panel PnlContent;
     }
 }
