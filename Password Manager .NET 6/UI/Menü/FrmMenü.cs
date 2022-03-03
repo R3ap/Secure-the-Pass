@@ -3,18 +3,19 @@ using Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.UI.AddAccount;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.ErrorHandler;
+using Password_Manager_.NET_6.UI.Menü;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmMenü : FrmBaseDialogTitelBar
+    public partial class FrmMenü : FrmBaseDialogTitelBar, IMenü
     {
-        private User _user;
-        private List<Account> _accounts;
-        public FrmMenü(ref User user, ref List<Account> accounts)
+        public Action ShowAccountsDialog { get; set; }
+        public Action ShowAddAccountsDialog { get; set; }
+        public Action ShowSettingsDialog { get; set; }
+        public FrmMenü()
         {
             InitializeComponent();
-            _user = user;
-            _accounts = accounts;
+
         }
 
         private void FrmMenü_Load(object sender, EventArgs e)
@@ -23,101 +24,55 @@ namespace Password_Manager_.NET_6
             Size = Settings.Default.DefaultSize;
             WindowState = Settings.Default.IsMaximize ? FormWindowState.Maximized : FormWindowState.Normal;
             CenterToParent();
-            lblUsername.Text = _user.Username;
             btnAccounts.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            btnNewAcc.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            btnSettings.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
         }
+
+        public string Username { get => lblUsername.Text; set => lblUsername.Text = value; }
 
         private void BtnAccounts_Click(object sender, EventArgs e)
         {
             ShowAccounts();
         }
 
-        private static void Error(Exception ex)
-        {
-            ErrorHandlerPresenter error = new();
-            error.ShowDialog();
-            error.SetErrorMessage(ex);
-        }
 
-        private void ShowAccounts()
-        {
-            try
-            {
-                pnlNav.Height = btnAccounts.Height;
-                pnlNav.Top = btnAccounts.Top;
-                pnlNav.Left = btnAccounts.Left;
-                pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
-                Titel = "Accounts";
-                PnlContent.Controls.Clear();
-                FrmAccounts frmAccounts = new(_user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-                frmAccounts.Show();
-                //frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
-                frmAccounts.FormBorderStyle = FormBorderStyle.None;
-                PnlContent.Controls.Add(frmAccounts);
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-            }
+        public void ShowAccounts()
+        {
+            pnlNav.Height = btnAccounts.Height;
+            pnlNav.Top = btnAccounts.Top;
+            pnlNav.Left = btnAccounts.Left;
+            pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            ShowAccountsDialog?.Invoke();
         }
 
         private void btnNewAcc_Click(object sender, EventArgs e)
         {
-            try
-            {
-                pnlNav.Height = btnNewAcc.Height;
-                pnlNav.Top = btnNewAcc.Top;
-                pnlNav.Left = btnNewAcc.Left;
-                pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-
-                Titel = "Add Account";
-                PnlContent.Controls.Clear();
-                AddAccPresenter AddAcc = new(ref _user, ref _accounts);
-                AddAcc.Show();
-                FrmAddAcc frmAddAcc = (FrmAddAcc)Application.OpenForms[nameof(FrmAddAcc)];
-                frmAddAcc.FormBorderStyle = FormBorderStyle.None;
-                PnlContent.Controls.Add(frmAddAcc);
-
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-            }
+            pnlNav.Height = btnNewAcc.Height;
+            pnlNav.Top = btnNewAcc.Top;
+            pnlNav.Left = btnNewAcc.Left;
+            pnlNav.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            ShowAddAccountsDialog?.Invoke();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            try
-            {
-                pnlNav.Height = btnSettings.Height;
-                pnlNav.Top = btnSettings.Top;
-                pnlNav.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-
-                Titel = "Settings";
-                this.PnlContent.Controls.Clear();
-                FrmSettings frmSettings = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-                frmSettings.FormBorderStyle = FormBorderStyle.None;
-                this.PnlContent.Controls.Add(frmSettings);
-                frmSettings.IsRemoved += UserRemoved;
-                frmSettings.LogOut += OnLogOut;
-                frmSettings.Show();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-            }
+            pnlNav.Height = btnSettings.Height;
+            pnlNav.Top = btnSettings.Top;
+            pnlNav.Left = btnSettings.Left;
+            pnlNav.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            ShowSettingsDialog?.Invoke();
+        }
+        
+        public new void Hide()
+        {
+            base.Hide();
         }
 
-        private void OnLogOut()
+        public new void Close()
         {
-            Hide();
-            Close();
-        }
-
-        public void UserRemoved()
-        {
-            Close();
+            base.Close();
         }
 
         private void FrmMenü_FormClosed(object sender, FormClosedEventArgs e)

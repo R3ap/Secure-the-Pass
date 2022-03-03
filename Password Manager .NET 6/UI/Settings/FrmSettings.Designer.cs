@@ -54,14 +54,29 @@ namespace Password_Manager_.NET_6
             ((System.ComponentModel.ISupportInitialize)(this.SettingProvider)).BeginInit();
             this.SuspendLayout();
             // 
+            // _btAccept
+            // 
+            this._btAccept.Size = new System.Drawing.Size(118, 46);
+            this._btAccept.Text = "&Save";
+            // 
+            // _btAbort
+            // 
+            this._btAbort.Location = new System.Drawing.Point(127, 3);
+            this._btAbort.Text = "&OK";
+            // 
+            // PnlActions
+            // 
+            this.PnlActions.Location = new System.Drawing.Point(0, 461);
+            this.PnlActions.Size = new System.Drawing.Size(793, 58);
+            // 
             // PnlActionsBase
             // 
-            this.PnlActionsBase.Location = new System.Drawing.Point(793, 3);
-            this.PnlActionsBase.Size = new System.Drawing.Size(4, 0);
+            this.PnlActionsBase.Location = new System.Drawing.Point(662, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(128, 52);
             // 
             // PnlActionsExtension
             // 
-            this.PnlActionsExtension.Location = new System.Drawing.Point(737, 3);
+            this.PnlActionsExtension.Location = new System.Drawing.Point(606, 3);
             // 
             // PnlContent
             // 
@@ -74,7 +89,7 @@ namespace Password_Manager_.NET_6
             this.PnlContent.Controls.Add(this.label1);
             this.PnlContent.Controls.Add(this.txtPWlengt);
             this.PnlContent.Controls.Add(this.btnSignOut);
-            this.PnlContent.Size = new System.Drawing.Size(793, 519);
+            this.PnlContent.Size = new System.Drawing.Size(793, 461);
             // 
             // txtPWlengt
             // 
@@ -116,7 +131,7 @@ namespace Password_Manager_.NET_6
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.Lime;
-            this.btnSave.Location = new System.Drawing.Point(583, 454);
+            this.btnSave.Location = new System.Drawing.Point(583, 396);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(170, 54);
@@ -133,7 +148,7 @@ namespace Password_Manager_.NET_6
             this.btnCleanAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCleanAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCleanAcc.ForeColor = System.Drawing.Color.Red;
-            this.btnCleanAcc.Location = new System.Drawing.Point(37, 393);
+            this.btnCleanAcc.Location = new System.Drawing.Point(37, 335);
             this.btnCleanAcc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCleanAcc.Name = "btnCleanAcc";
             this.btnCleanAcc.Size = new System.Drawing.Size(170, 54);
@@ -150,7 +165,7 @@ namespace Password_Manager_.NET_6
             this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.Location = new System.Drawing.Point(37, 454);
+            this.btnDeleteUser.Location = new System.Drawing.Point(37, 396);
             this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(170, 54);
@@ -208,7 +223,7 @@ namespace Password_Manager_.NET_6
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSignOut.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnSignOut.Location = new System.Drawing.Point(225, 454);
+            this.btnSignOut.Location = new System.Drawing.Point(225, 396);
             this.btnSignOut.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(170, 54);
@@ -226,7 +241,6 @@ namespace Password_Manager_.NET_6
             this.SettingsView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.SettingsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SettingsView.CheckBoxes = true;
-            this.SettingsView.Cursor = System.Windows.Forms.Cursors.Default;
             this.SettingsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SettingsView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.SettingsView.FullRowSelect = true;
@@ -252,17 +266,19 @@ namespace Password_Manager_.NET_6
             this.SettingsView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode5});
-            this.SettingsView.Size = new System.Drawing.Size(264, 183);
+            this.SettingsView.Size = new System.Drawing.Size(264, 125);
             this.SettingsView.TabIndex = 45;
             this.SettingsView.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCheck);
             // 
             // FrmSettings
             // 
+            this.AbortText = "&OK";
+            this.AcceptText = "&Save";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(793, 519);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.Ok;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmSettings";
             this.Text = "FrmSettings";

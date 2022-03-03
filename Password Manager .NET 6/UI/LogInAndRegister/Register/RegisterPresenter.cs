@@ -2,6 +2,7 @@
 using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
+using Password_Manager_.NET_6.UI.Menü;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
 {
@@ -40,7 +41,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
                         if (error)
                         {
                             //Application.OpenForms["FrmLogInRegister"].Hide();
-                            FrmMenü frmMenü = new(ref _user, ref _accounts);
+                            MenüPresenter frmMenü = new(ref _user, ref _accounts);
                             frmMenü.ShowDialog();
                             return true;
                         }

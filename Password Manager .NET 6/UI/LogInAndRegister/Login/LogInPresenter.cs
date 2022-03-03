@@ -2,6 +2,7 @@
 using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
+using Password_Manager_.NET_6.UI.Menü;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
@@ -26,7 +27,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
                 Application.OpenForms[nameof(FrmOverview)].Close();
                 if (GetTaskResult(users.First(x => x.Email == settings.Settings.Default.Email)))
                 {
-                    FrmMenü frmMenü = new(ref _user, ref _accounts);
+                    MenüPresenter frmMenü = new(ref _user, ref _accounts);
                     frmMenü.ShowDialog();
                 }
             }
@@ -74,8 +75,8 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
                     settings.Settings.Default.Save();
                     Application.OpenForms[nameof(FrmOverview)].Hide();
                     Application.OpenForms[nameof(FrmOverview)].Close();
-                    FrmMenü frmMenü = new(ref _user, ref _accounts);
-                    frmMenü.ShowDialog();
+                    MenüPresenter menü = new(ref _user, ref _accounts);
+                    menü.ShowDialog();
                     return true;
                 }
                 else
