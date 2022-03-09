@@ -1,11 +1,7 @@
-﻿using Password_Manager_.NET_6.Extensions;
+﻿using properties = Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.UI.BaseDialog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
 
 namespace Password_Manager_.NET_6.UI.Settings
 {
@@ -14,36 +10,74 @@ namespace Password_Manager_.NET_6.UI.Settings
         private readonly DatabaseAccess _database = new DatabaseAccess();
         private User _user;
         private List<Account> _accounts;
-        public event Action IsRemoved;
-        public event Action LogOut;
-        private string _showPassDescription = enumSettings.ShowPass.GetDescription();
-        private string _copyDescription = enumSettings.CopyToClipboard.GetDescription();
-        private string _emailDescription = enumSettings.CopyToClipboard_Email.GetDescription();
-        private string _passwordDescription = enumSettings.CopyToClipboard_Password.GetDescription();
-        private string _usernameDescription = enumSettings.CopyToClipboard_Username.GetDescription();
+        
         public SettingsPresenter(ref User user, ref List<Account> accounts) : base(new FrmSettings())
         {
-            View.OnAcceptClick = Setting;
+            _user = user;
+            _accounts = accounts;
+            View.OnAcceptClick = Save;
+            View.AddButtonAction(new ButtonAction() { Action = CleanAccountClick, Name = "BtnCleanAccount", Text = "Clean Account"});
+            View.AddButtonAction(new ButtonAction() { Action = DeleteUserClick, Name = "BtnDeleteUser", Text = "Delete Account"});
+            View.AddButtonAction(new ButtonAction() { Action = SignOutClick, Name = "BtnSignOut", Text = "Sign out" });
+            View.SetFilter(properties.Settings.Default.Filter);
+            View.ShowPass = properties.Settings.Default.ShowPass;
+            View.IsCopy = properties.Settings.Default.IsCopy;
+            View.IsEmail = properties.Settings.Default.IsEmail;
+            View.IsPassword = properties.Settings.Default.IsPassword;
+            View.IsUsername = properties.Settings.Default.IsUsername;
+            View.PasswordLenght = properties.Settings.Default.PasswordLenght.ToString();
+            View.AllowedCharacters = properties.Settings.Default.AllowedCharacters;
         }
 
-        private bool Setting()
+        private bool SignOutClick()
         {
-            if (int.TryParse(txtPWlengt.Text, out int pwlenght))
+            ((FrmMenü)Application.OpenForms[nameof(FrmMenü)]).Hide();
+            ((FrmMenü)Application.OpenForms[nameof(FrmMenü)]).Close();
+            properties.Settings.Default.Email = null;
+            properties.Settings.Default.Save();
+            OverviewPresenter LogIn = new();
+            LogIn.ShowDialog();
+            return false;
+        }
+
+        private bool DeleteUserClick()
+        {
+            DialogResult dialogResult = MessageBox.Show("Do you really want to delete this user?", "Are your sure about that?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes && _database.RemoveUser(_user, _accounts))
             {
-                SettingProvider.Clear();
-                var copy = SettingsView.Nodes[_copyDescription];
-                Settings.Default.IsCopy = copy.Checked;
-                Settings.Default.IsEmail = copy.Nodes[_emailDescription].Checked;
-                Settings.Default.IsPassword = copy.Nodes[_passwordDescription].Checked;
-                Settings.Default.IsUsername = copy.Nodes[_usernameDescription].Checked;
-                Settings.Default.ShowPass = SettingsView.Nodes[_showPassDescription].Checked;
-                Settings.Default.PasswordLenght = pwlenght;
-                Settings.Default.Filter = cboFilter.SelectedItem.ToString();
-                Settings.Default.Save();
+                dialogResult = MessageBox.Show("Delete was successfull", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+            }
+            return false;
+        }
+
+        private bool CleanAccountClick()
+        {
+            _database.CleanAccount(_accounts);
+            return false;
+        }
+
+        private bool Save()
+        {
+            if (int.TryParse(View.PasswordLenght, out int pwlenght))
+            {
+                View.CleanProvider();
+                properties.Settings.Default.IsCopy = View.IsCopy;
+                properties.Settings.Default.IsEmail = View.IsEmail;
+                properties.Settings.Default.IsPassword = View.IsPassword;
+                properties.Settings.Default.IsUsername = View.IsUsername;
+                properties.Settings.Default.ShowPass = View.ShowPass;
+                properties.Settings.Default.PasswordLenght = pwlenght;
+                properties.Settings.Default.Filter = View.Filter;
+                properties.Settings.Default.AllowedCharacters = View.AllowedCharacters;
+                properties.Settings.Default.Save();
             }
             else
             {
-                SettingProvider.SetError(txtPWlengt, "Only Numbers");
+                View.SetErrorProvider();
             }
             return false;
         }

@@ -17,6 +17,13 @@ namespace Password_Manager_.NET_6
             
         }
 
+        private void FrmAddAcc_Load(object sender, EventArgs e)
+        {
+            Dock = DockStyle.Fill;
+            TopLevel = false;
+            TopMost = true;
+        }
+
         public void ClearControls()
         {
             txtEmail.Clear();
@@ -25,11 +32,29 @@ namespace Password_Manager_.NET_6
             txtWebsite.Clear();
         }
 
-        private void FrmAddAcc_Load(object sender, EventArgs e)
+        public void SetErrorEmail(string errorMessage)
         {
-            Dock = DockStyle.Fill;
-            TopLevel = false;
-            TopMost = true;
+            AccountProvider.SetError(txtEmail, errorMessage);
+        }
+
+        public void SetErrorUsername(string errorMessage)
+        {
+            AccountProvider.SetError(txtUsername, errorMessage);
+        }
+
+        public void SetErrorWebsite(string errorMessage)
+        {
+            AccountProvider.SetError(txtWebsite, errorMessage);
+        }
+
+        public void SetErrorPassword(string errorMessage)
+        {
+            AccountProvider.SetError(txtPassword, errorMessage);
+        }
+
+        public void ClearErrorProvider()
+        {
+            AccountProvider.Clear();
         }
     }
 }

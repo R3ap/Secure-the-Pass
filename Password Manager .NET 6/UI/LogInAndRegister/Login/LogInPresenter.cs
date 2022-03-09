@@ -60,13 +60,13 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
         public bool LogIn()
         {
             List<User> users = _database.SelectUsers();
-            if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(View.Email)) && SecurePasswordHasher.Verify(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(View.Email)).Password, View.Password))
+            if (users.Any(x => x.Email == View.Email.GetEncryptString()) && View.Password.Verify(users.First(x => x.Email == View.Email.GetEncryptString()).Password))
             {
-                if (GetTaskResult(users.First(x => x.Email == SecurePasswordHasher.GetEncryptString(View.Email))))
+                if (GetTaskResult(users.First(x => x.Email == View.Email.GetEncryptString())))
                 {
                     if (View.RememberMe)
                     {
-                        settings.Settings.Default.Email = SecurePasswordHasher.GetEncryptString(_user.Email);
+                        settings.Settings.Default.Email = _user.Email.GetEncryptString();
                     }
                     else
                     {

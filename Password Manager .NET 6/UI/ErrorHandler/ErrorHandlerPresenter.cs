@@ -13,10 +13,13 @@ namespace Password_Manager_.NET_6.UI.ErrorHandler
 
         private bool ShowDetials()
         {
+            string buttonText = View.GetButton("BtnShowDetails").Text;
+            View.GetButton("BtnShowDetails").Text = buttonText == "Show More" ? "Show Less" : "Show More";
+            View.SetSize();
             return false;
         }
 
-        public void SetErrorMessage(Exception ex)
+        public void SetErrorMessage(Exception ex, string shortText = "")
         {
             StringBuilder sB = new();
             sB.AppendLine("----Message----");
@@ -52,7 +55,7 @@ namespace Password_Manager_.NET_6.UI.ErrorHandler
                 sB.AppendLine(ex.InnerException.StackTrace);
             }
 
-            View.SetMessage(sB.ToString());
+            View.SetMessage(sB.ToString(), shortText);
         }
     }
 }

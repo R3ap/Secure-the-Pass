@@ -33,14 +33,18 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
                 }
                 else
                 {
-                    User user = new() { ID = _database.SelectUsers().OrderByDescending(x => x.ID).First().ID + 1, Email = SecurePasswordHasher.GetEncryptString(View.Email), Username = SecurePasswordHasher.GetEncryptString(View.Username), Password = SecurePasswordHasher.GetEncryptString(View.Password) };
+                    User user = new() { ID = _database
+                                            .SelectUsers()
+                                            .OrderByDescending(x => x.ID)
+                                            .First().ID + 1, Email = View.Email.GetEncryptString(), Username = View.Username.GetEncryptString(), Password = View.Password.GetEncryptString() };
                     bool IsTaskSuccess = GetTaskResult(user);
                     if (IsTaskSuccess)
                     {
                         bool error = _database.InsertUser(user);
                         if (error)
                         {
-                            //Application.OpenForms["FrmLogInRegister"].Hide();
+                            Application.OpenForms[nameof(FrmOverview)].Hide();
+                            Application.OpenForms[nameof(FrmOverview)].Close();
                             MenüPresenter frmMenü = new(ref _user, ref _accounts);
                             frmMenü.ShowDialog();
                             return true;

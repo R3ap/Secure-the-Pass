@@ -49,7 +49,7 @@ namespace Password_Manager_.NET_6.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IsCopy {
             get {
                 return ((bool)(this["IsCopy"]));
@@ -140,6 +140,18 @@ namespace Password_Manager_.NET_6.Properties {
             }
             set {
                 this["ShowPass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw!§$%&/()=?*#-")]
+        public string AllowedCharacters {
+            get {
+                return ((string)(this["AllowedCharacters"]));
+            }
+            set {
+                this["AllowedCharacters"] = value;
             }
         }
     }

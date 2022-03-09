@@ -123,7 +123,7 @@ namespace Password_Manager_.NET_6
                     db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Users] ON");
 
                     User newuser = db.Users.First(x => x.Email == email);
-                    newuser.Password = SecurePasswordHasher.GetEncryptString(password);
+                    newuser.Password = password.GetEncryptString();
 
                     db.SaveChanges();
 
@@ -160,7 +160,7 @@ namespace Password_Manager_.NET_6
             try
             {
                 List<User> users = SelectUsers();
-                if (users.Any(x => x.Email == SecurePasswordHasher.GetEncryptString(email)))
+                if (users.Any(x => x.Email == email.GetEncryptString()))
                 {
                     return false;
                 }
@@ -255,9 +255,9 @@ namespace Password_Manager_.NET_6
                 {
                     if (db.Account.Any())
                     {
-                        if (db.Account.Any(x => x.Useremail == SecurePasswordHasher.GetEncryptString(user.Email)))
+                        if (db.Account.Any(x => x.Useremail == user.Email.GetEncryptString()))
                         {
-                            accounts = db.Account.Where(x => x.Useremail == SecurePasswordHasher.GetEncryptString(user.Email)).ToList();
+                            accounts = db.Account.Where(x => x.Useremail == user.Email.GetEncryptString()).ToList();
                         }
                     }
                 }
@@ -272,8 +272,8 @@ namespace Password_Manager_.NET_6
         private void Error(Exception ex)
         {
             ErrorHandlerPresenter errorHandler = new();
-            errorHandler.ShowDialog();
             errorHandler.SetErrorMessage(ex);
+            errorHandler.ShowDialog();
         }
 
     }

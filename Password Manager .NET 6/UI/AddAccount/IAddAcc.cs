@@ -10,5 +10,10 @@ namespace Password_Manager_.NET_6.UI.AddAccount
         string Website { get; set; }
 
         void ClearControls();
+        void ClearErrorProvider();
+        void SetErrorEmail(string errorMessage);
+        void SetErrorPassword(string errorMessage);
+        void SetErrorUsername(string errorMessage);
+        void SetErrorWebsite(string errorMessage);
     }
 }

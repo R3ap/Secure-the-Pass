@@ -2,11 +2,7 @@
 using Password_Manager_.NET_6.UI.AddAccount;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.ErrorHandler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Password_Manager_.NET_6.UI.Settings;
 
 namespace Password_Manager_.NET_6.UI.Menü
 {
@@ -63,12 +59,11 @@ namespace Password_Manager_.NET_6.UI.Menü
             try
             {
                 View.Titel = "Settings";
-                FrmSettings frmSettings = new(ref _user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                SettingsPresenter presenter = new(ref _user, ref _accounts);
+                presenter.Show();
+                FrmSettings frmSettings = (FrmSettings)Application.OpenForms[nameof(FrmSettings)];
                 frmSettings.FormBorderStyle = FormBorderStyle.None;
                 View.AddControl(frmSettings);
-                frmSettings.IsRemoved += UserRemoved;
-                frmSettings.LogOut += OnLogOut;
-                frmSettings.Show();
             }
             catch (Exception ex)
             {
@@ -90,8 +85,8 @@ namespace Password_Manager_.NET_6.UI.Menü
         private static void Error(Exception ex)
         {
             ErrorHandlerPresenter error = new();
-            error.ShowDialog();
             error.SetErrorMessage(ex);
+            error.ShowDialog();
         }
     }
 }

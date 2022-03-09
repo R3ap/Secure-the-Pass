@@ -29,6 +29,8 @@ namespace Password_Manager_.NET_6
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddAcc));
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,9 +39,11 @@ namespace Password_Manager_.NET_6
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.AccountProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // _btAccept
@@ -185,6 +189,12 @@ namespace Password_Manager_.NET_6
             this.txtUsername.Size = new System.Drawing.Size(377, 22);
             this.txtUsername.TabIndex = 3;
             // 
+            // AccountProvider
+            // 
+            this.AccountProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.AccountProvider.ContainerControl = this;
+            this.AccountProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("AccountProvider.Icon")));
+            // 
             // FrmAddAcc
             // 
             this.AbortText = "&OK";
@@ -204,6 +214,7 @@ namespace Password_Manager_.NET_6
             this.PnlActionsBase.PerformLayout();
             this.PnlContent.ResumeLayout(false);
             this.PnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +229,6 @@ namespace Password_Manager_.NET_6
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsername;
+        private ErrorProvider AccountProvider;
     }
 }

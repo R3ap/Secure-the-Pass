@@ -9,7 +9,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsCopy" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Filter" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -31,6 +31,9 @@
     </Setting>
     <Setting Name="ShowPass" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AllowedCharacters" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw!§$%&amp;/()=?*#-</Value>
     </Setting>
   </Settings>
 </SettingsFile>

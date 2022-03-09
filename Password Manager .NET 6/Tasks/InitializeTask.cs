@@ -4,8 +4,8 @@ namespace Password_Manager_.NET_6.Tasks
 {
     public class InizializeTask
     {
-        private User _loadUser = new User();
-        private readonly DatabaseAccess _databaseAccess = new DatabaseAccess();
+        private User _loadUser = new();
+        private readonly DatabaseAccess _databaseAccess = new();
         public Task<User> InitializeUser(User user)
         {
             try
@@ -13,9 +13,9 @@ namespace Password_Manager_.NET_6.Tasks
                 _loadUser = new User()
                 {
                     ID = user.ID,
-                    Email = SecurePasswordHasher.GetDecryptString(user.Email),
-                    Password = SecurePasswordHasher.GetDecryptString(user.Password),
-                    Username = SecurePasswordHasher.GetDecryptString(user.Username)
+                    Email = user.Email.GetDecryptString(),
+                    Password = user.Password.GetDecryptString(),
+                    Username = user.Username.GetDecryptString()
                 };
 
                 return Task.FromResult(_loadUser);
@@ -36,11 +36,11 @@ namespace Password_Manager_.NET_6.Tasks
 
                 foreach (var acc in accounts)
                 {
-                    acc.Email = SecurePasswordHasher.GetDecryptString(acc.Email);
-                    acc.Password = SecurePasswordHasher.GetDecryptString(acc.Password);
-                    acc.Website = SecurePasswordHasher.GetDecryptString(acc.Website);
-                    acc.Username = SecurePasswordHasher.GetDecryptString(acc.Username);
-                    acc.Useremail = SecurePasswordHasher.GetDecryptString(acc.Useremail);
+                    acc.Email = acc.Email.GetDecryptString();
+                    acc.Password = acc.Password.GetDecryptString();
+                    acc.Website = acc.Website.GetDecryptString();
+                    acc.Username = acc.Username.GetDecryptString();
+                    acc.Useremail = acc.Useremail.GetDecryptString();
                 }
                 return Task.FromResult(accounts);
 

@@ -35,22 +35,50 @@ namespace Password_Manager_.NET_6
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtWebsite = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnGenaratPW = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.PnlActions.SuspendLayout();
+            this.PnlActionsBase.SuspendLayout();
+            this.PnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // _btAccept
             // 
-            this._btAccept.Location = new System.Drawing.Point(497, 3);
-            this._btAccept.Size = new System.Drawing.Size(82, 26);
+            this._btAccept.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this._btAccept.Location = new System.Drawing.Point(3, 3);
+            this._btAccept.Size = new System.Drawing.Size(96, 42);
             // 
             // _btAbort
             // 
-            this._btAbort.Location = new System.Drawing.Point(585, 3);
-            this._btAbort.Text = "&Close";
+            this._btAbort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this._btAbort.Location = new System.Drawing.Point(105, 3);
+            this._btAbort.Size = new System.Drawing.Size(96, 42);
+            // 
+            // PnlActions
+            // 
+            this.PnlActions.Location = new System.Drawing.Point(2, 349);
+            this.PnlActions.Size = new System.Drawing.Size(661, 54);
+            // 
+            // PnlActionsBase
+            // 
+            this.PnlActionsBase.Location = new System.Drawing.Point(450, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(208, 48);
+            // 
+            // PnlActionsExtension
+            // 
+            this.PnlActionsExtension.Location = new System.Drawing.Point(394, 3);
+            // 
+            // PnlContent
+            // 
+            this.PnlContent.Controls.Add(this.label2);
+            this.PnlContent.Controls.Add(this.txtUsername);
+            this.PnlContent.Controls.Add(this.label6);
+            this.PnlContent.Controls.Add(this.label1);
+            this.PnlContent.Controls.Add(this.txtWebsite);
+            this.PnlContent.Controls.Add(this.txtEmail);
+            this.PnlContent.Controls.Add(this.txtPassword);
+            this.PnlContent.Controls.Add(this.label3);
+            this.PnlContent.Size = new System.Drawing.Size(661, 313);
             // 
             // label6
             // 
@@ -124,50 +152,6 @@ namespace Password_Manager_.NET_6
             this.txtWebsite.Size = new System.Drawing.Size(341, 22);
             this.txtWebsite.TabIndex = 30;
             // 
-            // btnSave
-            // 
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnSave.Location = new System.Drawing.Point(431, 391);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(218, 55);
-            this.btnSave.TabIndex = 28;
-            this.btnSave.Text = "Save Account";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnGenaratPW
-            // 
-            this.btnGenaratPW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenaratPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGenaratPW.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnGenaratPW.Location = new System.Drawing.Point(431, 316);
-            this.btnGenaratPW.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnGenaratPW.Name = "btnGenaratPW";
-            this.btnGenaratPW.Size = new System.Drawing.Size(218, 55);
-            this.btnGenaratPW.TabIndex = 29;
-            this.btnGenaratPW.Text = "Generate Password";
-            this.btnGenaratPW.UseVisualStyleBackColor = true;
-            this.btnGenaratPW.Click += new System.EventHandler(this.btnGenaratPW_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDelete.Location = new System.Drawing.Point(30, 391);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(218, 55);
-            this.btnDelete.TabIndex = 36;
-            this.btnDelete.Text = "Delete Account";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -194,24 +178,13 @@ namespace Password_Manager_.NET_6
             // 
             // FrmEditAcc
             // 
-            this.AbortText = "&Close";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(665, 490);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtWebsite);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnGenaratPW);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
+            this.ClientSize = new System.Drawing.Size(665, 405);
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.OkAndAbort;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsSizable = false;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = true;
             this.MinimizeBox = true;
@@ -220,17 +193,12 @@ namespace Password_Manager_.NET_6
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEditAcc";
             this.Load += new System.EventHandler(this.FrmEditAcc_Load);
-            this.Controls.SetChildIndex(this.btnGenaratPW, 0);
-            this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.txtWebsite, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.txtEmail, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.txtPassword, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.btnDelete, 0);
-            this.Controls.SetChildIndex(this.txtUsername, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
+            this.PnlActions.ResumeLayout(false);
+            this.PnlActions.PerformLayout();
+            this.PnlActionsBase.ResumeLayout(false);
+            this.PnlActionsBase.PerformLayout();
+            this.PnlContent.ResumeLayout(false);
+            this.PnlContent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,9 +211,6 @@ namespace Password_Manager_.NET_6
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtWebsite;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnGenaratPW;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsername;
     }

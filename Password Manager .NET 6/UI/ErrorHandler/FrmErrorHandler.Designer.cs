@@ -50,22 +50,22 @@
             // 
             // PnlActions
             // 
-            this.PnlActions.Location = new System.Drawing.Point(2, 405);
-            this.PnlActions.Size = new System.Drawing.Size(641, 39);
+            this.PnlActions.Location = new System.Drawing.Point(2, 155);
+            this.PnlActions.Size = new System.Drawing.Size(657, 39);
             // 
             // PnlActionsBase
             // 
-            this.PnlActionsBase.Location = new System.Drawing.Point(456, 3);
+            this.PnlActionsBase.Location = new System.Drawing.Point(472, 3);
             // 
             // PnlActionsExtension
             // 
-            this.PnlActionsExtension.Location = new System.Drawing.Point(400, 3);
+            this.PnlActionsExtension.Location = new System.Drawing.Point(416, 3);
             // 
             // PnlContent
             // 
             this.PnlContent.Controls.Add(this.TxtMessage);
             this.PnlContent.Controls.Add(this.panel1);
-            this.PnlContent.Size = new System.Drawing.Size(641, 369);
+            this.PnlContent.Size = new System.Drawing.Size(657, 119);
             // 
             // panel1
             // 
@@ -75,7 +75,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(641, 124);
+            this.panel1.Size = new System.Drawing.Size(657, 124);
             this.panel1.TabIndex = 0;
             // 
             // LblShortDescription
@@ -109,7 +109,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // txtMessage
+            // TxtMessage
             // 
             this.TxtMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -118,17 +118,23 @@
             this.TxtMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtMessage.Location = new System.Drawing.Point(0, 124);
             this.TxtMessage.Multiline = true;
-            this.TxtMessage.Name = "txtMessage";
-            this.TxtMessage.Size = new System.Drawing.Size(641, 245);
+            this.TxtMessage.Name = "TxtMessage";
+            this.TxtMessage.ReadOnly = true;
+            this.TxtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TxtMessage.Size = new System.Drawing.Size(657, 0);
             this.TxtMessage.TabIndex = 1;
             // 
             // FrmErrorHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 446);
+            this.ClientSize = new System.Drawing.Size(661, 196);
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.OkAndAbort;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsSizable = false;
             this.Name = "FrmErrorHandler";
             this.Text = "FrmErrorHandler";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmErrorHandler_FormClosed);
             this.PnlActions.ResumeLayout(false);
             this.PnlActions.PerformLayout();
             this.PnlActionsBase.ResumeLayout(false);

@@ -3,6 +3,7 @@ using Password_Manager_.NET_6.Model;
 using System.Data;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using System.Reflection;
+using Password_Manager_.NET_6.UI.EditAccount;
 
 namespace Password_Manager_.NET_6
 {
@@ -57,11 +58,11 @@ namespace Password_Manager_.NET_6
 
             foreach (var acc in accounts)
             {
-                acc.Email = SecurePasswordHasher.GetDecryptString(acc.Email);
-                acc.Password = SecurePasswordHasher.GetDecryptString(acc.Password);
-                acc.Website = SecurePasswordHasher.GetDecryptString(acc.Website);
-                acc.Username = SecurePasswordHasher.GetDecryptString(acc.Username);
-                acc.Useremail = SecurePasswordHasher.GetDecryptString(acc.Useremail);
+                acc.Email = acc.Email.GetDecryptString();
+                acc.Password = acc.Password.GetDecryptString();
+                acc.Website = acc.Website.GetDecryptString();
+                acc.Username = acc.Username.GetDecryptString();
+                acc.Useremail = acc.Useremail.GetDecryptString();
             }
 
             _accounts = accounts;
@@ -110,7 +111,7 @@ namespace Password_Manager_.NET_6
             {
                 SetAccounts();
                 _rowIndex = e.RowIndex;
-                FrmEditAcc frmEditAcc = new(_accounts[e.RowIndex]);
+                EditAccPresenter frmEditAcc = new(_accounts[e.RowIndex]);
                 frmEditAcc.UpdateAcc += UpdateAcc;
                 frmEditAcc.ShowDialog();
                 SetGridProperty();

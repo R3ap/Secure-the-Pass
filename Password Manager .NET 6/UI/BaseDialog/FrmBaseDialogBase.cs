@@ -234,7 +234,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
 
         public Button? GetButton(string name)
         {
-            return _buttons.ContainsKey(name) ? null : _buttons[name];
+            return _buttons.ContainsKey(name) ? _buttons[name] : null;
         }
 
         private void PnlActionsExtension_ControlAdded(object sender, ControlEventArgs e)

@@ -20,14 +20,21 @@ namespace Password_Manager_.NET_6.UI.AddAccount
 
         private bool SaveAccount()
         {
+            View.ClearErrorProvider();
+
+            if (!ValidateAccount())
+            {
+                return false;
+            }
+
             int indexOfAcc = _database.GetIndexOfAccouts();
             _database.InsertAccount(new Account() { 
                 ID = indexOfAcc + 1, 
-                Email = SecurePasswordHasher.GetEncryptString(View.Email), 
-                Website = SecurePasswordHasher.GetEncryptString(View.Website), 
-                Username = SecurePasswordHasher.GetEncryptString(View.Username), 
-                Password = SecurePasswordHasher.GetEncryptString(View.Password), 
-                Useremail = SecurePasswordHasher.GetEncryptString(_user.Email) 
+                Email = View.Email.GetEncryptString(), 
+                Website = View.Website.GetEncryptString(), 
+                Username = View.Username.GetEncryptString(), 
+                Password = View.Password.GetEncryptString(), 
+                Useremail = _user.Email.GetEncryptString() 
             });
             Account account = new()
             {
@@ -39,12 +46,43 @@ namespace Password_Manager_.NET_6.UI.AddAccount
                 Useremail = _user.Email
             };
             _accounts.Add(account);
+            View.ClearControls();
             return false;
+        }
+
+
+        private bool ValidateAccount()
+        {
+            bool isValid = true;
+            if (string.IsNullOrEmpty(View.Email))
+            {
+                View.SetErrorEmail("This can't be Empty");
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(View.Password))
+            {
+                View.SetErrorPassword("This can't be Empty");
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(View.Website))
+            {
+                View.SetErrorWebsite("This can't be Empty");
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(View.Username))
+            {
+                View.SetErrorUsername("This can't be Empty");
+                isValid = false;
+            }
+            return isValid;
         }
 
         private bool GenaratPW()
         {
-            View.Password = _generator.GetPW(settings.Settings.Default.PasswordLenght);
+            View.Password = _generator.GetPW();
             return false;
         }
     }

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Password_Manager_.NET_6
 {
-    public static class SecurePasswordHasher
+    public static class SecurePasswordHasherExtension
     {
         private static readonly string hash = "f0xle@rn";
-        public static string GetEncryptString(string nothashed)
+        public static string GetEncryptString(this string nothashed)
         {
             try
             {
@@ -27,13 +27,13 @@ namespace Password_Manager_.NET_6
             catch (Exception ex)
             {
                 ErrorHandlerPresenter errorHandler = new();
-                errorHandler.ShowDialog();
                 errorHandler.SetErrorMessage(ex);
+                errorHandler.ShowDialog();
                 return "";
             }
         }
 
-        public static string GetDecryptString(string hashed)
+        public static string GetDecryptString(this string hashed)
         {
             try
             {
@@ -52,13 +52,13 @@ namespace Password_Manager_.NET_6
             catch (Exception ex)
             {
                 ErrorHandlerPresenter errorHandler = new();
-                errorHandler.ShowDialog();
                 errorHandler.SetErrorMessage(ex);
+                errorHandler.ShowDialog();
                 return "";
             }
         }
 
-        public static bool Verify(string hasehd, string nothashed)
+        public static bool Verify(this string nothashed, string hasehd)
         {
             return GetDecryptString(hasehd) == nothashed;
         }

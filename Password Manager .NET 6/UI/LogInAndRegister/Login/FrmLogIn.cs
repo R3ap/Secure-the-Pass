@@ -66,8 +66,8 @@ namespace Password_Manager_.NET_6.UI.LogIn
         private static void Error(Exception ex)
         {
             ErrorHandlerPresenter errorHandler = new();
-            errorHandler.ShowDialog();
             errorHandler.SetErrorMessage(ex);
+            errorHandler.ShowDialog();
         }
     }
 }

@@ -40,14 +40,12 @@ namespace Password_Manager_.NET_6
             treeNode4});
             this.txtPWlengt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCleanAcc = new System.Windows.Forms.Button();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
             this.cboFilter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SettingProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnSignOut = new System.Windows.Forms.Button();
             this.SettingsView = new System.Windows.Forms.TreeView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TxtAllowedCharacters = new System.Windows.Forms.TextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -56,6 +54,8 @@ namespace Password_Manager_.NET_6
             // 
             // _btAccept
             // 
+            this._btAccept.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this._btAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this._btAccept.Size = new System.Drawing.Size(118, 46);
             this._btAccept.Text = "&Save";
             // 
@@ -80,15 +80,13 @@ namespace Password_Manager_.NET_6
             // 
             // PnlContent
             // 
+            this.PnlContent.Controls.Add(this.label2);
+            this.PnlContent.Controls.Add(this.TxtAllowedCharacters);
             this.PnlContent.Controls.Add(this.SettingsView);
-            this.PnlContent.Controls.Add(this.btnCleanAcc);
             this.PnlContent.Controls.Add(this.label6);
-            this.PnlContent.Controls.Add(this.btnSave);
-            this.PnlContent.Controls.Add(this.btnDeleteUser);
             this.PnlContent.Controls.Add(this.cboFilter);
             this.PnlContent.Controls.Add(this.label1);
             this.PnlContent.Controls.Add(this.txtPWlengt);
-            this.PnlContent.Controls.Add(this.btnSignOut);
             this.PnlContent.Size = new System.Drawing.Size(793, 461);
             // 
             // txtPWlengt
@@ -124,57 +122,6 @@ namespace Password_Manager_.NET_6
             this.label6.TabIndex = 28;
             this.label6.Text = "Password length";
             // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.ForeColor = System.Drawing.Color.Lime;
-            this.btnSave.Location = new System.Drawing.Point(583, 396);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(170, 54);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Tag = "";
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCleanAcc
-            // 
-            this.btnCleanAcc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCleanAcc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCleanAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCleanAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCleanAcc.ForeColor = System.Drawing.Color.Red;
-            this.btnCleanAcc.Location = new System.Drawing.Point(37, 335);
-            this.btnCleanAcc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCleanAcc.Name = "btnCleanAcc";
-            this.btnCleanAcc.Size = new System.Drawing.Size(170, 54);
-            this.btnCleanAcc.TabIndex = 8;
-            this.btnCleanAcc.Tag = "";
-            this.btnCleanAcc.Text = "Clean Account";
-            this.btnCleanAcc.UseVisualStyleBackColor = true;
-            this.btnCleanAcc.Click += new System.EventHandler(this.btnCleanAcc_Click);
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.Location = new System.Drawing.Point(37, 396);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(170, 54);
-            this.btnDeleteUser.TabIndex = 9;
-            this.btnDeleteUser.Tag = "";
-            this.btnDeleteUser.Text = "Delete User";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
             // cboFilter
             // 
             this.cboFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -190,7 +137,7 @@ namespace Password_Manager_.NET_6
             "Website",
             "Email",
             "Password"});
-            this.cboFilter.Location = new System.Drawing.Point(419, 126);
+            this.cboFilter.Location = new System.Drawing.Point(419, 152);
             this.cboFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(340, 24);
@@ -205,7 +152,7 @@ namespace Password_Manager_.NET_6
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label1.Location = new System.Drawing.Point(37, 118);
+            this.label1.Location = new System.Drawing.Point(37, 144);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 29);
@@ -216,23 +163,6 @@ namespace Password_Manager_.NET_6
             // 
             this.SettingProvider.ContainerControl = this;
             // 
-            // btnSignOut
-            // 
-            this.btnSignOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSignOut.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSignOut.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnSignOut.Location = new System.Drawing.Point(225, 396);
-            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(170, 54);
-            this.btnSignOut.TabIndex = 44;
-            this.btnSignOut.Tag = "";
-            this.btnSignOut.Text = "Sign out";
-            this.btnSignOut.UseVisualStyleBackColor = true;
-            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
-            // 
             // SettingsView
             // 
             this.SettingsView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -241,6 +171,7 @@ namespace Password_Manager_.NET_6
             this.SettingsView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.SettingsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SettingsView.CheckBoxes = true;
+            this.SettingsView.Cursor = System.Windows.Forms.Cursors.Default;
             this.SettingsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SettingsView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.SettingsView.FullRowSelect = true;
@@ -266,9 +197,40 @@ namespace Password_Manager_.NET_6
             this.SettingsView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode5});
-            this.SettingsView.Size = new System.Drawing.Size(264, 125);
+            this.SettingsView.Size = new System.Drawing.Size(329, 158);
             this.SettingsView.TabIndex = 45;
             this.SettingsView.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCheck);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.label2.Location = new System.Drawing.Point(37, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(235, 29);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Allowed characters";
+            // 
+            // TxtAllowedCharacters
+            // 
+            this.TxtAllowedCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtAllowedCharacters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
+            this.TxtAllowedCharacters.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtAllowedCharacters.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtAllowedCharacters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.TxtAllowedCharacters.Location = new System.Drawing.Point(419, 111);
+            this.TxtAllowedCharacters.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.TxtAllowedCharacters.Name = "TxtAllowedCharacters";
+            this.TxtAllowedCharacters.Size = new System.Drawing.Size(341, 22);
+            this.TxtAllowedCharacters.TabIndex = 46;
+            this.TxtAllowedCharacters.TabStop = false;
             // 
             // FrmSettings
             // 
@@ -299,13 +261,11 @@ namespace Password_Manager_.NET_6
 
         private System.Windows.Forms.TextBox txtPWlengt;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDeleteUser;
-        private System.Windows.Forms.Button btnCleanAcc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboFilter;
         private System.Windows.Forms.ErrorProvider SettingProvider;
-        private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.TreeView SettingsView;
+        private Label label2;
+        private TextBox TxtAllowedCharacters;
     }
 }

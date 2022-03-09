@@ -1,88 +1,75 @@
-﻿using Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.Model;
-using Password_Manager_.NET_6.UI.Settings;
-using Password_Manager_.NET_6.UI.LogIn;
+﻿using Password_Manager_.NET_6.UI.Settings;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.Extensions;
-using Password_Manager_.NET_6.UI.ErrorHandler;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
 
 namespace Password_Manager_.NET_6
 {
     public partial class FrmSettings : FrmBaseDialog, ISettings
     {
+        private string _showPassDescription = enumSettings.ShowPass.GetDescription();
+        private string _copyDescription = enumSettings.CopyToClipboard.GetDescription();
+        private string _emailDescription = enumSettings.CopyToClipboard_Email.GetDescription();
+        private string _passwordDescription = enumSettings.CopyToClipboard_Password.GetDescription();
+        private string _usernameDescription = enumSettings.CopyToClipboard_Username.GetDescription();
+        
+        public string PasswordLenght { get => txtPWlengt.Text; set => txtPWlengt.Text = value; }
+        public string AllowedCharacters { get => TxtAllowedCharacters.Text; set => TxtAllowedCharacters.Text = value; }
+        public string Filter { get => cboFilter.Text; set => cboFilter.Text = value; }
+        public bool ShowPass { get => SettingsView.Nodes[_showPassDescription].Checked; set => SettingsView.Nodes[_showPassDescription].Checked = value; }
+        public bool IsCopy { get => SettingsView.Nodes[_copyDescription].Checked; set => SettingsView.Nodes[_copyDescription].Checked = value; }
+        public bool IsEmail { get => SettingsView.Nodes[_copyDescription].Nodes[_emailDescription].Checked; set => SettingsView.Nodes[_copyDescription].Nodes[_emailDescription].Checked = value; }
+        public bool IsUsername { get => SettingsView.Nodes[_copyDescription].Nodes[_passwordDescription].Checked; set => SettingsView.Nodes[_copyDescription].Nodes[_passwordDescription].Checked = value; }
+        public bool IsPassword { get => SettingsView.Nodes[_copyDescription].Nodes[_usernameDescription].Checked; set => SettingsView.Nodes[_copyDescription].Nodes[_usernameDescription].Checked = value; }
 
         public FrmSettings()
         {
             InitializeComponent();
-            _user = user;
-            _accounts = accounts;
         }
 
         private void FrmSettings_Load(object sender, EventArgs e)
         {
-            cboFilter.SelectedIndex = cboFilter.Items.IndexOf(Settings.Default.Filter);
-            SettingsView.Nodes[_showPassDescription].Checked = Settings.Default.ShowPass;
-            var copy = SettingsView.Nodes[_copyDescription];
-            copy.Checked = Settings.Default.IsCopy;
-            copy.Nodes[_emailDescription].Checked = Settings.Default.IsEmail;
-            copy.Nodes[_passwordDescription].Checked = Settings.Default.IsPassword;
-            copy.Nodes[_usernameDescription].Checked = Settings.Default.IsUsername;
-            txtPWlengt.Text = Settings.Default.PasswordLenght.ToString();
+            Dock = DockStyle.Fill;
+            TopLevel = false; 
+            TopMost = true;
             SettingsView.ExpandAll();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        public void SetFilter(string filtername)
         {
-
-        }
-        private void btnCleanAcc_Click(object sender, EventArgs e)
-        {
-            _database.CleanAccount(_accounts);
+            cboFilter.SelectedIndex = cboFilter.Items.IndexOf(filtername);
         }
 
-        private void btnDeleteUser_Click(object sender, EventArgs e)
+        public void CleanProvider()
         {
-            DialogResult dialogResult = MessageBox.Show("Do you really want to delete this user?", "Are your sure about that?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == System.Windows.Forms.DialogResult.Yes && _database.RemoveUser(_user, _accounts))
-            {
-                dialogResult = MessageBox.Show("Delete was successfull", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (dialogResult == System.Windows.Forms.DialogResult.OK)
-                {
-                    IsRemoved?.Invoke();
-                }
-            }
+            SettingProvider.Clear();
         }
 
-        private void btnSignOut_Click(object sender, EventArgs e)
+        public void SetErrorProvider()
         {
-            LogOut?.Invoke();
-            Settings.Default.Email = null;
-            Settings.Default.Save();
-            OverviewPresenter LogIn = new();
-            LogIn.ShowDialog();
+            CleanProvider();
+            SettingProvider.SetError(txtPWlengt, "Only Numbers");
         }
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
-            try
-            {
-                TreeNode treeNode = SettingsView.Nodes[_copyDescription];
+            //try
+            //{
+                //TreeNode treeNode = SettingsView.Nodes[_copyDescription];
 
-                if (treeNode.Nodes[e.Node.Text] == null)
-                {
-                    return;
-                }
+                //if (treeNode.Nodes[e.Node.Text] == null)
+                //{
+                //    return;
+                //}
 
 
-                if (!treeNode.Checked
-                    && (e.Node.Text == treeNode.Nodes[_emailDescription].Text
-                    || e.Node.Text == treeNode.Nodes[_passwordDescription].Text
-                    || e.Node.Text == treeNode.Nodes[_usernameDescription].Text))
-                {
-                    e.Cancel = true;
-                    return;
-                }
+                //if (!treeNode.Checked
+                //    && (e.Node.Text == treeNode.Nodes[_emailDescription].Text
+                //    || e.Node.Text == treeNode.Nodes[_passwordDescription].Text
+                //    || e.Node.Text == treeNode.Nodes[_usernameDescription].Text))
+                //{
+                //    e.Cancel = true;
+                //    return;
+                //}
 
 
                 //switch (e.Node.Index)
@@ -108,18 +95,11 @@ namespace Password_Manager_.NET_6
                 //    default:
                 //        throw new NotImplementedException();
                 //}
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-            }
-        }
-
-        private void Error(Exception ex)
-        {
-            ErrorHandlerPresenter errorHandler = new();
-            errorHandler.ShowDialog();
-            errorHandler.SetErrorMessage(ex);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Error(ex);
+            //}
         }
 
         private void txtPWlengt_KeyPress(object sender, KeyPressEventArgs e)
