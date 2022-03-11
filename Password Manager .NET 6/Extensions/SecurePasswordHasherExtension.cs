@@ -3,7 +3,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Password_Manager_.NET_6
+namespace Password_Manager_.NET_6.Extensions
 {
     public static class SecurePasswordHasherExtension
     {
@@ -12,10 +12,10 @@ namespace Password_Manager_.NET_6
         {
             try
             {
-                byte[] data = UTF8Encoding.UTF8.GetBytes(nothashed);
+                byte[] data = Encoding.UTF8.GetBytes(nothashed);
                 using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
                 {
-                    byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                    byte[] keys = md5.ComputeHash(Encoding.UTF8.GetBytes(hash));
                     using (TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                     {
                         ICryptoTransform transform = tripleDES.CreateEncryptor();
@@ -40,12 +40,12 @@ namespace Password_Manager_.NET_6
                 byte[] data = Convert.FromBase64String(hashed);
                 using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
                 {
-                    byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                    byte[] keys = md5.ComputeHash(Encoding.UTF8.GetBytes(hash));
                     using (TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                     {
                         ICryptoTransform transform = tripleDES.CreateDecryptor();
                         byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
-                        return UTF8Encoding.UTF8.GetString(results);
+                        return Encoding.UTF8.GetString(results);
                     }
                 }
             }
@@ -60,7 +60,7 @@ namespace Password_Manager_.NET_6
 
         public static bool Verify(this string nothashed, string hasehd)
         {
-            return GetDecryptString(hasehd) == nothashed;
+            return hasehd.GetDecryptString() == nothashed;
         }
     }
 }

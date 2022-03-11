@@ -1,6 +1,7 @@
 ﻿using Password_Manager_.NET_6.Model;
 using settings = Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.UI.BaseDialog;
+using Password_Manager_.NET_6.Extensions;
 
 namespace Password_Manager_.NET_6.UI.AddAccount
 {

@@ -37,9 +37,27 @@ namespace Password_Manager_.NET_6
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.AccGrid = new System.Windows.Forms.DataGridView();
             this.PnlBorderAccGrid = new System.Windows.Forms.Panel();
+            this.PnlActions.SuspendLayout();
+            this.PnlActionsBase.SuspendLayout();
+            this.PnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).BeginInit();
             this.PnlBorderAccGrid.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // PnlActionsBase
+            // 
+            this.PnlActionsBase.Location = new System.Drawing.Point(793, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(4, 0);
+            // 
+            // PnlActionsExtension
+            // 
+            this.PnlActionsExtension.Location = new System.Drawing.Point(737, 3);
+            // 
+            // PnlContent
+            // 
+            this.PnlContent.Controls.Add(this.PnlBorderAccGrid);
+            this.PnlContent.Controls.Add(this.txtSearch);
+            this.PnlContent.Size = new System.Drawing.Size(831, 549);
             // 
             // txtSearch
             // 
@@ -48,7 +66,7 @@ namespace Password_Manager_.NET_6
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtSearch.Location = new System.Drawing.Point(561, 70);
+            this.txtSearch.Location = new System.Drawing.Point(561, 72);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Filter";
@@ -118,8 +136,10 @@ namespace Password_Manager_.NET_6
             this.AccGrid.Size = new System.Drawing.Size(796, 422);
             this.AccGrid.StandardTab = true;
             this.AccGrid.TabIndex = 2;
+            this.AccGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccGrid_CellContentClick);
             this.AccGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseClick);
             this.AccGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseDoubleClick);
+            this.AccGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.AccGrid_DataBindingComplete);
             // 
             // PnlBorderAccGrid
             // 
@@ -142,15 +162,17 @@ namespace Password_Manager_.NET_6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(831, 549);
-            this.Controls.Add(this.PnlBorderAccGrid);
-            this.Controls.Add(this.txtSearch);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmAccounts";
             this.Text = "FrmDashboard";
             this.Load += new System.EventHandler(this.FrmDashbord_Load);
-            this.Controls.SetChildIndex(this.txtSearch, 0);
-            this.Controls.SetChildIndex(this.PnlBorderAccGrid, 0);
+            this.PnlActions.ResumeLayout(false);
+            this.PnlActions.PerformLayout();
+            this.PnlActionsBase.ResumeLayout(false);
+            this.PnlActionsBase.PerformLayout();
+            this.PnlContent.ResumeLayout(false);
+            this.PnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).EndInit();
             this.PnlBorderAccGrid.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -162,5 +184,9 @@ namespace Password_Manager_.NET_6
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView AccGrid;
         private Panel PnlBorderAccGrid;
+        private DataGridViewLinkColumn Website;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Username;
+        private DataGridViewTextBoxColumn Password;
     }
 }

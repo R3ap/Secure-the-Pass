@@ -4,22 +4,21 @@ using System.Data;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using System.Reflection;
 using Password_Manager_.NET_6.UI.EditAccount;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using Password_Manager_.NET_6.UI.Accounts;
 
 namespace Password_Manager_.NET_6
 {
-    public partial class FrmAccounts : FrmBaseDialog
+    public partial class FrmAccounts : FrmBaseDialog, IAccounts
     {
-        private User _user;
-        private List<Account> _accounts;
-        public event Action<List<Account>> SetnewListAcc;
         private int _rowIndex;
+        
         private NotifyIcon _notifyIcon = new();
-        private readonly DatabaseAccess _db = new();
-        public FrmAccounts(User user, ref List<Account> accounts)
+        public FrmAccounts()
         {
             InitializeComponent();
-            _user = user;
-            _accounts = accounts;
+           
         }
 
         private void FrmDashbord_Load(object? sender, EventArgs? e)
@@ -27,11 +26,11 @@ namespace Password_Manager_.NET_6
             SetGridProperty();
         }
 
-        private void SetGridProperty()
+        public void SetGridProperty(List<Account> accounts)
         {
             if (!Settings.Default.ShowPass)
             {
-                _accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
+                accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
             }
             else
             {
@@ -39,7 +38,7 @@ namespace Password_Manager_.NET_6
             }
             AccGrid.RowHeadersVisible = false;
             AccGrid.AutoGenerateColumns = true;
-            AccGrid.DataSource = _accounts;
+            AccGrid.DataSource = accounts;
             AccGrid.AllowUserToResizeColumns = false;
             AccGrid.AllowUserToResizeRows = false;
             AccGrid.EnableHeadersVisualStyles = false;
@@ -50,22 +49,6 @@ namespace Password_Manager_.NET_6
                                                 : DataGridViewAutoSizeColumnMode.AllCells;
 
             }
-        }
-
-        private void SetAccounts()
-        {
-            List<Account> accounts = _db.SelectAccounts(_user);
-
-            foreach (var acc in accounts)
-            {
-                acc.Email = acc.Email.GetDecryptString();
-                acc.Password = acc.Password.GetDecryptString();
-                acc.Website = acc.Website.GetDecryptString();
-                acc.Username = acc.Username.GetDecryptString();
-                acc.Useremail = acc.Useremail.GetDecryptString();
-            }
-
-            _accounts = accounts;
         }
 
         private void UpdateAcc()
@@ -102,7 +85,7 @@ namespace Password_Manager_.NET_6
 
         private void AccGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button != MouseButtons.Left)
             {
                 return;
             }
@@ -120,7 +103,7 @@ namespace Password_Manager_.NET_6
 
         private void AccGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button != MouseButtons.Right)
             {
                 return;
             }
@@ -151,6 +134,45 @@ namespace Password_Manager_.NET_6
             catch
             {
                 _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was failed", ToolTipIcon.Error);
+            }
+        }
+
+        private void AccGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow r in AccGrid.Rows)
+            {
+                if (Uri.IsWellFormedUriString(r.Cells[nameof(Account.Website)].Value.ToString(), UriKind.Absolute))
+                {
+                    r.Cells[nameof(Account.Website)] = new DataGridViewLinkCell();
+                    DataGridViewLinkCell c = r.Cells[nameof(Account.Website)] as DataGridViewLinkCell;
+                    c.LinkColor = Color.Aqua;
+                    c.VisitedLinkColor = c.ActiveLinkColor = Color.CadetBlue;
+                }
+            }
+        }
+
+        private void AccGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (AccGrid[e.ColumnIndex, e.RowIndex] is DataGridViewLinkCell)
+            {
+                OpenBrowser(AccGrid[e.ColumnIndex, e.RowIndex].Value.ToString());
+            }
+
+        }
+
+        public static void OpenBrowser(string url)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Process.Start("xdg-open", url);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Process.Start("open", url);
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace Password_Manager_.NET_6.UI.BaseDialog
+﻿using Password_Manager_.NET_6.UI.Controls;
+
+namespace Password_Manager_.NET_6.UI.BaseDialog
 {
     partial class FrmBaseDialogBase
     {
@@ -98,9 +100,9 @@
 
         #endregion
 
-        protected Password_Manager_.NET_6.Controls.DerivableFlowLayoutPanel PnlActions;
-        protected Password_Manager_.NET_6.Controls.DerivableFlowLayoutPanel PnlActionsBase;
-        protected Password_Manager_.NET_6.Controls.DerivableFlowLayoutPanel PnlActionsExtension;
+        protected DerivableFlowLayoutPanel PnlActions;
+        protected DerivableFlowLayoutPanel PnlActionsBase;
+        protected DerivableFlowLayoutPanel PnlActionsExtension;
         public Panel PnlContent;
     }
 }

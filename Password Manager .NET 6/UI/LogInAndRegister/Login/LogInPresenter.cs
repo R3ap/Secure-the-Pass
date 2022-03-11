@@ -1,4 +1,5 @@
-﻿using Password_Manager_.NET_6.Model;
+﻿using Password_Manager_.NET_6.Extensions;
+using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;

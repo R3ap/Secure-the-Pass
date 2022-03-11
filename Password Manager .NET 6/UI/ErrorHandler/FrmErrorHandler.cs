@@ -1,5 +1,4 @@
 ﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using System.Text;
 
 namespace Password_Manager_.NET_6.UI.ErrorHandler
 {

@@ -1,11 +1,13 @@
-﻿using Password_Manager_.NET_6.Model;
+﻿using Password_Manager_.NET_6.Extensions;
+using Service_Core
+using Password_Manager_.NET_6.Model;
 
 namespace Password_Manager_.NET_6.Tasks
 {
     public class InizializeTask
     {
         private User _loadUser = new();
-        private readonly DatabaseAccess _databaseAccess = new();
+        private readonly IUserServices _databaseAccess = new();
         public Task<User> InitializeUser(User user)
         {
             try
