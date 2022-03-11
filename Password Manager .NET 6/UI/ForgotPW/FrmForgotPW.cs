@@ -1,11 +1,12 @@
-﻿using System.Net;
+﻿using Service_Core.Services.UserServices;
+using System.Net;
 using System.Net.Mail;
 
 namespace Password_Manager_.NET_6
 {
     public partial class FrmForgotPW : Form
     {
-        private readonly DatabaseAccess _databaseAccess = new DatabaseAccess();
+        private readonly IUserService _userService = new UserService();
         private string randomcode;
         public static string to;
         private NotifyIcon notify = new NotifyIcon();
@@ -23,9 +24,9 @@ namespace Password_Manager_.NET_6
         private void SendEmail()
         {
             string from, pass, messageBody;
-            Random rnd = new Random();
+            Random rnd = new();
             randomcode = (rnd.Next(999999)).ToString();
-            MailMessage mailMessage = new MailMessage();
+            MailMessage mailMessage = new();
             to = txtEmail.Text;
             from = "davidvongarrel2@gmail.com";
             pass = "Lenina00";
@@ -34,7 +35,7 @@ namespace Password_Manager_.NET_6
             mailMessage.From = new MailAddress(from);
             mailMessage.Body = messageBody;
             mailMessage.Subject = "Passwort reseting code";
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            SmtpClient smtp = new("smtp.gmail.com");
             smtp.EnableSsl = true;
             smtp.Port = 587;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -54,7 +55,7 @@ namespace Password_Manager_.NET_6
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if (!_databaseAccess.CheckUser(txtEmail.Text))
+            if (!_userService.CheckUser(txtEmail.Text))
             {
                 SendEmail();
             }
@@ -86,7 +87,7 @@ namespace Password_Manager_.NET_6
         {
             if (txtCode.Text == txtEmail.Text)
             {
-                _databaseAccess.UpdateUser(txtEmail.Text, to);
+                _userService.UpdateUser(txtEmail.Text, to);
                 Close();
             }
             else

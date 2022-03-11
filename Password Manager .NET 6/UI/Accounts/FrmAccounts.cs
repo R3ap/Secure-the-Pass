@@ -1,5 +1,4 @@
 ﻿using Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.Model;
 using System.Data;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using System.Reflection;
@@ -7,6 +6,7 @@ using Password_Manager_.NET_6.UI.EditAccount;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Password_Manager_.NET_6.UI.Accounts;
+using Service_Core.Model;
 
 namespace Password_Manager_.NET_6
 {

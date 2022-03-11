@@ -1,11 +1,7 @@
 ﻿using Password_Manager_.NET_6.Extensions;
-using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.UI.BaseDialog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Service_Core.Model;
+using Service_Core.Services.AccountService;
 
 namespace Password_Manager_.NET_6.UI.Accounts
 {
@@ -14,7 +10,7 @@ namespace Password_Manager_.NET_6.UI.Accounts
         private User _user;
         private List<Account> _accounts;
         public event Action<List<Account>> SetnewListAcc;
-        private readonly DatabaseAccess _db = new();
+        private readonly IAccountService _accountService = new AccountService();
         public AccountsPresenter(User user, ref List<Account> accounts) : base(new FrmAccounts())
         {
             _user = user;
@@ -23,7 +19,7 @@ namespace Password_Manager_.NET_6.UI.Accounts
 
         private void SetAccounts()
         {
-            List<Account> accounts = _db.SelectAccounts(_user);
+            IList<Account> accounts = _accountService.SelectAccounts(_user);
 
             foreach (var acc in accounts)
             {
@@ -34,7 +30,7 @@ namespace Password_Manager_.NET_6.UI.Accounts
                 acc.Useremail = acc.Useremail.GetDecryptString();
             }
 
-            _accounts = accounts;
+            _accounts = accounts.ToList();
         }
 
     }

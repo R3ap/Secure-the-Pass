@@ -1,13 +1,14 @@
 ﻿using Password_Manager_.NET_6.Extensions;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Service_Core.Model;
+using Service_Core.Services.AccountService;
 
 namespace Password_Manager_.NET_6.UI.EditAccount
 {
     public class EditAccPresenter : BaseTitelBarPresenter<IEditAcc>
     {
         private Account _account;
-        private DatabaseAccess _database = new DatabaseAccess();
+        private IAccountService _accountService = new AccountService();
         private Generator _generator = new Generator();
         public event Action UpdateAcc;
         public EditAccPresenter(Account account) : base(new FrmEditAcc())
@@ -24,18 +25,18 @@ namespace Password_Manager_.NET_6.UI.EditAccount
 
         private bool DeleteAcc()
         {
-            _database.RemoveAcc(_account);
+            _accountService.RemoveAcc(_account);
             UpdateAcc?.Invoke();
             return true;
         }
 
         private bool SaveAccount()
         {
-            _database.UpdateAccount(_account.ID,
-                                    View.Website.GetEncryptString(),
-                                    View.Email.GetEncryptString(),
-                                    View.Username.GetEncryptString(),
-                                    View.Password.GetEncryptString());
+            _accountService.UpdateAccount(_account.ID,
+                                          View.Website.GetEncryptString(),
+                                          View.Email.GetEncryptString(),
+                                          View.Username.GetEncryptString(),
+                                          View.Password.GetEncryptString());
             UpdateAcc?.Invoke();
             return true;
         }

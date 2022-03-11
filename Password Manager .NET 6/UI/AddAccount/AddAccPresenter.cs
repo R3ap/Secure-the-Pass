@@ -1,13 +1,13 @@
-﻿using Password_Manager_.NET_6.Model;
-using settings = Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.UI.BaseDialog;
+﻿using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.Extensions;
+using Service_Core.Services.AccountService;
+using Service_Core.Model;
 
 namespace Password_Manager_.NET_6.UI.AddAccount
 {
     public class AddAccPresenter : BaseDialogPresenter<IAddAcc>
     {
-        private readonly DatabaseAccess _database = new();
+        private readonly IAccountService _userService = new AccountService();
         private User _user;
         private List<Account> _accounts;
         private Generator _generator = new();
@@ -28,8 +28,8 @@ namespace Password_Manager_.NET_6.UI.AddAccount
                 return false;
             }
 
-            int indexOfAcc = _database.GetIndexOfAccouts();
-            _database.InsertAccount(new Account() { 
+            int indexOfAcc = _userService.GetIndexOfAccouts();
+            _userService.InsertAccount(new Account() { 
                 ID = indexOfAcc + 1, 
                 Email = View.Email.GetEncryptString(), 
                 Website = View.Website.GetEncryptString(), 

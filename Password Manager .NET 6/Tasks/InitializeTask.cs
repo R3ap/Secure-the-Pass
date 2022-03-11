@@ -1,13 +1,13 @@
 ﻿using Password_Manager_.NET_6.Extensions;
-using Service_Core
-using Password_Manager_.NET_6.Model;
+using Service_Core.Model;
+using Service_Core.Services.AccountService;
 
 namespace Password_Manager_.NET_6.Tasks
 {
     public class InizializeTask
     {
         private User _loadUser = new();
-        private readonly IUserServices _databaseAccess = new();
+        private readonly IAccountService _accountServices = new AccountService();
         public Task<User> InitializeUser(User user)
         {
             try
@@ -29,12 +29,12 @@ namespace Password_Manager_.NET_6.Tasks
             }
         }
 
-        public Task<List<Account>> InitializeAccounts()
+        public Task<IList<Account>> InitializeAccounts()
         {
-            List<Account> accounts;
+            IList<Account> accounts;
             try
             {
-                accounts = _databaseAccess.SelectAccounts(_loadUser);
+                accounts = _accountServices.SelectAccounts(_loadUser);
 
                 foreach (var acc in accounts)
                 {

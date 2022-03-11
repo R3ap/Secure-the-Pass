@@ -4,6 +4,7 @@ using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.Menü;
 using Service_Core.Model;
+using Service_Core.Services.UserServices;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
 {
@@ -11,7 +12,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
     {
         private User _user;
         private List<Account> _accounts;
-        private readonly DatabaseAccess _database = new();
+        private readonly IUserService _userService = new UserService();
         public RegisterPresenter() : base(new FrmRegister())
         {
             View.Register = Register;
@@ -20,7 +21,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
         public bool Register()
         {
             View.ClearError();
-            if (!_database.CheckUser(View.Email))
+            if (!_userService.CheckUser(View.Email))
             {
                 View.SetErrorEmail("The Email Exist");
                 return false;
@@ -34,14 +35,14 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
                 }
                 else
                 {
-                    User user = new() { ID = _database
+                    User user = new() { ID = _userService
                                             .SelectUsers()
                                             .OrderByDescending(x => x.ID)
                                             .First().ID + 1, Email = View.Email.GetEncryptString(), Username = View.Username.GetEncryptString(), Password = View.Password.GetEncryptString() };
                     bool IsTaskSuccess = GetTaskResult(user);
                     if (IsTaskSuccess)
                     {
-                        bool error = _database.InsertUser(user);
+                        bool error = _userService.InsertUser(user);
                         if (error)
                         {
                             Application.OpenForms[nameof(FrmOverview)].Hide();
@@ -84,7 +85,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
         {
             InizializeTask inizializeTask = new InizializeTask();
             _user = inizializeTask.InitializeUser(user).Result;
-            _accounts = inizializeTask.InitializeAccounts().Result;
+            _accounts = inizializeTask.InitializeAccounts().Result.ToList();
             DialogResult dialogResult = DialogResult.None;
             if (_user == null)
             {

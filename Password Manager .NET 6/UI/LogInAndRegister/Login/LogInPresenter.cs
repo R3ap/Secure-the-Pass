@@ -1,9 +1,10 @@
 ﻿using Password_Manager_.NET_6.Extensions;
-using Password_Manager_.NET_6.Model;
 using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.Menü;
+using Service_Core.Model;
+using Service_Core.Services.UserServices;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
@@ -12,7 +13,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
     {
         private User _user;
         private List<Account> _accounts;
-        private readonly DatabaseAccess _database = new();
+        private readonly IUserService _database = new UserService();
         public LogInPresenter() : base(new FrmLogIn()) 
         {
             View.OnAcceptClick = LogIn;
@@ -23,7 +24,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
         {
             if (!string.IsNullOrEmpty(settings.Settings.Default.Email))
             {
-                List<User> users = _database.SelectUsers();
+                IList<User> users = _database.SelectUsers();
                 Application.OpenForms[nameof(FrmOverview)].Hide();
                 Application.OpenForms[nameof(FrmOverview)].Close();
                 if (GetTaskResult(users.First(x => x.Email == settings.Settings.Default.Email)))
@@ -38,7 +39,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
         {
             InizializeTask inizializeTask = new InizializeTask();
             _user = inizializeTask.InitializeUser(user).Result;
-            _accounts = inizializeTask.InitializeAccounts().Result;
+            _accounts = inizializeTask.InitializeAccounts().Result.ToList();
             DialogResult dialogResult = DialogResult.None;
             if (_user == null)
             {
@@ -60,7 +61,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
 
         public bool LogIn()
         {
-            List<User> users = _database.SelectUsers();
+            IList<User> users = _database.SelectUsers();
             if (users.Any(x => x.Email == View.Email.GetEncryptString()) && View.Password.Verify(users.First(x => x.Email == View.Email.GetEncryptString()).Password))
             {
                 if (GetTaskResult(users.First(x => x.Email == View.Email.GetEncryptString())))

@@ -2,12 +2,15 @@
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
 using Service_Core.Model;
+using Service_Core.Services.UserServices;
+using Service_Core.Services.AccountService;
 
 namespace Password_Manager_.NET_6.UI.Settings
 {
     public class SettingsPresenter : BaseDialogPresenter<ISettings>
     {
-        private readonly DatabaseAccess _database = new DatabaseAccess();
+        private readonly IUserService _userService = new UserService();
+        private readonly IAccountService _accountService = new AccountService();
         private User _user;
         private List<Account> _accounts;
         
@@ -43,7 +46,7 @@ namespace Password_Manager_.NET_6.UI.Settings
         private bool DeleteUserClick()
         {
             DialogResult dialogResult = MessageBox.Show("Do you really want to delete this user?", "Are your sure about that?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes && _database.RemoveUser(_user, _accounts))
+            if (dialogResult == DialogResult.Yes && _userService.RemoveUser(_user, _accounts))
             {
                 dialogResult = MessageBox.Show("Delete was successfull", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.OK)
@@ -56,7 +59,7 @@ namespace Password_Manager_.NET_6.UI.Settings
 
         private bool CleanAccountClick()
         {
-            _database.CleanAccount(_accounts);
+            _accountService.CleanAccount(_accounts);
             return false;
         }
 
