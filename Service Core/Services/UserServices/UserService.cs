@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Password_Manager_.NET_6.Extensions;
-using Password_Manager_.NET_6.Services.AccountService;
-using Service_Core.Model;
-using Service_Core.Services.AccountService;
 using Services_Core.Context;
+using Services_Core.Extensions;
+using Services_Core.Model;
+using Services_Core.Services.AccountService;
 
-namespace Service_Core.Services.UserServices
+namespace Services_Core.Services.UserServices
 {
     public class UserService : IUserService
     {

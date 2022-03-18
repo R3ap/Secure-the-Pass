@@ -1,10 +1,10 @@
-﻿using Password_Manager_.NET_6.Extensions;
-using Password_Manager_.NET_6.Tasks;
+﻿using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.Menü;
-using Service_Core.Model;
-using Service_Core.Services.UserServices;
+using Services_Core.Extensions;
+using Services_Core.Model;
+using Services_Core.Services.UserServices;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
@@ -37,7 +37,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
 
         private bool GetTaskResult(User user)
         {
-            InizializeTask inizializeTask = new InizializeTask();
+            InizializeTask inizializeTask = new();
             _user = inizializeTask.InitializeUser(user).Result;
             _accounts = inizializeTask.InitializeAccounts().Result.ToList();
             DialogResult dialogResult = DialogResult.None;
@@ -89,9 +89,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
             }
             else
             {
-                //PassProvider.SetError(txtEmail, "Wrong Data");
-                //PassProvider.SetError(btnEyePassword, "Wrong Data");
-                // TODO: Implement new Method PassInvailed
+                View.InvalidData();
                 return false;
             }
         }

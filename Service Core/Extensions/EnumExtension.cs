@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace Password_Manager_.NET_6.Extensions
+namespace Services_Core.Extensions
 {
     public static class EnumExtension
     {
@@ -36,7 +36,7 @@ namespace Password_Manager_.NET_6.Extensions
                         names.Add(item.GetDescription());
                     }
                 }
-                return string.Join(seperator, names); 
+                return string.Join(seperator, names);
             }
             return null;
         }

@@ -48,26 +48,25 @@
             this._btAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._btAbort.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAbort.Location = new System.Drawing.Point(78, 3);
-            this._btAbort.Size = new System.Drawing.Size(90, 30);
-            this._btAbort.Text = "&OK";
+            this._btAbort.Size = new System.Drawing.Size(77, 33);
             // 
             // PnlActions
             // 
-            this.PnlActions.Location = new System.Drawing.Point(2, 217);
-            this.PnlActions.Size = new System.Drawing.Size(557, 45);
+            this.PnlActions.Location = new System.Drawing.Point(2, 451);
+            this.PnlActions.Size = new System.Drawing.Size(653, 45);
             // 
             // PnlActionsBase
             // 
-            this.PnlActionsBase.Location = new System.Drawing.Point(475, 3);
-            this.PnlActionsBase.Size = new System.Drawing.Size(79, 39);
+            this.PnlActionsBase.Location = new System.Drawing.Point(488, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(162, 39);
             // 
             // PnlActionsExtension
             // 
-            this.PnlActionsExtension.Location = new System.Drawing.Point(419, 3);
+            this.PnlActionsExtension.Location = new System.Drawing.Point(432, 3);
             // 
             // PnlContent
             // 
-            this.PnlContent.Size = new System.Drawing.Size(557, 181);
+            this.PnlContent.Size = new System.Drawing.Size(653, 415);
             // 
             // PassProvider
             // 
@@ -75,13 +74,12 @@
             // 
             // FrmOverview
             // 
-            this.AbortText = "&OK";
             this.AcceptText = "&Login";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(561, 264);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.Ok;
+            this.ClientSize = new System.Drawing.Size(657, 498);
+            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.OkAndAbort;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = true;
             this.MinimizeBox = true;

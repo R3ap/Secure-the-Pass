@@ -14,6 +14,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Overview
             View.OnAcceptClick = Login;
             View.SetMainControl = SetMainControl;
             View.AddButtonAction(new ButtonAction() { Action = Register, Text = "&Register", Name = "BtnRegister" });
+            View.AcceptText = "Login";
         }
 
         private void SetMainControl()

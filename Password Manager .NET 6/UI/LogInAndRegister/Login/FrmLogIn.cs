@@ -7,17 +7,19 @@ namespace Password_Manager_.NET_6.UI.LogIn
 {
     public partial class FrmLogIn : FrmBaseDialog, ILogIn
     {
-        public Action LoginByRememberMe { get;  set; }
+        public Action LoginByRememberMe { get; set; }
 
         public bool RememberMe { get => ChkRememberMe.Checked; set => ChkRememberMe.Checked = value; }
 
-        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
+        public string Email { get => TxtEmail.Text; set => TxtEmail.Text = value; }
 
         public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
 
         public FrmLogIn()
         {
             InitializeComponent();
+            TxtEmail.PlaceholderText = "Email";
+            txtPassword.PlaceholderText = "Password";
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -28,20 +30,16 @@ namespace Password_Manager_.NET_6.UI.LogIn
             }
         }
 
+        public void InvalidData()
+        {
+            PassProvider.SetError(TxtEmail, "Wrong Data");
+            PassProvider.SetError(txtPassword, "Wrong Data");
+        }
+
         private void LlblForgotPw_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmForgotPW frmForgotPW = new();
             frmForgotPW.ShowDialog();
-        }
-
-        private void btnEyePassword_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtPassword.PasswordChar = '\0';
-        }
-
-        private void btnEyePassword_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtPassword.PasswordChar = '•';
         }
 
         private void CtrlLogIn_Load(object sender, EventArgs e)

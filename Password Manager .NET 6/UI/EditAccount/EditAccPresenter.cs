@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.Extensions;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Service_Core.Model;
-using Service_Core.Services.AccountService;
+﻿using Password_Manager_.NET_6.UI.BaseDialog;
+using Services_Core.Extensions;
+using Services_Core.Model;
+using Services_Core.Services.AccountService;
 
 namespace Password_Manager_.NET_6.UI.EditAccount
 {

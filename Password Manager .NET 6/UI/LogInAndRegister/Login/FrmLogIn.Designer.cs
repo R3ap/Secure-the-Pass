@@ -30,14 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogIn));
-            this.btnEyePassword = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.ChkRememberMe = new System.Windows.Forms.CheckBox();
             this.lbllForgotPassword = new System.Windows.Forms.LinkLabel();
             this.PassProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.passwordTextBox1 = new CustomControls.RJControls.PasswordTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -46,116 +42,43 @@
             // 
             // _btAccept
             // 
-            this._btAccept.Location = new System.Drawing.Point(3, 3);
             this._btAccept.Size = new System.Drawing.Size(76, 31);
             // 
             // _btAbort
             // 
+            this._btAbort.Location = new System.Drawing.Point(85, 3);
             this._btAbort.Size = new System.Drawing.Size(75, 31);
             this._btAbort.Text = "&Close";
             // 
             // PnlActions
             // 
-            this.PnlActions.Location = new System.Drawing.Point(0, 178);
-            this.PnlActions.Size = new System.Drawing.Size(540, 26);
+            this.PnlActions.Location = new System.Drawing.Point(0, 407);
+            this.PnlActions.Size = new System.Drawing.Size(800, 43);
             // 
             // PnlActionsBase
             // 
-            this.PnlActionsBase.Location = new System.Drawing.Point(533, 3);
+            this.PnlActionsBase.Location = new System.Drawing.Point(793, 3);
             this.PnlActionsBase.Size = new System.Drawing.Size(4, 0);
             // 
             // PnlActionsExtension
             // 
-            this.PnlActionsExtension.Location = new System.Drawing.Point(477, 3);
+            this.PnlActionsExtension.Location = new System.Drawing.Point(737, 3);
             // 
             // PnlContent
             // 
-            this.PnlContent.Controls.Add(this.btnEyePassword);
-            this.PnlContent.Controls.Add(this.txtPassword);
-            this.PnlContent.Controls.Add(this.txtEmail);
-            this.PnlContent.Controls.Add(this.label2);
-            this.PnlContent.Controls.Add(this.label1);
+            this.PnlContent.Controls.Add(this.passwordTextBox1);
             this.PnlContent.Controls.Add(this.ChkRememberMe);
             this.PnlContent.Controls.Add(this.lbllForgotPassword);
-            this.PnlContent.Size = new System.Drawing.Size(540, 204);
-            // 
-            // btnEyePassword
-            // 
-            this.btnEyePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEyePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.btnEyePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEyePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEyePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.btnEyePassword.Image = global::Password_Manager_.NET_6.Properties.Resources.icons8_eye_24px;
-            this.btnEyePassword.Location = new System.Drawing.Point(489, 90);
-            this.btnEyePassword.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEyePassword.Name = "btnEyePassword";
-            this.btnEyePassword.Size = new System.Drawing.Size(28, 24);
-            this.btnEyePassword.TabIndex = 41;
-            this.btnEyePassword.UseVisualStyleBackColor = false;
-            this.btnEyePassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEyePassword_MouseDown);
-            this.btnEyePassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnEyePassword_MouseUp);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtPassword.Location = new System.Drawing.Point(237, 90);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(258, 24);
-            this.txtPassword.TabIndex = 40;
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtEmail.Location = new System.Drawing.Point(237, 52);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(280, 24);
-            this.txtEmail.TabIndex = 39;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label2.Location = new System.Drawing.Point(34, 86);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 29);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "Password";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label1.Location = new System.Drawing.Point(34, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 29);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Email";
+            this.PnlContent.Size = new System.Drawing.Size(413, 187);
             // 
             // ChkRememberMe
             // 
+            this.ChkRememberMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ChkRememberMe.AutoSize = true;
             this.ChkRememberMe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ChkRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.ChkRememberMe.Location = new System.Drawing.Point(237, 127);
+            this.ChkRememberMe.Location = new System.Drawing.Point(237, 134);
             this.ChkRememberMe.Margin = new System.Windows.Forms.Padding(4);
             this.ChkRememberMe.Name = "ChkRememberMe";
             this.ChkRememberMe.Size = new System.Drawing.Size(140, 25);
@@ -167,7 +90,7 @@
             // 
             this.lbllForgotPassword.AutoSize = true;
             this.lbllForgotPassword.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.lbllForgotPassword.Location = new System.Drawing.Point(34, 131);
+            this.lbllForgotPassword.Location = new System.Drawing.Point(34, 135);
             this.lbllForgotPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbllForgotPassword.Name = "lbllForgotPassword";
             this.lbllForgotPassword.Size = new System.Drawing.Size(169, 21);
@@ -182,13 +105,32 @@
             this.PassProvider.ContainerControl = this;
             this.PassProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("PassProvider.Icon")));
             // 
+            // passwordTextBox1
+            // 
+            this.passwordTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.passwordTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.passwordTextBox1.BorderFocusColor = System.Drawing.SystemColors.Highlight;
+            this.passwordTextBox1.BorderSize = 2;
+            this.passwordTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.passwordTextBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.passwordTextBox1.Location = new System.Drawing.Point(40, 19);
+            this.passwordTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.passwordTextBox1.Multiline = false;
+            this.passwordTextBox1.Name = "passwordTextBox1";
+            this.passwordTextBox1.Padding = new System.Windows.Forms.Padding(7);
+            this.passwordTextBox1.PasswordChar = false;
+            this.passwordTextBox1.PlaceholderText = "";
+            this.passwordTextBox1.Size = new System.Drawing.Size(250, 31);
+            this.passwordTextBox1.TabIndex = 36;
+            this.passwordTextBox1.UnderlinedStyle = false;
+            // 
             // FrmLogIn
             // 
             this.AbortText = "&Close";
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(540, 204);
+            this.ClientSize = new System.Drawing.Size(413, 187);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -207,14 +149,9 @@
         }
 
         #endregion
-
-        private Button btnEyePassword;
-        private TextBox txtPassword;
-        private TextBox txtEmail;
-        private Label label2;
-        private Label label1;
         private CheckBox ChkRememberMe;
         private LinkLabel lbllForgotPassword;
         private ErrorProvider PassProvider;
+        private CustomControls.RJControls.PasswordTextBox passwordTextBox1;
     }
 }

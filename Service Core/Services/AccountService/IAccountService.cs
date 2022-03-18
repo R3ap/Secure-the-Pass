@@ -1,6 +1,6 @@
-﻿using Service_Core.Model;
+﻿using Services_Core.Model;
 
-namespace Service_Core.Services.AccountService
+namespace Services_Core.Services.AccountService
 {
     public interface IAccountService
     {

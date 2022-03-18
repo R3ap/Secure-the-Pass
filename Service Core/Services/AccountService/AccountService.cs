@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Password_Manager_.NET_6.Extensions;
-using Service_Core.Model;
 using Services_Core.Context;
+using Services_Core.Extensions;
+using Services_Core.Model;
 
-namespace Service_Core.Services.AccountService
+namespace Services_Core.Services.AccountService
 {
     public class AccountService : IAccountService
     {
@@ -92,9 +92,9 @@ namespace Service_Core.Services.AccountService
             return allIndex;
         }
 
-        public List<Account> SelectAccounts(User user)
+        public IList<Account> SelectAccounts(User user)
         {
-            List<Account> accounts = new();
+            IList<Account> accounts = new List<Account>();
             using (var db = new PMContext())
             {
                 if (db.Account.Any())

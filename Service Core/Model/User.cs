@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Service_Core.Model
+namespace Services_Core.Model
 {
     public class User
     {

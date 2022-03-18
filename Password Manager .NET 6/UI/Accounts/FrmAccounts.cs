@@ -1,20 +1,16 @@
-﻿using Password_Manager_.NET_6.Properties;
-using System.Data;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using System.Reflection;
-using Password_Manager_.NET_6.UI.EditAccount;
+﻿using Password_Manager_.NET_6.UI.BaseDialog;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Password_Manager_.NET_6.UI.Accounts;
-using Service_Core.Model;
+using Services_Core.Model;
 
 namespace Password_Manager_.NET_6
 {
     public partial class FrmAccounts : FrmBaseDialog, IAccounts
     {
-        private int _rowIndex;
+        public Action GetAccounts { get; set; }
+        public Action<string> Search { get; set; }
         
-        private NotifyIcon _notifyIcon = new();
         public FrmAccounts()
         {
             InitializeComponent();
@@ -24,21 +20,21 @@ namespace Password_Manager_.NET_6
         private void FrmDashbord_Load(object? sender, EventArgs? e)
         {
             SetGridProperty();
+            GetAccounts?.Invoke();
+            Dock = DockStyle.Fill;
+            TopLevel = false;
+            TopMost = true;
         }
 
-        public void SetGridProperty(List<Account> accounts)
+        public void SetDataSource(List<Account> accounts)
         {
-            if (!Settings.Default.ShowPass)
-            {
-                accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
-            }
-            else
-            {
-                SetAccounts();
-            }
+            AccGrid.DataSource = accounts;
+        }
+
+        public void SetGridProperty()
+        {
             AccGrid.RowHeadersVisible = false;
             AccGrid.AutoGenerateColumns = true;
-            AccGrid.DataSource = accounts;
             AccGrid.AllowUserToResizeColumns = false;
             AccGrid.AllowUserToResizeRows = false;
             AccGrid.EnableHeadersVisualStyles = false;
@@ -51,36 +47,9 @@ namespace Password_Manager_.NET_6
             }
         }
 
-        private void UpdateAcc()
-        {
-            SetAccounts();
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (_accounts.Any() && txtSearch.Text != "Filter")
-            {
-                switch (Settings.Default.Filter)
-                {
-                    case "Username":
-                        AccGrid.DataSource = _accounts.Where(x => x.Username.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
-                        break;
-                    case "Email":
-                        AccGrid.DataSource = _accounts.Where(x => x.Email.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
-                        break;
-                    case "Password":
-                        AccGrid.DataSource = _accounts.Where(x => x.Password.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
-                        break;
-                    case "Website":
-                        AccGrid.DataSource = _accounts.Where(x => x.Website.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
-                        break;
-                    default:
-                        _notifyIcon.Visible = true;
-                        _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-                        _notifyIcon.ShowBalloonTip(1000, "Filter Invaild", $"There is no Filter Like this: {Settings.Default.Filter}", ToolTipIcon.Error);
-                        break;
-                }
-            }
+            Search?.Invoke(txtSearch.Text);
         }
 
         private void AccGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -88,16 +57,6 @@ namespace Password_Manager_.NET_6
             if (e.Button != MouseButtons.Left)
             {
                 return;
-            }
-
-            if (e.RowIndex >= 0)
-            {
-                SetAccounts();
-                _rowIndex = e.RowIndex;
-                EditAccPresenter frmEditAcc = new(_accounts[e.RowIndex]);
-                frmEditAcc.UpdateAcc += UpdateAcc;
-                frmEditAcc.ShowDialog();
-                SetGridProperty();
             }
         }
 
@@ -108,33 +67,12 @@ namespace Password_Manager_.NET_6
                 return;
             }
 
-            try
-            {
-                _notifyIcon.Visible = true;
-                _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-                if (Settings.Default.IsCopy)
-                {
-                    if (Settings.Default.IsEmail)
-                    {
-                        Clipboard.SetText(_accounts[e.RowIndex].Email);
-                    }
-                    else if (Settings.Default.IsPassword)
-                    {
-                        Clipboard.SetText(_accounts[e.RowIndex].Password);
-                    }
-                    else if (Settings.Default.IsUsername)
-                    {
-                        Clipboard.SetText(_accounts[e.RowIndex].Username);
-                    }
 
-                    AccGrid.Rows[e.RowIndex].Selected = true;
-                    _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
-                }
-            }
-            catch
-            {
-                _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was failed", ToolTipIcon.Error);
-            }
+        }
+        
+        public void SetSelectedRow(int rowIndex)
+        {
+            AccGrid.Rows[rowIndex].Selected = true;
         }
 
         private void AccGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -157,7 +95,6 @@ namespace Password_Manager_.NET_6
             {
                 OpenBrowser(AccGrid[e.ColumnIndex, e.RowIndex].Value.ToString());
             }
-
         }
 
         public static void OpenBrowser(string url)

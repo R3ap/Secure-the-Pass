@@ -10,5 +10,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
 
         string Password { get; set; }
         Action LoginByRememberMe { get; set; }
+
+        void InvalidData();
     }
 }

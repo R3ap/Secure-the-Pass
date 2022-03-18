@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Service_Core.Model;
+using Services_Core.Model;
 
-namespace Service_Core.Context
+namespace Services_Core.Context
 {
     class PMContext : DbContext
     {

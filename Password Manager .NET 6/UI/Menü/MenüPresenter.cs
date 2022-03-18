@@ -1,8 +1,9 @@
-﻿using Password_Manager_.NET_6.UI.AddAccount;
+﻿using Password_Manager_.NET_6.UI.Accounts;
+using Password_Manager_.NET_6.UI.AddAccount;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.ErrorHandler;
 using Password_Manager_.NET_6.UI.Settings;
-using Service_Core.Model;
+using Services_Core.Model;
 
 namespace Password_Manager_.NET_6.UI.Menü
 {
@@ -25,9 +26,9 @@ namespace Password_Manager_.NET_6.UI.Menü
             try
             {
                 View.Titel = "Accounts";
-                FrmAccounts frmAccounts = new(_user, ref _accounts) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-                frmAccounts.Show();
-                //frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
+                AccountsPresenter accountsPresenter = new(_user, ref _accounts);
+                accountsPresenter.Show();
+                FrmAccounts frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
                 frmAccounts.FormBorderStyle = FormBorderStyle.None;
                 View.AddControl(frmAccounts);
             }

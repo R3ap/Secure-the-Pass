@@ -30,9 +30,9 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         /// </summary>
         private void InitializeComponent()
         {
-            this.PnlActions = new Password_Manager_.NET_6.Controls.DerivableFlowLayoutPanel();
-            this.PnlActionsBase = new Password_Manager_.NET_6.Controls.DerivableFlowLayoutPanel();
-            this.PnlActionsExtension = new Password_Manager_.NET_6.Controls.DerivableFlowLayoutPanel();
+            this.PnlActions = new Password_Manager_.NET_6.UI.Controls.DerivableFlowLayoutPanel();
+            this.PnlActionsBase = new Password_Manager_.NET_6.UI.Controls.DerivableFlowLayoutPanel();
+            this.PnlActionsExtension = new Password_Manager_.NET_6.UI.Controls.DerivableFlowLayoutPanel();
             this.PnlContent = new System.Windows.Forms.Panel();
             this.PnlActions.SuspendLayout();
             this.SuspendLayout();

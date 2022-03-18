@@ -1,6 +1,6 @@
-﻿using Service_Core.Model;
+﻿using Services_Core.Model;
 
-namespace Service_Core.Services.UserServices
+namespace Services_Core.Services.UserServices
 {
     public interface IUserService
     {

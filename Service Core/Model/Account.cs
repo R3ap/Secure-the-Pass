@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Service_Core.Model
+namespace Services_Core.Model
 {
     public class Account
     {
