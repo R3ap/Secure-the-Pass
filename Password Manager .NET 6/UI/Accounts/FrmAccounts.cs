@@ -1,6 +1,4 @@
 ﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using Password_Manager_.NET_6.UI.Accounts;
 using Services_Core.Model;
 
@@ -10,17 +8,18 @@ namespace Password_Manager_.NET_6
     {
         public Action GetAccounts { get; set; }
         public Action<string> Search { get; set; }
-        
+        public Action<int> ShowDetailsAccount { get; set; }
+        public Action<string> OpenBrowser { get; set; }
+        public Action<int> IndexClicked { get; set; }
+
         public FrmAccounts()
         {
             InitializeComponent();
-           
         }
 
         private void FrmDashbord_Load(object? sender, EventArgs? e)
         {
             SetGridProperty();
-            GetAccounts?.Invoke();
             Dock = DockStyle.Fill;
             TopLevel = false;
             TopMost = true;
@@ -33,6 +32,7 @@ namespace Password_Manager_.NET_6
 
         public void SetGridProperty()
         {
+            GetAccounts?.Invoke();
             AccGrid.RowHeadersVisible = false;
             AccGrid.AutoGenerateColumns = true;
             AccGrid.AllowUserToResizeColumns = false;
@@ -58,6 +58,8 @@ namespace Password_Manager_.NET_6
             {
                 return;
             }
+
+            ShowDetailsAccount?.Invoke(e.RowIndex);
         }
 
         private void AccGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -67,7 +69,7 @@ namespace Password_Manager_.NET_6
                 return;
             }
 
-
+            IndexClicked?.Invoke(e.RowIndex);
         }
         
         public void SetSelectedRow(int rowIndex)
@@ -93,23 +95,7 @@ namespace Password_Manager_.NET_6
         {
             if (AccGrid[e.ColumnIndex, e.RowIndex] is DataGridViewLinkCell)
             {
-                OpenBrowser(AccGrid[e.ColumnIndex, e.RowIndex].Value.ToString());
-            }
-        }
-
-        public static void OpenBrowser(string url)
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Process.Start("xdg-open", url);
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Process.Start("open", url);
+                OpenBrowser?.Invoke(AccGrid[e.ColumnIndex, e.RowIndex].Value.ToString());
             }
         }
     }

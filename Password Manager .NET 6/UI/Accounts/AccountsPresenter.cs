@@ -4,6 +4,8 @@ using Services_Core.Extensions;
 using Services_Core.Model;
 using System.Reflection;
 using Password_Manager_.NET_6.UI.EditAccount;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace Password_Manager_.NET_6.UI.Accounts
 {
@@ -20,17 +22,36 @@ namespace Password_Manager_.NET_6.UI.Accounts
             _user = user;
             _accounts = accounts;
             View.Search = Search;
+            View.GetAccounts = SetAccounts;
+            View.ShowDetailsAccount = EditAccountPresenter;
+            View.OpenBrowser = OpenBrowser;
+            View.IndexClicked = SetCopyToClipboard;
         }
 
         private void EditAccountPresenter(int rowIndex)
         {
             if (rowIndex >= 0)
             {
-                SetAccounts();
                 EditAccPresenter frmEditAcc = new(_accounts[rowIndex]);
                 frmEditAcc.UpdateAcc += UpdateAcc;
                 frmEditAcc.ShowDialog();
                 View.SetGridProperty();
+            }
+        }
+
+        public static void OpenBrowser(string url)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Process.Start("xdg-open", url);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Process.Start("open", url);
             }
         }
 
@@ -48,7 +69,7 @@ namespace Password_Manager_.NET_6.UI.Accounts
 
         private void Search(string search)
         {
-            if (_accounts.Any() && search != "Filter")
+            if (_accounts.Any())
             {
                 List<Account> accounts = new();
                 switch (Properties.Settings.Default.Filter)
@@ -71,13 +92,11 @@ namespace Password_Manager_.NET_6.UI.Accounts
                         _notifyIcon.ShowBalloonTip(1000, "Filter Invaild", $"There is no Filter Like this: {Properties.Settings.Default.Filter}", ToolTipIcon.Error);
                         break;
                 }
-                if (accounts.Any())
-                {
-                    View.SetDataSource(accounts);
-                }
+
+                View.SetDataSource(accounts);
             }
         }
-        
+
         private void SetCopyToClipboard(int rowIndex)
         {
             try

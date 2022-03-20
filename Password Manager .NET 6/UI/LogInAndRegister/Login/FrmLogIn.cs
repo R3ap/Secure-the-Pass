@@ -18,8 +18,6 @@ namespace Password_Manager_.NET_6.UI.LogIn
         public FrmLogIn()
         {
             InitializeComponent();
-            TxtEmail.PlaceholderText = "Email";
-            txtPassword.PlaceholderText = "Password";
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -42,7 +40,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
             frmForgotPW.ShowDialog();
         }
 
-        private void CtrlLogIn_Load(object sender, EventArgs e)
+        private void FrmLogIn_Load(object sender, EventArgs e)
         {
             try
             {

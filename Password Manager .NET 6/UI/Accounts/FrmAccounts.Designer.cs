@@ -34,9 +34,9 @@ namespace Password_Manager_.NET_6
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.AccGrid = new System.Windows.Forms.DataGridView();
             this.PnlBorderAccGrid = new System.Windows.Forms.Panel();
+            this.txtSearch = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -55,26 +55,9 @@ namespace Password_Manager_.NET_6
             // 
             // PnlContent
             // 
-            this.PnlContent.Controls.Add(this.PnlBorderAccGrid);
             this.PnlContent.Controls.Add(this.txtSearch);
+            this.PnlContent.Controls.Add(this.PnlBorderAccGrid);
             this.PnlContent.Size = new System.Drawing.Size(831, 549);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txtSearch.Location = new System.Drawing.Point(561, 72);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Filter";
-            this.txtSearch.Size = new System.Drawing.Size(251, 22);
-            this.txtSearch.TabIndex = 19;
-            this.txtSearch.TabStop = false;
-            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // AccGrid
             // 
@@ -156,6 +139,26 @@ namespace Password_Manager_.NET_6
             this.PnlBorderAccGrid.Size = new System.Drawing.Size(800, 426);
             this.PnlBorderAccGrid.TabIndex = 20;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.txtSearch.BorderFocusColor = System.Drawing.SystemColors.Highlight;
+            this.txtSearch.BorderSize = 2;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSearch.Location = new System.Drawing.Point(560, 58);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Multiline = false;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(7);
+            this.txtSearch.UseSystemPasswordChar = false;
+            this.txtSearch.PlaceholderText = "";
+            this.txtSearch.Size = new System.Drawing.Size(250, 35);
+            this.txtSearch.TabIndex = 21;
+            this.txtSearch.UnderlinedStyle = true;
+            // 
             // FrmAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -172,7 +175,6 @@ namespace Password_Manager_.NET_6
             this.PnlActionsBase.ResumeLayout(false);
             this.PnlActionsBase.PerformLayout();
             this.PnlContent.ResumeLayout(false);
-            this.PnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).EndInit();
             this.PnlBorderAccGrid.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -181,12 +183,12 @@ namespace Password_Manager_.NET_6
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView AccGrid;
         private Panel PnlBorderAccGrid;
         private DataGridViewLinkColumn Website;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn Password;
+        private UI.Controls.PasswordManagerTextBox txtSearch;
     }
 }

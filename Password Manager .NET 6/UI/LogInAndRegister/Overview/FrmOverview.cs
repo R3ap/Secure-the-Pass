@@ -7,7 +7,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
     {
         public Action SetMainControl { get; set; }
         private Size DefaultLoginSize = new(570, 261);
-        private Size DefaultRegisterSize = new(570, 297);
+        private Size DefaultRegisterSize = new(570, 310);
 
         public FrmOverview()
         {

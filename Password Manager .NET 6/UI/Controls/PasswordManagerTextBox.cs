@@ -1,26 +1,34 @@
 ﻿using System.ComponentModel;
 
-namespace CustomControls.RJControls
+namespace Password_Manager_.NET_6.UI.Controls
 {
     [DefaultEvent(nameof(_TextChanged))]
-    public partial class PasswordTextBox : UserControl
+    public partial class PasswordManagerTextBox : UserControl
     {
-        //Fields
+        #region Field
         private Color borderColor = Color.FromArgb(158, 161, 176);
         private int borderSize = 2;
-        private bool underlinedStyle = false;
+        private bool underlinedStyle = true;
         private Color borderFocusColor = SystemColors.Highlight;
         private bool isFocused = false;
-        //Constructor
-        public PasswordTextBox()
+        #endregion
+
+        #region Constructor 
+        public PasswordManagerTextBox()
         {
             InitializeComponent();
+            BackColor = Color.FromArgb(24, 30, 54);
+
+            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
         }
+        #endregion
 
-        //Events
+        #region Events
         public event EventHandler _TextChanged;
+        #endregion
 
-        //Properties
+        #region Properties
         [Category("Generally")]
         public Color BorderColor
         {
@@ -31,6 +39,7 @@ namespace CustomControls.RJControls
                 this.Invalidate();
             }
         }
+
         [Category("Generally")]
         public int BorderSize
         {
@@ -54,7 +63,7 @@ namespace CustomControls.RJControls
         }
 
         [Category("Generally")]
-        public bool PasswordChar
+        public bool UseSystemPasswordChar
         {
             get { return textBox1.UseSystemPasswordChar; }
             set { textBox1.UseSystemPasswordChar = value; }
@@ -74,6 +83,7 @@ namespace CustomControls.RJControls
             set { textBox1.Multiline = value; }
         }
 
+        [DefaultValue(typeof(Color), "0x181E36")]
         [Category("Generally")]
         public override Color BackColor
         {
@@ -124,7 +134,9 @@ namespace CustomControls.RJControls
             set { borderFocusColor = value; }
         }
 
-        //Overridden methods
+        #endregion
+
+        #region Overridden methods
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -157,7 +169,9 @@ namespace CustomControls.RJControls
             UpdateControlHeight();
         }
 
-        //Private methods
+        #endregion
+
+        #region Private methods
         private void UpdateControlHeight()
         {
             if (textBox1.Multiline == false)
@@ -171,7 +185,7 @@ namespace CustomControls.RJControls
             }
         }
 
-        //TextBox events
+        #region TextBox events
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (_TextChanged != null)
@@ -209,5 +223,7 @@ namespace CustomControls.RJControls
             isFocused = false;
             this.Invalidate();
         }
+        #endregion
+        #endregion
     }
 }

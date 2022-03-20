@@ -20,8 +20,8 @@ namespace Password_Manager_.NET_6
             catch (Exception ex)
             {
                 ErrorHandlerPresenter error = new();
-                error.ShowDialog();
                 error.SetErrorMessage(ex);
+                error.ShowDialog();
             }
         }
     }

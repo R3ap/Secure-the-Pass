@@ -7,10 +7,10 @@ namespace Password_Manager_.NET_6.UI.LogIn
     {
         public Func<bool> Register { get; set; }
 
-        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
-        public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
-        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
-        public string PasswordConfirm { get => txtConfirm.Text; set => txtConfirm.Text = value; }
+        public string Email { get => TxtEmail.Text; set => TxtEmail.Text = value; }
+        public string Username { get => TxtUsername.Text; set => TxtUsername.Text = value; }
+        public string Password { get => TxtPassword.Text; set => TxtPassword.Text = value; }
+        public string PasswordConfirm { get => TxtConfirm.Text; set => TxtConfirm.Text = value; }
 
         public FrmRegister()
         {
@@ -24,22 +24,22 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         public void SetErrorPassword(string errorMessage)
         {
-            PassProvider.SetError(btnEyePassword, errorMessage);
+            PassProvider.SetError(TxtPassword, errorMessage);
         }
 
         public void SetErrorEmail(string errorMessage)
         {
-            PassProvider.SetError(txtEmail, errorMessage);
+            PassProvider.SetError(TxtEmail, errorMessage);
         }
 
         public void SetErrorUsername(string errorMessage)
         {
-            PassProvider.SetError(txtUsername, errorMessage);
+            PassProvider.SetError(TxtUsername, errorMessage);
         }
 
         public void SetErrorPasswordConfirm(string errorMessage)
         {
-            PassProvider.SetError(btnEyeConfirm, errorMessage);
+            PassProvider.SetError(TxtConfirm, errorMessage);
         }
 
         private void txtConfirm_KeyDown(object sender, KeyEventArgs e)
@@ -48,26 +48,6 @@ namespace Password_Manager_.NET_6.UI.LogIn
             {
                 Register?.Invoke();
             }
-        }
-
-        private void btnEyePassword_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtPassword.PasswordChar = '\0';
-        }
-
-        private void btnEyePassword_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtPassword.PasswordChar = '•';
-        }
-
-        private void btnEyeConfirm_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtConfirm.PasswordChar = '\0';
-        }
-
-        private void btnEyeConfirm_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtConfirm.PasswordChar = '•';
         }
 
         private void FrmRegister_Load(object sender, EventArgs e)
