@@ -1,10 +1,14 @@
-﻿using Password_Manager_.NET_6.Tasks;
+﻿using Microsoft.VisualBasic.Logging;
+using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.Menü;
-using Services_Core.Extensions;
-using Services_Core.Model;
-using Services_Core.Services.UserServices;
+using Password_Manager_Services_Core.Extensions;
+using Password_Manager_Services_Core.Model;
+using Password_Manager_Services_Core.Services.UserServices;
+using System.Diagnostics;
+using System.Globalization;
+using System.Management;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
@@ -13,18 +17,20 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
     {
         private User _user;
         private List<Account> _accounts;
-        private readonly IUserService _database = new UserService();
-        public LogInPresenter() : base(new FrmLogIn()) 
+        private readonly IUserService _userService = new UserService();
+        public LogInPresenter() : base(new FrmLogIn())
         {
             View.OnAcceptClick = LogIn;
             View.LoginByRememberMe = LoginByRememberMe;
+            Log log = new("Password Manager logs");
+            log.WriteEntry("Log message example", TraceEventType.Information, 1);
         }
 
         private void LoginByRememberMe()
         {
             if (!string.IsNullOrEmpty(settings.Settings.Default.Email))
             {
-                IList<User> users = _database.SelectUsers();
+                IList<User> users = _userService.SelectUsers();
                 Application.OpenForms[nameof(FrmOverview)].Hide();
                 Application.OpenForms[nameof(FrmOverview)].Close();
                 if (GetTaskResult(users.First(x => x.Email == settings.Settings.Default.Email)))
@@ -35,33 +41,31 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
             }
         }
 
-        private bool GetTaskResult(User user)
+        private DateTime GetLastAppStartup()
         {
-            InizializeTask inizializeTask = new();
-            _user = inizializeTask.InitializeUser(user).Result;
-            _accounts = inizializeTask.InitializeAccounts().Result.ToList();
-            DialogResult dialogResult = DialogResult.None;
-            if (_user == null)
-            {
-                dialogResult = MessageBox.Show("This Task Initialize User", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (_accounts == null)
-            {
-                dialogResult = MessageBox.Show("This Task Initialize Accounts", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (dialogResult == DialogResult.OK)
-            {
-                return false;
-            }
-
-            return true;
+            var lastAppStartup = File.ReadAllText("lastbootuptime.txt");
+            return DateTime.ParseExact(lastAppStartup, "yyyy-MM-dd hh:mm:ss", CultureInfo.InvariantCulture);
         }
+
+        private DateTime GetLastBootUpTime()
+        {
+            var query = new SelectQuery(@"SELECT * FROM Win32_OperatingSystem");
+            var searcher = new ManagementObjectSearcher(query);
+            var result = DateTime.Now;
+
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                result = ManagementDateTimeConverter
+                            .ToDateTime(mo.Properties["LastBootUpTime"].Value.ToString());
+            }
+
+            return result;
+        }
+
 
         public bool LogIn()
         {
-            IList<User> users = _database.SelectUsers();
+            IList<User> users = _userService.SelectUsers();
             if (users.Any(x => x.Email == View.Email.GetEncryptString()) && View.Password.Verify(users.First(x => x.Email == View.Email.GetEncryptString()).Password))
             {
                 if (GetTaskResult(users.First(x => x.Email == View.Email.GetEncryptString())))
@@ -92,6 +96,30 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
                 View.InvalidData();
                 return false;
             }
+        }
+
+        private bool GetTaskResult(User user)
+        {
+            InizializeTask inizializeTask = new();
+            _user = inizializeTask.InitializeUser(user).Result;
+            _accounts = inizializeTask.InitializeAccounts().Result.ToList();
+            DialogResult dialogResult = DialogResult.None;
+            if (_user == null)
+            {
+                dialogResult = MessageBox.Show("This Task Initialize User", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (_accounts == null)
+            {
+                dialogResult = MessageBox.Show("This Task Initialize Accounts", "Task Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (dialogResult == DialogResult.OK)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

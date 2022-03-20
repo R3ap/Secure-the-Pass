@@ -1,6 +1,6 @@
 ﻿using Password_Manager_.NET_6.UI.Settings;
 using Password_Manager_.NET_6.UI.BaseDialog;
-using Services_Core.Extensions;
+using Password_Manager_Services_Core.Extensions;
 
 namespace Password_Manager_.NET_6
 {

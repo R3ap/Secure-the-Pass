@@ -1,9 +1,9 @@
 ﻿using properties = Password_Manager_.NET_6.Properties;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
-using Services_Core.Services.AccountService;
-using Services_Core.Model;
-using Services_Core.Services.UserServices;
+using Password_Manager_Services_Core.Services.AccountService;
+using Password_Manager_Services_Core.Services.UserServices;
+using Password_Manager_Services_Core.Model;
 
 namespace Password_Manager_.NET_6.UI.Settings
 {

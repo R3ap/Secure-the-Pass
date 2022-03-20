@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Services_Core.Extensions
+namespace Password_Manager_Services_Core.Extensions
 {
     public static class SecurePasswordHasherExtension
     {

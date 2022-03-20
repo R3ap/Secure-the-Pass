@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Services_Core.Context;
-using Services_Core.Extensions;
-using Services_Core.Model;
+using Password_Manager_Services_Core.Extensions;
+using Password_Manager_Services_Core.Model;
+using Password_Manager_Services_Core.Context;
 
-namespace Services_Core.Services.AccountService
+namespace Password_Manager_Services_Core.Services.AccountService
 {
     public class AccountService : IAccountService
     {

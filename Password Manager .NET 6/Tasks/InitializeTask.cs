@@ -1,6 +1,7 @@
-﻿using Services_Core.Extensions;
-using Services_Core.Model;
-using Services_Core.Services.AccountService;
+﻿using Password_Manager_Services_Core.Extensions;
+using Password_Manager_Services_Core.Model;
+using Password_Manager_Services_Core.Services.AccountService;
+using Password_Manager_Services_Core.Services.AccountService;
 
 namespace Password_Manager_.NET_6.Tasks
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Services_Core.Model;
+using Password_Manager_Services_Core.Model;
 
-namespace Services_Core.Context
+namespace Password_Manager_Services_Core.Context
 {
     class PMContext : DbContext
     {

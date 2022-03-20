@@ -1,6 +1,6 @@
-﻿using Services_Core.Model;
+﻿using Password_Manager_Services_Core.Model;
 
-namespace Services_Core.Services.AccountService
+namespace Password_Manager_Services_Core.Services.AccountService
 {
     public interface IAccountService
     {

@@ -2,9 +2,9 @@
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
 using Password_Manager_.NET_6.UI.Menü;
-using Services_Core.Extensions;
-using Services_Core.Model;
-using Services_Core.Services.UserServices;
+using Password_Manager_Services_Core.Extensions;
+using Password_Manager_Services_Core.Model;
+using Password_Manager_Services_Core.Services.UserServices;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
 {

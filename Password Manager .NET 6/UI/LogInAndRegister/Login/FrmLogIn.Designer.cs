@@ -75,24 +75,23 @@
             // 
             // ChkRememberMe
             // 
-            this.ChkRememberMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ChkRememberMe.AutoSize = true;
             this.ChkRememberMe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ChkRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.ChkRememberMe.Location = new System.Drawing.Point(237, 134);
+            this.ChkRememberMe.Location = new System.Drawing.Point(203, 137);
             this.ChkRememberMe.Margin = new System.Windows.Forms.Padding(4);
             this.ChkRememberMe.Name = "ChkRememberMe";
-            this.ChkRememberMe.Size = new System.Drawing.Size(140, 25);
+            this.ChkRememberMe.Size = new System.Drawing.Size(139, 28);
             this.ChkRememberMe.TabIndex = 35;
             this.ChkRememberMe.Text = "Remember Me";
+            this.ChkRememberMe.UseCompatibleTextRendering = true;
             this.ChkRememberMe.UseVisualStyleBackColor = true;
             // 
             // lbllForgotPassword
             // 
             this.lbllForgotPassword.AutoSize = true;
             this.lbllForgotPassword.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.lbllForgotPassword.Location = new System.Drawing.Point(34, 135);
+            this.lbllForgotPassword.Location = new System.Drawing.Point(13, 138);
             this.lbllForgotPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbllForgotPassword.Name = "lbllForgotPassword";
             this.lbllForgotPassword.Size = new System.Drawing.Size(169, 21);
@@ -115,13 +114,14 @@
             this.TxtEmail.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtEmail.BorderSize = 2;
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TxtEmail.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TxtEmail.Location = new System.Drawing.Point(34, 45);
+            this.TxtEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.TxtEmail.Location = new System.Drawing.Point(13, 33);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.TxtEmail.Multiline = false;
             this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Padding = new System.Windows.Forms.Padding(7);
             this.TxtEmail.PlaceholderText = "Email";
-            this.TxtEmail.Size = new System.Drawing.Size(343, 29);
+            this.TxtEmail.Size = new System.Drawing.Size(387, 36);
             this.TxtEmail.TabIndex = 36;
             this.TxtEmail.UnderlinedStyle = true;
             this.TxtEmail.UseSystemPasswordChar = false;
@@ -134,13 +134,14 @@
             this.txtPassword.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.txtPassword.BorderSize = 2;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPassword.Location = new System.Drawing.Point(34, 95);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPassword.Location = new System.Drawing.Point(13, 90);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Padding = new System.Windows.Forms.Padding(7);
             this.txtPassword.PlaceholderText = "Password";
-            this.txtPassword.Size = new System.Drawing.Size(343, 29);
+            this.txtPassword.Size = new System.Drawing.Size(387, 36);
             this.txtPassword.TabIndex = 37;
             this.txtPassword.UnderlinedStyle = true;
             this.txtPassword.UseSystemPasswordChar = true;

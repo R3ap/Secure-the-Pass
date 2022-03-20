@@ -1,11 +1,11 @@
 ﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Services_Core.Services.AccountService;
-using Services_Core.Extensions;
-using Services_Core.Model;
+using Password_Manager_Services_Core.Services.AccountService;
 using System.Reflection;
 using Password_Manager_.NET_6.UI.EditAccount;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using Password_Manager_Services_Core.Extensions;
+using Password_Manager_Services_Core.Model;
 
 namespace Password_Manager_.NET_6.UI.Accounts
 {

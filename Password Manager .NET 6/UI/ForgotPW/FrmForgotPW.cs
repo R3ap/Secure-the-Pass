@@ -1,4 +1,4 @@
-﻿using Services_Core.Services.UserServices;
+﻿using Password_Manager_Services_Core.Services.UserServices;
 using System.Net;
 using System.Net.Mail;
 

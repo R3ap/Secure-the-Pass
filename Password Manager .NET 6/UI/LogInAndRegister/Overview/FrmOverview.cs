@@ -16,7 +16,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         public void SetFormSize(bool IsLogin)
         {
-            Size =  IsLogin? DefaultLoginSize : DefaultRegisterSize;
+            Size =  IsLogin ? DefaultLoginSize : DefaultRegisterSize;
         }
 
         private void FrmLogIn_Load(object sender, EventArgs e)

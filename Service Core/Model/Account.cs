@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Services_Core.Model
+namespace Password_Manager_Services_Core.Model
 {
     public class Account
     {
