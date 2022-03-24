@@ -1,9 +1,9 @@
-﻿using settings = Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Login;
-using Password_Manager_.NET_6.UI.ErrorHandler;
+﻿using settings = Secure_The_Pass.Properties;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.ErrorHandler;
+using Secure_The_Pass.UI.ForgotPW;
 
-namespace Password_Manager_.NET_6.UI.LogIn
+namespace Secure_The_Pass.UI.LogInAndRegister.Login
 {
     public partial class FrmLogIn : FrmBaseDialog, ILogIn
     {

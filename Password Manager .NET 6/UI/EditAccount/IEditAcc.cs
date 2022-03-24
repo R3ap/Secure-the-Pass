@@ -1,6 +1,6 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
+﻿using Secure_The_Pass.UI.BaseDialog;
 
-namespace Password_Manager_.NET_6.UI.EditAccount
+namespace Secure_The_Pass.UI.EditAccount
 {
     public interface IEditAcc : IBaseDialogTitelBar
     {

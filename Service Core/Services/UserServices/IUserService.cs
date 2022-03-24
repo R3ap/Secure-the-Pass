@@ -1,6 +1,6 @@
-﻿using Password_Manager_Services_Core.Model;
+﻿using Secure_The_Pass_Services_Core.Model;
 
-namespace Password_Manager_Services_Core.Services.UserServices
+namespace Secure_The_Pass_Services_Core.Services.UserServices
 {
     public interface IUserService
     {

@@ -1,9 +1,7 @@
-﻿using Password_Manager_Services_Core.Extensions;
+﻿using Secure_The_Pass_Services_Core.Extensions;
 using System.ComponentModel;
-using System.Linq.Expressions;
-using System.Reflection;
 
-namespace Password_Manager_.NET_6.UI.Controls
+namespace Secure_The_Pass.UI.Controls
 {
     [DefaultEvent(nameof(_TextChanged))]
     public partial class PasswordManagerTextBox : UserControl

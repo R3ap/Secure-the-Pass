@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.Properties;
+﻿using Secure_The_Pass.Properties;
 using System.ComponentModel;
 
-namespace Password_Manager_.NET_6.UI.BaseDialog
+namespace Secure_The_Pass.UI.BaseDialog
 {
     public partial class FrmBaseDialogTitelBar : FrmBaseDialog, IBaseDialogTitelBar
     {
@@ -32,7 +32,7 @@ namespace Password_Manager_.NET_6.UI.BaseDialog
         [Category("Appearace")]
         [DefaultValue("Titel")]
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public string Titel { get => lblTitel.Text; set => lblTitel.Text = Text = $"Password Manager | {value}"; }
+        public string Titel { get => lblTitel.Text; set => lblTitel.Text = Text = $"Secure the Pass••• | {value}"; }
 
         [Description("Set MaximizeBox to Visible")]
         [Category("Appearace")]

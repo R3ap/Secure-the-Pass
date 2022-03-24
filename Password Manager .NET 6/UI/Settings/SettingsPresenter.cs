@@ -1,11 +1,14 @@
-﻿using properties = Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
-using Password_Manager_Services_Core.Services.AccountService;
-using Password_Manager_Services_Core.Services.UserServices;
-using Password_Manager_Services_Core.Model;
+﻿using properties = Secure_The_Pass.Properties;
+using Secure_The_Pass_Services_Core.Services.UserServices;
+using Password_Manager_.NET_6;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.LogInAndRegister.Overview;
+using Secure_The_Pass_Services_Core.Services.UserServices;
+using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass.UI.Menü;
 
-namespace Password_Manager_.NET_6.UI.Settings
+namespace Secure_The_Pass.UI.Settings
 {
     public class SettingsPresenter : BaseDialogPresenter<ISettings>
     {
@@ -13,14 +16,14 @@ namespace Password_Manager_.NET_6.UI.Settings
         private readonly IAccountService _accountService = new AccountService();
         private User _user;
         private List<Account> _accounts;
-        
+
         public SettingsPresenter(ref User user, ref List<Account> accounts) : base(new FrmSettings())
         {
             _user = user;
             _accounts = accounts;
             View.OnAcceptClick = Save;
-            View.AddButtonAction(new ButtonAction() { Action = CleanAccountClick, Name = "BtnCleanAccount", Text = "Clean Account"});
-            View.AddButtonAction(new ButtonAction() { Action = DeleteUserClick, Name = "BtnDeleteUser", Text = "Delete Account"});
+            View.AddButtonAction(new ButtonAction() { Action = CleanAccountClick, Name = "BtnCleanAccount", Text = "Clean Account" });
+            View.AddButtonAction(new ButtonAction() { Action = DeleteUserClick, Name = "BtnDeleteUser", Text = "Delete Account" });
             View.AddButtonAction(new ButtonAction() { Action = SignOutClick, Name = "BtnSignOut", Text = "Sign out" });
             View.SetFilter(properties.Settings.Default.Filter);
             View.ShowPass = properties.Settings.Default.ShowPass;

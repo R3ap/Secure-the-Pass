@@ -1,11 +1,12 @@
-﻿using Password_Manager_.NET_6.UI.Accounts;
-using Password_Manager_.NET_6.UI.AddAccount;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.ErrorHandler;
-using Password_Manager_.NET_6.UI.Settings;
-using Password_Manager_Services_Core.Model;
+﻿using Password_Manager_.NET_6;
+using Secure_The_Pass.UI.Accounts;
+using Secure_The_Pass.UI.AddAccount;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.ErrorHandler;
+using Secure_The_Pass.UI.Settings;
+using Secure_The_Pass_Services_Core.Model;
 
-namespace Password_Manager_.NET_6.UI.Menü
+namespace Secure_The_Pass.UI.Menü
 {
     public class MenüPresenter : BaseTitelBarPresenter<IMenü>
     {

@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
+﻿using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.LogInAndRegister.Overview;
 
-namespace Password_Manager_.NET_6.UI.LogIn
+namespace Secure_The_Pass.UI.LogInAndRegister.Overview
 {
     public partial class FrmOverview : FrmBaseDialogTitelBar, IOverview
     {

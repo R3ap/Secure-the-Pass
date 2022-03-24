@@ -1,13 +1,14 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_Services_Core.Services.AccountService;
-using System.Reflection;
-using Password_Manager_.NET_6.UI.EditAccount;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
+using Password_Manager_.NET_6;
+using Secure_The_Pass.UI.EditAccount;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass_Services_Core.Extensions;
 
-namespace Password_Manager_.NET_6.UI.Accounts
+namespace Secure_The_Pass.UI.Accounts
 {
     public class AccountsPresenter : BaseDialogPresenter<IAccounts>
     {

@@ -1,4 +1,5 @@
-﻿
+﻿using Secure_The_Pass.UI.BaseDialog;
+
 namespace Password_Manager_.NET_6
 {
     partial class FrmAccounts
@@ -36,7 +37,7 @@ namespace Password_Manager_.NET_6
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AccGrid = new System.Windows.Forms.DataGridView();
             this.PnlBorderAccGrid = new System.Windows.Forms.Panel();
-            this.txtSearch = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
+            this.txtSearch = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -168,7 +169,7 @@ namespace Password_Manager_.NET_6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(831, 549);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
+            this.DialogType = enumDialogType.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmAccounts";
             this.Text = "FrmDashboard";
@@ -192,6 +193,6 @@ namespace Password_Manager_.NET_6
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn Password;
-        private UI.Controls.PasswordManagerTextBox txtSearch;
+        private Secure_The_Pass.UI.Controls.PasswordManagerTextBox txtSearch;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Password_Manager_.NET_6.UI.LogIn
+﻿using Secure_The_Pass.UI.BaseDialog;
+
+namespace Secure_The_Pass.UI.LogInAndRegister.Overview
 {
     partial class FrmOverview
     {
@@ -70,7 +72,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(629, 325);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.OkAndAbort;
+            this.DialogType = enumDialogType.OkAndAbort;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsSizable = false;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

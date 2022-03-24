@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
-using Password_Manager_Services_Core.Services.AccountService;
-using Password_Manager_Services_Core.Context;
+using Secure_The_Pass_Services_Core.Context;
+using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass_Services_Core.Extensions;
 
-namespace Password_Manager_Services_Core.Services.UserServices
+namespace Secure_The_Pass_Services_Core.Services.UserServices
 {
     public class UserService : IUserService
     {

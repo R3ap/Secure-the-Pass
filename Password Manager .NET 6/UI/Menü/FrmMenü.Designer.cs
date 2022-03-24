@@ -1,5 +1,4 @@
-﻿
-namespace Password_Manager_.NET_6
+﻿namespace Secure_The_Pass.UI.Menü
 {
     partial class FrmMenü
     {
@@ -117,7 +116,7 @@ namespace Password_Manager_.NET_6
             this.btnNewAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewAcc.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNewAcc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnNewAcc.Image = global::Password_Manager_.NET_6.Properties.Resources.icons8_add_24px;
+            this.btnNewAcc.Image = global::Secure_The_Pass.Properties.Resources.icons8_add_24px;
             this.btnNewAcc.Location = new System.Drawing.Point(0, 48);
             this.btnNewAcc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNewAcc.Name = "btnNewAcc";
@@ -136,7 +135,7 @@ namespace Password_Manager_.NET_6
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnSettings.Image = global::Password_Manager_.NET_6.Properties.Resources.settings;
+            this.btnSettings.Image = global::Secure_The_Pass.Properties.Resources.settings;
             this.btnSettings.Location = new System.Drawing.Point(0, 330);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSettings.Name = "btnSettings";
@@ -155,7 +154,7 @@ namespace Password_Manager_.NET_6
             this.btnAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccounts.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAccounts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnAccounts.Image = global::Password_Manager_.NET_6.Properties.Resources.home;
+            this.btnAccounts.Image = global::Secure_The_Pass.Properties.Resources.home;
             this.btnAccounts.Location = new System.Drawing.Point(0, 0);
             this.btnAccounts.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAccounts.Name = "btnAccounts";
@@ -181,7 +180,7 @@ namespace Password_Manager_.NET_6
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Password_Manager_.NET_6.Properties.Resources.Untitled_111;
+            this.pictureBox2.Image = global::Secure_The_Pass.Properties.Resources.Untitled_111;
             this.pictureBox2.Location = new System.Drawing.Point(39, 19);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(147, 137);
@@ -203,7 +202,7 @@ namespace Password_Manager_.NET_6
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Password_Manager_.NET_6.Properties.Resources.Untitled_111;
+            this.pictureBox1.Image = global::Secure_The_Pass.Properties.Resources.Untitled_111;
             this.pictureBox1.Location = new System.Drawing.Point(63, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";

@@ -1,12 +1,13 @@
-﻿using Password_Manager_.NET_6.Tasks;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogIn;
-using Password_Manager_.NET_6.UI.Menü;
-using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
-using Password_Manager_Services_Core.Services.UserServices;
+﻿using Secure_The_Pass.UI.LogInAndRegister.Login;
+using Secure_The_Pass_Services_Core.Services.UserServices;
+using Secure_The_Pass.Tasks;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.Menü;
+using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass.UI.LogInAndRegister.Overview;
 
-namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
+namespace Secure_The_Pass.UI.LogInAndRegister.Register
 {
     public class RegisterPresenter : BaseDialogPresenter<IRegister>
     {
@@ -35,10 +36,16 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
                 }
                 else
                 {
-                    User user = new() { ID = _userService
+                    User user = new()
+                    {
+                        ID = _userService
                                             .SelectUsers()
                                             .OrderByDescending(x => x.ID)
-                                            .First().ID + 1, Email = View.Email.GetEncryptString(), Username = View.Username.GetEncryptString(), Password = View.Password.GetEncryptString() };
+                                            .First().ID + 1,
+                        Email = View.Email.GetEncryptString(),
+                        Username = View.Username.GetEncryptString(),
+                        Password = View.Password.GetEncryptString()
+                    };
                     bool IsTaskSuccess = GetTaskResult(user);
                     if (IsTaskSuccess)
                     {

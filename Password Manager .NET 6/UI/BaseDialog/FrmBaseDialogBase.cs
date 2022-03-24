@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Password_Manager_.NET_6.UI.BaseDialog
+namespace Secure_The_Pass.UI.BaseDialog
 {
     public abstract partial class FrmBaseDialogBase : Form, IBaseDialogBase
     {

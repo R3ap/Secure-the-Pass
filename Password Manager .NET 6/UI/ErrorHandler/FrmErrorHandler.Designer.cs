@@ -1,4 +1,6 @@
-﻿namespace Password_Manager_.NET_6.UI.ErrorHandler
+﻿using Secure_The_Pass.UI.BaseDialog;
+
+namespace Secure_The_Pass.UI.ErrorHandler
 {
     partial class FrmErrorHandler
     {
@@ -101,7 +103,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Password_Manager_.NET_6.Properties.Resources.failed;
+            this.pictureBox1.Image = global::Secure_The_Pass.Properties.Resources.failed;
             this.pictureBox1.Location = new System.Drawing.Point(34, 26);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(77, 76);
@@ -129,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 196);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.OkAndAbort;
+            this.DialogType = enumDialogType.OkAndAbort;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsSizable = false;
             this.Name = "FrmErrorHandler";

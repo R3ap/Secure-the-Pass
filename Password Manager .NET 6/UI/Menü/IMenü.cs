@@ -1,11 +1,11 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
+﻿using Secure_The_Pass.UI.BaseDialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Password_Manager_.NET_6.UI.Menü
+namespace Secure_The_Pass.UI.Menü
 {
     public interface IMenü : IBaseDialogTitelBar
     {

@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
+﻿using Secure_The_Pass.UI.BaseDialog;
 using System.Text;
 
-namespace Password_Manager_.NET_6.UI.ErrorHandler
+namespace Secure_The_Pass.UI.ErrorHandler
 {
     public class ErrorHandlerPresenter : BaseTitelBarPresenter<IErrorHandler>
     {

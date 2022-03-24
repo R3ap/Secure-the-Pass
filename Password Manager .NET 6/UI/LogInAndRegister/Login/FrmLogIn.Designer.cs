@@ -1,4 +1,6 @@
-﻿namespace Password_Manager_.NET_6.UI.LogIn
+﻿using Secure_The_Pass.UI.BaseDialog;
+
+namespace Secure_The_Pass.UI.LogInAndRegister.Login
 {
     partial class FrmLogIn
     {
@@ -30,8 +32,8 @@
         {
             this.ChkRememberMe = new System.Windows.Forms.CheckBox();
             this.lbllForgotPassword = new System.Windows.Forms.LinkLabel();
-            this.TxtEmail = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
-            this.txtPassword = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
+            this.TxtEmail = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.txtPassword = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -149,7 +151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(413, 187);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
+            this.DialogType = enumDialogType.None;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmLogIn";

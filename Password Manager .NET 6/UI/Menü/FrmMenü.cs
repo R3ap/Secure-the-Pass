@@ -1,8 +1,7 @@
-﻿using Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.Menü;
+﻿using properties = Secure_The_Pass.Properties;
+using Secure_The_Pass.UI.BaseDialog;
 
-namespace Password_Manager_.NET_6
+namespace Secure_The_Pass.UI.Menü
 {
     public partial class FrmMenü : FrmBaseDialogTitelBar, IMenü
     {
@@ -18,8 +17,8 @@ namespace Password_Manager_.NET_6
         private void FrmMenü_Load(object sender, EventArgs e)
         {
             ShowAccounts();
-            Size = Settings.Default.DefaultSize;
-            WindowState = Settings.Default.IsMaximize ? FormWindowState.Maximized : FormWindowState.Normal;
+            Size = properties.Settings.Default.DefaultSize;
+            WindowState = properties.Settings.Default.IsMaximize ? FormWindowState.Maximized : FormWindowState.Normal;
             CenterToParent();
             btnAccounts.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             btnNewAcc.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
@@ -74,12 +73,12 @@ namespace Password_Manager_.NET_6
 
         private void FrmMenü_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Settings.Default.IsMaximize = WindowState == FormWindowState.Maximized;
-            if (!Settings.Default.IsMaximize)
+            properties.Settings.Default.IsMaximize = WindowState == FormWindowState.Maximized;
+            if (!properties.Settings.Default.IsMaximize)
             {
-                Settings.Default.DefaultSize = Size;
+                properties.Settings.Default.DefaultSize = Size;
             }
-            Settings.Default.Save();
+            properties.Settings.Default.Save();
         }
     }
 }

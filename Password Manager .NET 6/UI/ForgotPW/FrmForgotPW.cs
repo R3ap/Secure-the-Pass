@@ -1,10 +1,12 @@
-﻿using Password_Manager_Services_Core.Services.UserServices;
+﻿using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass_Services_Core.Services.UserServices;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 
-namespace Password_Manager_.NET_6
+namespace Secure_The_Pass.UI.ForgotPW
 {
-    public partial class FrmForgotPW : Form
+    public partial class FrmForgotPW : FrmBaseDialogTitelBar
     {
         private readonly IUserService _userService = new UserService();
         private string randomcode;
@@ -13,6 +15,7 @@ namespace Password_Manager_.NET_6
         public FrmForgotPW()
         {
             InitializeComponent();
+            Titel = "Forgot Password";
         }
 
         private void FrmForgotPW_Load(object sender, EventArgs e)
@@ -25,7 +28,7 @@ namespace Password_Manager_.NET_6
         {
             string from, pass, messageBody;
             Random rnd = new();
-            randomcode = (rnd.Next(999999)).ToString();
+            randomcode = rnd.Next(999999).ToString();
             MailMessage mailMessage = new();
             to = txtEmail.Text;
             from = "davidvongarrel2@gmail.com";
@@ -41,7 +44,7 @@ namespace Password_Manager_.NET_6
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Credentials = new NetworkCredential(from, pass);
             notify.Visible = true;
-            notify.Icon = new Icon("C:\\Users\\David von Garrel\\Desktop\\Icons\\icons8_password_window.ico");
+            notify.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
             try
             {
                 smtp.Send(mailMessage);
@@ -62,14 +65,14 @@ namespace Password_Manager_.NET_6
             else
             {
                 notify.Visible = true;
-                notify.Icon = new Icon("C:\\Users\\David von Garrel\\Desktop\\Icons\\icons8_password_window.ico");
+                notify.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
                 notify.ShowBalloonTip(1000, "This Email don't Exist", "Please Sign up", ToolTipIcon.Error);
             }
         }
 
         private void ResetPWPropertie()
         {
-            label1.Text = "Reset Password";
+            Titel = "Reset Password";
             Size = new Size(419, 233);
             btnSend.Visible = false;
             lblCode.Text = "Password Confirm";
@@ -98,7 +101,7 @@ namespace Password_Manager_.NET_6
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            if (label1.Text == "Reset Password")
+            if (Titel == "Reset Password")
             {
                 ResetPw();
             }

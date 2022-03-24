@@ -1,4 +1,6 @@
-﻿namespace Password_Manager_.NET_6.UI.LogIn
+﻿using Secure_The_Pass.UI.BaseDialog;
+
+namespace Secure_The_Pass.UI.LogInAndRegister.Register
 {
     partial class FrmRegister
     {
@@ -28,10 +30,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TxtEmail = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
-            this.TxtUsername = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
-            this.TxtPassword = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
-            this.TxtConfirm = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
+            this.TxtEmail = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtUsername = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtPassword = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtConfirm = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -152,7 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(547, 247);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
+            this.DialogType = enumDialogType.None;
             this.Name = "FrmRegister";
             this.Load += new System.EventHandler(this.FrmRegister_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirm_KeyDown);

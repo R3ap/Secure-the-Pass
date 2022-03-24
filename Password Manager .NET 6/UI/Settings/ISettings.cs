@@ -1,6 +1,6 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
+﻿using Secure_The_Pass.UI.BaseDialog;
 
-namespace Password_Manager_.NET_6.UI.Settings
+namespace Secure_The_Pass.UI.Settings
 {
     public interface ISettings : IBaseDialogBase
     {

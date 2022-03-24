@@ -1,7 +1,6 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Register;
+﻿using Secure_The_Pass.UI.BaseDialog;
 
-namespace Password_Manager_.NET_6.UI.LogIn
+namespace Secure_The_Pass.UI.LogInAndRegister.Register
 {
     public partial class FrmRegister : FrmBaseDialog, IRegister
     {

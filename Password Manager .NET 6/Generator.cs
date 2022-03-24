@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.Properties;
+﻿using Secure_The_Pass.Properties;
 using System.Text;
 
-namespace Password_Manager_.NET_6
+namespace Secure_The_Pass
 {
     public class Generator
     {

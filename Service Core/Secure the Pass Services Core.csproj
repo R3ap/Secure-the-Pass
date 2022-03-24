@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Password_Manager_Services_Core</RootNamespace>
+    <RootNamespace>Secure_The_Pass_Services_Core</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageIcon>icons8_password_window_24px.png</PackageIcon>

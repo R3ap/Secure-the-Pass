@@ -1,9 +1,11 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
-using Password_Manager_Services_Core.Services.AccountService;
+﻿using Password_Manager_.NET_6;
+using Secure_The_Pass;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass_Services_Core.Services.AccountService;
 
-namespace Password_Manager_.NET_6.UI.EditAccount
+namespace Secure_The_Pass.UI.EditAccount
 {
     public class EditAccPresenter : BaseTitelBarPresenter<IEditAcc>
     {
@@ -19,7 +21,8 @@ namespace Password_Manager_.NET_6.UI.EditAccount
             View.OnAcceptClick = SaveAccount;
             View.Website = _account.Website;
             View.Password = _account.Password;
-            View.Username= _account.Username;
+            View.Username = _account.Username;
+            View.AcceptText = "&Save";
             View.Email = _account.Email;
         }
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Password_Manager_.NET_6.UI.Settings
+namespace Secure_The_Pass.UI.Settings
 {
     public enum enumSettings
     {

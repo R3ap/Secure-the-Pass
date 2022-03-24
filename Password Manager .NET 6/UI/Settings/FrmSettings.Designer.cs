@@ -1,5 +1,6 @@
-﻿
-namespace Password_Manager_.NET_6
+﻿using Secure_The_Pass.UI.BaseDialog;
+
+namespace Secure_The_Pass.UI.Settings
 {
     partial class FrmSettings
     {
@@ -240,7 +241,7 @@ namespace Password_Manager_.NET_6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(793, 519);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.Ok;
+            this.DialogType = enumDialogType.Ok;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmSettings";
             this.Text = "FrmSettings";

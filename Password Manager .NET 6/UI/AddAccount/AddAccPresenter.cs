@@ -1,9 +1,11 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_Services_Core.Services.AccountService;
-using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
+﻿using Password_Manager_.NET_6;
+using Secure_The_Pass;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass_Services_Core.Extensions;
 
-namespace Password_Manager_.NET_6.UI.AddAccount
+namespace Secure_The_Pass.UI.AddAccount
 {
     public class AddAccPresenter : BaseDialogPresenter<IAddAcc>
     {
@@ -29,13 +31,14 @@ namespace Password_Manager_.NET_6.UI.AddAccount
             }
 
             int indexOfAcc = _userService.GetIndexOfAccouts();
-            _userService.InsertAccount(new Account() { 
-                ID = indexOfAcc + 1, 
-                Email = View.Email.GetEncryptString(), 
-                Website = View.Website.GetEncryptString(), 
-                Username = View.Username.GetEncryptString(), 
-                Password = View.Password.GetEncryptString(), 
-                Useremail = _user.Email.GetEncryptString() 
+            _userService.InsertAccount(new Account()
+            {
+                ID = indexOfAcc + 1,
+                Email = View.Email.GetEncryptString(),
+                Website = View.Website.GetEncryptString(),
+                Username = View.Username.GetEncryptString(),
+                Password = View.Password.GetEncryptString(),
+                Useremail = _user.Email.GetEncryptString()
             });
             Account account = new()
             {

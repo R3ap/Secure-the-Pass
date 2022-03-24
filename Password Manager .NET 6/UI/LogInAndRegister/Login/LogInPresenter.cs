@@ -1,14 +1,13 @@
-﻿using Newtonsoft.Json;
-using Password_Manager_.NET_6.Tasks;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogIn;
-using Password_Manager_.NET_6.UI.Menü;
-using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
-using Password_Manager_Services_Core.Services.UserServices;
-using settings = Password_Manager_.NET_6.Properties;
+﻿using Secure_The_Pass_Services_Core.Services.UserServices;
+using Secure_The_Pass.Tasks;
+using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.Menü;
+using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass_Services_Core.Model;
+using settings = Secure_The_Pass.Properties;
+using Secure_The_Pass.UI.LogInAndRegister.Overview;
 
-namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
+namespace Secure_The_Pass.UI.LogInAndRegister.Login
 {
     public class LogInPresenter : BaseDialogPresenter<ILogIn>
     {

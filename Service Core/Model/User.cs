@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Password_Manager_Services_Core.Model
+namespace Secure_The_Pass_Services_Core.Model
 {
     public class User
     {

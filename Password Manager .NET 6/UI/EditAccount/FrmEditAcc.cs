@@ -1,8 +1,6 @@
-﻿using Password_Manager_.NET_6.Properties;
-using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.EditAccount;
+﻿using Secure_The_Pass.UI.BaseDialog;
 
-namespace Password_Manager_.NET_6
+namespace Secure_The_Pass.UI.EditAccount
 {
     public partial class FrmEditAcc : FrmBaseDialogTitelBar, IEditAcc
     {

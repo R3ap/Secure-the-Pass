@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Password_Manager_.NET_6.UI.BaseDialog
+namespace Secure_The_Pass.UI.BaseDialog
 {
     public class BaseTitelBarPresenter<TView> where TView : IBaseDialogTitelBar
     {

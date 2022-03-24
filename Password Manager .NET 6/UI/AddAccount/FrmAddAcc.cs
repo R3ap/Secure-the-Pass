@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.AddAccount;
+﻿using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.AddAccount;
 
-namespace Password_Manager_.NET_6
+namespace Secure_The_Pass.UI
 {
     public partial class FrmAddAcc : FrmBaseDialog, IAddAcc
     {

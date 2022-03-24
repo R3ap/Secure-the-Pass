@@ -1,7 +1,7 @@
-using Password_Manager_.NET_6.UI.ErrorHandler;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Overview;
+using Secure_The_Pass.UI.LogInAndRegister.Overview;
+using Secure_The_Pass.UI.ErrorHandler;
 
-namespace Password_Manager_.NET_6
+namespace Secure_The_Pass
 {
     internal static class Program
     {

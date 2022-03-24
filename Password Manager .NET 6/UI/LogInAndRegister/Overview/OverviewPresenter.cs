@@ -1,9 +1,8 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_.NET_6.UI.LogIn;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Login;
-using Password_Manager_.NET_6.UI.LogInAndRegister.Register;
+﻿using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass.UI.LogInAndRegister.Login;
+using Secure_The_Pass.UI.LogInAndRegister.Register;
 
-namespace Password_Manager_.NET_6.UI.LogInAndRegister.Overview
+namespace Secure_The_Pass.UI.LogInAndRegister.Overview
 {
     public class OverviewPresenter : BaseTitelBarPresenter<IOverview>
     {

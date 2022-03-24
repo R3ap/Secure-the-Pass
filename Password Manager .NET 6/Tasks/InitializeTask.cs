@@ -1,9 +1,8 @@
-﻿using Password_Manager_Services_Core.Extensions;
-using Password_Manager_Services_Core.Model;
-using Password_Manager_Services_Core.Services.AccountService;
-using Password_Manager_Services_Core.Services.AccountService;
+﻿using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass_Services_Core.Services.AccountService;
 
-namespace Password_Manager_.NET_6.Tasks
+namespace Secure_The_Pass.Tasks
 {
     public class InizializeTask
     {

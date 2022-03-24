@@ -1,4 +1,4 @@
-﻿namespace Password_Manager_.NET_6.UI.BaseDialog
+﻿namespace Secure_The_Pass.UI.BaseDialog
 {
     partial class FrmBaseDialogTitelBar
     {
@@ -120,7 +120,7 @@
             this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMax.ForeColor = System.Drawing.Color.White;
-            this.btnMax.Image = global::Password_Manager_.NET_6.Properties.Resources.icons8_maximize_button_16px2;
+            this.btnMax.Image = global::Secure_The_Pass.Properties.Resources.icons8_maximize_button_16px2;
             this.btnMax.Location = new System.Drawing.Point(384, 0);
             this.btnMax.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnMax.Name = "btnMax";
@@ -156,7 +156,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 256);
             this.Controls.Add(this.PnlTitelBar);
-            this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.None;
+            this.DialogType = enumDialogType.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmBaseDialogTitelBar";

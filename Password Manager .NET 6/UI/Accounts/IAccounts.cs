@@ -1,7 +1,7 @@
-﻿using Password_Manager_.NET_6.UI.BaseDialog;
-using Password_Manager_Services_Core.Model;
+﻿using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass_Services_Core.Model;
 
-namespace Password_Manager_.NET_6.UI.Accounts
+namespace Secure_The_Pass.UI.Accounts
 {
     public interface IAccounts : IBaseDialogBase
     {
