@@ -28,17 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogIn));
             this.ChkRememberMe = new System.Windows.Forms.CheckBox();
             this.lbllForgotPassword = new System.Windows.Forms.LinkLabel();
-            this.PassProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.TxtEmail = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
             this.txtPassword = new Password_Manager_.NET_6.UI.Controls.PasswordManagerTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // _btAccept
@@ -100,27 +96,24 @@
             this.lbllForgotPassword.Text = "Forgot your Password?";
             this.lbllForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblForgotPw_LinkClicked);
             // 
-            // PassProvider
-            // 
-            this.PassProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.PassProvider.ContainerControl = this;
-            this.PassProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("PassProvider.Icon")));
-            // 
             // TxtEmail
             // 
             this.TxtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.TxtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.TxtEmail.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtEmail.BorderSize = 2;
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TxtEmail.ForeColor = System.Drawing.Color.DimGray;
-            this.TxtEmail.Location = new System.Drawing.Point(13, 33);
+            this.TxtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.TxtEmail.IsInvalid = false;
+            this.TxtEmail.Location = new System.Drawing.Point(13, 28);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.TxtEmail.Multiline = false;
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Padding = new System.Windows.Forms.Padding(7);
             this.TxtEmail.PlaceholderText = "Email";
+            this.TxtEmail.ErroText = "";
+            this.TxtEmail.SetInfoText = "";
             this.TxtEmail.Size = new System.Drawing.Size(387, 36);
             this.TxtEmail.TabIndex = 36;
             this.TxtEmail.UnderlinedStyle = true;
@@ -130,17 +123,20 @@
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.txtPassword.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.txtPassword.BorderSize = 2;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPassword.Location = new System.Drawing.Point(13, 90);
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.txtPassword.IsInvalid = false;
+            this.txtPassword.Location = new System.Drawing.Point(13, 82);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Padding = new System.Windows.Forms.Padding(7);
             this.txtPassword.PlaceholderText = "Password";
+            this.txtPassword.ErroText = "";
+            this.txtPassword.SetInfoText = "";
             this.txtPassword.Size = new System.Drawing.Size(387, 36);
             this.txtPassword.TabIndex = 37;
             this.txtPassword.UnderlinedStyle = true;
@@ -164,7 +160,6 @@
             this.PnlActionsBase.PerformLayout();
             this.PnlContent.ResumeLayout(false);
             this.PnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,7 +168,6 @@
         #endregion
         private CheckBox ChkRememberMe;
         private LinkLabel lbllForgotPassword;
-        private ErrorProvider PassProvider;
         private Controls.PasswordManagerTextBox txtPassword;
         private Controls.PasswordManagerTextBox TxtEmail;
     }

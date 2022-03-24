@@ -93,6 +93,10 @@ namespace Password_Manager_.NET_6.UI.Accounts
                         break;
                 }
 
+                if (!accounts.Any())
+                {
+                    View.SetError();
+                }
                 View.SetDataSource(accounts);
             }
         }

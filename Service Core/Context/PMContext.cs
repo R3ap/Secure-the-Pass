@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Password_Manager_Services_Core.Model;
 
 namespace Password_Manager_Services_Core.Context
@@ -10,7 +11,7 @@ namespace Password_Manager_Services_Core.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Server=localhost;Database=PassManager;Trusted_Connection=True;");
+            options.UseSqlServer("Server=.;Database=PassManager;Trusted_Connection=True;");
         }
     }
 }

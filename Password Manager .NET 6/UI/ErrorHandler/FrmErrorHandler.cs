@@ -23,7 +23,10 @@ namespace Password_Manager_.NET_6.UI.ErrorHandler
 
         private void FrmErrorHandler_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
     }
 }

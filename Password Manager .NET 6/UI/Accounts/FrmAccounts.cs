@@ -98,5 +98,10 @@ namespace Password_Manager_.NET_6
                 OpenBrowser?.Invoke(AccGrid[e.ColumnIndex, e.RowIndex].Value.ToString());
             }
         }
+
+        public void SetError()
+        {
+            txtSearch.IsInvalid = true;
+        }
     }
 }

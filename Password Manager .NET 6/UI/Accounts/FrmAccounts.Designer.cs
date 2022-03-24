@@ -141,23 +141,26 @@ namespace Password_Manager_.NET_6
             // 
             // txtSearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.txtSearch.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.txtSearch.BorderSize = 2;
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearch.Location = new System.Drawing.Point(560, 58);
+            this.txtSearch.ErroText = "";
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.txtSearch.IsInvalid = false;
+            this.txtSearch.Location = new System.Drawing.Point(560, 55);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = false;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Padding = new System.Windows.Forms.Padding(7);
-            this.txtSearch.UseSystemPasswordChar = false;
-            this.txtSearch.PlaceholderText = "";
-            this.txtSearch.Size = new System.Drawing.Size(250, 35);
+            this.txtSearch.PlaceholderText = "Search...";
+            this.txtSearch.SetInfoText = "";
+            this.txtSearch.Size = new System.Drawing.Size(250, 36);
             this.txtSearch.TabIndex = 21;
-            this.txtSearch.UnderlinedStyle = true;
+            this.txtSearch.UnderlinedStyle = false;
+            this.txtSearch.UseSystemPasswordChar = false;
+            this.txtSearch._TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // FrmAccounts
             // 

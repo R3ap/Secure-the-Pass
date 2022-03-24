@@ -19,27 +19,27 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         public void ClearError()
         {
-            PassProvider.Clear();
+
         }
 
         public void SetErrorPassword(string errorMessage)
         {
-            PassProvider.SetError(TxtPassword, errorMessage);
+            TxtPassword.ErroText = errorMessage;
         }
 
         public void SetErrorEmail(string errorMessage)
         {
-            PassProvider.SetError(TxtEmail, errorMessage);
+            TxtEmail.ErroText = errorMessage;
         }
 
         public void SetErrorUsername(string errorMessage)
         {
-            PassProvider.SetError(TxtUsername, errorMessage);
+            TxtUsername.ErroText = errorMessage;
         }
 
         public void SetErrorPasswordConfirm(string errorMessage)
         {
-            PassProvider.SetError(TxtConfirm, errorMessage);
+            TxtConfirm.ErroText = errorMessage;
         }
 
         private void txtConfirm_KeyDown(object sender, KeyEventArgs e)

@@ -30,8 +30,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
 
         public void InvalidData()
         {
-            PassProvider.SetError(TxtEmail, "Wrong Data");
-            PassProvider.SetError(txtPassword, "Wrong Data");
+            TxtEmail.ErroText = txtPassword.ErroText = "Enter incorrect data";
         }
 
         private void LlblForgotPw_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

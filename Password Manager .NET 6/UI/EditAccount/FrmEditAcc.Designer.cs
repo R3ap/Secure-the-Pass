@@ -47,6 +47,7 @@ namespace Password_Manager_.NET_6
             this._btAccept.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAccept.Location = new System.Drawing.Point(3, 3);
             this._btAccept.Size = new System.Drawing.Size(96, 42);
+            this._btAccept.Text = "&Save";
             // 
             // _btAbort
             // 
@@ -178,6 +179,7 @@ namespace Password_Manager_.NET_6
             // 
             // FrmEditAcc
             // 
+            this.AcceptText = "&Save";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));

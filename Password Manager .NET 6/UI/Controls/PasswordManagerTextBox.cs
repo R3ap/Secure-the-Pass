@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Password_Manager_Services_Core.Extensions;
+using System.ComponentModel;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Password_Manager_.NET_6.UI.Controls
 {
@@ -11,6 +14,7 @@ namespace Password_Manager_.NET_6.UI.Controls
         private bool underlinedStyle = true;
         private Color borderFocusColor = SystemColors.Highlight;
         private bool isFocused = false;
+        private bool _isInvalid = false;
         #endregion
 
         #region Constructor 
@@ -19,8 +23,7 @@ namespace Password_Manager_.NET_6.UI.Controls
             InitializeComponent();
             BackColor = Color.FromArgb(24, 30, 54);
 
-            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+            textBox1.Anchor = Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
         }
         #endregion
 
@@ -29,6 +32,8 @@ namespace Password_Manager_.NET_6.UI.Controls
         #endregion
 
         #region Properties
+        #region Textbox
+        [DefaultValue(typeof(Color), "158, 161, 176")]
         [Category("Generally")]
         public Color BorderColor
         {
@@ -83,7 +88,6 @@ namespace Password_Manager_.NET_6.UI.Controls
             set { textBox1.Multiline = value; }
         }
 
-        [DefaultValue(typeof(Color), "0x181E36")]
         [Category("Generally")]
         public override Color BackColor
         {
@@ -95,7 +99,6 @@ namespace Password_Manager_.NET_6.UI.Controls
             }
         }
 
-        [DefaultValue(typeof(Color), "0x9EA1B0")]
         [Category("Generally")]
         public override Color ForeColor
         {
@@ -134,25 +137,82 @@ namespace Password_Manager_.NET_6.UI.Controls
             set { borderFocusColor = value; }
         }
 
+        /// <summary>
+        /// If you use the TextBox for Login data and the data are incorrect 
+        /// you can set the value to true and the Border Color change to Red.
+        /// </summary>
+        [Category("Generally")]
+        public bool IsInvalid
+        {
+            get { return _isInvalid; }
+            set
+            {
+                _isInvalid = value;
+
+                if (_isInvalid)
+                {
+                    BorderColor = Color.Red;
+                }
+                else if (BorderColor == Color.Red)
+                {
+                    BorderColor = nameof(BorderColor).GetDefaultValue<Color, PasswordManagerTextBox>();
+                    label1.Visible = false;
+                }
+            }
+        }
+        #endregion
+
+        #region Label
+        public string SetInfoText
+        {
+            get { return label1.Text; }
+            set
+            {
+                label1.Text = value;
+                label1.Visible = !string.IsNullOrEmpty(label1.Text);
+                label1.ForeColor = BorderColor;
+                UpdateControlHeight();
+            }
+        }
+
+        public string ErroText
+        {
+            get { return label1.Text; }
+            set
+            {
+                label1.Text = value;
+                IsInvalid = label1.Visible = !string.IsNullOrEmpty(label1.Text);
+                label1.ForeColor = BorderColor;
+                UpdateControlHeight();
+            }
+        }
+
+        #endregion
         #endregion
 
         #region Overridden methods
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Graphics graph = e.Graphics;
-
             //Draw border
-            using (Pen penBorder = new(borderColor, borderSize))
+            using (Pen penBorder = new(BorderColor, borderSize))
             {
                 penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Inset;
-                if (isFocused) penBorder.Color = borderFocusColor;
+
+                if (isFocused && !IsInvalid)
+                {
+                    penBorder.Color = borderFocusColor;
+                }
 
                 if (underlinedStyle) //Line Style
-                    graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                {
+                    graph.DrawLine(penBorder, 0, textBox1.Bottom + 3, this.Width, textBox1.Bottom + 3);
+                }
                 else //Normal Style
+                {
                     graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
+                }
             }
         }
 
@@ -168,7 +228,6 @@ namespace Password_Manager_.NET_6.UI.Controls
             base.OnLoad(e);
             UpdateControlHeight();
         }
-
         #endregion
 
         #region Private methods
@@ -181,13 +240,21 @@ namespace Password_Manager_.NET_6.UI.Controls
                 textBox1.MinimumSize = new Size(0, txtHeight);
                 textBox1.Multiline = false;
 
-                this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
+                if (!label1.Visible)
+                {
+                    this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
+                }
+                else
+                {
+                    this.Height = textBox1.Height + label1.Height + 7 + this.Padding.Top + this.Padding.Bottom;
+                }
             }
         }
 
         #region TextBox events
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+           IsInvalid = false;
             if (_TextChanged != null)
                 _TextChanged.Invoke(sender, e);
         }

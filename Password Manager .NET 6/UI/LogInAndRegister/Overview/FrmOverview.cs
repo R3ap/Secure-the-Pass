@@ -7,7 +7,7 @@ namespace Password_Manager_.NET_6.UI.LogIn
     {
         public Action SetMainControl { get; set; }
         private Size DefaultLoginSize = new(570, 261);
-        private Size DefaultRegisterSize = new(570, 310);
+        private Size DefaultRegisterSize = new(570, 320);
 
         public FrmOverview()
         {
@@ -17,13 +17,13 @@ namespace Password_Manager_.NET_6.UI.LogIn
         public void SetFormSize(bool IsLogin)
         {
             Size =  IsLogin ? DefaultLoginSize : DefaultRegisterSize;
+            CenterToScreen();
         }
 
         private void FrmLogIn_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
             MinimizeBox = false;
-            PnlContent.Controls.Clear();
             SetMainControl?.Invoke();
         }
     }

@@ -30,7 +30,7 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
             {
                 if (View.Password != View.PasswordConfirm)
                 {
-                    View.SetErrorPasswordConfirm("The Password is not Equal");
+                    View.SetErrorPasswordConfirm("The Password is not Equal!");
                     return false;
                 }
                 else
@@ -56,7 +56,8 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Register
             }
             else
             {
-                string errortext = "This can't be empty!";
+
+                string errortext = "Enter incorrect data";
 
                 if (string.IsNullOrEmpty(View.Email))
                 {

@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.PassProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // _btAccept
@@ -41,7 +38,6 @@
             this._btAccept.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._btAccept.Location = new System.Drawing.Point(3, 3);
             this._btAccept.Size = new System.Drawing.Size(69, 33);
-            this._btAccept.Text = "&Login";
             // 
             // _btAbort
             // 
@@ -52,52 +48,45 @@
             // 
             // PnlActions
             // 
-            this.PnlActions.Location = new System.Drawing.Point(2, 451);
-            this.PnlActions.Size = new System.Drawing.Size(653, 45);
+            this.PnlActions.Location = new System.Drawing.Point(2, 278);
+            this.PnlActions.Size = new System.Drawing.Size(625, 45);
             // 
             // PnlActionsBase
             // 
-            this.PnlActionsBase.Location = new System.Drawing.Point(488, 3);
+            this.PnlActionsBase.Location = new System.Drawing.Point(460, 3);
             this.PnlActionsBase.Size = new System.Drawing.Size(162, 39);
             // 
             // PnlActionsExtension
             // 
-            this.PnlActionsExtension.Location = new System.Drawing.Point(432, 3);
+            this.PnlActionsExtension.Location = new System.Drawing.Point(404, 3);
             // 
             // PnlContent
             // 
-            this.PnlContent.Size = new System.Drawing.Size(653, 415);
-            // 
-            // PassProvider
-            // 
-            this.PassProvider.ContainerControl = this;
+            this.PnlContent.Size = new System.Drawing.Size(625, 242);
             // 
             // FrmOverview
             // 
-            this.AcceptText = "&Login";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(657, 498);
+            this.ClientSize = new System.Drawing.Size(629, 325);
             this.DialogType = Password_Manager_.NET_6.UI.BaseDialog.enumDialogType.OkAndAbort;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsSizable = false;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MaximizeBox = true;
-            this.MinimizeBox = true;
             this.Name = "FrmOverview";
-            this.ShowIcon = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogIn";
             this.Load += new System.EventHandler(this.FrmLogIn_Load);
             this.PnlActions.ResumeLayout(false);
             this.PnlActions.PerformLayout();
             this.PnlActionsBase.ResumeLayout(false);
             this.PnlActionsBase.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ErrorProvider PassProvider;
     }
 }

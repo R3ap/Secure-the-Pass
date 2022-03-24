@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.Logging;
+﻿using Newtonsoft.Json;
 using Password_Manager_.NET_6.Tasks;
 using Password_Manager_.NET_6.UI.BaseDialog;
 using Password_Manager_.NET_6.UI.LogIn;
@@ -6,9 +6,6 @@ using Password_Manager_.NET_6.UI.Menü;
 using Password_Manager_Services_Core.Extensions;
 using Password_Manager_Services_Core.Model;
 using Password_Manager_Services_Core.Services.UserServices;
-using System.Diagnostics;
-using System.Globalization;
-using System.Management;
 using settings = Password_Manager_.NET_6.Properties;
 
 namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
@@ -22,8 +19,6 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
         {
             View.OnAcceptClick = LogIn;
             View.LoginByRememberMe = LoginByRememberMe;
-            Log log = new("Password Manager logs");
-            log.WriteEntry("Log message example", TraceEventType.Information, 1);
         }
 
         private void LoginByRememberMe()
@@ -41,32 +36,11 @@ namespace Password_Manager_.NET_6.UI.LogInAndRegister.Login
             }
         }
 
-        private DateTime GetLastAppStartup()
-        {
-            var lastAppStartup = File.ReadAllText("lastbootuptime.txt");
-            return DateTime.ParseExact(lastAppStartup, "yyyy-MM-dd hh:mm:ss", CultureInfo.InvariantCulture);
-        }
-
-        private DateTime GetLastBootUpTime()
-        {
-            var query = new SelectQuery(@"SELECT * FROM Win32_OperatingSystem");
-            var searcher = new ManagementObjectSearcher(query);
-            var result = DateTime.Now;
-
-            foreach (ManagementObject mo in searcher.Get())
-            {
-                result = ManagementDateTimeConverter
-                            .ToDateTime(mo.Properties["LastBootUpTime"].Value.ToString());
-            }
-
-            return result;
-        }
-
-
         public bool LogIn()
         {
             IList<User> users = _userService.SelectUsers();
-            if (users.Any(x => x.Email == View.Email.GetEncryptString()) && View.Password.Verify(users.First(x => x.Email == View.Email.GetEncryptString()).Password))
+            if (users.Any(x => x.Email == View.Email.GetEncryptString())
+                && View.Password.Verify(users.First(x => x.Email == View.Email.GetEncryptString()).Password))
             {
                 if (GetTaskResult(users.First(x => x.Email == View.Email.GetEncryptString())))
                 {
