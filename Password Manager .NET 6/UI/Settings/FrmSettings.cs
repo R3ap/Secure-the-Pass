@@ -7,18 +7,15 @@ namespace Secure_The_Pass.UI.Settings
     {
         private string _showPassDescription = enumSettings.ShowPass.GetDescription();
         private string _copyDescription = enumSettings.CopyToClipboard.GetDescription();
-        private string _emailDescription = enumSettings.CopyToClipboard_Email.GetDescription();
-        private string _passwordDescription = enumSettings.CopyToClipboard_Password.GetDescription();
-        private string _usernameDescription = enumSettings.CopyToClipboard_Username.GetDescription();
-        
-        public string PasswordLenght { get => txtPWlengt.Text; set => txtPWlengt.Text = value; }
+        private string _rememberMe = enumSettings.RememberMe.GetDescription();
+
+        public string PasswordLenght { get => TxtPasswordLength.Text; set => TxtPasswordLength.Text = value; }
         public string AllowedCharacters { get => TxtAllowedCharacters.Text; set => TxtAllowedCharacters.Text = value; }
         public string Filter { get => cboFilter.Text; set => cboFilter.Text = value; }
         public bool ShowPass { get => SettingsView.Nodes[_showPassDescription].Checked; set => SettingsView.Nodes[_showPassDescription].Checked = value; }
         public bool IsCopy { get => SettingsView.Nodes[_copyDescription].Checked; set => SettingsView.Nodes[_copyDescription].Checked = value; }
-        public bool IsEmail { get => SettingsView.Nodes[_copyDescription].Nodes[_emailDescription].Checked; set => SettingsView.Nodes[_copyDescription].Nodes[_emailDescription].Checked = value; }
-        public bool IsUsername { get => SettingsView.Nodes[_copyDescription].Nodes[_passwordDescription].Checked; set => SettingsView.Nodes[_copyDescription].Nodes[_passwordDescription].Checked = value; }
-        public bool IsPassword { get => SettingsView.Nodes[_copyDescription].Nodes[_usernameDescription].Checked; set => SettingsView.Nodes[_copyDescription].Nodes[_usernameDescription].Checked = value; }
+        public bool RememberMe { get => SettingsView.Nodes[_rememberMe].Checked; set => SettingsView.Nodes[_rememberMe].Checked = value; }
+        public string CopyToClipboard { get => CboCopyToClipboard.Text; set => CboCopyToClipboard.Text = value; }
 
         public FrmSettings()
         {
@@ -46,7 +43,7 @@ namespace Secure_The_Pass.UI.Settings
         public void SetErrorProvider()
         {
             CleanProvider();
-            SettingProvider.SetError(txtPWlengt, "Only Numbers");
+            SettingProvider.SetError(TxtPasswordLength, "Only Numbers");
         }
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)

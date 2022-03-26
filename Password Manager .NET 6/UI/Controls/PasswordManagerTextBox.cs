@@ -122,10 +122,13 @@ namespace Secure_The_Pass.UI.Controls
         }
 
         [Category("Generally")]
-        public new string Text
+        public override string Text
         {
             get { return textBox1.Text; }
-            set { textBox1.Text = value; }
+            set { 
+                textBox1.Text = value;
+                this.Invalidate();
+            }
         }
 
         [Category("Generally")]
@@ -133,6 +136,11 @@ namespace Secure_The_Pass.UI.Controls
         {
             get { return borderFocusColor; }
             set { borderFocusColor = value; }
+        }
+
+        public void Clear()
+        {
+            textBox1.Clear();
         }
 
         /// <summary>

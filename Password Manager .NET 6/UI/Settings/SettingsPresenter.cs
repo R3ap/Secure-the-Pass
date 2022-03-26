@@ -7,6 +7,7 @@ using Secure_The_Pass_Services_Core.Services.UserServices;
 using Secure_The_Pass_Services_Core.Services.AccountService;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass.UI.Menü;
+using Secure_The_Pass_Services_Core.Extensions;
 
 namespace Secure_The_Pass.UI.Settings
 {
@@ -28,9 +29,7 @@ namespace Secure_The_Pass.UI.Settings
             View.SetFilter(properties.Settings.Default.Filter);
             View.ShowPass = properties.Settings.Default.ShowPass;
             View.IsCopy = properties.Settings.Default.IsCopy;
-            View.IsEmail = properties.Settings.Default.IsEmail;
-            View.IsPassword = properties.Settings.Default.IsPassword;
-            View.IsUsername = properties.Settings.Default.IsUsername;
+            View.CopyToClipboard = properties.Settings.Default.CopyToClipboard.GetDescription();
             View.PasswordLenght = properties.Settings.Default.PasswordLenght.ToString();
             View.AllowedCharacters = properties.Settings.Default.AllowedCharacters;
         }
@@ -72,9 +71,7 @@ namespace Secure_The_Pass.UI.Settings
             {
                 View.CleanProvider();
                 properties.Settings.Default.IsCopy = View.IsCopy;
-                properties.Settings.Default.IsEmail = View.IsEmail;
-                properties.Settings.Default.IsPassword = View.IsPassword;
-                properties.Settings.Default.IsUsername = View.IsUsername;
+                properties.Settings.Default.CopyToClipboard = View.CopyToClipboard.MappingOnEnumSettings().Value;
                 properties.Settings.Default.ShowPass = View.ShowPass;
                 properties.Settings.Default.PasswordLenght = pwlenght;
                 properties.Settings.Default.Filter = View.Filter;
@@ -87,6 +84,5 @@ namespace Secure_The_Pass.UI.Settings
             }
             return false;
         }
-
     }
 }

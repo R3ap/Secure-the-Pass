@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Secure_The_Pass.UI.Settings;
+
 namespace Secure_The_Pass.Properties {
     
     
@@ -61,49 +63,13 @@ namespace Secure_The_Pass.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Username")]
         public string Filter {
             get {
                 return ((string)(this["Filter"]));
             }
             set {
                 this["Filter"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsEmail {
-            get {
-                return ((bool)(this["IsEmail"]));
-            }
-            set {
-                this["IsEmail"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsPassword {
-            get {
-                return ((bool)(this["IsPassword"]));
-            }
-            set {
-                this["IsPassword"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsUsername {
-            get {
-                return ((bool)(this["IsUsername"]));
-            }
-            set {
-                this["IsUsername"] = value;
             }
         }
         
@@ -151,6 +117,21 @@ namespace Secure_The_Pass.Properties {
                 return ((string)(this["AllowedCharacters"]));
             }
             set {
+                this["AllowedCharacters"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(nameof(enumSettings.CopyToClipboard_Password))]
+        public enumSettings CopyToClipboard
+        {
+            get
+            {
+                return ((enumSettings)(this["AllowedCharacters"]));
+            }
+            set
+            {
                 this["AllowedCharacters"] = value;
             }
         }

@@ -72,11 +72,12 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Overview
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(629, 325);
-            this.DialogType = enumDialogType.OkAndAbort;
+            this.DialogType = Secure_The_Pass.UI.BaseDialog.enumDialogType.OkAndAbort;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsSizable = false;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmOverview";
+            this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogIn";
             this.Load += new System.EventHandler(this.FrmLogIn_Load);

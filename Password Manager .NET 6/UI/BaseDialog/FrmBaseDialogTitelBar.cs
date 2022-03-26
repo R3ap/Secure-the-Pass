@@ -11,7 +11,7 @@ namespace Secure_The_Pass.UI.BaseDialog
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
-        private int borderSize = 2;
+        private int borderSize = 3;
         private Size formSize;
         private const string DEFAULT_TITEL = "titel";
         private FormBorderStyle _formBorderStyle;

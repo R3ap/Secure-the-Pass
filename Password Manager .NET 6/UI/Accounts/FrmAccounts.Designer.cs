@@ -124,6 +124,7 @@ namespace Password_Manager_.NET_6
             this.AccGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseClick);
             this.AccGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseDoubleClick);
             this.AccGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.AccGrid_DataBindingComplete);
+            this.AccGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmAccounts_KeyDown);
             // 
             // PnlBorderAccGrid
             // 
@@ -159,7 +160,7 @@ namespace Password_Manager_.NET_6
             this.txtSearch.SetInfoText = "";
             this.txtSearch.Size = new System.Drawing.Size(250, 36);
             this.txtSearch.TabIndex = 21;
-            this.txtSearch.UnderlinedStyle = false;
+            this.txtSearch.UnderlinedStyle = true;
             this.txtSearch.UseSystemPasswordChar = false;
             this.txtSearch._TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -169,11 +170,12 @@ namespace Password_Manager_.NET_6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(831, 549);
-            this.DialogType = enumDialogType.None;
+            this.DialogType = Secure_The_Pass.UI.BaseDialog.enumDialogType.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmAccounts";
             this.Text = "FrmDashboard";
             this.Load += new System.EventHandler(this.FrmDashbord_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmAccounts_KeyDown);
             this.PnlActions.ResumeLayout(false);
             this.PnlActions.PerformLayout();
             this.PnlActionsBase.ResumeLayout(false);

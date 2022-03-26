@@ -71,7 +71,7 @@ namespace Password_Manager_.NET_6
 
             IndexClicked?.Invoke(e.RowIndex);
         }
-        
+
         public void SetSelectedRow(int rowIndex)
         {
             AccGrid.Rows[rowIndex].Selected = true;
@@ -102,6 +102,14 @@ namespace Password_Manager_.NET_6
         public void SetError()
         {
             txtSearch.IsInvalid = true;
+        }
+
+        private void FrmAccounts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F && e.Modifiers == Keys.Control)
+            {
+                txtSearch.Focus();
+            }
         }
     }
 }

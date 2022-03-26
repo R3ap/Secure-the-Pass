@@ -7,11 +7,9 @@ namespace Secure_The_Pass.UI.Settings
         string PasswordLenght { get; set; }
         string Filter { get; set; }
         bool ShowPass { get; set; }
-        bool IsPassword { get; set; }
-        bool IsUsername { get; set; }
-        bool IsEmail { get; set; }
         bool IsCopy { get; set; }
         string AllowedCharacters { get; set; }
+        string CopyToClipboard { get; set; }
 
         void CleanProvider();
         void SetErrorProvider();

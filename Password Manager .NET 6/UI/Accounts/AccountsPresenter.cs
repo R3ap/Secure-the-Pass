@@ -62,10 +62,6 @@ namespace Secure_The_Pass.UI.Accounts
             {
                 _accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
             }
-            else
-            {
-                SetAccounts();
-            }
         }
 
         private void Search(string search)
@@ -110,17 +106,17 @@ namespace Secure_The_Pass.UI.Accounts
                 _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
                 if (Properties.Settings.Default.IsCopy)
                 {
-                    if (Properties.Settings.Default.IsEmail)
+                    switch (Properties.Settings.Default.CopyToClipboard)
                     {
-                        Clipboard.SetText(_accounts[rowIndex].Email);
-                    }
-                    else if (Properties.Settings.Default.IsPassword)
-                    {
-                        Clipboard.SetText(_accounts[rowIndex].Password);
-                    }
-                    else if (Properties.Settings.Default.IsUsername)
-                    {
-                        Clipboard.SetText(_accounts[rowIndex].Username);
+                        case Settings.enumSettings.CopyToClipboard_Email:
+                            Clipboard.SetText(_accounts[rowIndex].Email);
+                            break;
+                        case Settings.enumSettings.CopyToClipboard_Password:
+                            Clipboard.SetText(_accounts[rowIndex].Password);
+                            break;
+                        case Settings.enumSettings.CopyToClipboard_Username:
+                            Clipboard.SetText(_accounts[rowIndex].Username);
+                            break;
                     }
 
                     View.SetSelectedRow(rowIndex);

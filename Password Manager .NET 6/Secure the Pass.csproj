@@ -12,6 +12,7 @@
     <UserSecretsId>07edd3a3-26bd-4642-beb1-e75218ed4824</UserSecretsId>
     <PackageIcon>icons8_password_window_24px.png</PackageIcon>
     <StartupObject>Secure_The_Pass.Program</StartupObject>
+    <BaseOutputPath>bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

@@ -8,8 +8,9 @@
     <PackageIcon>icons8_password_window_24px.png</PackageIcon>
     <ApplicationIcon>icons8_password_window.ico</ApplicationIcon>
     <Authors>David von Garrel</Authors>
-    <Product>Password Manager</Product>
+    <Product>Secure the Password</Product>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
