@@ -32,6 +32,7 @@ namespace Secure_The_Pass.UI.Settings
             View.CopyToClipboard = properties.Settings.Default.CopyToClipboard.GetDescription();
             View.PasswordLenght = properties.Settings.Default.PasswordLenght.ToString();
             View.AllowedCharacters = properties.Settings.Default.AllowedCharacters;
+            View.RememberMe = !string.IsNullOrEmpty(properties.Settings.Default.Email);
         }
 
         private bool SignOutClick()
@@ -76,6 +77,7 @@ namespace Secure_The_Pass.UI.Settings
                 properties.Settings.Default.PasswordLenght = pwlenght;
                 properties.Settings.Default.Filter = View.Filter;
                 properties.Settings.Default.AllowedCharacters = View.AllowedCharacters;
+                properties.Settings.Default.Email = View.RememberMe ? _user.Email : "";
                 properties.Settings.Default.Save();
             }
             else

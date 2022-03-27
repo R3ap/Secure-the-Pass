@@ -15,7 +15,7 @@ namespace Secure_The_Pass.UI.Settings
         CopyToClipboard_Password = 3,
         [Description("Username")]
         CopyToClipboard_Username = 4,
-        [Description("Remember me")]
+        [Description("RememberMe")]
         RememberMe = 5,
     }
 

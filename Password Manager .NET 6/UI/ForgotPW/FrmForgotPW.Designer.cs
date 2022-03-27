@@ -198,7 +198,6 @@
             this.Name = "FrmForgotPW";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmForgotPW";
-            this.Load += new System.EventHandler(this.FrmForgotPW_Load);
             this.PnlActions.ResumeLayout(false);
             this.PnlActions.PerformLayout();
             this.PnlActionsBase.ResumeLayout(false);

@@ -10,6 +10,7 @@ namespace Secure_The_Pass.UI.Settings
         bool IsCopy { get; set; }
         string AllowedCharacters { get; set; }
         string CopyToClipboard { get; set; }
+        bool RememberMe { get; set; }
 
         void CleanProvider();
         void SetErrorProvider();

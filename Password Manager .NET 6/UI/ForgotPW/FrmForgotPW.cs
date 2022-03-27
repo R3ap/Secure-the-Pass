@@ -18,12 +18,6 @@ namespace Secure_The_Pass.UI.ForgotPW
             Titel = "Forgot Password";
         }
 
-        private void FrmForgotPW_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void SendEmail()
         {
             string from, pass, messageBody;
@@ -31,8 +25,8 @@ namespace Secure_The_Pass.UI.ForgotPW
             randomcode = rnd.Next(999999).ToString();
             MailMessage mailMessage = new();
             to = txtEmail.Text;
-            from = "davidvongarrel2@gmail.com";
-            pass = "Lenina00";
+            from = "securethepass@gmail.com";
+            pass = "eOKQHKbMlhL5lf0";
             messageBody = $"Your Reset Code {randomcode}";
             mailMessage.To.Add(to);
             mailMessage.From = new MailAddress(from);

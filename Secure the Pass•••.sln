@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure the Pass", "Password Manager .NET 6\Secure the Pass.csproj", "{A23BCAEF-0EAE-46E4-85C9-F0892B38F2E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure the Pass•••", "Password Manager .NET 6\Secure the Pass•••.csproj", "{A23BCAEF-0EAE-46E4-85C9-F0892B38F2E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure the Pass Services Core", "Service Core\Secure the Pass Services Core.csproj", "{977AA411-B7F4-410B-A174-347B28E44215}"
 EndProject

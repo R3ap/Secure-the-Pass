@@ -123,16 +123,16 @@ namespace Secure_The_Pass.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(nameof(enumSettings.CopyToClipboard_Password))]
+        [global::System.Configuration.DefaultSettingValueAttribute("CopyToClipboard_Password")]
         public enumSettings CopyToClipboard
         {
             get
             {
-                return ((enumSettings)(this["AllowedCharacters"]));
+                return ((enumSettings)(this["CopyToClipboard"]));
             }
             set
             {
-                this["AllowedCharacters"] = value;
+                this["CopyToClipboard"] = value;
             }
         }
     }
