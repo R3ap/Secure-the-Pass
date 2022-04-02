@@ -34,10 +34,10 @@ namespace Secure_The_Pass.UI.EditAccount
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.passwordManagerTextBox1 = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
-            this.passwordManagerTextBox2 = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
-            this.passwordManagerTextBox3 = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
-            this.passwordManagerTextBox4 = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtWebsite = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtEmail = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtUsername = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.TxtPassword = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -71,10 +71,10 @@ namespace Secure_The_Pass.UI.EditAccount
             // 
             // PnlContent
             // 
-            this.PnlContent.Controls.Add(this.passwordManagerTextBox4);
-            this.PnlContent.Controls.Add(this.passwordManagerTextBox3);
-            this.PnlContent.Controls.Add(this.passwordManagerTextBox2);
-            this.PnlContent.Controls.Add(this.passwordManagerTextBox1);
+            this.PnlContent.Controls.Add(this.TxtPassword);
+            this.PnlContent.Controls.Add(this.TxtUsername);
+            this.PnlContent.Controls.Add(this.TxtEmail);
+            this.PnlContent.Controls.Add(this.TxtWebsite);
             this.PnlContent.Controls.Add(this.label2);
             this.PnlContent.Controls.Add(this.label6);
             this.PnlContent.Controls.Add(this.label1);
@@ -129,97 +129,97 @@ namespace Secure_The_Pass.UI.EditAccount
             this.label2.TabIndex = 38;
             this.label2.Text = "Username";
             // 
-            // passwordManagerTextBox1
+            // TxtWebsite
             // 
-            this.passwordManagerTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TxtWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordManagerTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.passwordManagerTextBox1.BorderFocusColor = System.Drawing.SystemColors.Highlight;
-            this.passwordManagerTextBox1.BorderSize = 2;
-            this.passwordManagerTextBox1.ErroText = "";
-            this.passwordManagerTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordManagerTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.passwordManagerTextBox1.IsInvalid = false;
-            this.passwordManagerTextBox1.Location = new System.Drawing.Point(292, 74);
-            this.passwordManagerTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordManagerTextBox1.Multiline = false;
-            this.passwordManagerTextBox1.Name = "passwordManagerTextBox1";
-            this.passwordManagerTextBox1.Padding = new System.Windows.Forms.Padding(7);
-            this.passwordManagerTextBox1.PlaceholderText = "";
-            this.passwordManagerTextBox1.SetInfoText = "";
-            this.passwordManagerTextBox1.Size = new System.Drawing.Size(357, 36);
-            this.passwordManagerTextBox1.TabIndex = 39;
-            this.passwordManagerTextBox1.UnderlinedStyle = true;
-            this.passwordManagerTextBox1.UseSystemPasswordChar = false;
+            this.TxtWebsite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.TxtWebsite.BorderFocusColor = System.Drawing.SystemColors.Highlight;
+            this.TxtWebsite.BorderSize = 2;
+            this.TxtWebsite.ErroText = "";
+            this.TxtWebsite.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtWebsite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.TxtWebsite.IsInvalid = false;
+            this.TxtWebsite.Location = new System.Drawing.Point(292, 74);
+            this.TxtWebsite.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtWebsite.Multiline = false;
+            this.TxtWebsite.Name = "TxtWebsite";
+            this.TxtWebsite.Padding = new System.Windows.Forms.Padding(7);
+            this.TxtWebsite.PlaceholderText = "";
+            this.TxtWebsite.SetInfoText = "";
+            this.TxtWebsite.Size = new System.Drawing.Size(357, 36);
+            this.TxtWebsite.TabIndex = 39;
+            this.TxtWebsite.UnderlinedStyle = true;
+            this.TxtWebsite.UseSystemPasswordChar = false;
             // 
-            // passwordManagerTextBox2
+            // TxtEmail
             // 
-            this.passwordManagerTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TxtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordManagerTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.passwordManagerTextBox2.BorderFocusColor = System.Drawing.SystemColors.Highlight;
-            this.passwordManagerTextBox2.BorderSize = 2;
-            this.passwordManagerTextBox2.ErroText = "";
-            this.passwordManagerTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordManagerTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.passwordManagerTextBox2.IsInvalid = false;
-            this.passwordManagerTextBox2.Location = new System.Drawing.Point(292, 129);
-            this.passwordManagerTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordManagerTextBox2.Multiline = false;
-            this.passwordManagerTextBox2.Name = "passwordManagerTextBox2";
-            this.passwordManagerTextBox2.Padding = new System.Windows.Forms.Padding(7);
-            this.passwordManagerTextBox2.PlaceholderText = "";
-            this.passwordManagerTextBox2.SetInfoText = "";
-            this.passwordManagerTextBox2.Size = new System.Drawing.Size(357, 36);
-            this.passwordManagerTextBox2.TabIndex = 40;
-            this.passwordManagerTextBox2.UnderlinedStyle = true;
-            this.passwordManagerTextBox2.UseSystemPasswordChar = false;
+            this.TxtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.TxtEmail.BorderFocusColor = System.Drawing.SystemColors.Highlight;
+            this.TxtEmail.BorderSize = 2;
+            this.TxtEmail.ErroText = "";
+            this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.TxtEmail.IsInvalid = false;
+            this.TxtEmail.Location = new System.Drawing.Point(292, 129);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtEmail.Multiline = false;
+            this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Padding = new System.Windows.Forms.Padding(7);
+            this.TxtEmail.PlaceholderText = "";
+            this.TxtEmail.SetInfoText = "";
+            this.TxtEmail.Size = new System.Drawing.Size(357, 36);
+            this.TxtEmail.TabIndex = 40;
+            this.TxtEmail.UnderlinedStyle = true;
+            this.TxtEmail.UseSystemPasswordChar = false;
             // 
-            // passwordManagerTextBox3
+            // TxtUsername
             // 
-            this.passwordManagerTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TxtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordManagerTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.passwordManagerTextBox3.BorderFocusColor = System.Drawing.SystemColors.Highlight;
-            this.passwordManagerTextBox3.BorderSize = 2;
-            this.passwordManagerTextBox3.ErroText = "";
-            this.passwordManagerTextBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordManagerTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.passwordManagerTextBox3.IsInvalid = false;
-            this.passwordManagerTextBox3.Location = new System.Drawing.Point(292, 182);
-            this.passwordManagerTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordManagerTextBox3.Multiline = false;
-            this.passwordManagerTextBox3.Name = "passwordManagerTextBox3";
-            this.passwordManagerTextBox3.Padding = new System.Windows.Forms.Padding(7);
-            this.passwordManagerTextBox3.PlaceholderText = "";
-            this.passwordManagerTextBox3.SetInfoText = "";
-            this.passwordManagerTextBox3.Size = new System.Drawing.Size(357, 36);
-            this.passwordManagerTextBox3.TabIndex = 41;
-            this.passwordManagerTextBox3.UnderlinedStyle = true;
-            this.passwordManagerTextBox3.UseSystemPasswordChar = false;
+            this.TxtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.TxtUsername.BorderFocusColor = System.Drawing.SystemColors.Highlight;
+            this.TxtUsername.BorderSize = 2;
+            this.TxtUsername.ErroText = "";
+            this.TxtUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.TxtUsername.IsInvalid = false;
+            this.TxtUsername.Location = new System.Drawing.Point(292, 182);
+            this.TxtUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtUsername.Multiline = false;
+            this.TxtUsername.Name = "TxtUsername";
+            this.TxtUsername.Padding = new System.Windows.Forms.Padding(7);
+            this.TxtUsername.PlaceholderText = "";
+            this.TxtUsername.SetInfoText = "";
+            this.TxtUsername.Size = new System.Drawing.Size(357, 36);
+            this.TxtUsername.TabIndex = 41;
+            this.TxtUsername.UnderlinedStyle = true;
+            this.TxtUsername.UseSystemPasswordChar = false;
             // 
-            // passwordManagerTextBox4
+            // TxtPassword
             // 
-            this.passwordManagerTextBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TxtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordManagerTextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.passwordManagerTextBox4.BorderFocusColor = System.Drawing.SystemColors.Highlight;
-            this.passwordManagerTextBox4.BorderSize = 2;
-            this.passwordManagerTextBox4.ErroText = "";
-            this.passwordManagerTextBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordManagerTextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.passwordManagerTextBox4.IsInvalid = false;
-            this.passwordManagerTextBox4.Location = new System.Drawing.Point(292, 232);
-            this.passwordManagerTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordManagerTextBox4.Multiline = false;
-            this.passwordManagerTextBox4.Name = "passwordManagerTextBox4";
-            this.passwordManagerTextBox4.Padding = new System.Windows.Forms.Padding(7);
-            this.passwordManagerTextBox4.PlaceholderText = "";
-            this.passwordManagerTextBox4.SetInfoText = "";
-            this.passwordManagerTextBox4.Size = new System.Drawing.Size(357, 36);
-            this.passwordManagerTextBox4.TabIndex = 42;
-            this.passwordManagerTextBox4.UnderlinedStyle = true;
-            this.passwordManagerTextBox4.UseSystemPasswordChar = false;
+            this.TxtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.TxtPassword.BorderFocusColor = System.Drawing.SystemColors.Highlight;
+            this.TxtPassword.BorderSize = 2;
+            this.TxtPassword.ErroText = "";
+            this.TxtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.TxtPassword.IsInvalid = false;
+            this.TxtPassword.Location = new System.Drawing.Point(292, 232);
+            this.TxtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtPassword.Multiline = false;
+            this.TxtPassword.Name = "TxtPassword";
+            this.TxtPassword.Padding = new System.Windows.Forms.Padding(7);
+            this.TxtPassword.PlaceholderText = "";
+            this.TxtPassword.SetInfoText = "";
+            this.TxtPassword.Size = new System.Drawing.Size(357, 36);
+            this.TxtPassword.TabIndex = 42;
+            this.TxtPassword.UnderlinedStyle = true;
+            this.TxtPassword.UseSystemPasswordChar = false;
             // 
             // FrmEditAcc
             // 
@@ -251,16 +251,12 @@ namespace Secure_The_Pass.UI.EditAccount
 
         #endregion
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtUsername;
-        private Controls.PasswordManagerTextBox passwordManagerTextBox4;
-        private Controls.PasswordManagerTextBox passwordManagerTextBox3;
-        private Controls.PasswordManagerTextBox passwordManagerTextBox2;
-        private Controls.PasswordManagerTextBox passwordManagerTextBox1;
+        private Controls.PasswordManagerTextBox TxtPassword;
+        private Controls.PasswordManagerTextBox TxtUsername;
+        private Controls.PasswordManagerTextBox TxtEmail;
+        private Controls.PasswordManagerTextBox TxtWebsite;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Secure_The_Pass.UI.Settings
 {
-    [Serializable()]
+    [Serializable]
     public enum enumSettings
     {
         [Description("ShowPass")]

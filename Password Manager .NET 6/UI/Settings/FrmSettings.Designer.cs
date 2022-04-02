@@ -35,8 +35,6 @@ namespace Secure_The_Pass.UI.Settings
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Copy to Clipboard");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Remember me");
             this.label6 = new System.Windows.Forms.Label();
-            this.cboFilter = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SettingProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.SettingsView = new System.Windows.Forms.TreeView();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +42,7 @@ namespace Secure_The_Pass.UI.Settings
             this.TxtAllowedCharacters = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
             this.CboCopyToClipboard = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
@@ -78,6 +77,7 @@ namespace Secure_The_Pass.UI.Settings
             // 
             // PnlContent
             // 
+            this.PnlContent.Controls.Add(this.label4);
             this.PnlContent.Controls.Add(this.CboCopyToClipboard);
             this.PnlContent.Controls.Add(this.label3);
             this.PnlContent.Controls.Add(this.TxtAllowedCharacters);
@@ -85,8 +85,6 @@ namespace Secure_The_Pass.UI.Settings
             this.PnlContent.Controls.Add(this.label2);
             this.PnlContent.Controls.Add(this.SettingsView);
             this.PnlContent.Controls.Add(this.label6);
-            this.PnlContent.Controls.Add(this.cboFilter);
-            this.PnlContent.Controls.Add(this.label1);
             this.PnlContent.Size = new System.Drawing.Size(793, 461);
             // 
             // label6
@@ -104,43 +102,6 @@ namespace Secure_The_Pass.UI.Settings
             this.label6.TabIndex = 28;
             this.label6.Text = "Password length";
             // 
-            // cboFilter
-            // 
-            this.cboFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(99)))));
-            this.cboFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cboFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.cboFilter.Items.AddRange(new object[] {
-            "Username",
-            "Website",
-            "Email",
-            "Password"});
-            this.cboFilter.Location = new System.Drawing.Point(419, 172);
-            this.cboFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cboFilter.Name = "cboFilter";
-            this.cboFilter.Size = new System.Drawing.Size(340, 24);
-            this.cboFilter.TabIndex = 2;
-            this.cboFilter.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label1.Location = new System.Drawing.Point(37, 167);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 29);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Filter";
-            // 
             // SettingProvider
             // 
             this.SettingProvider.ContainerControl = this;
@@ -156,8 +117,7 @@ namespace Secure_The_Pass.UI.Settings
             this.SettingsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SettingsView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.SettingsView.FullRowSelect = true;
-            this.SettingsView.HideSelection = false;
-            this.SettingsView.Location = new System.Drawing.Point(28, 252);
+            this.SettingsView.Location = new System.Drawing.Point(37, 274);
             this.SettingsView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SettingsView.Name = "SettingsView";
             treeNode1.Name = "ShowPass";
@@ -173,7 +133,7 @@ namespace Secure_The_Pass.UI.Settings
             treeNode1,
             treeNode2,
             treeNode3});
-            this.SettingsView.Size = new System.Drawing.Size(329, 158);
+            this.SettingsView.Size = new System.Drawing.Size(248, 84);
             this.SettingsView.TabIndex = 45;
             this.SettingsView.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCheck);
             // 
@@ -253,7 +213,7 @@ namespace Secure_The_Pass.UI.Settings
             "Username",
             "Email",
             "Password"});
-            this.CboCopyToClipboard.Location = new System.Drawing.Point(419, 213);
+            this.CboCopyToClipboard.Location = new System.Drawing.Point(419, 187);
             this.CboCopyToClipboard.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CboCopyToClipboard.Name = "CboCopyToClipboard";
             this.CboCopyToClipboard.Size = new System.Drawing.Size(340, 24);
@@ -268,12 +228,27 @@ namespace Secure_The_Pass.UI.Settings
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label3.Location = new System.Drawing.Point(37, 208);
+            this.label3.Location = new System.Drawing.Point(37, 182);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(224, 29);
             this.label3.TabIndex = 51;
             this.label3.Text = "Copy to Clipboard";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.label4.Location = new System.Drawing.Point(37, 242);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(151, 29);
+            this.label4.TabIndex = 52;
+            this.label4.Text = "Permission:";
             // 
             // FrmSettings
             // 
@@ -302,8 +277,6 @@ namespace Secure_The_Pass.UI.Settings
 
         #endregion
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboFilter;
         private System.Windows.Forms.ErrorProvider SettingProvider;
         private System.Windows.Forms.TreeView SettingsView;
         private Label label2;
@@ -311,5 +284,6 @@ namespace Secure_The_Pass.UI.Settings
         private Controls.PasswordManagerTextBox TxtPasswordLength;
         private ComboBox CboCopyToClipboard;
         private Label label3;
+        private Label label4;
     }
 }

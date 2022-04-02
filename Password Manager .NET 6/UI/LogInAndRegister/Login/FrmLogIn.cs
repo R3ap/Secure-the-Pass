@@ -33,6 +33,11 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
             TxtEmail.ErroText = txtPassword.ErroText = "Enter incorrect data";
         }
 
+        public void SetFocus()
+        {
+            txtPassword.Focus();
+        }
+
         private void LlblForgotPw_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmForgotPW frmForgotPW = new();

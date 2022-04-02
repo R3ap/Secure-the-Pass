@@ -143,6 +143,8 @@ namespace Secure_The_Pass.UI.Controls
             textBox1.Clear();
         }
 
+        public new void Focus() => textBox1.Focus();
+
         /// <summary>
         /// If you use the TextBox for Login data and the data are incorrect 
         /// you can set the value to true and the Border Color change to Red.

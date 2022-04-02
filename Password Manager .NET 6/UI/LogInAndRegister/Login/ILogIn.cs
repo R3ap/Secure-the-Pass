@@ -12,5 +12,6 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
         Action LoginByRememberMe { get; set; }
 
         void InvalidData();
+        void SetFocus();
     }
 }

@@ -68,28 +68,10 @@ namespace Secure_The_Pass.UI.Accounts
         {
             if (_accounts.Any())
             {
-                List<Account> accounts = new();
-                switch (Properties.Settings.Default.Filter)
-                {
-                    case "Username":
-                        accounts = _accounts.Where(x => x.Username.ToLower().Contains(search.ToLower())).ToList();
-                        break;
-                    case "Email":
-                        accounts = _accounts.Where(x => x.Email.ToLower().Contains(search.ToLower())).ToList();
-                        break;
-                    case "Password":
-                        accounts = _accounts.Where(x => x.Password.ToLower().Contains(search.ToLower())).ToList();
-                        break;
-                    case "Website":
-                        accounts = _accounts.Where(x => x.Website.ToLower().Contains(search.ToLower())).ToList();
-                        break;
-                    default:
-                        _notifyIcon.Visible = true;
-                        _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-                        _notifyIcon.ShowBalloonTip(1000, "Filter Invaild", $"There is no Filter Like this: {Properties.Settings.Default.Filter}", ToolTipIcon.Error);
-                        break;
-                }
-
+                List<Account> accounts = _accounts.Where(x => x.Username.ToLower().Contains(search.ToLower())
+                                                             || x.Email.ToLower().Contains(search.ToLower())
+                                                             || x.Password.ToLower().Contains(search.ToLower())
+                                                             || x.Website.ToLower().Contains(search.ToLower())).ToList();
                 if (!accounts.Any())
                 {
                     View.SetError();
@@ -98,53 +80,57 @@ namespace Secure_The_Pass.UI.Accounts
             }
         }
 
-        private void SetCopyToClipboard(int rowIndex)
+    private void SetCopyToClipboard(int rowIndex)
+    {
+        try
         {
-            try
+            _notifyIcon.Visible = true;
+            _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+            if (Properties.Settings.Default.IsCopy)
             {
-                _notifyIcon.Visible = true;
-                _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-                if (Properties.Settings.Default.IsCopy)
+                switch (Properties.Settings.Default.CopyToClipboard)
                 {
-                    switch (Properties.Settings.Default.CopyToClipboard)
-                    {
-                        case Settings.enumSettings.CopyToClipboard_Email:
-                            Clipboard.SetText(_accounts[rowIndex].Email);
-                            break;
-                        case Settings.enumSettings.CopyToClipboard_Password:
-                            Clipboard.SetText(_accounts[rowIndex].Password);
-                            break;
-                        case Settings.enumSettings.CopyToClipboard_Username:
-                            Clipboard.SetText(_accounts[rowIndex].Username);
-                            break;
-                    }
-
-                    View.SetSelectedRow(rowIndex);
-                    _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
+                    case Settings.enumSettings.CopyToClipboard_Email:
+                        Clipboard.SetText(_accounts[rowIndex].Email);
+                        break;
+                    case Settings.enumSettings.CopyToClipboard_Password:
+                        SetAccounts(ignoreAnonymize: _accounts[rowIndex].Password.All(x => x == '•'));
+                        Clipboard.SetText(_accounts[rowIndex].Password);
+                        break;
+                    case Settings.enumSettings.CopyToClipboard_Username:
+                        Clipboard.SetText(_accounts[rowIndex].Username);
+                        break;
                 }
-            }
-            catch
-            {
-                _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was failed", ToolTipIcon.Error);
+
+                View.SetSelectedRow(rowIndex);
+                _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
             }
         }
-
-        private void SetAccounts()
+        catch
         {
-            List<Account> accounts = _accountService.SelectAccounts(_user).ToList();
+            _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was failed", ToolTipIcon.Error);
+        }
+    }
 
-            foreach (var acc in accounts)
-            {
-                acc.Email = acc.Email.GetDecryptString();
-                acc.Password = acc.Password.GetDecryptString();
-                acc.Website = acc.Website.GetDecryptString();
-                acc.Username = acc.Username.GetDecryptString();
-                acc.Useremail = acc.Useremail.GetDecryptString();
-            }
+    private void SetAccounts(bool ignoreAnonymize = false)
+    {
+        List<Account> accounts = _accountService.SelectAccounts(_user).ToList();
 
-            _accounts = accounts.ToList();
+        foreach (var acc in accounts)
+        {
+            acc.Email = acc.Email.GetDecryptString();
+            acc.Password = acc.Password.GetDecryptString();
+            acc.Website = acc.Website.GetDecryptString();
+            acc.Username = acc.Username.GetDecryptString();
+            acc.Useremail = acc.Useremail.GetDecryptString();
+        }
+
+        _accounts = accounts.ToList();
+        if (!ignoreAnonymize)
+        {
             AnonymizePassword();
             View.SetDataSource(_accounts);
         }
     }
+}
 }

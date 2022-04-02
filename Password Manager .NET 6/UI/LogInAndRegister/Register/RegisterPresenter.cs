@@ -1,11 +1,11 @@
-﻿using Secure_The_Pass.UI.LogInAndRegister.Login;
-using Secure_The_Pass_Services_Core.Services.UserServices;
+﻿using Secure_The_Pass_Services_Core.Services.UserServices;
 using Secure_The_Pass.Tasks;
 using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass.UI.Menü;
 using Secure_The_Pass_Services_Core.Extensions;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass.UI.LogInAndRegister.Overview;
+using properties = Secure_The_Pass.Properties;
 
 namespace Secure_The_Pass.UI.LogInAndRegister.Register
 {
@@ -52,6 +52,8 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register
                         bool error = _userService.InsertUser(user);
                         if (error)
                         {
+                            properties.Settings.Default.LastOpenApplication = DateTime.Now;
+                            properties.Settings.Default.Save();
                             Application.OpenForms[nameof(FrmOverview)].Hide();
                             Application.OpenForms[nameof(FrmOverview)].Close();
                             MenüPresenter frmMenü = new(ref _user, ref _accounts);

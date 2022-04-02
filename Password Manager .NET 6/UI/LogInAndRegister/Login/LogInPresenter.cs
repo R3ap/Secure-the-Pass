@@ -5,6 +5,7 @@ using Secure_The_Pass.UI.Menü;
 using Secure_The_Pass_Services_Core.Extensions;
 using Secure_The_Pass_Services_Core.Model;
 using settings = Secure_The_Pass.Properties;
+using System.DirectoryServices.AccountManagement;
 using Secure_The_Pass.UI.LogInAndRegister.Overview;
 
 namespace Secure_The_Pass.UI.LogInAndRegister.Login
@@ -22,7 +23,8 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
 
         private void LoginByRememberMe()
         {
-            if (!string.IsNullOrEmpty(settings.Settings.Default.Email))
+            DateTime? lastLoginOn = GetLastLoginOn();
+            if (!string.IsNullOrEmpty(settings.Settings.Default.Email) && lastLoginOn < settings.Settings.Default.LastOpenApplication)
             {
                 IList<User> users = _userService.SelectUsers();
                 Application.OpenForms[nameof(FrmOverview)].Hide();
@@ -31,8 +33,23 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
                 {
                     MenüPresenter frmMenü = new(ref _user, ref _accounts);
                     frmMenü.ShowDialog();
+                    settings.Settings.Default.LastOpenApplication = DateTime.Now;
+                    settings.Settings.Default.Save();
                 }
             }
+            else if (lastLoginOn > settings.Settings.Default.LastOpenApplication)
+            {
+                View.Email = settings.Settings.Default.Email.GetDecryptString();
+                View.RememberMe = true;
+                View.SetFocus();
+            }
+        }
+
+        public static DateTime? GetLastLoginOn()
+        {
+            PrincipalContext c = new(ContextType.Machine, Environment.MachineName);
+            UserPrincipal uc = UserPrincipal.FindByIdentity(c, Environment.UserName);
+            return uc.LastLogon;
         }
 
         public bool LogIn()
@@ -51,6 +68,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
                     {
                         settings.Settings.Default.Email = null;
                     }
+                    settings.Settings.Default.LastOpenApplication = DateTime.Now;
                     settings.Settings.Default.Save();
                     Application.OpenForms[nameof(FrmOverview)].Hide();
                     Application.OpenForms[nameof(FrmOverview)].Close();
@@ -69,6 +87,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
                 View.InvalidData();
                 return false;
             }
+
         }
 
         private bool GetTaskResult(User user)

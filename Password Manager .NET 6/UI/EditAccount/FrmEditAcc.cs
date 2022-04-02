@@ -4,10 +4,10 @@ namespace Secure_The_Pass.UI.EditAccount
 {
     public partial class FrmEditAcc : FrmBaseDialogTitelBar, IEditAcc
     {
-        public string Website { get => txtWebsite.Text; set => txtWebsite.Text = value; }
-        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
-        public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
-        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
+        public string Website { get => TxtWebsite.Text; set => TxtWebsite.Text = value; }
+        public string Email { get => TxtEmail.Text; set => TxtEmail.Text = value; }
+        public string Username { get => TxtUsername.Text; set => TxtUsername.Text = value; }
+        public string Password { get => TxtPassword.Text; set => TxtPassword.Text = value; }
         public FrmEditAcc()
         {
             InitializeComponent();

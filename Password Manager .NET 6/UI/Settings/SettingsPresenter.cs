@@ -1,9 +1,7 @@
 ﻿using properties = Secure_The_Pass.Properties;
 using Secure_The_Pass_Services_Core.Services.UserServices;
-using Password_Manager_.NET_6;
 using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass.UI.LogInAndRegister.Overview;
-using Secure_The_Pass_Services_Core.Services.UserServices;
 using Secure_The_Pass_Services_Core.Services.AccountService;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass.UI.Menü;
@@ -23,10 +21,9 @@ namespace Secure_The_Pass.UI.Settings
             _user = user;
             _accounts = accounts;
             View.OnAcceptClick = Save;
-            View.AddButtonAction(new ButtonAction() { Action = CleanAccountClick, Name = "BtnCleanAccount", Text = "Clean Account" });
-            View.AddButtonAction(new ButtonAction() { Action = DeleteUserClick, Name = "BtnDeleteUser", Text = "Delete Account" });
+            View.AddButtonAction(new ButtonAction() { Action = CleanAccountClick, Name = "BtnCleanAccount", Text = "Clean All Accounts" });
+            View.AddButtonAction(new ButtonAction() { Action = DeleteUserClick, Name = "BtnDeleteUser", Text = "Delete User" });
             View.AddButtonAction(new ButtonAction() { Action = SignOutClick, Name = "BtnSignOut", Text = "Sign out" });
-            View.SetFilter(properties.Settings.Default.Filter);
             View.ShowPass = properties.Settings.Default.ShowPass;
             View.IsCopy = properties.Settings.Default.IsCopy;
             View.CopyToClipboard = properties.Settings.Default.CopyToClipboard.GetDescription();
@@ -75,14 +72,13 @@ namespace Secure_The_Pass.UI.Settings
                 properties.Settings.Default.CopyToClipboard = View.CopyToClipboard.MappingOnEnumSettings().Value;
                 properties.Settings.Default.ShowPass = View.ShowPass;
                 properties.Settings.Default.PasswordLenght = pwlenght;
-                properties.Settings.Default.Filter = View.Filter;
                 properties.Settings.Default.AllowedCharacters = View.AllowedCharacters;
-                properties.Settings.Default.Email = View.RememberMe ? _user.Email : "";
+                properties.Settings.Default.Email = View.RememberMe ? _user.Email.GetEncryptString() : "";
                 properties.Settings.Default.Save();
             }
             else
             {
-                View.SetErrorProvider();
+                View.SetError();
             }
             return false;
         }

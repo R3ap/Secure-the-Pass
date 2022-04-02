@@ -5,7 +5,6 @@ namespace Secure_The_Pass.UI.Settings
     public interface ISettings : IBaseDialogBase
     {
         string PasswordLenght { get; set; }
-        string Filter { get; set; }
         bool ShowPass { get; set; }
         bool IsCopy { get; set; }
         string AllowedCharacters { get; set; }
@@ -13,7 +12,6 @@ namespace Secure_The_Pass.UI.Settings
         bool RememberMe { get; set; }
 
         void CleanProvider();
-        void SetErrorProvider();
-        void SetFilter(string filtername);
+        void SetError();
     }
 }

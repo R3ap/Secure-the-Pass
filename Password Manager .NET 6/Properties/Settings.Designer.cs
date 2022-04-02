@@ -10,113 +10,126 @@
 
 using Secure_The_Pass.UI.Settings;
 
-namespace Secure_The_Pass.Properties {
-    
-    
+namespace Secure_The_Pass.Properties
+{
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
-        public static Settings Default {
-            get {
+
+        public static Settings Default
+        {
+            get
+            {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("959, 607")]
-        public global::System.Drawing.Size DefaultSize {
-            get {
+        public global::System.Drawing.Size DefaultSize
+        {
+            get
+            {
                 return ((global::System.Drawing.Size)(this["DefaultSize"]));
             }
-            set {
+            set
+            {
                 this["DefaultSize"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Email {
-            get {
+        public string Email
+        {
+            get
+            {
                 return ((string)(this["Email"]));
             }
-            set {
+            set
+            {
                 this["Email"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsCopy {
-            get {
+        public bool IsCopy
+        {
+            get
+            {
                 return ((bool)(this["IsCopy"]));
             }
-            set {
+            set
+            {
                 this["IsCopy"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Username")]
-        public string Filter {
-            get {
-                return ((string)(this["Filter"]));
-            }
-            set {
-                this["Filter"] = value;
-            }
-        }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsMaximize {
-            get {
+        public bool IsMaximize
+        {
+            get
+            {
                 return ((bool)(this["IsMaximize"]));
             }
-            set {
+            set
+            {
                 this["IsMaximize"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int PasswordLenght {
-            get {
+        public int PasswordLenght
+        {
+            get
+            {
                 return ((int)(this["PasswordLenght"]));
             }
-            set {
+            set
+            {
                 this["PasswordLenght"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowPass {
-            get {
+        public bool ShowPass
+        {
+            get
+            {
                 return ((bool)(this["ShowPass"]));
             }
-            set {
+            set
+            {
                 this["ShowPass"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw!§$%&/()=?*#-")]
-        public string AllowedCharacters {
-            get {
+        public string AllowedCharacters
+        {
+            get
+            {
                 return ((string)(this["AllowedCharacters"]));
             }
-            set {
+            set
+            {
                 this["AllowedCharacters"] = value;
             }
         }
@@ -133,6 +146,20 @@ namespace Secure_The_Pass.Properties {
             set
             {
                 this["CopyToClipboard"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime? LastOpenApplication
+        {
+            get
+            {
+                return ((global::System.DateTime?)(this["LastOpenApplication"]));
+            }
+            set
+            {
+                this["LastOpenApplication"] = value;
             }
         }
     }

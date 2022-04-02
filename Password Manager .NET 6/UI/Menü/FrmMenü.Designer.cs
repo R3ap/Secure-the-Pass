@@ -54,27 +54,27 @@
             // 
             // _btAbort
             // 
-            this._btAbort.Location = new System.Drawing.Point(3, 3);
+            this._btAbort.Location = new System.Drawing.Point(91, 3);
             this._btAbort.Size = new System.Drawing.Size(64, 27);
             // 
             // PnlActions
             // 
-            this.PnlActions.Location = new System.Drawing.Point(2, 657);
-            this.PnlActions.Size = new System.Drawing.Size(987, 26);
+            this.PnlActions.Location = new System.Drawing.Point(3, 721);
+            this.PnlActions.Size = new System.Drawing.Size(1017, 39);
             // 
             // PnlActionsBase
             // 
-            this.PnlActionsBase.Location = new System.Drawing.Point(980, 3);
-            this.PnlActionsBase.Size = new System.Drawing.Size(4, 0);
+            this.PnlActionsBase.Location = new System.Drawing.Point(852, 3);
+            this.PnlActionsBase.Size = new System.Drawing.Size(162, 33);
             // 
             // PnlActionsExtension
             // 
-            this.PnlActionsExtension.Location = new System.Drawing.Point(924, 3);
+            this.PnlActionsExtension.Location = new System.Drawing.Point(796, 3);
             // 
             // PnlContent
             // 
-            this.PnlContent.Location = new System.Drawing.Point(219, 36);
-            this.PnlContent.Size = new System.Drawing.Size(738, 569);
+            this.PnlContent.Location = new System.Drawing.Point(220, 37);
+            this.PnlContent.Size = new System.Drawing.Size(800, 684);
             // 
             // panel
             // 
@@ -82,10 +82,10 @@
             this.panel.Controls.Add(this.panel1);
             this.panel.Controls.Add(this.panel2);
             this.panel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel.Location = new System.Drawing.Point(2, 36);
+            this.panel.Location = new System.Drawing.Point(3, 37);
             this.panel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(217, 569);
+            this.panel.Size = new System.Drawing.Size(217, 684);
             this.panel.TabIndex = 0;
             // 
             // panel1
@@ -97,7 +97,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 194);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 375);
+            this.panel1.Size = new System.Drawing.Size(217, 490);
             this.panel1.TabIndex = 0;
             // 
             // pnlNav
@@ -127,6 +127,7 @@
             this.btnNewAcc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewAcc.UseVisualStyleBackColor = true;
             this.btnNewAcc.Click += new System.EventHandler(this.btnNewAcc_Click);
+            this.btnNewAcc.Enter += new System.EventHandler(this.BtnEnter);
             // 
             // btnSettings
             // 
@@ -136,7 +137,7 @@
             this.btnSettings.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.btnSettings.Image = global::Secure_The_Pass.Properties.Resources.settings;
-            this.btnSettings.Location = new System.Drawing.Point(0, 330);
+            this.btnSettings.Location = new System.Drawing.Point(0, 445);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(217, 45);
@@ -146,6 +147,7 @@
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnSettings.Enter += new System.EventHandler(this.BtnEnter);
             // 
             // btnAccounts
             // 
@@ -165,6 +167,7 @@
             this.btnAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAccounts.UseVisualStyleBackColor = true;
             this.btnAccounts.Click += new System.EventHandler(this.BtnAccounts_Click);
+            this.btnAccounts.Enter += new System.EventHandler(this.BtnEnter);
             // 
             // panel2
             // 
@@ -216,7 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(959, 607);
+            this.ClientSize = new System.Drawing.Size(1023, 763);
             this.Controls.Add(this.panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

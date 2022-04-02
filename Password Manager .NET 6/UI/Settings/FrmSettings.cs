@@ -11,7 +11,6 @@ namespace Secure_The_Pass.UI.Settings
 
         public string PasswordLenght { get => TxtPasswordLength.Text; set => TxtPasswordLength.Text = value; }
         public string AllowedCharacters { get => TxtAllowedCharacters.Text; set => TxtAllowedCharacters.Text = value; }
-        public string Filter { get => cboFilter.Text; set => cboFilter.Text = value; }
         public bool ShowPass { get => SettingsView.Nodes[_showPassDescription].Checked; set => SettingsView.Nodes[_showPassDescription].Checked = value; }
         public bool IsCopy { get => SettingsView.Nodes[_copyDescription].Checked; set => SettingsView.Nodes[_copyDescription].Checked = value; }
         public bool RememberMe { get => SettingsView.Nodes[_rememberMe].Checked; set => SettingsView.Nodes[_rememberMe].Checked = value; }
@@ -30,20 +29,14 @@ namespace Secure_The_Pass.UI.Settings
             SettingsView.ExpandAll();
         }
 
-        public void SetFilter(string filtername)
-        {
-            cboFilter.SelectedIndex = cboFilter.Items.IndexOf(filtername);
-        }
-
         public void CleanProvider()
         {
-            SettingProvider.Clear();
+            TxtPasswordLength.ErroText = "";
         }
 
-        public void SetErrorProvider()
+        public void SetError()
         {
-            CleanProvider();
-            SettingProvider.SetError(TxtPasswordLength, "Only Numbers");
+            TxtPasswordLength.ErroText = "Only Numbers";
         }
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)

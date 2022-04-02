@@ -6,13 +6,13 @@ namespace Password_Manager_.NET_6
 {
     public partial class FrmAccounts : FrmBaseDialog, IAccounts
     {
-        public Action GetAccounts { get; set; }
+        public Action<bool> GetAccounts { get; set; }
         public Action<string> Search { get; set; }
         public Action<int> ShowDetailsAccount { get; set; }
         public Action<string> OpenBrowser { get; set; }
         public Action<int> IndexClicked { get; set; }
 
-        public FrmAccounts()
+        public FrmAccounts() 
         {
             InitializeComponent();
         }
@@ -32,7 +32,7 @@ namespace Password_Manager_.NET_6
 
         public void SetGridProperty()
         {
-            GetAccounts?.Invoke();
+            GetAccounts?.Invoke(false);
             AccGrid.RowHeadersVisible = false;
             AccGrid.AutoGenerateColumns = true;
             AccGrid.AllowUserToResizeColumns = false;
