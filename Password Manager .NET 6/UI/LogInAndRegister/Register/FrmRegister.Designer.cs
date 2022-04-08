@@ -98,7 +98,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register
             this.TxtPassword.PlaceholderText = "Password";
             this.TxtPassword.SetInfoText = "";
             this.TxtPassword.Size = new System.Drawing.Size(521, 36);
-            this.TxtPassword.TabIndex = 1;
+            this.TxtPassword.TabIndex = 2;
             this.TxtPassword.UnderlinedStyle = true;
             this.TxtPassword.UseSystemPasswordChar = false;
             // 
@@ -121,7 +121,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register
             this.TxtConfirm.PlaceholderText = "Confirm Password";
             this.TxtConfirm.SetInfoText = "";
             this.TxtConfirm.Size = new System.Drawing.Size(521, 36);
-            this.TxtConfirm.TabIndex = 2;
+            this.TxtConfirm.TabIndex = 3;
             this.TxtConfirm.UnderlinedStyle = true;
             this.TxtConfirm.UseSystemPasswordChar = false;
             // 
@@ -144,7 +144,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register
             this.TxtUsername.PlaceholderText = "Username";
             this.TxtUsername.SetInfoText = "";
             this.TxtUsername.Size = new System.Drawing.Size(521, 36);
-            this.TxtUsername.TabIndex = 3;
+            this.TxtUsername.TabIndex = 1;
             this.TxtUsername.UnderlinedStyle = true;
             this.TxtUsername.UseSystemPasswordChar = false;
             // 

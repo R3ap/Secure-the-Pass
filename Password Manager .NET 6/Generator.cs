@@ -9,11 +9,13 @@ namespace Secure_The_Pass
         {
             int lenght = Settings.Default.PasswordLenght;
             string Content = Settings.Default.AllowedCharacters;
-            StringBuilder SB = new();
+            StringBuilder sB = new();
             Random rnd = new();
             for (int i = 0; i < lenght; i++)
-                SB.Append(Content[rnd.Next(Content.Length)]);
-            return SB.ToString();
+            {
+                sB.Append(Content[rnd.Next(Content.Length)]);
+            }
+            return sB.ToString();
         }
     }
 }

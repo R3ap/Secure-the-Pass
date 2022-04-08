@@ -14,30 +14,50 @@ namespace Secure_The_Pass.UI.Accounts
     {
         private User _user;
         private List<Account> _accounts;
-        public event Action UpdateAcc;
         public event Action<List<Account>> SetnewListAcc;
         private NotifyIcon _notifyIcon = new();
         private readonly IAccountService _accountService = new AccountService();
+        private int _rowIndex;
         public AccountsPresenter(User user, ref List<Account> accounts) : base(new FrmAccounts())
         {
             _user = user;
             _accounts = accounts;
             View.Search = Search;
-            View.GetAccounts = SetAccounts;
             View.ShowDetailsAccount = EditAccountPresenter;
             View.OpenBrowser = OpenBrowser;
             View.IndexClicked = SetCopyToClipboard;
+            View.SetDataSource(_accounts);
+            View.SetGridProperty();
         }
 
         private void EditAccountPresenter(int rowIndex)
         {
-            if (rowIndex >= 0)
+            _rowIndex = rowIndex;
+            if (_rowIndex >= 0)
             {
-                EditAccPresenter frmEditAcc = new(_accounts[rowIndex]);
+                EditAccPresenter frmEditAcc = new(GetAccounts()[_rowIndex]);
                 frmEditAcc.UpdateAcc += UpdateAcc;
+                frmEditAcc.RemoveAcc += RemoveAcc;
                 frmEditAcc.ShowDialog();
-                View.SetGridProperty();
             }
+        }
+
+        private void RemoveAcc()
+        {
+            _accounts.RemoveAt(_rowIndex);
+            View.SetDataSource(_accounts);
+            View.SetGridProperty();
+        }
+
+        private void UpdateAcc(Account account)
+        {
+            if (!Properties.Settings.Default.ShowPass)
+            {
+                account.Password = new string('•', account.Password.Length);
+            }
+            _accounts[_rowIndex] = account;
+            View.SetDataSource(_accounts);
+            View.SetGridProperty();
         }
 
         public static void OpenBrowser(string url)
@@ -56,14 +76,6 @@ namespace Secure_The_Pass.UI.Accounts
             }
         }
 
-        private void AnonymizePassword()
-        {
-            if (!Properties.Settings.Default.ShowPass)
-            {
-                _accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
-            }
-        }
-
         private void Search(string search)
         {
             if (_accounts.Any())
@@ -77,60 +89,57 @@ namespace Secure_The_Pass.UI.Accounts
                     View.SetError();
                 }
                 View.SetDataSource(accounts);
+                View.SetGridProperty();
             }
         }
 
-    private void SetCopyToClipboard(int rowIndex)
-    {
-        try
+        private void SetCopyToClipboard(int rowIndex)
         {
-            _notifyIcon.Visible = true;
-            _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-            if (Properties.Settings.Default.IsCopy)
+            try
             {
-                switch (Properties.Settings.Default.CopyToClipboard)
+                _notifyIcon.Visible = true;
+                _notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+                if (Properties.Settings.Default.IsCopy)
                 {
-                    case Settings.enumSettings.CopyToClipboard_Email:
-                        Clipboard.SetText(_accounts[rowIndex].Email);
-                        break;
-                    case Settings.enumSettings.CopyToClipboard_Password:
-                        SetAccounts(ignoreAnonymize: _accounts[rowIndex].Password.All(x => x == '•'));
-                        Clipboard.SetText(_accounts[rowIndex].Password);
-                        break;
-                    case Settings.enumSettings.CopyToClipboard_Username:
-                        Clipboard.SetText(_accounts[rowIndex].Username);
-                        break;
-                }
+                    switch (Properties.Settings.Default.CopyToClipboard)
+                    {
+                        case Settings.enumSettings.CopyToClipboard_Email:
+                            Clipboard.SetText(_accounts[rowIndex].Email);
+                            break;
+                        case Settings.enumSettings.CopyToClipboard_Password:
+                            Clipboard.SetText(_accounts[rowIndex].Password.All(x => x == '•')
+                                                ? GetAccounts()[rowIndex].Password
+                                                : _accounts[rowIndex].Password);
+                            break;
+                        case Settings.enumSettings.CopyToClipboard_Username:
+                            Clipboard.SetText(_accounts[rowIndex].Username);
+                            break;
+                    }
 
-                View.SetSelectedRow(rowIndex);
-                _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
+                    View.SetSelectedRow(rowIndex);
+                    _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was successfull", ToolTipIcon.Info);
+                }
+            }
+            catch
+            {
+                _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was failed", ToolTipIcon.Error);
             }
         }
-        catch
+
+        private List<Account> GetAccounts()
         {
-            _notifyIcon.ShowBalloonTip(1000, "Copy to Clipbord", "Copy to Clipbord was failed", ToolTipIcon.Error);
+            List<Account> accounts = _accountService.SelectAccounts(_user).ToList();
+
+            accounts.ForEach(x =>
+            {
+                x.Email = x.Email.GetDecryptString();
+                x.Password = x.Password.GetDecryptString();
+                x.Useremail = x.Useremail.GetDecryptString();
+                x.Username = x.Username.GetDecryptString();
+                x.Website = x.Website.GetDecryptString();
+            });
+
+            return accounts;
         }
     }
-
-    private void SetAccounts(bool ignoreAnonymize = false)
-    {
-        List<Account> accounts = _accountService.SelectAccounts(_user).ToList();
-
-        foreach (var acc in accounts)
-        {
-            acc.Email = acc.Email.GetDecryptString();
-            acc.Password = acc.Password.GetDecryptString();
-            acc.Website = acc.Website.GetDecryptString();
-            acc.Username = acc.Username.GetDecryptString();
-            acc.Useremail = acc.Useremail.GetDecryptString();
-        }
-
-        _accounts = accounts.ToList();
-        if (!ignoreAnonymize)
-        {
-            AnonymizePassword();
-            View.SetDataSource(_accounts);
-        }
-    }
-}
 }

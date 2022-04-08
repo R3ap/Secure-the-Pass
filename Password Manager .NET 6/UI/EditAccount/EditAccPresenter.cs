@@ -1,6 +1,4 @@
-﻿using Password_Manager_.NET_6;
-using Secure_The_Pass;
-using Secure_The_Pass.UI.BaseDialog;
+﻿using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass_Services_Core.Extensions;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Services.AccountService;
@@ -11,8 +9,9 @@ namespace Secure_The_Pass.UI.EditAccount
     {
         private Account _account;
         private IAccountService _accountService = new AccountService();
-        private Generator _generator = new Generator();
-        public event Action UpdateAcc;
+        private Generator _generator = new();
+        public event Action<Account> UpdateAcc;
+        public event Action RemoveAcc;
         public EditAccPresenter(Account account) : base(new FrmEditAcc())
         {
             _account = account;
@@ -22,25 +21,30 @@ namespace Secure_The_Pass.UI.EditAccount
             View.Website = _account.Website;
             View.Password = _account.Password;
             View.Username = _account.Username;
-            View.AcceptText = "&Save";
             View.Email = _account.Email;
+            View.AcceptText = "&Save";
         }
 
         private bool DeleteAcc()
         {
             _accountService.RemoveAcc(_account);
-            UpdateAcc?.Invoke();
+            RemoveAcc?.Invoke();
+            Application.OpenForms[nameof(FrmEditAcc)].Close();
             return true;
         }
 
         private bool SaveAccount()
         {
             _accountService.UpdateAccount(_account.ID,
-                                          View.Website.GetEncryptString(),
-                                          View.Email.GetEncryptString(),
-                                          View.Username.GetEncryptString(),
-                                          View.Password.GetEncryptString());
-            UpdateAcc?.Invoke();
+                                                     View.Website.GetEncryptString(),
+                                                     View.Email.GetEncryptString(),
+                                                     View.Username.GetEncryptString(),
+                                                     View.Password.GetEncryptString());
+            _account.Email = View.Email;
+            _account.Username = View.Username;
+            _account.Website = View.Website;
+            _account.Password = View.Password;
+            UpdateAcc?.Invoke(_account);
             return true;
         }
 

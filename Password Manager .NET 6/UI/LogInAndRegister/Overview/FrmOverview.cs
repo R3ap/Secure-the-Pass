@@ -25,6 +25,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Overview
             MaximizeBox = false;
             MinimizeBox = false;
             SetMainControl?.Invoke();
+            Focus();
         }
     }
 }

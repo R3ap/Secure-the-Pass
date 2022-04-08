@@ -4,7 +4,9 @@ using Secure_The_Pass.UI.AddAccount;
 using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass.UI.ErrorHandler;
 using Secure_The_Pass.UI.Settings;
+using Secure_The_Pass_Services_Core.Extensions;
 using Secure_The_Pass_Services_Core.Model;
+using Secure_The_Pass_Services_Core.Services.AccountService;
 
 namespace Secure_The_Pass.UI.Menü
 {
@@ -12,6 +14,7 @@ namespace Secure_The_Pass.UI.Menü
     {
         private User _user;
         private List<Account> _accounts;
+        private readonly IAccountService _accountService = new AccountService();
         public MenüPresenter(ref User user, ref List<Account> accounts) : base(new FrmMenü())
         {
             _user = user;
@@ -27,6 +30,7 @@ namespace Secure_The_Pass.UI.Menü
             try
             {
                 View.Titel = "Accounts";
+                SetAccounts();
                 AccountsPresenter accountsPresenter = new(_user, ref _accounts);
                 accountsPresenter.Show();
                 FrmAccounts frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
@@ -36,6 +40,25 @@ namespace Secure_The_Pass.UI.Menü
             catch (Exception ex)
             {
                 Error(ex);
+            }
+        }
+
+        private void SetAccounts()
+        {
+            _accounts = _accountService.SelectAccounts(_user).ToList();
+            
+            _accounts.ForEach(x =>
+            {
+                x.Email = x.Email.GetDecryptString();
+                x.Password = x.Password.GetDecryptString();
+                x.Username = x.Username.GetDecryptString();
+                x.Useremail = x.Useremail.GetDecryptString();
+                x.Website = x.Website.GetDecryptString();
+            });
+
+            if (!Properties.Settings.Default.ShowPass)
+            {
+                _accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
             }
         }
 

@@ -47,9 +47,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
 
         public static DateTime? GetLastLoginOn()
         {
-            PrincipalContext c = new(ContextType.Machine, Environment.MachineName);
-            UserPrincipal uc = UserPrincipal.FindByIdentity(c, Environment.UserName);
-            return uc.LastLogon;
+            return UserPrincipal.Current.LastLogon;
         }
 
         public bool LogIn()
