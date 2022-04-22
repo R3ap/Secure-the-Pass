@@ -125,43 +125,43 @@ namespace Password_Manager_.NET_6
 
         private void AccGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.Value == null) return;
+            //if (e.Value == null) return;
 
-            StringFormat sf = StringFormat.GenericTypographic;
-            sf.FormatFlags = sf.FormatFlags | StringFormatFlags.MeasureTrailingSpaces | StringFormatFlags.DisplayFormatControl;
-            e.PaintBackground(e.CellBounds, true);
+            //StringFormat sf = StringFormat.GenericTypographic;
+            //sf.FormatFlags = sf.FormatFlags | StringFormatFlags.MeasureTrailingSpaces | StringFormatFlags.DisplayFormatControl;
+            //e.PaintBackground(e.CellBounds, true);
 
-            SolidBrush br = new(Color.FromArgb(46, 51, 73));
-            if (((int)e.State & (int)DataGridViewElementStates.Selected) == 0)
-                br.Color = Color.FromArgb(0, 126, 249);
+            //SolidBrush br = new(Color.FromArgb(46, 51, 73));
+            //if (((int)e.State & (int)DataGridViewElementStates.Selected) == 0)
+            //    br.Color = Color.FromArgb(0, 126, 249);
 
-            AccGrid.Font = new Font(new FontFamily("Segoe UI"), 10, FontStyle.Bold);
+            //AccGrid.Font = new Font(new FontFamily("Segoe UI"), 10, FontStyle.Bold);
 
-            string text = e.Value.ToString();
-            SizeF textSize = e.Graphics.MeasureString(text, AccGrid.Font, e.CellBounds.Width, sf);
+            //string text = e.Value.ToString();
+            //SizeF textSize = e.Graphics.MeasureString(text, AccGrid.Font, e.CellBounds.Width, sf);
 
-            int keyPos = text.IndexOf(txtSearch.Text, StringComparison.OrdinalIgnoreCase);
-            if (keyPos >= 0)
-            {
-                SizeF textMetricSize = new(0, 0);
-                if (keyPos >= 1)
-                {
-                    string textMetric = text[..keyPos];
-                    textMetricSize = e.Graphics.MeasureString(textMetric, AccGrid.Font, e.CellBounds.Width, sf);
-                }
+            //int keyPos = text.IndexOf(txtSearch.Text, StringComparison.OrdinalIgnoreCase);
+            //if (keyPos >= 0)
+            //{
+            //    SizeF textMetricSize = new(0, 0);
+            //    if (keyPos >= 1)
+            //    {
+            //        string textMetric = text[..keyPos];
+            //        textMetricSize = e.Graphics.MeasureString(textMetric, AccGrid.Font, e.CellBounds.Width, sf);
+            //    }
 
-                SizeF keySize = e.Graphics.MeasureString(text.Substring(keyPos, txtSearch.Text.Length), AccGrid.Font, e.CellBounds.Width, sf);
-                float left = e.CellBounds.Left + (keyPos <= 0 ? 0 : textMetricSize.Width) + 2;
-                RectangleF keyRect = new(left, e.CellBounds.Top + 1, keySize.Width, e.CellBounds.Height - 2);
+            //    SizeF keySize = e.Graphics.MeasureString(text.Substring(keyPos, txtSearch.Text.Length), AccGrid.Font, e.CellBounds.Width, sf);
+            //    float left = e.CellBounds.Left + (keyPos <= 0 ? 0 : textMetricSize.Width) + 2;
+            //    RectangleF keyRect = new(left, e.CellBounds.Top + 1, keySize.Width, e.CellBounds.Height - 2);
 
-                SolidBrush fillBrush = new(Color.Yellow);
-                e.Graphics.FillRectangle(fillBrush, keyRect);
-                fillBrush.Dispose();
-            }
-            e.Graphics.DrawString(text, AccGrid.Font, br, new PointF(e.CellBounds.Left + 2, e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2), sf);
-            e.Handled = true;
+            //    SolidBrush fillBrush = new(Color.Yellow);
+            //    e.Graphics.FillRectangle(fillBrush, keyRect);
+            //    fillBrush.Dispose();
+            //}
+            //e.Graphics.DrawString(text, AccGrid.Font, br, new PointF(e.CellBounds.Left + 2, e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2), sf);
+            //e.Handled = true;
 
-            br.Dispose();
+            //br.Dispose();
         }
     }
 }

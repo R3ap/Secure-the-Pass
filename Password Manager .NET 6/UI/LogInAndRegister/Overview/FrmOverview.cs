@@ -1,5 +1,4 @@
 ﻿using Secure_The_Pass.UI.BaseDialog;
-using Secure_The_Pass.UI.LogInAndRegister.Overview;
 
 namespace Secure_The_Pass.UI.LogInAndRegister.Overview
 {

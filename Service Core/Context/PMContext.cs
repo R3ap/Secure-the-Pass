@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using Secure_The_Pass_Services_Core.Model;
 
 namespace Secure_The_Pass_Services_Core.Context
@@ -11,7 +10,7 @@ namespace Secure_The_Pass_Services_Core.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Server=.;Database=PassManager;Trusted_Connection=True;");
+            options.UseSqlServer("Server=144.91.100.193;initial catalog=PassManager;user id=sa;password=l§67FCVuFkIm//HcsvZc");
         }
     }
 }
