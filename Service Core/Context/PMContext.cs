@@ -7,7 +7,6 @@ namespace Secure_The_Pass_Services_Core.Context
     {
         public DbSet<Account> Account { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Settings> Settings { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
