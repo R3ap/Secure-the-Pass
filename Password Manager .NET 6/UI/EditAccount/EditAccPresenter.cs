@@ -29,7 +29,7 @@ namespace Secure_The_Pass.UI.EditAccount
         {
             _accountService.RemoveAcc(_account);
             RemoveAcc?.Invoke();
-            Application.OpenForms[nameof(FrmEditAcc)].Close();
+            Close();
             return true;
         }
 

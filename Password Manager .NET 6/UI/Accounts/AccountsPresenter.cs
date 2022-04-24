@@ -28,6 +28,18 @@ namespace Secure_The_Pass.UI.Accounts
             View.IndexClicked = SetCopyToClipboard;
             View.SetDataSource(_accounts);
             View.SetGridProperty();
+            View.ShowPassword = ShowPassword;
+        }
+
+        private bool ShowPassword()
+        {
+            return Properties.Settings.Default.ShowPass;
+        }
+
+        public void SetAccounts(List<Account> accounts)
+        {
+            View.SetDataSource(accounts);
+            View.SetGridProperty();
         }
 
         private void EditAccountPresenter(int rowIndex)
@@ -51,10 +63,6 @@ namespace Secure_The_Pass.UI.Accounts
 
         private void UpdateAcc(Account account)
         {
-            if (!Properties.Settings.Default.ShowPass)
-            {
-                account.Password = new string('•', account.Password.Length);
-            }
             _accounts[_rowIndex] = account;
             View.SetDataSource(_accounts);
             View.SetGridProperty();
@@ -107,9 +115,7 @@ namespace Secure_The_Pass.UI.Accounts
                             Clipboard.SetText(_accounts[rowIndex].Email);
                             break;
                         case Settings.enumSettings.CopyToClipboard_Password:
-                            Clipboard.SetText(_accounts[rowIndex].Password.All(x => x == '•')
-                                                ? GetAccounts()[rowIndex].Password
-                                                : _accounts[rowIndex].Password);
+                            Clipboard.SetText(_accounts[rowIndex].Password);
                             break;
                         case Settings.enumSettings.CopyToClipboard_Username:
                             Clipboard.SetText(_accounts[rowIndex].Username);

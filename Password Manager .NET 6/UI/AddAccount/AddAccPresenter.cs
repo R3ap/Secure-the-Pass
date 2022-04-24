@@ -1,6 +1,4 @@
-﻿using Password_Manager_.NET_6;
-using Secure_The_Pass;
-using Secure_The_Pass.UI.BaseDialog;
+﻿using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass_Services_Core.Services.AccountService;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Extensions;
@@ -19,6 +17,16 @@ namespace Secure_The_Pass.UI.AddAccount
             _accounts = accounts;
             View.OnAcceptClick = SaveAccount;
             View.AddButtonAction(new ButtonAction() { Action = GenaratPW, Name = "BtnGenaratPW", Text = "Genarat Password" });
+            View.AddButtonAction(new ButtonAction() { Action = Clear, Name = "BtnClear", Text = "Clear" });
+        }
+
+        private bool Clear()
+        {
+            View.Email = "";
+            View.Password = "";
+            View.Username = "";
+            View.Website = "";
+            return false;
         }
 
         private bool SaveAccount()

@@ -7,10 +7,11 @@ namespace Secure_The_Pass_Services_Core.Context
     {
         public DbSet<Account> Account { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Server=144.91.100.193;initial catalog=PassManager;user id=sa;password=l§67FCVuFkIm//HcsvZc");
+            options.UseSqlServer("Server=144.91.100.193;initial catalog=PassManager;user id=sa;password=wIB8LP§gfc9i8wYbA5?4");
         }
     }
 }

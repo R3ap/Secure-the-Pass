@@ -6,5 +6,6 @@
         bool MaximizeBox { get; set; }
         bool MinimizeBox { get; set; }
         bool ShowIcon { get; set; }
+        void Close();
     }
 }

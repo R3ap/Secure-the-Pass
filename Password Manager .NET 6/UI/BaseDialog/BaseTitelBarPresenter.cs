@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Secure_The_Pass.UI.BaseDialog
 {
     public class BaseTitelBarPresenter<TView> where TView : IBaseDialogTitelBar
@@ -18,6 +13,11 @@ namespace Secure_The_Pass.UI.BaseDialog
         public void ShowDialog()
         {
             View.ShowDialog();
+        }
+
+        public void Close()
+        {
+            View.Close();
         }
 
         public void Show()

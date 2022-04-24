@@ -9,6 +9,7 @@ namespace Secure_The_Pass.UI.Accounts
         Action<int> ShowDetailsAccount { get; set; }
         Action<string> OpenBrowser { get; set; }
         Action<int> IndexClicked { get; set; }
+        Func<bool> ShowPassword { get; set; }
 
         void SetDataSource(List<Account> accounts);
         void SetSelectedRow(int rowIndex);

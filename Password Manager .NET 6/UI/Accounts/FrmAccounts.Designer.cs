@@ -122,9 +122,9 @@ namespace Password_Manager_.NET_6
             this.AccGrid.StandardTab = true;
             this.AccGrid.TabIndex = 2;
             this.AccGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccGrid_CellContentClick);
+            this.AccGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.AccGrid_CellFormatting);
             this.AccGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseClick);
             this.AccGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccGrid_CellMouseDoubleClick);
-            this.AccGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.AccGrid_CellPainting);
             this.AccGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.AccGrid_DataBindingComplete);
             this.AccGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmAccounts_KeyDown);
             // 
