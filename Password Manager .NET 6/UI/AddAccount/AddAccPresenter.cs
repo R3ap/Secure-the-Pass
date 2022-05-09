@@ -38,10 +38,9 @@ namespace Secure_The_Pass.UI.AddAccount
                 return false;
             }
 
-            int indexOfAcc = _userService.GetIndexOfAccouts();
             _userService.InsertAccount(new Account()
             {
-                ID = indexOfAcc + 1,
+                Guid = Guid.NewGuid(),
                 Email = View.Email.GetEncryptString(),
                 Website = View.Website.GetEncryptString(),
                 Username = View.Username.GetEncryptString(),
@@ -50,7 +49,7 @@ namespace Secure_The_Pass.UI.AddAccount
             });
             Account account = new()
             {
-                ID = indexOfAcc + 1,
+                Guid = Guid.NewGuid(),
                 Email = View.Email,
                 Website = View.Website,
                 Username = View.Username,

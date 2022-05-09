@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure the Pass•••", "Password Manager .NET 6\Secure the Pass•••.csproj", "{A23BCAEF-0EAE-46E4-85C9-F0892B38F2E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure the Pass Services Core", "Service Core\Secure the Pass Services Core.csproj", "{977AA411-B7F4-410B-A174-347B28E44215}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ref", "Ref", "{392BA9D7-0913-43E2-BE66-AD52A237B432}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ref", "Ref", "{CE4F8630-3681-4AB2-A732-B19D9632B34F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure the Pass Services Core", "Services-Core-Secure-the-Pass-\Secure the Pass Services Core.csproj", "{0A92C8E3-90AF-4004-8207-90EEC3E49ECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +19,16 @@ Global
 		{A23BCAEF-0EAE-46E4-85C9-F0892B38F2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A23BCAEF-0EAE-46E4-85C9-F0892B38F2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A23BCAEF-0EAE-46E4-85C9-F0892B38F2E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{977AA411-B7F4-410B-A174-347B28E44215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{977AA411-B7F4-410B-A174-347B28E44215}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{977AA411-B7F4-410B-A174-347B28E44215}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{977AA411-B7F4-410B-A174-347B28E44215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A92C8E3-90AF-4004-8207-90EEC3E49ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A92C8E3-90AF-4004-8207-90EEC3E49ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A92C8E3-90AF-4004-8207-90EEC3E49ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A92C8E3-90AF-4004-8207-90EEC3E49ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{977AA411-B7F4-410B-A174-347B28E44215} = {CE4F8630-3681-4AB2-A732-B19D9632B34F}
+		{0A92C8E3-90AF-4004-8207-90EEC3E49ECF} = {392BA9D7-0913-43E2-BE66-AD52A237B432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE43A4ED-D759-45F8-82F3-2296F9BE8554}

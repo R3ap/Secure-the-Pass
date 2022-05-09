@@ -35,11 +35,11 @@ namespace Secure_The_Pass.UI.EditAccount
 
         private bool SaveAccount()
         {
-            _accountService.UpdateAccount(_account.ID,
-                                                     View.Website.GetEncryptString(),
-                                                     View.Email.GetEncryptString(),
-                                                     View.Username.GetEncryptString(),
-                                                     View.Password.GetEncryptString());
+            _accountService.UpdateAccount(_account.Guid,
+                                          View.Website.GetEncryptString(),
+                                          View.Email.GetEncryptString(),
+                                          View.Username.GetEncryptString(),
+                                          View.Password.GetEncryptString());
             _account.Email = View.Email;
             _account.Username = View.Username;
             _account.Website = View.Website;
