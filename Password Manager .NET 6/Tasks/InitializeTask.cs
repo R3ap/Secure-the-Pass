@@ -21,6 +21,7 @@ namespace Secure_The_Pass.Tasks
                 };
 
                 return Task.FromResult(_loadUser);
+
             }
             catch (Exception)
             {
