@@ -40,7 +40,7 @@ namespace Secure_The_Pass.UI.AddAccount
 
             _userService.InsertAccount(new Account()
             {
-                Guid = Guid.NewGuid(),
+                ID = Guid.NewGuid(),
                 Email = View.Email.GetEncryptString(),
                 Website = View.Website.GetEncryptString(),
                 Username = View.Username.GetEncryptString(),
@@ -49,7 +49,7 @@ namespace Secure_The_Pass.UI.AddAccount
             });
             Account account = new()
             {
-                Guid = Guid.NewGuid(),
+                ID = Guid.NewGuid(),
                 Email = View.Email,
                 Website = View.Website,
                 Username = View.Username,
