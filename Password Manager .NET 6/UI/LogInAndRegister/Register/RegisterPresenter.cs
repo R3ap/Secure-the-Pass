@@ -38,10 +38,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register
                 {
                     User user = new()
                     {
-                        ID = _userService
-                                            .SelectUsers()
-                                            .OrderByDescending(x => x.ID)
-                                            .First().ID + 1,
+                        Guid = Guid.NewGuid(),
                         Email = View.Email.GetEncryptString(),
                         Username = View.Username.GetEncryptString(),
                         Password = View.Password.GetEncryptString()

@@ -35,7 +35,7 @@ namespace Secure_The_Pass.UI.EditAccount
 
         private bool SaveAccount()
         {
-            _accountService.UpdateAccount(_account.ID,
+            _accountService.UpdateAccount(_account.Guid,
                                                      View.Website.GetEncryptString(),
                                                      View.Email.GetEncryptString(),
                                                      View.Username.GetEncryptString(),

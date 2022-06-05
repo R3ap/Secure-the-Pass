@@ -14,7 +14,7 @@ namespace Secure_The_Pass.Tasks
             {
                 _loadUser = new User()
                 {
-                    ID = user.ID,
+                    Guid = user.Guid,
                     Email = user.Email.GetDecryptString(),
                     Password = user.Password.GetDecryptString(),
                     Username = user.Username.GetDecryptString()
