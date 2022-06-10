@@ -30,7 +30,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
 
         public void InvalidData()
         {
-            TxtEmail.ErroText = txtPassword.ErroText = "Enter incorrect data";
+            TxtEmail.ErrorText = txtPassword.ErrorText = "Enter incorrect data";
         }
 
         public void SetFocus()

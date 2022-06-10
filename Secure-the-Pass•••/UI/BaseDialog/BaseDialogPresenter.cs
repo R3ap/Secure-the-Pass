@@ -1,21 +1,16 @@
-﻿namespace Secure_The_Pass.UI.BaseDialog
-{
-    public abstract class BaseDialogPresenter<TView> where TView : IBaseDialogBase
-    {
+﻿namespace Secure_The_Pass.UI.BaseDialog {
+    public abstract class BaseDialogPresenter<TView> where TView : IBaseDialogBase {
         protected TView View { get; }
 
-        public BaseDialogPresenter(TView view)
-        {
+        public BaseDialogPresenter(TView view) {
             View = view;
         }
 
-        public void ShowDialog()
-        {
+        public void ShowDialog() {
             View.ShowDialog();
         }
 
-        public void Show()
-        {
+        public void Show() {
             View.Show();
         }
     }

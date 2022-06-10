@@ -114,7 +114,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Padding = new System.Windows.Forms.Padding(7);
             this.TxtEmail.PlaceholderText = "Email";
-            this.TxtEmail.ErroText = "";
+            this.TxtEmail.ErrorText = "";
             this.TxtEmail.SetInfoText = "";
             this.TxtEmail.Size = new System.Drawing.Size(387, 36);
             this.TxtEmail.TabIndex = 36;
@@ -137,7 +137,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Login
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Padding = new System.Windows.Forms.Padding(7);
             this.txtPassword.PlaceholderText = "Password";
-            this.txtPassword.ErroText = "";
+            this.txtPassword.ErrorText = "";
             this.txtPassword.SetInfoText = "";
             this.txtPassword.Size = new System.Drawing.Size(387, 36);
             this.txtPassword.TabIndex = 37;

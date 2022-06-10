@@ -1,5 +1,5 @@
 ﻿using Secure_The_Pass.UI.BaseDialog;
-using Secure_The_Pass_Services_Core.Services.UserServices;
+using Secure_The_Pass_Services_Core.Services.User;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;

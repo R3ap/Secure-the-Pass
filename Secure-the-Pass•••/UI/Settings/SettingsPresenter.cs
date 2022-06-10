@@ -1,11 +1,11 @@
 ﻿using properties = Secure_The_Pass.Properties;
-using Secure_The_Pass_Services_Core.Services.UserServices;
+using Secure_The_Pass_Services_Core.Services.User;
 using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass.UI.LogInAndRegister.Overview;
-using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Services.Account;
 using Secure_The_Pass_Services_Core.Model;
-using Secure_The_Pass.UI.Menü;
 using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass.UI.Menu;
 
 namespace Secure_The_Pass.UI.Settings
 {
@@ -34,8 +34,8 @@ namespace Secure_The_Pass.UI.Settings
 
         private bool SignOutClick()
         {
-            ((FrmMenü)Application.OpenForms[nameof(FrmMenü)]).Hide();
-            ((FrmMenü)Application.OpenForms[nameof(FrmMenü)]).Close();
+            ((FrmMenu)Application.OpenForms[nameof(FrmMenu)]).Hide();
+            ((FrmMenu)Application.OpenForms[nameof(FrmMenu)]).Close();
             properties.Settings.Default.Email = null;
             properties.Settings.Default.Save();
             OverviewPresenter LogIn = new();

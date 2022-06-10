@@ -1,19 +1,16 @@
 ﻿using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass_Services_Core.Extensions;
 using Secure_The_Pass_Services_Core.Model;
-using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Services.Account;
 
-namespace Secure_The_Pass.UI.EditAccount
-{
-    public class EditAccPresenter : BaseTitelBarPresenter<IEditAcc>
-    {
+namespace Secure_The_Pass.UI.EditAccount {
+    public class EditAccPresenter : BaseTitelBarPresenter<IEditAcc> {
         private Account _account;
         private IAccountService _accountService = new AccountService();
         private Generator _generator = new();
         public event Action<Account> UpdateAcc;
         public event Action RemoveAcc;
-        public EditAccPresenter(Account account) : base(new FrmEditAcc())
-        {
+        public EditAccPresenter(Account account) : base(new FrmEditAcc()) {
             _account = account;
             View.AddButtonAction(new ButtonAction() { Action = GeneratePW, Name = "BtnGeneratePW", Text = "Generate Password" });
             View.AddButtonAction(new ButtonAction() { Action = DeleteAcc, Name = "BtnDeleteAcc", Text = "Delete Account" });
@@ -25,21 +22,19 @@ namespace Secure_The_Pass.UI.EditAccount
             View.AcceptText = "&Save";
         }
 
-        private bool DeleteAcc()
-        {
+        private bool DeleteAcc() {
             _accountService.RemoveAcc(_account);
             RemoveAcc?.Invoke();
             Close();
             return true;
         }
 
-        private bool SaveAccount()
-        {
-            _accountService.UpdateAccount(_account.ID,
-                                                     View.Website.GetEncryptString(),
-                                                     View.Email.GetEncryptString(),
-                                                     View.Username.GetEncryptString(),
-                                                     View.Password.GetEncryptString());
+        private bool SaveAccount() {
+            _accountService.UpdateAccount(_account.Guid,
+                                          View.Website.GetEncryptString(),
+                                          View.Email.GetEncryptString(),
+                                          View.Username.GetEncryptString(),
+                                          View.Password.GetEncryptString());
             _account.Email = View.Email;
             _account.Username = View.Username;
             _account.Website = View.Website;
@@ -48,8 +43,7 @@ namespace Secure_The_Pass.UI.EditAccount
             return true;
         }
 
-        private bool GeneratePW()
-        {
+        private bool GeneratePW() {
             View.Password = _generator.GetPW();
             return false;
         }

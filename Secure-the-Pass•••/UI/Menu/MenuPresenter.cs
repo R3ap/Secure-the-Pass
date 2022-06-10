@@ -6,19 +6,17 @@ using Secure_The_Pass.UI.ErrorHandler;
 using Secure_The_Pass.UI.Settings;
 using Secure_The_Pass_Services_Core.Extensions;
 using Secure_The_Pass_Services_Core.Model;
-using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Services.Account;
+using Secure_The_Pass_Services_Core.Services.User;
 
-namespace Secure_The_Pass.UI.Menü
+namespace Secure_The_Pass.UI.Menu
 {
-    public class MenüPresenter : BaseTitelBarPresenter<IMenü>
+    public class MenuPresenter : BaseTitelBarPresenter<IMenu>
     {
-        private User _user;
-        private List<Account> _accounts;
         private readonly IAccountService _accountService = new AccountService();
-        public MenüPresenter(ref User user, ref List<Account> accounts) : base(new FrmMenü())
+        private readonly IUserService _userService = new UserService();
+        public MenuPresenter() : base(new FrmMenu())
         {
-            _user = user;
-            _accounts = accounts;
             View.Username = _user.Username;
             View.ShowAccountsDialog = ShowAccountsDialog;
             View.ShowAddAccountsDialog = ShowAddAccountsDialog;

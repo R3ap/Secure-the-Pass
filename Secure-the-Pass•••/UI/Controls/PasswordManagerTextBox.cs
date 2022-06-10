@@ -183,7 +183,7 @@ namespace Secure_The_Pass.UI.Controls
             }
         }
 
-        public string ErroText
+        public string ErrorText
         {
             get { return label1.Text; }
             set

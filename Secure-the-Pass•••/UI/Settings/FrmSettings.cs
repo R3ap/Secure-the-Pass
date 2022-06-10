@@ -31,12 +31,12 @@ namespace Secure_The_Pass.UI.Settings
 
         public void CleanProvider()
         {
-            TxtPasswordLength.ErroText = "";
+            TxtPasswordLength.ErrorText = "";
         }
 
         public void SetError()
         {
-            TxtPasswordLength.ErroText = "Only Numbers";
+            TxtPasswordLength.ErrorText = "Only Numbers";
         }
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)

@@ -159,7 +159,7 @@ namespace Secure_The_Pass.UI.Settings
             this.TxtPasswordLength.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtPasswordLength.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtPasswordLength.BorderSize = 2;
-            this.TxtPasswordLength.ErroText = "";
+            this.TxtPasswordLength.ErrorText = "";
             this.TxtPasswordLength.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtPasswordLength.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtPasswordLength.IsInvalid = false;
@@ -183,7 +183,7 @@ namespace Secure_The_Pass.UI.Settings
             this.TxtAllowedCharacters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtAllowedCharacters.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtAllowedCharacters.BorderSize = 2;
-            this.TxtAllowedCharacters.ErroText = "";
+            this.TxtAllowedCharacters.ErrorText = "";
             this.TxtAllowedCharacters.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtAllowedCharacters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtAllowedCharacters.IsInvalid = false;

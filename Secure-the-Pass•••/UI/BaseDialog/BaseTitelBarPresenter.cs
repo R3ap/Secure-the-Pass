@@ -1,27 +1,21 @@
 ﻿
-namespace Secure_The_Pass.UI.BaseDialog
-{
-    public class BaseTitelBarPresenter<TView> where TView : IBaseDialogTitelBar
-    {
+namespace Secure_The_Pass.UI.BaseDialog {
+    public class BaseTitelBarPresenter<TView> where TView : IBaseDialogTitelBar {
         protected TView View { get; }
 
-        public BaseTitelBarPresenter(TView view)
-        {
+        public BaseTitelBarPresenter(TView view) {
             View = view;
         }
 
-        public void ShowDialog()
-        {
+        public void ShowDialog() {
             View.ShowDialog();
         }
 
-        public void Close()
-        {
+        public void Close() {
             View.Close();
         }
 
-        public void Show()
-        {
+        public void Show() {
             View.Show();
         }
     }

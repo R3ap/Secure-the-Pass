@@ -30,6 +30,7 @@ namespace Password_Manager_.NET_6
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,11 +39,17 @@ namespace Password_Manager_.NET_6
             this.AccGrid = new System.Windows.Forms.DataGridView();
             this.PnlBorderAccGrid = new System.Windows.Forms.Panel();
             this.txtSearch = new Secure_The_Pass.UI.Controls.PasswordManagerTextBox();
+            this.BsAccounts = new System.Windows.Forms.BindingSource(this.components);
+            this.websiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PnlActions.SuspendLayout();
             this.PnlActionsBase.SuspendLayout();
             this.PnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).BeginInit();
             this.PnlBorderAccGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BsAccounts)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlActionsBase
@@ -69,6 +76,7 @@ namespace Password_Manager_.NET_6
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.AccGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.AccGrid.AutoGenerateColumns = false;
             this.AccGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.AccGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AccGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -83,6 +91,12 @@ namespace Password_Manager_.NET_6
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.AccGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.AccGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AccGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.websiteDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.usernameDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn});
+            this.AccGrid.DataSource = this.BsAccounts;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -149,7 +163,7 @@ namespace Password_Manager_.NET_6
             this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.txtSearch.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.txtSearch.BorderSize = 2;
-            this.txtSearch.ErroText = "";
+            this.txtSearch.ErrorText = "";
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.txtSearch.IsInvalid = false;
@@ -165,6 +179,42 @@ namespace Password_Manager_.NET_6
             this.txtSearch.UnderlinedStyle = true;
             this.txtSearch.UseSystemPasswordChar = false;
             this.txtSearch._TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // BsAccounts
+            // 
+            this.BsAccounts.DataSource = typeof(Secure_The_Pass_Services_Core.Model.Account);
+            // 
+            // websiteDataGridViewTextBoxColumn
+            // 
+            this.websiteDataGridViewTextBoxColumn.DataPropertyName = "Website";
+            this.websiteDataGridViewTextBoxColumn.HeaderText = "Website";
+            this.websiteDataGridViewTextBoxColumn.Name = "websiteDataGridViewTextBoxColumn";
+            this.websiteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.websiteDataGridViewTextBoxColumn.Width = 189;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 189;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usernameDataGridViewTextBoxColumn.Width = 188;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            this.passwordDataGridViewTextBoxColumn.Width = 189;
             // 
             // FrmAccounts
             // 
@@ -185,6 +235,7 @@ namespace Password_Manager_.NET_6
             this.PnlContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AccGrid)).EndInit();
             this.PnlBorderAccGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BsAccounts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +249,10 @@ namespace Password_Manager_.NET_6
         private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn Password;
         private Secure_The_Pass.UI.Controls.PasswordManagerTextBox txtSearch;
+        private BindingSource BsAccounts;
+        private DataGridViewTextBoxColumn websiteDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
     }
 }

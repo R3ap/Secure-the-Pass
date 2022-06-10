@@ -1,6 +1,0 @@
-{
-  "ConfigPaths": {
-    "ConnectionString": "Server=.;Database=PassManager;Trusted_Connection=True;",
-    "LoggerPath": "C:\\PWManager\\Logger"
-  }
-}

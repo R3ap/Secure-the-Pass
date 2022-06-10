@@ -79,7 +79,7 @@
             this.TxtWebsite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtWebsite.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtWebsite.BorderSize = 2;
-            this.TxtWebsite.ErroText = "";
+            this.TxtWebsite.ErrorText = "";
             this.TxtWebsite.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtWebsite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtWebsite.IsInvalid = false;
@@ -102,7 +102,7 @@
             this.TxtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtEmail.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtEmail.BorderSize = 2;
-            this.TxtEmail.ErroText = "";
+            this.TxtEmail.ErrorText = "";
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtEmail.IsInvalid = false;
@@ -125,7 +125,7 @@
             this.TxtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtUsername.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtUsername.BorderSize = 2;
-            this.TxtUsername.ErroText = "";
+            this.TxtUsername.ErrorText = "";
             this.TxtUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtUsername.IsInvalid = false;
@@ -148,7 +148,7 @@
             this.TxtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.TxtPassword.BorderFocusColor = System.Drawing.SystemColors.Highlight;
             this.TxtPassword.BorderSize = 2;
-            this.TxtPassword.ErroText = "";
+            this.TxtPassword.ErrorText = "";
             this.TxtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.TxtPassword.IsInvalid = false;

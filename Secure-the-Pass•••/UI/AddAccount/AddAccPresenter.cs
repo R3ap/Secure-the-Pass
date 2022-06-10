@@ -1,18 +1,15 @@
 ﻿using Secure_The_Pass.UI.BaseDialog;
-using Secure_The_Pass_Services_Core.Services.AccountService;
+using Secure_The_Pass_Services_Core.Services.Account;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Extensions;
 
-namespace Secure_The_Pass.UI.AddAccount
-{
-    public class AddAccPresenter : BaseDialogPresenter<IAddAcc>
-    {
+namespace Secure_The_Pass.UI.AddAccount {
+    public class AddAccPresenter : BaseDialogPresenter<IAddAcc> {
         private readonly IAccountService _userService = new AccountService();
         private User _user;
         private List<Account> _accounts;
         private Generator _generator = new();
-        public AddAccPresenter(ref User user, ref List<Account> accounts) : base(new FrmAddAcc())
-        {
+        public AddAccPresenter(ref User user, ref List<Account> accounts) : base(new FrmAddAcc()) {
             _user = user;
             _accounts = accounts;
             View.OnAcceptClick = SaveAccount;
@@ -20,8 +17,7 @@ namespace Secure_The_Pass.UI.AddAccount
             View.AddButtonAction(new ButtonAction() { Action = Clear, Name = "BtnClear", Text = "Clear" });
         }
 
-        private bool Clear()
-        {
+        private bool Clear() {
             View.Email = "";
             View.Password = "";
             View.Username = "";
@@ -29,70 +25,57 @@ namespace Secure_The_Pass.UI.AddAccount
             return false;
         }
 
-        private bool SaveAccount()
-        {
+        private bool SaveAccount() {
             View.ClearErrorProvider();
 
-            if (!ValidateAccount())
-            {
+            if (!ValidateAccount()) {
                 return false;
             }
 
-            _userService.InsertAccount(new Account()
-            {
-                ID = Guid.NewGuid(),
-                Email = View.Email.GetEncryptString(),
-                Website = View.Website.GetEncryptString(),
-                Username = View.Username.GetEncryptString(),
-                Password = View.Password.GetEncryptString(),
-                Useremail = _user.Email.GetEncryptString()
-            });
-            Account account = new()
-            {
-                ID = Guid.NewGuid(),
+            if (!Uri.IsWellFormedUriString(View.Website, UriKind.Absolute)) {
+                View.Website = $"https://{View.Website.ToLower()}";
+            }
+
+            Account account = new() {
                 Email = View.Email,
                 Website = View.Website,
                 Username = View.Username,
                 Password = View.Password,
-                Useremail = _user.Email
+                UserGuid = _user.Guid
             };
+
+            _userService.InsertAccount(account.GetEncryptedAccount());
             _accounts.Add(account);
             View.ClearControls();
             return false;
         }
 
 
-        private bool ValidateAccount()
-        {
+        private bool ValidateAccount() {
             bool isValid = true;
-            if (string.IsNullOrEmpty(View.Email))
-            {
+            if (string.IsNullOrEmpty(View.Email.Trim())) {
                 View.SetErrorEmail("This can't be Empty");
                 isValid = false;
             }
 
-            if (string.IsNullOrEmpty(View.Password))
-            {
+            if (string.IsNullOrEmpty(View.Password.Trim())) {
                 View.SetErrorPassword("This can't be Empty");
                 isValid = false;
             }
 
-            if (string.IsNullOrEmpty(View.Website))
-            {
+            if (string.IsNullOrEmpty(View.Website.Trim())) {
                 View.SetErrorWebsite("This can't be Empty");
                 isValid = false;
             }
 
-            if (string.IsNullOrEmpty(View.Username))
-            {
+            if (string.IsNullOrEmpty(View.Username.Trim())) {
                 View.SetErrorUsername("This can't be Empty");
                 isValid = false;
             }
             return isValid;
         }
 
-        private bool GenaratPW()
-        {
+        private bool GenaratPW() {
             View.Password = _generator.GetPW();
             return false;
         }

@@ -23,22 +23,22 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register
 
         public void SetErrorPassword(string errorMessage)
         {
-            TxtPassword.ErroText = errorMessage;
+            TxtPassword.ErrorText = errorMessage;
         }
 
         public void SetErrorEmail(string errorMessage)
         {
-            TxtEmail.ErroText = errorMessage;
+            TxtEmail.ErrorText = errorMessage;
         }
 
         public void SetErrorUsername(string errorMessage)
         {
-            TxtUsername.ErroText = errorMessage;
+            TxtUsername.ErrorText = errorMessage;
         }
 
         public void SetErrorPasswordConfirm(string errorMessage)
         {
-            TxtConfirm.ErroText = errorMessage;
+            TxtConfirm.ErrorText = errorMessage;
         }
 
         private void txtConfirm_KeyDown(object sender, KeyEventArgs e)
