@@ -39,7 +39,7 @@ namespace Secure_The_Pass.UI.LogInAndRegister.Register {
                         properties.Settings.Default.Save();
                         Application.OpenForms[nameof(FrmOverview)].Hide();
                         Application.OpenForms[nameof(FrmOverview)].Close();
-                        MenuPresenter frmMenu = new(ref _user, ref _accounts);
+                        MenuPresenter frmMenu = new();
                         frmMenu.ShowDialog();
                         return true;
                     }

@@ -2,16 +2,18 @@
 using Secure_The_Pass_Services_Core.Services.Account;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass_Services_Core.Services.User;
 
 namespace Secure_The_Pass.UI.AddAccount {
     public class AddAccPresenter : BaseDialogPresenter<IAddAcc> {
-        private readonly IAccountService _userService = new AccountService();
+        private readonly IAccountService _accountService = new AccountService();
+        private readonly IUserService _userService = new UserService();
         private User _user;
         private List<Account> _accounts;
         private Generator _generator = new();
-        public AddAccPresenter(ref User user, ref List<Account> accounts) : base(new FrmAddAcc()) {
-            _user = user;
-            _accounts = accounts;
+        public AddAccPresenter() : base(new FrmAddAcc()) {
+            _user = _userService.GetCurrentUser();
+            _accounts = _accountService.SelectAccounts(_user).ToList();
             View.OnAcceptClick = SaveAccount;
             View.AddButtonAction(new ButtonAction() { Action = GenaratPW, Name = "BtnGenaratPW", Text = "Genarat Password" });
             View.AddButtonAction(new ButtonAction() { Action = Clear, Name = "BtnClear", Text = "Clear" });
@@ -44,7 +46,7 @@ namespace Secure_The_Pass.UI.AddAccount {
                 UserGuid = _user.Guid
             };
 
-            _userService.InsertAccount(account.GetEncryptedAccount());
+            _accountService.InsertAccount(account.GetEncryptedAccount());
             _accounts.Add(account);
             View.ClearControls();
             return false;

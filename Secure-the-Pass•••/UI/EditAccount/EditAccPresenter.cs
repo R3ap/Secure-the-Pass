@@ -23,7 +23,7 @@ namespace Secure_The_Pass.UI.EditAccount {
         }
 
         private bool DeleteAcc() {
-            _accountService.RemoveAcc(_account);
+            _accountService.RemoveAccount(_account);
             RemoveAcc?.Invoke();
             Close();
             return true;

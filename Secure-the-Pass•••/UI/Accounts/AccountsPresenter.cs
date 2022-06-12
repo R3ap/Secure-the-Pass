@@ -7,18 +7,20 @@ using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass_Services_Core.Services.Account;
 using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Extensions;
+using Secure_The_Pass_Services_Core.Services.User;
 
 namespace Secure_The_Pass.UI.Accounts {
     public class AccountsPresenter : BaseDialogPresenter<IAccounts> {
+        private readonly IUserService _userService = new UserService();
+        private readonly IAccountService _accountService = new AccountService();
         private User _user;
         private List<Account> _accounts;
         public event Action<List<Account>> SetnewListAcc;
         private NotifyIcon _notifyIcon = new();
-        private readonly IAccountService _accountService = new AccountService();
         private int _rowIndex;
-        public AccountsPresenter(User user, ref List<Account> accounts) : base(new FrmAccounts()) {
-            _user = user;
-            _accounts = accounts;
+        public AccountsPresenter() : base(new FrmAccounts()) {
+            _user = _userService.GetCurrentUser();
+            _accounts = _accountService.SelectAccounts(_user).ToList();
             View.Search = Search;
             View.ShowDetailsAccount = EditAccountPresenter;
             View.OpenBrowser = OpenBrowser;

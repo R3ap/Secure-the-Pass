@@ -5,7 +5,6 @@ using Secure_The_Pass.UI.BaseDialog;
 using Secure_The_Pass.UI.ErrorHandler;
 using Secure_The_Pass.UI.Settings;
 using Secure_The_Pass_Services_Core.Extensions;
-using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Services.Account;
 using Secure_The_Pass_Services_Core.Services.User;
 
@@ -17,7 +16,7 @@ namespace Secure_The_Pass.UI.Menu
         private readonly IUserService _userService = new UserService();
         public MenuPresenter() : base(new FrmMenu())
         {
-            View.Username = _user.Username;
+            View.Username = _userService.GetCurrentUser().Username;
             View.ShowAccountsDialog = ShowAccountsDialog;
             View.ShowAddAccountsDialog = ShowAddAccountsDialog;
             View.ShowSettingsDialog = ShowSettingsDialog;
@@ -28,8 +27,7 @@ namespace Secure_The_Pass.UI.Menu
             try
             {
                 View.Titel = "Accounts";
-                SetAccounts();
-                AccountsPresenter accountsPresenter = new(_user, ref _accounts);
+                AccountsPresenter accountsPresenter = new();
                 accountsPresenter.Show();
                 FrmAccounts frmAccounts = (FrmAccounts)Application.OpenForms[nameof(FrmAccounts)];
                 frmAccounts.FormBorderStyle = FormBorderStyle.None;
@@ -41,31 +39,12 @@ namespace Secure_The_Pass.UI.Menu
             }
         }
 
-        private void SetAccounts()
-        {
-            _accounts = _accountService.SelectAccounts(_user).ToList();
-            
-            _accounts.ForEach(x =>
-            {
-                x.Email = x.Email.GetDecryptString();
-                x.Password = x.Password.GetDecryptString();
-                x.Username = x.Username.GetDecryptString();
-                x.Useremail = x.Useremail.GetDecryptString();
-                x.Website = x.Website.GetDecryptString();
-            });
-
-            if (!Properties.Settings.Default.ShowPass)
-            {
-                _accounts.ForEach(x => x.Password = new string('•', x.Password.Length));
-            }
-        }
-
         private void ShowAddAccountsDialog()
         {
             try
             {
                 View.Titel = "Add Account";
-                AddAccPresenter AddAcc = new(ref _user, ref _accounts);
+                AddAccPresenter AddAcc = new();
                 AddAcc.Show();
                 FrmAddAcc frmAddAcc = (FrmAddAcc)Application.OpenForms[nameof(FrmAddAcc)];
                 frmAddAcc.FormBorderStyle = FormBorderStyle.None;
@@ -82,7 +61,7 @@ namespace Secure_The_Pass.UI.Menu
             try
             {
                 View.Titel = "Settings";
-                SettingsPresenter presenter = new(ref _user, ref _accounts);
+                SettingsPresenter presenter = new();
                 presenter.Show();
                 FrmSettings frmSettings = (FrmSettings)Application.OpenForms[nameof(FrmSettings)];
                 frmSettings.FormBorderStyle = FormBorderStyle.None;

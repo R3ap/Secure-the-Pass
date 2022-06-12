@@ -9,7 +9,6 @@ namespace Secure_The_Pass.UI.Menu {
         public string Username { get => lblUsername.Text; set => lblUsername.Text = value; }
         public FrmMenu() {
             InitializeComponent();
-
         }
 
         private void FrmMenü_Load(object sender, EventArgs e) {

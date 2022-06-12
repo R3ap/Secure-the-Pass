@@ -16,10 +16,10 @@ namespace Secure_The_Pass.UI.Settings
         private User _user;
         private List<Account> _accounts;
 
-        public SettingsPresenter(ref User user, ref List<Account> accounts) : base(new FrmSettings())
+        public SettingsPresenter() : base(new FrmSettings())
         {
-            _user = user;
-            _accounts = accounts;
+            _user = _userService.GetCurrentUser();
+            _accounts = _accountService.SelectAccounts(_user).ToList();
             View.OnAcceptClick = Save;
             View.AddButtonAction(new ButtonAction() { Action = CleanAccountClick, Name = "BtnCleanAccount", Text = "Clean All Accounts" });
             View.AddButtonAction(new ButtonAction() { Action = DeleteUserClick, Name = "BtnDeleteUser", Text = "Delete User" });
@@ -59,7 +59,7 @@ namespace Secure_The_Pass.UI.Settings
 
         private bool CleanAccountClick()
         {
-            _accountService.CleanAccount(_accounts);
+            _accountService.RemoveAllAccounts(_accounts);
             return false;
         }
 
