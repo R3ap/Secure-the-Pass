@@ -46,7 +46,7 @@ namespace Secure_The_Pass.UI.Settings
         private bool DeleteUserClick()
         {
             DialogResult dialogResult = MessageBox.Show("Do you really want to delete this user?", "Are your sure about that?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes && _userService.RemoveUser(_user, _accounts))
+            if (dialogResult == DialogResult.Yes && _userService.RemoveUser(_user))
             {
                 dialogResult = MessageBox.Show("Delete was successfull", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.OK)

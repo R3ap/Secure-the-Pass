@@ -1,25 +1,22 @@
 ﻿using Secure_The_Pass.UI.BaseDialog;
+using Secure_The_Pass_Services_Core.Model;
 using Secure_The_Pass_Services_Core.Services.User;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 
-namespace Secure_The_Pass.UI.ForgotPW
-{
-    public partial class FrmForgotPW : FrmBaseDialogTitelBar
-    {
+namespace Secure_The_Pass.UI.ForgotPW {
+    public partial class FrmForgotPW : FrmBaseDialogTitelBar {
         private readonly IUserService _userService = new UserService();
         private string randomcode;
         public static string to;
         private NotifyIcon notify = new NotifyIcon();
-        public FrmForgotPW()
-        {
+        public FrmForgotPW() {
             InitializeComponent();
             Titel = "Forgot Password";
         }
 
-        private void SendEmail()
-        {
+        private void SendEmail() {
             string from, pass, messageBody;
             Random rnd = new();
             randomcode = rnd.Next(999999).ToString();
@@ -39,33 +36,26 @@ namespace Secure_The_Pass.UI.ForgotPW
             smtp.Credentials = new NetworkCredential(from, pass);
             notify.Visible = true;
             notify.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-            try
-            {
+            try {
                 smtp.Send(mailMessage);
                 notify.ShowBalloonTip(1000, "Email sending", "Email sending was successfull", ToolTipIcon.Info);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 notify.ShowBalloonTip(1000, "Email sending goes wrong", ex.Message, ToolTipIcon.Error);
             }
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            if (!_userService.CheckUser(txtEmail.Text))
-            {
+        private void btnSend_Click(object sender, EventArgs e) {
+            User? user = _userService.SelectUsers().FirstOrDefault(x => x.Email == txtEmail.Text);
+            if (user != null && !_userService.CheckUser(user.Guid)) {
                 SendEmail();
-            }
-            else
-            {
+            } else {
                 notify.Visible = true;
                 notify.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
                 notify.ShowBalloonTip(1000, "This Email don't Exist", "Please Sign up", ToolTipIcon.Error);
             }
         }
 
-        private void ResetPWPropertie()
-        {
+        private void ResetPWPropertie() {
             Titel = "Reset Password";
             Size = new Size(419, 233);
             btnSend.Visible = false;
@@ -80,31 +70,22 @@ namespace Secure_The_Pass.UI.ForgotPW
             txtEmail.PasswordChar = '•';
         }
 
-        private void ResetPw()
-        {
-            if (txtCode.Text == txtEmail.Text)
-            {
+        private void ResetPw() {
+            if (txtCode.Text == txtEmail.Text) {
                 _userService.UpdateUser(txtEmail.Text, to);
                 Close();
-            }
-            else
-            {
+            } else {
                 ForgotProvider.SetError(txtCode, "The Passwods is not Equal");
             }
         }
 
-        private void btnCheck_Click(object sender, EventArgs e)
-        {
-            if (Titel == "Reset Password")
-            {
+        private void btnCheck_Click(object sender, EventArgs e) {
+            if (Titel == "Reset Password") {
                 ResetPw();
             }
-            if (txtCode.Text == randomcode)
-            {
+            if (txtCode.Text == randomcode) {
                 ResetPWPropertie();
-            }
-            else
-            {
+            } else {
                 ForgotProvider.SetError(txtCode, "Wrong Code");
             }
         }
